@@ -1,0 +1,5677 @@
+<!DOCTYPE html>
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ZAP Scanning Report</title>
+<style type="text/css">
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+	font-size: 13px;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	font-size: 32px
+}
+
+h3 {
+	font-size: 16px;
+}
+
+table {
+	border: none;
+	font-size: 13px;
+}
+
+td, th {
+	padding: 3px 4px;
+	word-break: break-word;
+}
+
+th {
+	font-weight: bold;
+	background-color: #666666;
+}
+
+td {
+	background-color: #e8e8e8;
+}
+
+.spacer {
+	margin: 10px;
+}
+
+.spacer-lg {
+	margin: 40px;
+}
+
+.indent1 {
+	padding: 4px 20px;
+}
+
+.indent2 {
+	padding: 4px 40px;
+}
+
+.risk-3 {
+	background-color: red;
+	color: #FFF;
+}
+
+.risk-2 {
+	background-color: orange;
+	color: #FFF;
+}
+
+.risk-1 {
+	background-color: yellow;
+	color: #000;
+}
+
+.risk-0 {
+	background-color: blue;
+	color: #FFF;
+}
+
+.risk--1 {
+	background-color: green;
+	color: #FFF;
+}
+
+.summary {
+	width: 45%;
+}
+
+.summary th {
+	color: #FFF;
+}
+
+.alerts {
+	width: 75%;
+}
+
+.alerts th {
+	color: #FFF;
+}
+
+.results {
+	width: 100%;
+}
+
+.results th {
+	text-align: left;
+}
+
+.left-header {
+	display: inline-block;
+}
+</style>
+</head>
+<body>
+	<h1>
+		<!-- The ZAP Logo -->
+		<img
+			src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAABqbAAAamwHdbkbTAAAAB3RJTUUH4QsKDDQPKy6k8AAABxpJREFUWMO9l31sVWcdxz+/55xzbwt9QddJExClvIzNxTKJDZi22oJSbFZpmRb4g8sfhpEIwXQNTKh0NYgiMKIwo5AsdIxdQldGNBN5W2OTFRVcIZE1YwExcXOdc1DK+nLvOc/PP87tC9CWsj98bp6ck3Ofc57v7+37/T3wYGMucBR4F/gK/8exAugAdPXq1bpx40YFekZdHYuP+8PuGP+lAc8CmzIyMtLq6uqora3FcRwAzp49m/7Wv5O95tsNEfyEKvwH9B1V2hT7GnB+PABkhGePAvVA9dy5c6mvr2fp0qX3LOru7iYrK4toSQ1OXhGKohpOiyVQe0NVn9PGFb8iFofGFSMCMMPulwEXgbdXrlxZ3dHRQXt7+4ibA2RmZtLc3Ex/y/O4fg8RMUSMS8RxiRiPqPE+4xrnl07syA3Q+aN5wADlwO1oNPpqQ0NDfl9fH4cPH2bOnDn3dV9VVRWVlVV88vsteNF0XCO4xuA6Bs9xiBgPz/EmueKcIxavHyk/BPjnli1bpm3btu1TZ2hmxkTk8aeYMK8aay1WFVWwqgSqBDYgqQFJGxygccWa4e86IhJpbW39Zk5ODgUFBZ8KwOLFZeyr/wHZs0vw0jMxIqFpAuFt+EOYZ/OrAi41t96dhF8HThcWFnpnzpwhGo0+MIhnamvZs+8AM55uIhn4+Cnrkza8Wqv4NiBhfXwNCgxy3jauuKMKPOCPrpHSU2fOUlJS8sAg8qZP50bGY0xeuIFk4JO0SnIYiMAqSRuQDPyPgsbqh++ugqSsPXGC+WsoLS1lzZqnHxhA40svcfPvfyDNjRARwTOCJ+E0IjgiOGIwRnIkFl97NwBMX9dPvEfLSC+t5cCB/eTk5Ix78ylTplBcXMxDjy3EweIZISKSqoxwcyOCYwRXHETkuSEAsTjE4kVGTLrjpdP7p33U1NTQ2dk5bgCbN28Ow7BoA8YmcVOWR1KWuyKIgEEwYjBiJhN75Ushr15qRp747g9dcRZ4RtCuf3HhdBMlpQuZNm3auAAUFBRw+fJlWl/dy9SCaqwGIBIyJGBTUwemWqzy/mAIRPmaEUGsJeNbz+IVfJ+ioiI2bNgwbi80NTUxJWciV47/GM9Lwwg4CA6CSblbBqYYRPjqEACRR8JaVcRPkPHlJ5m66kX27W8kL2/6uMPR3t7Ox+++yQcXjmLEIEYQA8YIkuIHSYVDkBnDk3DSEDwAi5c5mUfWNtGVPovc3FwOHTp0XwDZ2dm0nTvH9Td+zSedVxDVkIQAEQ1BoIgKCpnmflqpQcAXyjYxo6KeVatWUVZWRiKRGPO1+fPns2vXLjoOr7uvFA8HcHMoQ8IHmkqOINnH1d81kJeXR0VFRcqKkUcQBLS0tHD79u2QXHq7UmkIqgKqoIKKAnQPNiSqXFG0QFVCXbcGK4pVIdnTBcDOnTupqqoa06q2tjZKS0uZ8LmZzKiox5nwWXzfx9qBfmGgCkDRa4MeUNE3repg2QSEiwMFk5nDF8vrWLZsGTNnzqS9vX1UAEVFRezYsYOeD68y8fNPEFifAL2rDAfBnJdhGv0NzzgtoYYbHGOICkSMIWKEqBE8x+X91v18cKGJyspKDh48SFZW1ohAlixZQstfLzM99iK9iQQJqySsxVfFDyz9Nolv/fw7gumsPtIbMZE0zxhcR3DFEDVCZIDTjeA5Drb3Jv84sYOu639j69atNDQ0jAgiN3cyPQ/NJXvhM/QnEwRW8dWSDAL6bbLTHlyee0cVWNWfBhpgVbEWfFUSqiSGqVoyCCCaxayndjKn+nm2736BzIyJHDt27B4AFy9eovvtU3R3nA5DkFJEXwNUtWHEptSsPtIXNW7UMy4mJSLeMA+4IrhCKC6A46XR+VYz772xj/z8fJqampg1a9bg906ePElZWRlZy3+DZuSGPUGQ/G/QuDznHjVMeaEyaS2+WqxVbMryxMDVKv0W+qzSr0pPoo/Mx8uZs/51rgdTmD17NrFYbJArFi9ezKZNm7h1dD1B4JO0PgG23KR6QxnlYLHXM846z7i4oX4P6vmA9Q6ENMsQZyiGxK1OPjr5M5Kd77B7925qamoAWLBgAX+59jFU7tmivy3fPvq5INXDSyx+3DXOd1xx8YzBiGBMKCIDwmKMDLEWEnoMUDdK37U2bp/6BQ9PSueV+BEWLVpEdnYW3be6f67wo7EOJoMgiMX3uuKs84zBEQcjghjBMCAmhF1niskGCMaiqFWs8ehrj+Off5nCwkK2b99OcXExwFTgvdEB3AmizIi85oqTNgDCSKrPFWV4DFRD/beqWLX4YUXdst0ffk+b168CVqZWpwN9YwO4Wzhi8c1GpM6ISTcYREJPMOSAQYZLHc1upY5meyjfBq/XAUwGbgL9Y4dgrBGLFwtSITAPkekCk1L73wS9qsoFxR6nceWfx/O5/wGLCSMJ+zJrfwAAAABJRU5ErkJggg=="
+			alt="" />
+		ZAP Scanning Report
+	</h1>
+	<p />
+	
+
+	<h2>
+		
+		Site: https://entreprise.api.gouv.fr
+		
+	</h2>
+
+	<h3>
+		Generated on Wed, 19 Apr 2023 14:17:15
+	</h3>
+
+	
+		<h3 class="left-header">Summary of Alerts</h3>
+		<table class="summary">
+			<tr>
+				<th width="45%"
+					height="24">Risk Level</th>
+				<th width="55%"
+					align="center">Number of Alerts</th>
+			</tr>
+			<tr>
+				<td class="risk-3">
+					<div>High</div>
+				</td>
+				<td align="center">
+					<div>0</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-2">
+					<div>Medium</div>
+				</td>
+				<td align="center">
+					<div>3</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-1">
+					<div>Low</div>
+				</td>
+				<td align="center">
+					<div>9</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk-0">
+					<div>Informational</div>
+				</td>
+				<td align="center">
+					<div>8</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="risk--1">
+					<div>				False Positives:</div>
+				</td>
+				<td align="center">
+					<div>0</div>
+				</td>
+			</tr>
+		</table>
+		<div class="spacer-lg"></div>
+	
+
+	
+		<h3>Alerts</h3>
+		<table class="alerts">
+			<tr>
+				<th width="60%" height="24">Name</th>
+				<th width="20%"
+					align="center">Risk Level</th>
+				<th width="20%"
+					align="center">Number of Instances</th>
+			</tr>
+			<tr>
+				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10099">Source Code Disclosure - PHP</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
+				<td><a href="#90003">Sub Resource Integrity Attribute Missing</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">10</td>
+			</tr>
+			<tr>
+				<td><a href="#10017">Cross-Domain JavaScript Source File Inclusion</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10110">Dangerous JS Functions</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">1</td>
+			</tr>
+			<tr>
+				<td><a href="#10063">Permissions Policy Header Not Set</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10037">Server Leaks Information via &quot;X-Powered-By&quot; HTTP Response Header Field(s)</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10036">Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10035">Strict-Transport-Security Header Not Set</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10035">Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">9</td>
+			</tr>
+			<tr>
+				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
+				<td align="center" class="risk-1">Low</td>
+				<td align="center">12</td>
+			</tr>
+			<tr>
+				<td><a href="#10094">Base64 Disclosure</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">12</td>
+			</tr>
+			<tr>
+				<td><a href="#10019">Content-Type Header Missing</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">2</td>
+			</tr>
+			<tr>
+				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10109">Modern Web Application</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10049">Non-Storable Content</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">6</td>
+			</tr>
+			<tr>
+				<td><a href="#10015">Re-examine Cache-control Directives</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">11</td>
+			</tr>
+			<tr>
+				<td><a href="#10049">Storable and Cacheable Content</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">4</td>
+			</tr>
+			<tr>
+				<td><a href="#10049">Storable but Non-Cacheable Content</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">1</td>
+			</tr>
+		</table>
+		<div class="spacer-lg"></div>
+	
+
+	
+		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10038"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Content Security Policy (CSP) Header Not Set</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/api/">https://entreprise.api.gouv.fr/api/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/aides_publiques">https://entreprise.api.gouv.fr/cas_usages/aides_publiques</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/marches_publics">https://entreprise.api.gouv.fr/cas_usages/marches_publics</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a>
+							<br />
+						
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</a>
+							<br />
+						
+							<a href="http://www.w3.org/TR/CSP/">http://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</a>
+							<br />
+						
+							<a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">http://www.html5rocks.com/en/tutorials/security/content-security-policy/</a>
+							<br />
+						
+							<a href="http://caniuse.com/#feat=contentsecuritypolicy">http://caniuse.com/#feat=contentsecuritypolicy</a>
+							<br />
+						
+							<a href="http://content-security-policy.com/">http://content-security-policy.com/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10038/">10038</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10099"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Source Code Disclosure - PHP</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Application Source Code was disclosed by the web server - PHP</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/files/exemple-ademe-rge-certificats-organisme-qualitenr.pdf">https://entreprise.api.gouv.fr/files/exemple-ademe-rge-certificats-organisme-qualitenr.pdf</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;?=é½LUNömì«(;rG¹æ.ê¿ôÝCÃ¾1Ñ^þá&quot;ñLÆ[
+	UÂúýÑÖ.xÀG&lt;Bu]JIdGÑ&#39;Ñ¤·+Å3£1ÏP~@? ÎÐ&gt;j6Wÿ Ú¾5Õµ[;+g·²¶dX®Ðd*zBôÏ×e&gt;éëáxl_\y½ò	6Ò4[°Øî4¡à¯uÍo©Oqk¬jRj&quot;ÚD [Ë!&amp;M¬9!=1@=  P@  P@  P@  P@ Ãüiÿ MëºÐ?ò%Áÿ ]ùÐ_@  P@  P@  P@  P@  P@  P&#39;ñkþD«÷ÓùÐ/ßò*7ýwoé@ºÍ
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (+«{X¼Ûâ0q¾G
+?3@ÚêmÔ¢]FÒyÈHæV?4l$Rh±I±¬:ÈÈe9ñ ybI7äÎÅ,lrp;Ðè  E,RÊcm®Ú}¡ 9bc¡ÚáX§ÐúPè   $à¦Ë&#39;Yº2øÐ¨3&lt;&quot;uÍå°ÜG®(gx³ÊF:³°P?@r(8&#39;u-ÑÊ%Û ðÖÜÍrÆXn#Ô¸ 	(  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: ¥ð[þEFÿ ®íý(S¹ a@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ yíZ&#39;Ã½27Ó¿´ÑüA`­gòÿ ¤!Ì1ótçy ðV¤h²jzÝÁ[ÝØiòÍôæÊ%rú²ð³¹&lt;` ÃðÅ=vûÅ6:&amp;¡¬øÄVú¶u;?K­$&quot;ûVt&lt;ôOáÞ¡â=OâÃëK½+LÒî|;q+éÖöRÔ	pÁ{IÁFx í~+^GañgáµìÄ`mZY1ýÕ±b q¾ø×®êwZ­-Îw§ëWQÆú=µëucäÎX¤Åphß¥¥)&amp;DRDjÌb:ãÖ&lt;ÇàÌ)â?ðË:,øÊábFn\kr@ð2hO¤üJç8ñ&#39;ø s^0øñÍ|s«é#Ã©¥øJõc[iíey¯%w ß{ksÚ-_üKñou]&lt;f4mJ(ü-/mWM·G&quot;FmØ»¾ðLÂ÷â.ÜøÇþÔ4X|g&gt;©Úx%Eee$-cp!ie¤o62p§¿µ rñ|Fñá#¢xKI½Óy54®lÒa#| G%^(Úüª\ë&gt;ÓuKÇÓÞââyÂo6ÝÛºÔóü}¡?W_^hºìZ=µæK;ÇC$cHÅ zíC­x{Q½ðçÃísZM7NÔ£7W÷0¯îïÌSðF ø¥³*ò9¯ôWÓÁáîcýÚ0õÏÊß sÿ ²öµ¡è¾5Ôü¥kÑêÐj6êé&quot;¹l\à-Êäôù¶¶­ r¾.ø ·Åë¿c_]è:ü5¥s4ÔÓ8;¥ØH }m¤¬°d`Xz u  P@  P@  P@  P@  P@  R°	øÑ`Z`&amp;ôõ  (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: àìJEÎdBß÷ÑÒ;: (  
+ (    (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  9ÿ xZÓÅº}äòÂzèc%âmÀc@ü_¡YxÂÚu ´Ô­d¶ÆpÁ]H$^hµøSsý­£jºõ;û½&amp;)- ÝiñdØ½ÈÇÍíÒ44ovz=ïîôí^î)4Y-QH¹Îâ­éÎE nøÂ:ç4nîGß£. YDð7àhðçÃ	4iôÛDñ~±.¥KæXé|&quot; Ú ù&lt;)ôÍ n|Aðrø¨i6ú­Î©éW{+ÈQ\ÆYv°*ÜE s	ðvÒ2ÙìüG¨Áâ}bmdk&gt;Z4s,f)2wkFvíöÔü;ð}¿ôëØVþãQ¼ÔoöúòpÍ+ 	Àà  (¥ðãL¾ÑüY¦I{p±ø&gt;åáFþù&#39;&gt;hö³%þ¦ÒÍ¾AÐJèìÙê(1@ÚGÃ9#Ô,nµÿ ê:ðÓ xtèî#DoMÛ}ö7u âøas¦éÚm¯&lt;a©iFÊÌÙ&gt;bY£2Å²ccÀÈ Â~´ðÇ ð¶q4qAÆ¶løéqÒ*iÑl~§Ãð$LMhîÿ ~MÙÜçý¢Ä·ÔÐ^ð¯5{^MNëT¾N³Ó× f8mÐ?¼Å½I Û¿:MÇn5VÔ.ÖëUUÀå&lt;ñ¦Ð~	÷µãOÛøVÑµt¿¸Óµ!æ6ÓÂ82¤£¡ú¨ é^Ñ,&gt;GðýUäÒÖÁ¬ïÈîÚbKs@&gt;Ò¿°ü9§èßkìY[¥ºÍ(ùÜ(À&#39;ß P  P@  P@  P@  P@  fÐrO`@ôÛc`LHòU 	.ÜD¨©äP3õd{PÒQÉ-õ4&quot;ª¨À ´ P@  P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþt Ï?ò$[×I?ô3@}  P@  P-FY&lt;6àóWàZ0Er@æ Ð@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@wDv Nhj6äfÓþXÎ(·Óñ1Éü¨VÊgæ{§&#39;Ñ&gt;Q@Egon7zô:8 
+ Z (  
+ (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: gÂù-¿ë¤ú ¾Ìò@  ´ P@  P@ Aqs	\)=)¨·°£+ e9¥ (  
+ (  
+ ¤÷ñ­à·*sëUË¥Àº*@(  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ J l&quot;).á@îM RT¶ËtyØ6/Ê Áý«ryòíc=W«þ¥ H\Ü&lt;.:OÊ.G ùWè(ÆòÇîwU¹4]õ@¥_3BÇô ­óJ¤ÛÚÈþÍòÿ : R÷Ä®&quot;Eòz º:P@  P@  P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþt Ï?ò$[×I?ô3@} RÔí^åWË}¤UFVÜ´P*1ÉRÞ K@    (  
+ ­{eÖ&lt;Ì=*xG¢ôQS¸ h 
+ (  aÉæ½iÜÒ  Ð@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ z ¥sªÚÂÛùuM @%Õ.ÉÙÚÇÓ/Ë~ ø4ù2És îçò ñÇK¶4T1@æFeêhë1Ùm³¾zÀ? &quot;ÏªÏþ®Ú8 ÿ $þT æ±¼ýÓÕ t»@Á3êÄ ³D~HIô\P¤8Æ]G¹ 
+Òê6¨q¸¿û4]ßJ1oi·=Ï KRa®g ÷DèhÚ(U t ê (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: gÂù-¿ë¤ú ¾ Q@ &#39;z «}}®IèT`äws2&amp;¹@  P@  Pv©|ö®¨©ó¸Cvrùð,`Ò¥«;5 
+ (  
+ ( 447fõ]÷WVøéRÐ@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  Ü Éâ2ouÛtìÖh×Ü&gt;§¥ G¥}ój7&gt;TgþXÅéîzÐ¥µªâ\r ³@ é@Þ,¯i*[°IJ{phÑ¢m&gt;=ºõ´²ÎOÏp~tcì;S¢·ÔtÌIâ¿¡¤¿´ì¹Û:¿û7ò 7r;Y PgPcÒSõÈ ì6|Û·e=F1@K{x&#39;~{3n 	&quot;1¨ÿ GP1@!&lt;àj P@  P@  P@  Pñ§þE5ÿ ®ë@~ÿ Èýtç@}  P@  P@  P@  P@  P@  P@Å¯ù®ßOç@øCÿ &quot;E·ýtÿ C4×Ð@  )ê	vC*ERr{HÞt¸ 
+ J Z (  
+ h&quot;1c¦i§`$PaF ÐqÞs@@  P@  PO4K ¸{SI°%¤@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ ò¤0´²&quot;Äú
+ çc7¾&quot;c ­´Ìü¢3}{
+ Ú²µ²Óâ[¤q/~êhs&lt; gÍ_Î+¶«`$òÍÀÝé@ú0c´¸Iê«Å +M|üÅl}°h êr×	²®ïÖìOõ÷»z´~ £é²f³fE3@Ë¥é¨»QE°ÿ ¦M³ùP	#	m6òíå&#39;èhÛ¼JY¼ÊFAà0¥^Å¨\½­Ì³ÇyËD~C\¢6cØ2Æ»½qÍ %  P@  P@  P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþtðÚôÚxÓhË4cþû5pÆtºv§$Ó¤æèET¡`6+!  P@  P±wpF5b:{ÖÐ°Éô+åÜ²Àt55&quot;3Z³P@  P@	õ¡­¯&lt;÷ö­akj$[D»ê%kè
+ (  
+ ( 4R[(¤¹YÎw
+¥&amp;¶:TP@ 
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  J,m`ÜPzhÖñ¨H&amp;
+(Hô«UÏlÿ ÏC 4Ûû¶±{P5TQøPÅ &quot;âT´*êh§öÅ-aSÙ±? &#39;¨N3$ &#39;^N&gt;´ øôÛ}Û¥Ý;g¬8 
+ cÚ(êz­­áß|¤|±¯,Æ2´2ê]j]{P\Î\1àOs@- #0Q }hÆ¥lR=ÓH?M B¨]°y[ìÑª~c@k@@  P@  P@  Pñ§þE5ÿ ®ë@~ÿ Èýtç@}  P@  P@  P@  P@  P@  P@Å¯ù®ßOç@þÚ%ßíU¸&gt;d?ð3N2°EÒùÕR`h
+
+ l$c.ÁG½ 	&quot;8Ê0o¥ :
+ (  .-a¸ Êâ@&gt;&quot;vÆ¡E·¸
+@ §¸
+j-÷0Ïþ©Á¡Å &amp;¤@  ØP Z (¥íôV¤+äéT¢ØZÎ¡¤Õ  PÚ
+ (  
+7ëÐÆÇ=êt¸AéRÐ@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  b
+  5ÝQK;¹ É5¸]v1½ÛôÉví@&quot;Õnðf-c#æDåã@môËhØ;)Oï9É4qUTaT/ÒÖ3o5«+i(Í&lt;ßóÎ!¹Ö*0ÖõWOðpw9Çµ Z±Ó,4ñ¼ò½,,hßÛ&quot;9òÕÝFE 1ò@BF±z19ý(¿`óµÌÏ&amp;z¦~Z ³¼0®&quot;Tj 
+ (  
+ (  
+ (  
+ áþ4ÿ È¦¿õÝhÏÂùàÿ ®üè¯ 
+ (  
+ (  
+ (  
+ (  
+ (  
+ (øµÿ &quot;UÏûéüèäH¶ÿ ®èf:ú ( 4Îë)»*Ù
+·¦f$«xª¤=EJÀÎV -  P@  ÎëQN×e¶±^Õ´°Éü;¬®Ì¤w¢£·XP@  P@é@59n&gt;ò¤UFvÕ¤o
+Æ¼ã½&amp;îî´(  
+ (  üh­T:.Àwz Z (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+W$)«¿öM6¹¼8D÷&#39;¿ÒÃ¢MtDºÍÓ\7_%&gt;XÔûwýh^&quot;E¢ÀRåXÆ#ûU¾qçÇ÷ F÷öëÑÿ ÝR cø-KU·HtçxvdcÁqýßÆm#Lº´V4¶£i&#39;óÍk!ÿ Ys!äb%¤Û|ûÐª¡Fô P@  P@  P@  P@  Pñ§þE5ÿ ®ë@~ÿ Èýtç@}  P@  P@  P@  P@  P@  P@Å¯ù®ßOç@øCÿ &quot;E·ýtÿ C4×Ð@ C=¼3HÓRh·µõhõ¡¶À	 ¡yªC;JµÀÛXY%é·&lt;MÓ²TÖ` P@ õ  A ( 4©êRÇ91ÔÖ±¶ ;JÔdo&amp;\ô4JW@l
+È
+ (  
+ (SÔn&quot;¹1F0ëZÆ7WVÕÚHaæ²{-  P@  P h&gt;ìÞý­&lt;¯õ}êÕ¬è3P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@]Â.-Þb¡Æ	@:LöVëomxÂ5¨Ïã@­æ~mJCÿ SSOß^Ë ôéü¨[I´lóN?é¡¤µ¶AÄ1þT&quot;&quot; Â&quot;¯ÐP¨  
+ (  
+ (  
+ (  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾ÎðþDoúé&#39;þh¯ Ðt  P0ÈÇ­ sz±LÎ²ÞM­ãwTç&gt;NÉÖF1ØW0
+ ( Ï¥  P@ Ëý,O!i=EitÝ0[Éæ;nnÔJwHV` ×eï@	±É÷¡¦Ó@&gt;  PR[Ã#xÁ#½4Ú@1Ó¥ Ð3ªýâÖ s@@  P@  P2ÜÃwAM&amp;ÀÒ  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: gÂù-¿ë¤ú ¾35=OÈ*%Ë¤Ö§}@ÏµÖìå~«öh&gt;è]BaÁ£fª@ PH` jE¶UaNì	) Ùbô¡Î]j72;aö®xÅt($;Ã}sê4ÜS¤´ÎdîG5ÎÕi P@  P@Þ±&lt;²]²1!W+x%a¡KH/!8&#39;NkA0®p
+ (  
+ C@´7uPôÁ­`Ò@kZ#$¯ËÍfÞ MH
+ (  
+ (µÅL²¸;5&amp;²:R  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: gÂù-¿ë¤ú ¾0õ«&#39;óè×´%ÐqZæþ-±fÜx¬*=DiV`#2¨Ë0Þ!ûe¾í¾jçëO2°ar) ê (²(e*z@õæ&lt;r¹Iâ·SLw!ÆåÛ2&gt;µNIÑÙEäÀ±ú
+çnìDÔ¥u¨Á-¹aT ØÃ«Àïµ\÷¦é°±¤¤2ãPÐ@ T»Óíî{ÔU)´ÙØÃlÅdúÕHM V»¾Û9&gt;©E°#µÔ ¸}nÀÐéµ¨H  P@  P[«è-Ûk·ÍéT¢ÞÀO,aÐåOJ@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ åß´Å¸&gt;éZi¯«ëú´¾NbÛ¦â}2E aøUý£n¼G¦Mâxb×B¸}©b÷ðFA&gt;¼;¯|Uøuá½u´=wÅú]¤¤·\:23éÁ Vø»â{íÁöî®è|æëR|ÂÖäå¶yb:P{ñ+]»ømñÅú/ü=©Xéñ4$º~Yâå¨=óô Ãö{ñF¯âß&gt;ñF·2O©^[K$î©´1Y]G¸Q@¤|pøÓ­i~*ñ&gt;¢øn}ÃwEsVEcÈ9ôíøÓàËÏ&#39;|CªÚhj±ÝIükÃ(õÁ ÇÇ¾¾ðþ+³ñ&gt;o:õ$Ìqã®îâ)7sif+8âåÄ¹Fÿ q¦r(öãÏêR6#Ó®Le½umXd=q@x;âG|auskáiÚöÊZXá, wÁê&gt;sñáu¼qI74dYfh3uuàlf7&lt;Uão	x[HVñ,4ëñäÍ,£lgåÇ_Â.ø__Ñ¼O¢A­xQQÓ®7yW£àqô Â4è  
+ (  
+ (  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾ÎðþDoúé&#39;þh¯  Í @ÖVÌÛc4ùªª`
+@9ÍVíæ¸dB¯­áÑF´°Ú6F$Ó5K\Fµf J ;ÐÒ ¦d¡®(¸FI_ïg½u&#39;¦DtÀê4²M{ºâ¹¥¸9©h   ô 
+ C@Þ±ñÐÖðjÃJä»BáNI§7 0®q   
+ (  ÍCM73ùøÏQWÙXöÑaXÇ@*[¸R Í  s@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  PÌ_¶F¬èþ9ð7Å+=2}OLðüä_Eî1©`wéyõÅ yÏÅo^ñwÅïëþ ñ»-Î¥«ÚG©i¼qA¼@¸Á&#39;æÎ	 ÿ ~4ÿ Æ_´MZçLðßöihm,ÿ ²|Û½]ÐV2ã*6¢ôÚÃ(¯æ×ÛàÁmrK½n®g¶70A(4ÿ 
+1@~ÓìgðwÅïi?Ñ¼Cö½ý6×LÓd´7&#39;ä}¬ ìÃ@BþÉ_òlÿ ¯)¿ôt´ó×ìïð¦oPøâ¯kzNºäÝiöN«ÏÌÇ-øPoûEêv_oüðçHKÐt/!ÇöåýÚÅªçª?1Ú	=~a@Mð¶TOß´µó]ØªÅ-¼(HÎ?àÜ¡N;qé@Å÷|=£~Âo®éúd1jmywÉ7ï&gt;ñÀ«¥þÅZuïôÝòYÝkÛ©2ÜÂ/Ýb§Ø}(?à¼:o&gt;0x[[±øáËFËO1¦iÚ$nð²9 ) ÔÌø#ÂÔg?zõîo&gt;§e~æÚå×/øOn´¿ãx¼?}ðSá^¯¨øæÓCñ.£ýªÂûwµSÑzÐ«|%øám¦üð¦©â/Ki{­j²i¶]°D¹mÄùÊqü](è¡Ò
+ (  
+ (  
+ (  
+ (  
+ áþ4ÿ È¦¿õÝhÏÂùàÿ ®üè¯ 
+ (  
+ (  
+ (  
+ (  
+ (  
+ (øµÿ &quot;UÏûéüè·Â`ðE·à~òN?àfMÒV×v7zâ«Ù±Ø»±Ê£`EKM} 
+ &quot;9½VÒH®À%ÞMN8¤ªOµ[hgM¦[}Ü)ûÇ\òwb- d_jÞ\8T:ZÆ÷¯t´J¯fc_N¼K´ÈáQYJ&lt;¢-ÔP@/laº0Ãz¨É (¦ir ô«u.;È*²æ8= aßê4 ;Tw­£Mu Õ.£l³ï©ÓL,nÙÎ·0¬¢°°é Ps@È®&gt;eë@¢ Â¨Ú@ ejü¨°[¹=«HBú§1cõªZ¹XP@  P@ ½bîæ	bSßjá÷íKn¯&quot;ájµz@ P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P2«©VPÀõq@m4MÒå®mt&#39;c$vê¬(ÓéT÷ö}6Î[¢33À¥ÊáÎ3j iöÇì&quot;ÊÜZãO6cýÞ¦£ÙÚËii¥XÛÛËþ²(àUWú0hÕµ½½­ºÛÛA0 ÂÇQôgegdYÚAn$mÏåFqõ8êh§êQ¬zµÚ#nU%p§Ôdu +Lp4ë@.8÷+ûÏ÷¸çñ ¶bÖ&quot;Å¬íÍ¨ÆÌ»Ò&amp;b`$Hmªé §c¢hÖ\Øé66ÓI÷äÝQê@æ$KÓ#¶Ú=&gt;Ñ`æXÄ*Ï¸Æ Ew¡è·vðÛÝiÃú¨ä·VTú8 mwÀ~Öü]áïjL÷&gt;ÿ g@#i ÊcF9ãÔÐ@  P@  P@  P@  P@?Æù×þ»­ YøCÿ &quot;\õÑÿ  uô P@  P@  P@  P@  P@  P@ r¿äJ¹ÿ }? s?¿äXý÷ÿ ÐoO`GAZhhs2]óò·jèLèEsZ ;Ð2«0{ÐV8ÐåQAúQvènBq@Ôf9Ý[¨&amp;ºÐhÍ·Û0:ÍgWa3¢¬6GDf Pµ%º·fÂÊ¹úÓå`J&lt;Å (  H7!_Zàs¶Ò[ÊC)Æx5Ó&amp;W&lt;wªÓhñ4VJ`knìÞ*@kº Ë&gt;´-@Hæþë©üi´Ð
+@ P@Ú,X°sÔV°KP§é$ë$¸{Q* u 1Ýe­ ÉòÒ  
+ (®øÜ ãÖN(h 4 ê@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ Gq&lt;6ñn&amp;ÇWv
+âh¶v·y¶0ÜGnÃÌPÔWVÒÏ,\C$°àI¸,éÛñ Ë&quot;EI+ª&quot;³1ÀÜÐd@¬µ+Ù.#´ºw¶Ê#c|giô4f
+ (  
+ÖZì×PÚ]C&lt;ù7
+à­èpAÇ½ Y 
+RêÚdWsÚKmðD&amp;@hz3g ã­ Yxdb±Í°PØVàô?C@P@  P@  ÁT³ $ö 4Ûë=JÊ;í&gt;æ+«iA1ËnVÁÇê X 
+ (  
+ (øÓÿ &quot;ÿ ×u ?äKþº?ó ¾
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  Oâ×üW?ï§ó _V//íçæ;äÈÿ Ö¶kppTZÜw4ô[9&lt;á; tÏzÎ¤ºÍ¼àk×º³  ã&amp;¶&gt;ã±HßÝ4Õò ±vÃUs&quot;Ç? ñÎT×@6Íd!E GPÓãºùÚþ¾µq(H¹ÝW¹­=¢Í=6Ám2ÄîsÔÖrÄO{8·¤=º
+®Àæîne¸rÎÇÑ¤CÓ¡¦®w&#39; rXÖU#Ô¸+!  É#APG½4ì)cl¼D¹§ÌÀ²8©BÞËß]Iq3nc´tÆ)!¢Ñ·#E;\gI¤ÎóÚ~£×&lt;Õ%Ê
+ ( Å+ b % súëËö­¤¥mM+$v	äò*¦tõÎ  
+ (  @ú¥¬÷L/·õqinËTdUÎXj»J (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  ý¨õ}&amp;×Lð¦®^%¦©ë·rvùQì9ÁÀÉéúÞám{Æ¼	¦MoàÍ3ÃÇz¼rCm}|hÕ°p
+Xs@¤&lt;Ecáû+ýcÃÖWÞ 8¼=`÷e$e1ynXñ¨ &amp;9_	üEÂ&gt;ñ½ü&gt;{aOaxÓ[\Ë9Àß+d¨Nê ô «ÇÞ!ÖàøPßðéz%üÚÝý®ko§ÜHan$U1ç &lt;zPíGÆÞ ºñ£áº.wÑ#Ôïõ	Ùmá`aåÜ.	çhøQãiü?ðòÚô[Ù\xÆZÍíí¼rÜyP&quot;*dw&lt;ùjç Úoº5íbïHÓïïô­b.¦LÒÛ^¼÷Ly,0Æz´ÐèÞ;ñ4ÿ 	øÃÚekl÷¶mrÒ&lt;&amp;&quot;»b@r¼f2ÿ g½kÇÞ&quot;ÔüK¬ø´÷Ò¥Õf·cÙ¡0á6ÆÆÂA9ë ÞÖ|oâ=OÅ÷þð§ÞÉ¥mþ¡3%¼20ÈBrÏÐÐü#ñ¼ÚÃ×ÚÎãÄ¾?ñ.£}io%ÇrFsÈ%ç©Êôé¿üu¨øÂmzÇS·Óú=Ò@nôÉ¶·wÈÇºô#&amp;8|7&#39;ÄO|Z;¡l3ÚhbR	Äpi@úaõ4&amp;¥ãû/Û|Kñ½á]þ×AÄÇcHÎ×oÑé&gt;&gt;ñ|4oxÃ6zå¬ÓÙ.çÆÛ(# öè{ áÇ¼Qã«ýGNÓôH4Kyî-V9.Þ,±«æ(áA#8ëhøKñÅ&gt;
+ñ?Ä?Mi/®5;¹l|^I²³xíâSÆÂÑ¶Þäµ tVÞ?øü/¥ë~Ò,-&lt;C+·[îÚ5MÅð¹èñÆw&gt;ñG´
+éhþº&amp;îåÝGa¼ ? òxÏ ¯_ø©O¨h¾ðf¥âSN]NHîæ1ÁalØæ`	Éc´(äàô+øât1¦øzö×Ãÿ ð^Ç$ò¼hìm S1Ý¾nx w4³ðwÆ·^5ðÕÖ£}ki¶Ú´Ö¶¸ØqæDÇª àüiñ?Åú¯¼Iâ¿hÚ\~±â8uùÜM}³*ÒB0p!K}ìt ÐáïÍà¿øoÀ&gt;]u=?CïQ¸Õ®ükPË9ff-Àú ôÞ+Æ¾±ñÅ²ãxhÕ#mb»ªq} ut P@  P@?Æù×þ»­ YøCÿ &quot;\õÑÿ  uô P@  P@  P@  P@  P@  P@ r¿äJ¹ÿ }? Gð[úi&#39;þh­1¡9(¿ ;qÅ 2ã&gt;Cã®ÓMn$ÙÉÏ\×HÄÆ*}á¹¤Äu°gÊLõÅr½ÄGqy¿8Ò©E°*fÛ8Úõ^ÍbÚþÞã|CRâÐÅH VÔ ûM³F:ö§f3,oH&quot;ºSCc.è¨ÏzÂõ5ØLé5Î&quot;Î§oÛÍè*ÔÖaÏ(ÀSölk®tlCVZ@ 21@Z*ÈÒB7)9Ç¥o÷I,î¶5\È.tZu¹·¶XÉç½sÉÝ³+]^Ao÷ÛJµÀZÙßi%}ÍS¦ÐÑÔ2Y´ PÍ E&lt;N¸SM ¤ÇÛz@èµÕì6ßëAT¢Ø¥ä7?êÏ#±¡Å ,ÔP@ &#39;4 ´ P@Ï&lt;Pdp¹¦{ ôeu§ ô¤Ð@  P@  P@  P@  P@  P@  P@  P@  P@  P@ pþ&quot;ð®£«|\ðçdXGÒ,®C+6XÏ&amp;¾g &gt;6x[RñÛÃXc¼¾µcmÙfW§Ó½ b|lð¡â=kÂ¾&quot;ÓtMÄGAkFÕX,7QL¤«`®¥F:Ðóí|Vßü2|ù)ôhµP¤pKyX®Üc¹ OÃ
+|Kc¡xD¾Íì´vm^úçfK`ÌÅ¸e3ÛÓµ øCâ&lt;ðÿ -ôV³ñ­wªÚëS^2Ëoö¢0ìùJá[p\` 
+º§Â-VÇOðÝ§|?âðöl/tIÂÅ!p¥¤ÙQÈ4Óë^ñl¼mq¡hÚ¦­JúÆÊçÌ$_É
+v c¸à =èZçÂzµßÆÉ¼_1i¶þ:eßÉ1yÃj üè?zü-àUð÷tûK{KÜÛÝy¢ì&lt;þaFÃóc=(_	üPÐî¼q¤ønÛF{O]Ï}m¬ÍxË-±0PÃ°îpFn g&#39;8Á ÏÔ¾êÖ^øm-¶ xãÂÚSØêF¦áa¸iR=òFìªâD&#39;%yµ zÿ `¿¶ðôQjÒô	C¶:|þlQ§obúàcÞ1~x_Sð¿/£Öü©ßêw7·îSæHJóì¸ÂØ|-ñ3øFÒ/þÄnî¼húÿ  *Ñ*|ÇùúPe­øg]¹ø½mãaµ×KÑf·±IÊ.$aØhÀóô ?x?ÅrüIÖ&lt;q¤é{Ý+ìMeezn~Õq¸s)£+Àæ9Û;ÿ ¡øIôÝ*×ZðÖ©Ôï2ßRH¥ó	f	û½å&lt;ðÐ[x[â­ñKOñÞ»d,ô«k]:³0¶ÀÚK]ìÝÈ  3Í VáGìß&#39;Ãëvµ]_P+öçópæNbü»úÐý_Ã^4ðÏÅK¿xCGÒõë=SI·Óîl®o¤Ï6ÆGØÀ¡r¸Îy ÿ ø_¾ñþãàÏø¦Itµ³½Òµ¬·	 â`y$(ÒôÛËfßYYè×3Ú´/dVå¶®qA@%/ÃßÚÁí?á|ö:a¦½¼ßC|Ò6£s)ùS`ò² É$ Äÿ ü&lt;Õìþ)j~*ÓüáÚjBªËÖFù¢p0r(Øtµ4ëu¹···FÅ9
+Hè(Í  P@  Pñ§þE5ÿ ®ë@~ÿ Èýtç@}  P@  P@  P@  P@  P@  P@Å¯ù®ßOç@_¯%¶ðÕ¾Öùw¾GüÖ±qÑmåÄ®½¬­`$  (PÒ±ç%kXTèÀÎ6w!±å6~|èw/éºcùYÆ è*&#39;&gt;Â5®¤ò­Ýýgv++´]$×JVÞÔÆ*1V8#½&#39;¨«OÍjz\ÒVb&#39;¤@M3H©©4S¥Zç;OçUímíâqRÛ`C«JÑY±Sxª»&#39;¦º
+ôsH£¼PÁJÂgK\â
+.@	Çj Z kd)4ÉÝ;=Ã³Æº¢´¦3£Ð!»=x®z_  P@   ÁÕlî$ºiK)é[BI &amp;Ð­¥WyP¯fI\È
+ (  
+ (½Ý¬W 	CMI­$XÐ&quot;ôwÔ P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþtÌü&gt;ÿ b÷ÿ B5ÑOá=JR1ô¬g¸¹¿·l· ¡E°)6´â#­_²Õ¦¡ÁÚÖô5.sÎ* Z ¯|KYu&quot;t`r¬bjê¹A@
+ªYI4ÔY ·²PÇ×+wd·»î+æ´T×P*6¥vå¦*ùìOk«L².OzA»0èkÅ VÔá3Ú²½ª¢ìÀæ$ãm®¤í]7ÄDf?*&gt;Â`lèöçÊ0{
+Æs¾ÍY\&quot;n B0îuyÏ¯­n©®£ àçÌ§ÈÆ©}¡¼©x~ÇÖ³-°uÒ2¯tC$M´¢´KäPhÇp2¸ vÝ@¹¯kA+&amp;î!ç Æ¿ÕY$1Â:u&amp;µ/¸Uº	`G¡«öhv7¬§ë(ã&quot;°³5 
+ (  
+ (¥~¶ª ôq0é÷&quot;êÜIâ*@(  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ å&gt;!x¸ø^ãÃ¶°ÙËoWODß·b°fy=öªçô ÝoÇ6Úâm_YÒ¯ìlt&#39;Ú%W ¢°1sÎKmç½ &#39;5ê³5Ç&lt;5§èö2Â%¶_§REÚ 8ô&amp;:ê (-¼A¤¯ÓÃ_jU{ct N&quot;Æ&gt;ô ­&gt;§q©E6{`¶Wmnp   |ÄÁû§8çÒ5h  
+ (  
+ (  
+ (  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾Î3&gt;iâ[Ï!ù7¾üÕ©ÙXÏTÛÙ±N0=¨»$±ÜÇ&amp;ºÄ´U%H àö GG£Üíãó/¹¦¬Ä]$b¤#Z,À¥y§Arw£moQWµ¸&amp;Ö¿j;¬´ØmÈcó?©¨Ûía¶Ø¾8¥Àæk¤a&amp;å¬=«{ºÌª2ÄPFêÜy«ùÓå`8&amp;*øQvrC}ÈÕ
+W`I@µßa}µpÜk­t&gt;ÛcÛ×52ØLêûW0K,q.]zi6P´-*Óä`XVVSRÐ Ð?«YI­*)(y­á4ÐÕ ÎGÇb3ÍsOq*@	Å  `z@ (  *_ØÅt9ù[³
+¨ÊÀIcl¶°ÔçÔÒ»z@ P@  P@  P@  P@  P@  P@  P@  P@  P@  P@  P@ ygÅ;«ßüGðïÃxu­;N½¶PÕ%µÅ,ÑF@¨by ç&lt;®ùôØ|mÔüÓ[éZvnÝÉ&quot;¥Û¦Ùncóyö ÷âm&lt;|$øw¡!»P¶ä,§|¶Öp±êA*¹Ï^h×n4ßøÆ&lt;s}qq§ØÍwg¢ivñ[Áå!D#|üüÙÀé@ü&#39;e&quot;ø¿áïfwmÃ·ÍÌ±9gUKþóþ´ÉÏ¦Åã/^]h\\Üx×Ç2]íiÜàâW8 ÉqÐnã­u5·ÃßüMÖ&lt;!ðéu¦o×2Í]Jrd;Ùº¿ vwþÐ&gt;ü&lt;Ô&gt;&amp;MöÝoÄöcÜ¾¡{4âg\ WvÀÒ8³²Ò¼Þ±«xóÄúÝÏ¨I{&amp;cBÂI1« zh£Ð&lt;5á­Gã¿Ä/ÞY;¥º!72&amp;]±»6tö Á÷¾· xÁ×Z­õ­§&#39;¾Ö5IâiíÃKuªÜ3´´`c4£{qkðçÇ_4ï	Mqtïû»CròÅm¨qMÄìgd¨&lt;à ËÁoá¯
+|-¾:®«qã+ÝBÎ3y%ì²oÚ/99&amp;&gt; 
+ (  
+ (  
+ (  
+ (  
+ (øÓÿ &quot;ÿ ×u ?äKþº?ó ¾
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  Oâ×üW?ï§ó |!ÿ &quot;ÛþºIÿ ¡ ê/ Û´}Èâ]´Ñ´ra+¥;ojc74cö{&#39;úkë+£y¨M;­±=\a`±L&lt;&#39;ñ«°É!¹ÊHj\SK½qò0ëÖ°yD]©È|ûvÔS³B&quot;ºSMe16@2M&amp;ÒÒFÆÀnþ\ïÞb0.ï&amp;¸rY^ÀVñWÉõªÍÜ¶ÒJ÷`t°È²Ä²)àÁ«ô¤%A&quot;nP´÷K&#39;&amp;!½ZÞ5îUû-Á8¶~|È}&#39;Nh_Î»JÆs¾FÄ(YÏaY­]æ.î$¸»±Çaé]1CLfs&quot;Ü±¨©.&amp;t°´ P2 @}ßvï)sô§ÌÀp0) ´¬ßH²y¸êkXC«3&quot;¹97,Ó0±ÓYÈf·IR+«1Ò  
+ (  ­]Kl#ã=êá÷ú&lt;óOnZ^Nx4M$ôð¨  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (ñ¿&lt;5ãËÝfÚãív;½ÅµÔJªßyw!©î:Pð§á¬ ñ?üQ Gmk¯jw2ÍaæIlGó!8;UO\ï@/¾x7@Õ´íbÊÆæ]KOYÞîæòY¥
+èÎÇ#hÀ¦N1@¦ø/ðúkFItÚ-EÞY­Íä¾@þû¤{¶£P þ¯ÿ i\j?cµ\iKy&lt;çÈ¶ ©äs@ÙøÃøf;}&lt;¢xa
+i+ç93ó½Û&#39;¿Z wü Þk]~Ú]1&amp;ÄùºJìâvÚ¹ã c Ýáo4½&#39;QÒRÞúîÇP¶û,ð^ßÍpW?&quot;c´sÛðÁDúuÅ½Ô×:mÂ\ZOs{,ÒFÈ¡Ø¶§9Æhèøsáa®ëºÊ[]Gs¯Cäê*r,s»s°ÛÆ@Í &amp;·ðßÂZ¶¥h·|[èà:K{kl|)8ëÏ=èÿ |ï¼*[ÿ gj/æ_pækÈ;¤;Øð&#39;§(kUðÎ©êZ&gt;¡{hdFËbC°X®Üí9  (  
+ (  
+ (  
+ (  
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: áªø&quot;Ø³ &lt;É?ô3@K^[)Áiò°+]Gez8Cö5I¸.r§ä×±¢¨qöTÌàÍò¨¡ÔH.ZÖñÄâ¢»Ã­Ê+jzj×Zä/Y&amp;*ÄÐ=Äz»¼èÚÅþÏ¼ \ÊÓÔx{?hoLVuve¼E¢ÿ jÍ¥&amp;§k%ü
+[erGQÔVj-öÖmÁáXþ^ÉË¼,gÞYD.Íå\­.v«{haÿ W¥¶À¯­«5í§ÀæÅt#²¢3¹
+ª2Iè Ai{gwSÛ]C4S«tpCý=h¸^I°]Æ¹ê|DºÔ­àm¥·AB`VÔYæ6ÅW²`^µ»åsd÷@XÀ¤@^¡ÙÐu&quot;t`r®¬UÞº®4&#39;jhhq»ßGZA3¡®q5-bÃOÙö«Èâ4Üq¹@=Í4»rùUí©J?ÙLdò¤GHc+á&gt;üÕ¨&#39;Ô%NqµÖú¶wq].PóéQ(´Ab ©iÂäù¯ßÞ´ìÒnKá°­[¨æí´bV1ØVÜ	;Ð3$@-Ì,ÛVE&amp;+j@Ayi§Ú=ÝõÄVÖñ¼0U_©422ºRXdÜPww0YÚËuu2C(^IáQ@É$ö Ö÷ÑÍ$ÐÈ¡ÑÇ!¥$j¨»T a@  Ð]YX\eH4= wz ¦ú¦²i}nºRØÈ&lt;ÆOïë \ 
+ (  
+úõe%î¡u­´xß,¬W$}Iñ  P@  P@ 5¤Uá8,q^ P]cJºÔî4ËmFÖkÛ`Ð$ ¼yõE Mg}gy%Äv·QNöÒ§T`Ln ;[Ðà(Å  P@  P@ 5¤DeVuVsà±ö l/ì¯ÒW²ºáa¡ÆáH§§î(Å åÍ½¤·wsG¼(^I°¨£©&#39;° A,sÂBë$r(de9È&quot;@  P@Óë4p³jviR)Jï÷TúØP¯&lt;9¥j	§êZÝ¥ÜgUr Nl
+ Ôµ«h®m¥I Ç&quot;«©à @&#39; PWÔlêÖÕ¯ Þ+5´{Æf
+b¾ j
+ (  
+ð_YÏy=7QIso:%`Z&lt;Ù V÷P±²®îáçb±,rH¼P´ëë=FÑnì.¢¹·bBÉS&quot;,P@IËub§C@ 
+ îâKYn®¦H`KÉ#*¨ä{
+ u¼Ñ\[Çq,2 xÝNC)B(ô P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþtÍü&gt;wÿ ZÝ7¡ßø­é­úÐbdÁ&quot;Z%ã9ò%9=«Ã¨õº¥·Úm¯Þ¨ÊÌjDhØ«õ®¨Ï]6ÏâÇÏÙx!y¥øNÚÒ;K	9æ&lt;Ã+/F |¼Ôï-@­©ÏðßâN.«ÅáýzÊóìÏ£Æ·[¾_%ð»HÏzMÆàt&gt;ñÏÄm_VñÚf¥BÔî,®sö¢J¬C ?td÷&#39;Ò¢üÒæwz×õ];Æú½¿SQ»¿y§ÛÞ3jUpÍ¸ïÛòåq·¯Qqâ¿xÄúæàm&amp;+=AÓßncs6ÝÅ/AÛ5wmèn§ñ?_SÓ|3¶á½nK¶j2k!b¶ùPÞIô¤åÐï|W×µÅm®§ë^%Ð$D±ºVµ¹YFRPùá@ÎáÎJâ,i_|K¥üHð÷&lt;AªxKX]á£ÎL¶rÝó¯gÌüDÔµºÿ î,í÷O·ÔäÏÆØÊ=ùØ3Bv?Ä&gt;,Ô4.gH¶¾h;¥ç¾Ð[&#39;ØVê¦¹ÎøOÅÞ)ÔÄuqá­HÂYçKæÝÂäFêNH=3Å4Ø\á¼=yâ}sÆ
+&amp;Ñ!ÒtË[«[×Ô+ùifFyãîúj­f#³ã&amp;½ªiµá½GÂ5ÌÐ[Y_ß¼¾X«&gt;7~ì1h#Ò¥;»ÝøoÄkâÚøH&amp;öÌÏoýüþ Õ·ËtkEEÍ)í}N[\ø54ZHåõ÷^GÎ!ô$W$ñn0ßÔ÷ðù$jâjÒr²ÞmìhxÇzâO·m6ÁmP¹|çÀóS­]©Y-¯ó2ÁeTëPRjræå_á_ç¡ÕCñGø¨&lt;.mãoÙÿ ãë?òßný÷Ï5«j¼²×Ô&gt;³zûymr·¾ jz·¢µÔ­-í´­B´éC0M¤6}WæúTÓ¬å+=®7*§F6Ü¢Òõ_ç¡áï×&lt;M­\ØÅÎ*µ\âh¦èäûµLqÂR}?¤mÈãOJeu-ßf¾/¸é¼u­K¡øJÎökî5{¶Þ(ÂßO÷AÍo*Ò§õ&lt;ÌD¢ ®ïäu/&lt;Q¤øßÃ¾×­´ù ÖoômÃfÈÁï9ô4&quot;¬gË©×õL%l5Zô[NÑù»\Ñðß.î&gt;
+OãO²@[ÝJ&quot;ØLRHó*UyJ´d×Ë¡O2XDôn?Oõ¬xÅXéòX¦¦[\iÑ]M&amp;#.ê ñôsÍÚÖ^¢§ÃEÍOMI¤£½Vy­âiüK£i/wöcqeâûKi$·}ÑÈCd2B«í#ô=Z8á*Ôå½¥JO]Ö2¯uBïOÔÁâÓo.ff=®ØõÏ?ASVriòéï`èÓáí[é]yo§ùÃ¡ërïõKº&lt;Î22p¤çð®ÙÎ6Õê|»ÃT¼ ù^Ú»|NÖgÑ®|Qiqá´Ó¡ß&quot;i²Ýw,KÔõáÅyÿ X\ÊÖ=Ïìj1¨°òRæjÞêoôó5Æ¾&quot;Öü^º&#39;-¬&gt;Í&gt;o©Çww»Tu&#39;åýjý¬¥.Xv¹Î²ì=?¶Ä·u&#39;/#&gt;ëâ_-¼4ÎúU£ë6úÊésD®|·-Ñê:RëÉGmochäô%ZÜÏÇw;8õ}[AðMö·âõ´óì¢w[2vPH=ÏJÛQÏ)áéb11¥½¥e©ËÏâßi^¶ñv³¦éÙyrOg	o&gt;Þ&#39;#¸ðÄ2&gt;µ©QGKCÑZ«ÃRçW³{6ÿ ßÄ÷¾&amp;× Óm4åÑô9înffÜñÃá@þ,fk7&#39;mfá¡B¨ß&lt;öK½ìSÕ|qãÛ_Üxî=3Jm0ÅçCfY¼ä+ÐõJN­E{hkK-ÀÏ°nOöo¥ûæ§u,Ö6²Í]é®úJêçÎÎ&lt;²qìy×Æ?ê&gt;	ðkZU¤wM{ºC#Ì}¸Ík&#39;dIcÂ2ñõ¯Ä]Â&gt;0³ÑÔê¶W7¬ËFSj÷ù~Ì#ý¡¼a¨j&#39;Å5¬?fÑ´»s¾F ÿ ß#»iã_øM&lt;1yã-7G¯,{müëu=äðù8 s×¼â?	xÏVm@è©[^ErÎ^ðE Sõ4Ðh¾:ñ_5&#39;Â&gt;°ÑìËÃÖ:¥=Øv:0b·Wº3Ðb3l~2x°i7j%¦¡mã«_Í
+¹eÈ{ÜåØ ûÇ&gt;9Ã&lt;5 ´0?R´½¸º³½ï~´æð»üC/dñÜ7&quot;*èÏ~ öá±¿ï`&gt;9Ù ÷[YíõýÓP´ùp¤ñ7ª°ÈþtâìÀó_âµ©kVvgQK1ÚyüÜ_È~KhÇr,{S®Àõ+	gm:¯£H&#39;1eQ±3íRÉ:æ·åæ­ñþ×S¶7ºObK_´(]&quot;Öò Lççóÿ à9 iøñÄ6¾1ðwüe§jðZOqÅË°HÕdãªílâ9Ý[âß&lt;/¡øöÓÄzv6»ákK{Ø¤µ, ¹g
+2 õ 	|}ñÃú×ï&lt;Y¥è«¢x£RLXmüû)¦Vh÷ÃçÒ:_ xëPñ¼c«\ÛAº±¨Ø@©:[ýÒÞç½ s¶¼q¯x#Âz¶e¢i«éæîûTÔfÛkjÙÀFAf=hñÅ«­Ká_Ä[mwOðï.|1s§Æïk!Êõ&#39;=×§&lt;gª ën¾ øúÿ âü;¡iÚ&lt;zO%·òîésDð
+¨Å÷¹ö {þn&lt;77­o&lt;º$e¤MM@B[u8/÷¸rBâ=SñÃü=xzÀêÖK{mk»kN¤Ú÷çø üSÒ&lt;MâK}.%A©Ø­öp[¥KÃ$mÁZ »ñ{ÆÐlßM±Ký_T½ÃO·vÚ+ÿ Ê $Ð-«xçÇþ ²Õ5/i~£¤[i^¥þXæRÛº¹ÎX° U¾ñ×Ä¿
+izgüg¥hB½î­lËý¢ÀJ@RIáðHÍ Ekãßþ%Õüamá];A×ÃÏÍx\¬ `w KXñw|oãÿ &gt;!Ñ[O°jNÓïeIÒÕÄÛð~eÛ½ÁÍ oX|[ñÍÄ&gt;+ñ,úN|/ªßX]íö%Ê¯:¿ K5ß /â³áÉÁ¼sIö»hîX|ò;J##·j ~ñ/Çñ&#39;S./µOgiÑÜJ&quot;Í,1Ò9û¨ª¬ÄûPY |N×­üe§ø[ZÕü%«Ë­E °»Ò.w¬ªîÊÚ{0 
+&quot;ñ§Å½Æ:?!&gt;Õu]B@Ò[[G(6öàüÓHIÂOS@gÆ?sø:ãÃºýºß&amp;8&amp;Ô&#39;ÚÛÇWb{d ;@|cÕ´¯øHtmVëÃ¾©c£ÉªX^i7à&#39;ÞGPIV}Å ð²þ$iº/üc®é&quot;x[ºµµÒssoçMÇÉÎ=(Ð&gt;0øÚxzÆ]6Á5cWÔ Òô»g}¨÷ç²¬OÒ9}WÆÿ ¼m}ãOÕ4¸¬æ;í/(#q\çæÎWSñ×Ä¿ézw&lt;m¥èØSÃíµ´iË+V,x| Ð6þ=øâ-[ÆÞÓt-¼7zðù×É¹ t=r~Êk-ño&lt;qðo_ÒN`º¾am6öUaPØ?0Ævû@l¾&#39;k&gt;ÃÒæ§ñ
+ÿ CòUFÿ |ÇûÅüh¤o7ðßuøºÏGî=m[O¸±Þ¨ÞXù£unxã Ôñ&#39;ÄWLø¥xö+;f¾¼[&quot;ð¶v:DFÇ~ ×ý ~xÔúèw_ú)¨_øÎËÃÞÓ´c h\z¤ÒjúÔØIKû´PÀäI4Ñ|
+ñõ×|?©M~?mÒõ	,&amp;ÆMðLW:B íCÆ^5ñÄ=Ã^¶ÒbµðÐ/îµíöx0½ \ez çü&#39;ñÄ¤&gt;þÐÑ­,î5/ÜèWP-å,IÜä íõßjVbð}¶·vïá¹õ`¨q,Ç(EsÇ9ïÞ&lt;ëÄ¿¼qá-6ÃÄ&gt;$¸ðrÇ=Ä1Ýx~¢o­ÖG×qÜË¸dc Ä×uxt_üT¼K´ÔÕ¼U£EäÜPE¸î: ]p|Jø»âzÃÃ°Ò´ykvfØ¶È÷A7®M vº|M®/¼à-7H±»&gt;³Õïçºmì£ AÉ&lt; Å lÏâßø~;{iÖZ²ßµ­Æ¡qpÁ &quot;às»¦ßZ ãµ&gt;*Õ4ÿ ø-µ?j¥¾·Ôô¹Y¡)µ@$«s×Wáßot/àÂxÇI»ûG¯.m¯[Íµ¶Â$ýö=8¿Ä_Òxþjè0ðÑO´0³ý°Úçýfï»»í QüFñ¿þ!j¾ð=ºuúßßo!Vx÷Ú½I9úb:ï3Ô&lt;iáéõlµ}&#39;U¹Ò5ábÑùÐ0PpAGÇÞ1ñ/ü&#39;¶ðUµÕ&amp;´kÛ»»íÆ+hAÀùW,hÊô?jñ_Åoø¯N¶­»iöÉo¸yYvFC7ÝSô ·Kø­®i&gt;&amp;ðõõoj¶zõÚY¢ÞÆw a¸ïBFqE h|un~#|1¶sWÐÀÂ1?¶n~Ûø{á6©hê[Í}&gt;¥«MäÛAyÁ ³8ÄÐZÇ[Kð§¢4=KÄÚâ)´û2Òö¤IV ¯n(noüGÐüIáüK§hk¦øsklÌæ[)Y q ó¯øãÇ&gt;ð_üE4Zn­ÿ gÙ ¸wå
+ÀxÀ_J íõ&gt;&lt;Ð5/ÂZëøNÇÄ±í.f¹1ÙÙÙ ^\±¹e uÛ «wñ»VÒü?âë[¡êÚîiìieµäNá{µãJ Ù|@ðÝÇµoiú7ö/!²)f_Î°aû­Äðà:P5?Äo&amp;ðÏ5A èáÏªX^GrÎ^ðB ÆÀ}IoJ ¶~)kBÿ ÃÞÑgðÏD³Ô#}X²Å91aä ¦IÏJ Øñ/Å_i?4»ËKñFºÒkËÀ,­£ïL_&lt;ÆÑs@?&gt;#Þê¾&lt;½ð&amp;½{ ê:VQ´¿Ñ®Oý¬2v:±w4ê P@  Pñ§þE5ÿ ®ë@~ÿ Èýtç@}  P@  P@  P@  P@  P@  P@Å¯ù®ßOç@ÏÃïù`ÿ yÿ ô#[ÓØhèkA@´ý¾&lt;TÏa3¡ººÌµs¨¶#6]hg÷qdzÑR»ê1Lß¿¶R=EW#[Çx·ÀÞ#±ñã|Cøqýwuwlº¶#EÚ§Üt²@8ä`×6ä½KÂ?þ!k:xÂþðn¦ê_Êc¼ûmÝÃÆrBùæ¥É°/ÛxÅ6_þ é)u®ê·}ÂI(Â1#÷î* ê|]©|&gt;´ðîàhÍl÷wÆýfõ¢e$©¸®IsÜõ­9]­aÔ:?üâo]ø_A°×4ývqv©5ø·{9öí`ÙS½8ÏÓ³O@0ï¾ø¶Ï^°ñuþ¤xßPÃìºµÛ¬?0bÈð»)(;p@Èå{ûÏ&gt;6Õü®Å è·zÜ[èÖL#O³DAhe¸Eùç ú°eðn¼kàÝcLðá7B¿3\ZÛ]¤³Ë¹
+,ª=9&amp;¦4ÞàRÃô¯ xá®¦iSiÛE¾®÷ûqÁvd0íÎÿ ®r ÎyÅW#µôkk/iÿ t¿è×vVÚíkl&gt;ÓñÆÈrÚvÎ\ÓtôÑþëÚÿ l|E´_ýÞq~lµ)Ôã*b(P¹9ËsX´ÐÚOÃ¿ønËá¥¦é:~£á¤»·ÔlÚôE*GÚAÛHïHUøYâiZôÞñ£]Í.¬Ý\$r[G#	&lt;l¹BÇ&lt;tíQzê^ÒçÑ¼1§ér[ÉqoYZÞ2ýNÔP &gt;ÒÎ3LðçöçRù¢þÉ¸µßNPÙ(&#39;bÒdvÁÅpÇ
+ù¥}µ·Ìú:¹Ä=OãM9Ûº&quot;Ç¼©&#39;õM;Ä-êÚ &quot;gVÜ TÆ3ìÆª	*MOvgÌé&lt;d*aþmówæøwâ¿øV:Ù&lt;V/¾ÒÓ&gt;P¥&lt;²3þår:-öµá1èý­oÿ 2ÏÄj&gt;Ñôß¡Ô40ÂîÛ~I&quot;1ËÏÑ³øWE\,4¡º92üÎqU*b&gt;	êýSº)j¿&gt;.Ð¤°5Ñmí­á¾û1Ì&lt;wëÂ°¯ÚFÛuùG7ÕªªÄm¸ÿ ÛÛ-üIâM.[yã´µ»±¿K2MåM#¦zUU£:ô¶Ç&amp;ÂTM6ÔRò¿b¦©}âÿ Þ ^Ò-4¨·8¢»óÚGû9ÜÄ ^zæ¹dæêÃ[Èî¥O&#39;ØÍÉÚ=-öað¯ÄÚÃ»=3LÉþÒÚ£^`¥v}¦-¹ßóà{÷^Î¢¦Ë;St¤ù´¼mÕ$·¾ÚÍàÍ~×_²¾»ðÝ­J·µÁ³ 2A=Ç4ýjú³¥(F£¦ùºWº{ÉðßÅpC)ÚÀ3ø¦ßU+m&amp;#XWÏéÞª§m3J®»Å¿áÊïw±¡àßdkoo]Íâ3ªZÆòíF
+`	ÚkYP,­¿5Ì©æXkK»*|M§u¡ø#BÔÜê§¬-õ	\&quot;³£Ç&#39;Þ´*rWqÔóc¥ûºu[Ûµ½jËÁ&amp;ÑôI&lt;9gàÿ ßJ¥×[EÂ!&lt;4,Ì¡ ãT§Ê¢½ObyµU^udX.þNû3 Ó4«íâÆ£$µþÄ¶°W@2FÄ·È8QÈàq]4¨&gt;~gµ/§W©¯ËäüÎZçÃüWr +/cÔW÷ýZãíPðÒmúÜîeAF*ûAÇæwºÌ:­uÝÛAw`cK¥|Ê%n&gt;ï àÕÕ§&#39;x½/ZÂ¼]æÝ-êsºñ^ð¥¿u-/L´,p]êéy¼Km3ÜàdÖ5eF¾g¥OÃ×xºrmêÔm³}ÝöFÎáI4Ùümý§²-3Teò]_q,ØUÆ¹¯³9qåUaý²þ·¹ç3Åv®ô¨¤Ðî´D¶X`Õaºfæ-à&quot;,[xsÀ&lt;ú×=G5FÚ[¹íàãiN÷qkDí«½öùe«ê|GÁ}£iÑxy/ÊËo4G±²r­é]ñm#ãê;ÍµÜÏø×à{ïxNÏOÐâî¢Õ¬îI&amp;ÑåÇ(gç×¥SzAñOÃ-_øcÇÓlõô.-.ôéî¾Ìe\É!ïRâ¿üD&gt;$jkâ&gt;Æ+hnüÄ·hI6rìØ  p(kYÒ&gt;&quot;x²Oh&gt;1Ñô­&#39;IÑ®á»¼¼·¿óÛPx~çÐcòwíj-ÿ x;[_^&lt;ðG Ôõ·ÔÉ|Ñµ¼ðÞ^[·QJn í#ÁÞ;ð&amp;»aâ_èöë_x~ÇLÖtÙo³G=´aRXä*C.	R?í pð¯¼eáoLOéÓV#g¼­øÎÜdÇaPq{áO~8øáÿ ø§AÓt&amp;ÆÆöÎ[Hus0óâÛæ
+ªyÀ {äÐ;¥|2ñ¶áð]Ãß]Ï	òm¼Qq,lÜ&lt;íf/Î	 ¢4O°iV¶YFò!XòN8QÀÂ&lt;Äßç¸Öµ­
+þÞÊÞòé5 Ùßeª!æUÀÁIsõ ÓâM§µ Çh|Gyeöp|í±#¸
+ìàÄq¢üøggá;]ïÁÚ5ÔÑÚ,]Ij¦YnËuÜNN}hømð÷Ç^ñæñ
+[Maá8µ;º[Ï-¼vÛ×8È#°Wvo¿¼Oâ½CâMæ³GâÆÊÃÌ)ibsþèÇz°¯Åë&gt;&quot;±ðZdp³h(Óõ+ÝòÛ*áÈõ?0ã½ 8û?
+üRðÐñ§ôF¾ÒüE©]êº´ÚÚ7£Ã´ 0@õ4ið«ÆT^
+Qð¶ã-#EûÚDúÂ÷Éóp(ü~&quot;+ê¿&lt;}áÿ 6Í¤èvsx¨iiÖ¶W³LÄI|ØzPªxSÁZ·þ&amp;jFwÔZ28f(Æ7$v9&lt;Pi?¼k xdx/Oø{àÛùac®evCËFYägÐ¸jÚf¹Ãùt\ÙA«­¶¶¸=Æø¿j02B8Æ|?øEmá¯é×³Íú~eö} I6OâæRGúÇn  PÏÆj)ÑtÛkhõ­PP²[DR²gtl@$ö KÅøñWNÔ´oÚÙø?BLÝlá¼[É.®ÉVW` ,hP£Ph?&lt;{ i¾
+ñ.£èöÏê¼:öµýÌ[RÅFw3@gÂÿ jÞ¹ñÃ_E
+G«ê²\Ùlvc1ô9çÚWÃxoÃÿ u7IÓõ-[Â7:ÚìøD²GtVM¤eC@7~jw|yá-iã´Äö¥{k,ndsH&amp;&gt;ür(+[ðïÅøONø}¯è:6¦Å$©kj^wÚ¡ÄPí¬ÛGÞ&lt;P~½ð[_Õ4Ï²&amp;/Æiâ-+¶ßÊ$K0 WÁü(SHðÇ_X±øoá/	&amp;m#¤	4W3^ÜÂ&quot; òIêhÃ]7âï%¿Õ5Úf³âRS%þ¥/Kü¨å£¢äÐWñ»À:5?
+ø¯IÓ4½OSðüyN¢Øò	,ïÁÚêTb1´Í x»ZÓ|O)ðo¼%Ö%jÑM&lt;8æI&#39;TW t8ð6¿«|&quot;ð¯¬âêeæ5Ê´ (XL=úzÐÏÆ¯j+ðþ&gt;=´Zæ«[ëp¹$C,±d¬¬Ã#¡Å r(ð×ÄÏö·o­,ü£}HÖ+Õ½æäà¤Á@TB2SÞ+xAø¯ñÃÖñGô}N[WÕàÔ¼ïµ¤N¯&quot;xð3Ö:¿Ö4)üv×ÑÂ«¬êr\Ùì6PÆgÐäP§ü:ñïô_Ú¥Xj:î¯MÝßÜ.Ü¬##®(Máom®4&amp;·µ×â5çeÅÀ8³&gt;Ò=[æ- u¾=ð¯â/É«GäÇ¦?.ôÉ%/ó$²ýß©ÀjþøÃ¬ü&#39;Ó~ÏáýÒ&quot;k]Úê{þÜÊ¤hòøb~î ç4ìßt;ÿ ü,ñ&#39;´ÅF¾Ô4¹í Wmª]ØdÐÍðãÅ0³Õoü¤øÚÐhVÐÞj+é³D?ÊÊÁâQ ì¿gÏxÁ°øª?A§E&amp;§¬½ôalÄFÐ`9 
+÷z¼ñ#Ä!ðn§øLñG5Å´÷âÖK+¨ãò÷UÆÊ#®Gæ?ü1ã-{À­éi§]øÃÞ=¿¿Õå1CpÀtW#åêpHúÐ_©x/â|y¨ø§P¶Ó¼0÷&gt;ºÑìã;ÚÌî¬¬îg&#39;qÊ: äõ¾5Õ~Ãá=3áÏ¼=¨@-Íæ¦ÚÍ5ûÄèÄ¡	ÞW$»tã9 £Åü]ªÜøÚx-­Gö×4­BÔ5Àÿ U _3&gt;`àw ïÀ^!ûâÌË¾ÏéfÓz&gt;gû3Gótn&quot;2´/xëÀ¼OáÝ&quot;Ç[¹ÿ VËDÖ´¹/»	mÔm)J8;1`ïxân4xÇLñ1j\Oá_¶à&quot;¡cQ)]²2õ;2x 	4_^-ÇZæ­q h^ÒµoO¤Ágc8²HÙ¼³IQÓ Ã¼oª/Ã{è¶Z}¯ô­GE¼x/Þt2YÅS(ÀÁb­í÷ áñ|4ÿ N6Öb`¾#: µÏÛìÝæmãÆh­øcàCÂ_¼E¨é:Veg |»#e|¯nM h|ð®¯ádñÕã­âÝCUµòäyJèx&lt;v ÿ øoÅzwÄ»~Óí5¾ÂtýCMè[´±îÜ@ ö=hÔ~øçÆiã»¿Ç¤éúÔ¶7zZÇ72[¬rpá&#39;ä(gÃþñmÿ t&amp;á¿&lt;i§Ü,úì/Ü{G	ù`Æs¸Ã·¸eñ&#39;ÂÚ¶»ãjÚ|q5®©Iqx^@¥PÄT`w94ñwáö§¨|AÒ¼y£hG^ÚÉì/tFA2ÛHÝpr9Å sÏÃ?kÞñGÃ~ðôúªÛE¥é^YhR9Ý¦¸
+73£SÀ¡|Mð±¯j~¸Ó£EÖ#»¼ß \F#*qêrzPj~ =½á¸t&gt;M:çÅPkvâøxÄÊî\ =ù »ãÃíKUñ¾ã­CÒ|C&gt;i%î¨¸.`vnTulF?ñ#Ã^#°øOã­wRðïü+Å¤PØi	²EeQ¸d
+ ê[Bøãø|#¤ø£CÒ´mH»µÔ®ï`Ô&lt;ö¿xFcXãÚ
+p[qö{@ø}â;?ßü346ãP×uZâÅDÀ«%Á&gt;VãØóÏ¥ gj¾ñ¼F¤j&gt;	ð÷4HtK[Ccsq¼¶W1Æªì$d;Ðë(²ø#â/@ðÖ«ö-ZÕ4{«§C¼¸-lÖ³#Ôá1 @øUáÛøÊ÷ÄZ§¼=á;ìbÚÏL±ÏpÎ[/,ª /Ï#S 
+ (  8?ò)¯ýwZ ³ðþD¸?ë£ÿ : ëè  
+ (  
+ (  
+ (  
+ (  
+ (  
+ äþ-Èsþú: æ~ÿ ¼ïÏüÖôö:
+Ð`=¨b¹¡hgnn¤cÂ
+ÍûÎÂ(Ë#ÊåÝ&#39;Ö­$4SPÝ&quot;câü­Á¨º&amp;ÇI+®R)¡1¹ÓW@sVRÂçå,½®É1Ü¬sÓªáqñE$¿
+M¤¼öÍgfe~$nµG73=kA@Ä Ú,/GFëQQh&amp;t2H±®ç`£Þ¹íq=å«¦E&quot;,ÊºÓÖF2Z:°?ÃÕNÛ«ö¼ãÊ5\è.hiÚ[+&#39;ÇDçØEp± zÔÃp9ÞÕ¸Å¦1JnÃ¥Ø^I§jv©-Ývµ³®ÖÇÔq\r»4j¡¤·ó±¦î2ÌÖMÝ°83/çO,rÇ ù7ÐÒ³[DäÆ¤ý)Ýð¡x H9K¶-u!=I®¨ì4CL?#q÷@¬ª½oµ` Ð-mðïÁ6ú²êøvÉn_5	E~»gh9îb¨A;Øôec%OÙºÛ|½w:ª°P	Ç$ÌÖÇ:
+ (`cëvK 5,1ÐV´äTÓì®Ê±BNI5R°¬ ÏÑ´=&#39;FPL±ÖMJé®ï3ûé ¹Ï|(ü¨DÐ@  P@E*àh½H£Hj(QíM»ú@ P@  P@  P@  P@  P@  P@  P@  P@ gh ÛÜA£ØÅgÍÌS*g+»÷&amp;4h  
+ (  
+ (  
+ (  
+ (  
+ £¯èúf½¤Ï¤ëqÞXÎ 3µ9çâ-ÃC
+C*¨ì Pè  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾Î9ÿ W|)eU{ðÞ5´:«(lîaÜéNNHF´u´&#39;!r}ë&#39;6À«â&amp;*8ªÔÜ   Í\+·Eæ¦Z«fïRbB6Åö¥$+LùÕY èîgCäûi8¦¦sÃùsDûZÎi­k$hu@ü++C]å¶9ÛÉ«¦ì?]@´ÿ H2º&amp;¢oK	êos)Ë ð(lÅZ°²DÁ£b¤ÕÂÇE¥Þ¨°xqÔW&lt;ãaH^Â&#39;·hý¸§f/4o`éNãCE1,mæ` |½ÍD¥d+ÄÒÌü#Á{ÌG7=Ä³¹gsÏjèQ°È¿ %¶H%}Å&#39;Àê-¤@²â¹³- 3oôµC$mµZÒ5,xôWÏÏ ÇµSª;¶¶ñÛÇ±e&#39;qt¤N©¨´Na¯séZBÜÄ¾¹WÜ%5«c±µ¤Þ Êã¿­c8r¿P@   ´ PMNëì°î=*¢®ÀG¼çxç5
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾Î9ßò,Áþóÿ èF·Â4t(ìS[@uvrmCÜW4¯&#39;´hÚ9d\Ôãç.QB#pëØ×B¿QcîpOÐRºÏ|KáOJâêÚí£µÏ¿jÆN8í_Ë³¦éOFÝ½î&gt;Ï	å¥R¤¯îõ2O¾ ãþ?äÿ ÀºåY&gt;}âäÇcÍ²;|ù(ð|Bÿ  øjQÿ ?þLJÍrOäÿ ÉCþ¯_óÿ &#39;þ_Øù÷üüÿ ÉþÖÉ?ÿ %&lt;5ñ8Û¨Èb/(ÏççþL/ílù?òRüø¥n}bEú¨þÈÏ?ÿ &amp;ílù?òR«è¹Wÿ Ûé§ý?þLÚ¹&#39;òä¤?ð|B&lt;ÿ hIÿ «û#=ÿ ù0kdÉÿ 	üG y)þédç¿óóÿ &amp;ílù?òRH|ñ.Sºêné&lt;«&lt;_òóÿ &amp;ílù?òRY¼ñ:ÖÍ¨º¡êõ%gíÿ äÁý­&#39;þJRÿ kâý$ÿ ÀÊ¿ì÷þ~äÁý­&#39;þJðüBÿ  øhþÈÏ¿ççþLÚÙ&#39;òä¡ÿ ×Ä/úIÿ fìûþ~äÁý­&#39;þJMgá.Ø5)Uý&gt;Rò÷¬ÿ ò`þÖÉ?ÿ %.ñ27*ÚÄÄKâhY&gt;xþßþLÚ¹&#39;òä£?±&gt;%ÿ Ð^ãÿ M?ìlóùÿ ò`þÕÉ?ÿ %|9ñWùõ9	õkÓGö&gt;z¾ßþLÚÙ&#39;òä¥´ð/ÄÇPË{êçóñÿ àAý­&#39;þJK~)ÇÂjN¿KúO*ÎßÛÿ Éû[#þOüeß&gt;)$%¦ÔådGÛ¡e9ßIÿ äÁý­ÿ &#39;þJgÿ Â5ñþàeiýÏÏü?µ²Oäÿ ÉCþ_ôÿ ÍÙ÷üüÿ Éû[$þOü?áøÿ ?òàY£û#&gt;ÿ ÿ ílù?òSFßÁÿ ÚhµIUà}¼ÍåYßYÿ äÂy¶Iüù(³xWâ#2k.¿]@Ñý=§ÿ ý­Ûàÿ ÉJ§Cø	ÿ Ì¿øjÖO?þL%dø?òR£àï·´ýv@¸äLë¡æÐO_òÙÅ|-yÅá¥ÿ ð¯¾9Ðroüßê9ó~&#39;f;þÿ ÇúÍÿ CGÔsæüBÌ?á_üqÿ  Üßø44}G1þoÄ,Ê·_~3ÇóËªJÙêF¢MRÁfOíþ!fSÿ /âæyÕeÿ ÁªþÏÍ?ñzËÀ]|È5iÿ ÚDf¥às.²üEfXÿ ñÇþsàÐÔýG1þoÄ,Àøãë®Mÿ CGÔsæüBÌþ[¶ÿ ÂA&amp;ì*iýC2þoÄ,ÉGÃÿ &#39;þcàÐÒúcüßYü+ÿ ?ôÿ ¨æ?ÍøÂ¿øãÿ A¹¿ðhhúcüßYü+ÿ ?ôÿ ¨æ?ÍøÙ&gt;ünm}fVS4}K2_kñ1#øsñ²,ùz¼ML&gt;¥?µøÿ øWÿ è77þQÌñ0ÿ ñÇþsàÐÑõÇù¿³øWÿ è77þQÌñ0ÿ ñÃþàÐÑõÇù¿³øWÿ è77þQÌñ0ÿ ñÇþsàÐÑõÇù¿³øWÿ è77þQÌñ0ÿ ñÇþsàÐÑõÇù¿³øWÿ è77þQÌñAÿ 
+ÿ ãýæÿ Á¡¡`sæüAø}ñÇ?òÿ Àæ\¶æüC©¡¥øã,Q°¹Ö&amp;bOñ2&amp;¾¯ÚÃSk«ûÏ?G7û·ø?áø·ÿ Aið`kè~¹þ_Àãú®7¿âðü[ÿ  ´¿ø04}sü¿}WßñøBþ-ÿ ÐZ_ü&gt;¹þ_À&gt;«ïøü!ÿ è-/þ\À/àUÆ÷üCþ¿ôÿ ®`?ðªã{þ!ÿ _Å¿úKÿ G×0ËøÕq½ÿ ÿ /âßý¥ÿ Á£ëåüê¸Þÿ ÂñoþÒÿ àÀÑõÌòþõ\oÄ?áø·ÿ Aið`húæù ú®7¿âðü[ÿ  ´¿ø04}sü¿}WßñøBþ-ÿ ÐZ_ü&gt;¹þ_À&gt;«ïøü!ÿ è-/þ\À/àUÆ÷üCþ¿ôÿ ®`?ðªã{þ!ÿ _Å¿úKÿ G×0ËøÕq½ÿ ÿ /âßý¥ÿ Á£ëåüê¸Þÿ ÂñoþÒÿ àÀÑõÌòþõ\oÄ?áø·ÿ Aið`húæù ú®7¿âðü[ÿ  ´¿ø04}sü¿}WßñøBþ-ÿ ÐZ_ü&gt;¹þ_À&gt;«ïøü!ÿ è-/þ\À/àUÆ÷üCþ¿ôÿ ®`?ðªã{þ!ÿ _Å¿úKÿ G×0ËøÕq½ÿ ÿ /âßý¥ÿ Á£ëåüê¸Þÿ ÂñoþÒÿ àÀÑõÌòþõ\oÄ?áø¹ÿ Aið`i¼nù ú®7ù¿&gt;ø¹ùKÿ Ic0ø X\m½ø(øñÂî8F­Ì~ö5B¹¯&#39;3©F²ýÂ·à}
+×Ã`ÓþÐ\ß+?ð¬¿hú&#39;ÿ ÁÁ¯R¯Üûoí®ÿ kÿ øV_´?ýø84{*ÝÃûk¿çßþJð¬¿hú.?ðphöU»ö×Ï¿ü?áY~Ðÿ ô0\ààÑì«wí®ÿ ù(Â²ý¡ÿ è`¸ÿ ÁÁ£ÙVîÛ\=ÿ &gt;ÿ òPÿ eûCÿ ÐÁqÿ G²­Ü?¶¸{þ}ÿ ä¡ÿ 
+Ëöÿ ¡ãÿ e[¸mp÷üûÿ ÉCþíÿ CÇþÊ·pþÚáïù÷ÿ ü+/Úþü=náýµÃßóïÿ %øV_´?ýø84{*ÝÃûk¿çßþJð¬¿hú.?ðphöU»ö×Ï¿ü?áY~Ðÿ ô0\ààÑì«wí®ÿ ù(Â²ý¡ÿ è`¸ÿ ÁÁ£ÙVîÛ\=ÿ &gt;ÿ òPÿ eûCÿ ÐÁqÿ G²­Ü?¶¸{þ}ÿ ä¡ÿ 
+Ëöÿ ¡ãÿ e[¸mp÷üûÿ ÉCþíÿ CÇþÊ·pþÚáïù÷ÿ ü+/Úþü=náýµÃßóïÿ %øV_´?ýø84{*ÝÃûk¿çßþJð¬¿hú.?ðphöU»ö×Ï¿ü?áY~Ðÿ ô0\ààÑì«wí®ÿ ù(Â²ý¡ÿ è`¸ÿ ÁÁ£ÙVîÛ\=ÿ &gt;ÿ òPÿ eûCÿ ÐÁqÿ G²­Ü?¶¸{þ}ÿ ä¡ÿ 
+Ëöÿ ¡ãÿ e[¸mp÷üûÿ ÉCþíÿ CÇþÊ·pþÚáïù÷ÿ ü+/Úþ	ÿ ðpiû*ÝÆ³®ÿ kÿ øV_´?ýÿ ààÑì«wÎ¸~ÿ Ã_ø	ê³ÿ ¾$xzûQÇZqK½3á²?.3[QH·Ì|çc²ìL&quot;°q³O],zýt. P@ Ãüiÿ MëºÐ?ò%Áÿ ]ùÐ_@  P@  P@  P@  P@  P@  P&#39;ñkþD«÷ÓùÐ3ðûþE?ßý×E?hèjÆXkÙ¾Î°!Ú£Ó½O*½Åb·$ç5@-%³$£µ2Mì+5ºÃåT)â¹î&quot;®·=*3jé»09Úè(Z ( ÎE +»¹Ë1?Z,PPÄhi7DoÊ^ÕãqÁV UÕc2Ù:½j ìÀæ:qÞºJÐ«dx­Þã§aPõv+UJ (KD»hç±ù§µgR7W$ßàÖ 6DW£Å	Ø~ïL&#39;cÞ±[Æ¢{åO&amp;lãÊÊ®è.]°Ó%ÃJ6 íëQ* \Ýb&quot;à`(¬wb9k©iÙÜÏÑd4GT1Ð»G&quot;º4¸ÕÛ?9êFk«1R  ¨æ!6ÐÜbRió0%P ÀZ Ê×î$5à7SZÓI{Ö¶ÐhS&lt;Ä?;OÕ*
+ (  
+ (½ÿ öfò&gt;ö)Æ×Ô
+:1¼,ÆmÅ÷ªæ@5«0
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  &lt;?ö·ñW|-áÝ&quot;ãÃÚµÆ,×²4$e:r+9B7&gt;»p8|^&quot;Q¯%æ|Ùÿ âoýZýô¿á^Ö*w?Cÿ WrÏùò|aøÿ C¥ÿ }/øQõÃý]Ë?çÊ=[ö`øãO|G]?\ñåý¯Ù¼©HÆG~tajÎS³gÌq^SÂ`ÔèÓQwè}Z+Ò?5
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (øÓÿ &quot;ÿ ×u ?äKþº?ó ¾
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  Oâ×üW?ï§ó káècá6©?;ÿ èF·÷@éÞÒd¶óÜmÔv^¬bÐ@hVÇSK{a)b+&#39;NìVs«K *4Æw9Íj0À4b+~ìdSRæ®K¨Øýläµ1Ø\£Ú´´ P :CZM_l*±!ÜSXªzgIwq+Ò7&gt;´QC±æ¨eOµ1PûHõ©¬#N% ÈÅ½«&#39;Qv·[ pª{QMÝ[h  	ìk¸ñëS=j^ê¾[ùpHêk%O¸Oª]±áü+OgØXõk?1){4#bÂê+¤È 0ê+)E -ÔÂÔwP·JHÊÜk©;Í1I(É&#39;µ&amp;ì&amp;uv©åÀ{W3ÜDW·±Zäú
+# 3Î·óq§²¶Z7?.v·¡¨v¤
+ òÖ;¨ö¸újMtO&gt;ZÓÚ§glÑlOÄÖnWz@#°U,Ç P?í+]û|Îõ\ÁÔ2RÐ@  `P@ !84 &quot;¿Ý`~4Ð 
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  nù´?úúoý¸±¿÷þõ/CäºóÔÐ
+ öØóþJºÿ ×¤Õþ!ñüiþà½OµGJõÈÂ  P@  P@  P@  P@  P@  P@ pÿ äS_úî´gáüp×Gþt×Ð@  P@  P@  P@  P@  P@ ÉüZÿ *çýôþtÂ(ã&gt;¶} ·&#39;?ð#EØeì^m³¦:)ÅÙÊU ×PÐ(  ½ VÕ/`Ótëû§	¼fGcØOAÏÃÏÃã	/#M:[&#39;µÚvÉ&amp;âÀô=)FWÎÆ&#39;h¤§M«ÔÙÊ&amp;·Yq\ÒVb+ëQ-H¹òj ìÀç½t(â­b÷HÖKçTi§X ë¬x&lt;
+MØFÂH ã¥0eDgcQ}¨¢kÚv·¦Í¤H×pÄÌ+½¨wØC&lt;&#39;«^k:WÛ/´*_1È;°r_¥	Ü»yDpE]:yHBp®fbgHÙDÁ´+­à&lt;}¯i²âVÙoCt· ¿:°Î5þ&amp;^X&lt;ëþÔô­:v
+·Nû¶ç¡eÚ1ùÑÏÝÏD¶nbImÏ ÈWAéWp¹«³ÚY½Ä9QéYss;òMhjCGðýþ¨T7ÙmÞP§£	ñ87d3eâýboiZúøz[ëéBµ½¦v&lt;ùÒæv¸»Mñkâ]
+K/îºBw&#39; üêjZÀu$ÕcÑ4+½VX&amp;¸ñÂFì äàV CáKíSPÐ­ïu½&gt;=6òeÞmVMæ0z87¨íÒ89_ÓÃZo¯u»ö·-e úm5q@_ð-Î©âtÚ¯oô	Qº|sãÓúÕ{P¹ÚZYAn&gt;EËzI°,9Ú½H¥Ü-Ã³ó]1VC&quot;5@-[ÇÔËa¼g¯j:¥ºwï5§¹ºH-úÄ§«ßÔå@tÀ((øãð|º]¬zMÆ«}©Ìb¶·@Ç¨=ØÆ)xGâLz¯¿áÖ¼? jí7$2È¾Ì þTßPwØÌõçpÜpN $Ö÷Ôé¨ÑÙÆ¯ÁÅsKqi P@ Åx¯ÆWz_ÄxVÊÒ	ÿ ´·5Ã¹;¢@G#_J íhø®x#U×6,käF8ÄPqîEpáô·7ÞÓµkÈÖ)ïmÖv	Ú¡F3ìET¥p3&lt;Uã½/âü+eiçSó;Ðg§z;Z (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  
+ (  &gt;uý¸äVÐÿ ëé¿ôâÆüÜp?ûÔ½ëÌ?S@ÓûÉX_úôº°Ä&gt;??Ü©ö¨¯Xü(  
+ (  
+ (  
+ (³H±Dò¹Â $ý)¥wa7esÃm&gt;8]ê?ãðÎ¦ÆlÇÒ0%ºà÷QaI=msçs9â(­/cÝ+À&gt;(  
+ (  
+ (  ãOükÿ ]Ö,ü!ÿ .úèÿ Î:ú (  
+ (  
+ (  
+ (  
+ (  
+ (  9?_ò%\ÿ ¾Î2~ê×Âq£~wÛÿ }ÑC¿6«tçå!Gµh ìQbY1É5`%%Úyÿ Õ¡&quot;¥É!]YÉldÇÍÚÊár·z¡[ñ¿_¶ûFáWHâ¹f¿hÐ»$ ð09äÒ³èK*ü2ÔôÛÈÒw;HüµxÊ³¡ç ¢/Þ¹QõwÚguoL¹yÀÓÞàÅ.xÏZ[½@Ñø©_Gã[-SÕôß4 C%¦52¥È÷þI+ê³âÝKS7útbíVî=ó_´ÅåòºðÞ¤w¦û *Áï¾)hÚ-³¨ßÙjq1¹¥HóNF:&gt;`áôÕ&gt;&#39;êºüúÝö Û\{X,äòÚB9ÜÇèAç=høs[[Óïm&gt;#ø?Âz­óAm5Ã/&quot;ãyþ/Æ¡ÌbmGâ.·«NºµÞá*cli&#39;%ÃK3zt&gt;þ4EÝêåü$×|+ñn£.±ªa;-£¦.«È · qÕ/oBÒ&gt;\ëñêZÝ]Yü°È6fàªèJÑ¸t&#39;»ÕuôÑ|#àëFâKVKuxîZTNIÁ&lt;çü©ÝÙ %¹·¼ðOÄoiúvµ©ßZê¤Çsäæ\rñé×?@.ºß¼}âXÄ:mç äv^ËÎsI+¶À½FãFÕb»¾¸¼Úý¢·g,Û@Ïj¨*êyÕ¾?ØÚÞði¶^l¿ ¹îÁïß4¼©Ò|pÔ,á¥Ü(flpûò:RhfÚxËá§ÒêæÜÁ§«äVPøRpàu àúÖwb5¼M©Þ_üy|7÷	§húIêÙÈ&#39;, àýäëDtc8û)5/é·õMjÿ OÑm¼Áikg7»hûÌ{ö­u¬yo¯mÿ géåº¼¹¸R»ò¢3J]ïÎ}þt¾Èt:=d^Yø¯À~²º¸-­Õî)
+ 6:ºúÓ{¤oøV?üe×MgX5CùÑ\ípÄ°68_j-@©âøRûSñu,,ô½Êe#îÀ`­$÷Âsâ4ð]²ø[y¹¶yìL_ðî&#39;õëÛ¬VÄi×¾-ºø·¯ë&gt;Âi-BÚ¼$¸è0G|Ô5ÌÀê~+xÅß&quot;ñZk×Én?³$§9è {Ô8ÙËñÎâ?ë~¿&gt;,Õ®õ½Bñ!¸Î~Ï2¨ÝÇ9ÏSH	~#xÍ5ow½Ôõ«M@²&amp;ç\Ê@8, áyï@sKâ}á/¯eÕm åcÒÞòB.U§¨ã5jZ·¿[ðwá.Ö5;«ÝRâÎ+kkI¡-·oòØ&#39;©9ªÙ\¿h:Öà»?_xY}vöhJF8Ô¿8UØ¥-ï¼GyªKñSÀ~S½T×íW»&#39;aæáIÃàüÜ ëëYáüCãøK|E¬5î¥â(lmeh4Ë-&#39;ryr7»IÁÁéÎ¢¹«jí&gt;éëus©,Âãý.HØý¥-»|Ýs×¾[!ðZm iO&gt;¬jzL	7·&amp;Våp~ï½&#39;k 9wzÅçÇMÛBÓU¹ÑìMÐ·yk¹ÉÜz`*Í&lt;}&#39;üU­xûÄÅ-ï¼=Àºlj@ =IÁ¦/õiwz©Õ&lt;[/¦6ÏMµ¸ÝòçÇRh¯ñÍçnuÏ~TÏZÛÎÔYí-º\ã¦hÞ³½ð×Çÿ ì;m{SÔ¬_LkÑ{7ÚN};qÇC.áK]Wâºjþ&amp;ÔüE«iT3&lt;:mµÁ&amp;Ñí§~f2Æúïü(mhÜêw2^[ßkÐäJãvAÜ9Î ã¡ªh_	ü9£ZêWqê·³Û[v¶,wg&#39;-·?Z¼×æÐ~6ÙJðéé4rNÅ7Æ§-´dàsTáaÖ&gt;*Ö­|=âO77F+6Ú5ÊÞJà&gt;Ìãß§jõÆ½ª\h×~Õü]¨øK{égß!ÎåÚ@AÇ¶3í@·ÐÏûBëµÁÍ¿tÐ¹?Ï@ k&gt;2ðN³ãïxTÓì#VÓ¬,n&lt;xRøûÙ8 \j§övðÞ=ÝÍæ¡¯j*Vv)¹FIé jøãGÖüªxNöÇÅz­î¥uu´öÏ7î
+ 8HÇLs@ßE7ÇÝkYµðöÌ@ìÛr Oßø»J»Õ_Tñl¾#F:m;kp7H9 ¿â}ï,t§®õ[]$À£[¸Ól¾fÞaÓ¿¶s@¥ðöÓL´ð½°Ñõ[ÍRÆ\ËÅÕÁÈ=²{JC: (  
+ (  
+ (  
+ (øâÏØ[Of³K!S¼gPÿ 3[ÿ ¿÷Éÿ  ?áfkóÂ×þù?ã@ü,ÍoþxZÿ ß&#39;üh ÿ ­ÿ Ï_ûäÿ  ð³5¿ùákÿ |ñ þf·ÿ &lt;-ïþ4 ÂÌÖÿ ç¯ýòÆøYßüðµÿ ¾OøÐÿ 3[ÿ ¿÷Éÿ  ?áfkóÂ×þù?ã@ü,ÍoþxZÿ ß&#39;üh ÿ ­ÿ Ï_ûäÿ  ð³5¿ùákÿ |ñ þf·ÿ &lt;-ïþ4Îø×BÕ¾4[Á¥K{o§ýÁdîÏëXW¢ê«öEG+ªê5{n¥û0^Ùi÷âhJÃr&lt;¸õ®Wi^ç×RãxT&amp;çÏù7Eìb¹õÁ®}ì4Sîcý-¯gø#Ù&lt;q¼VnÅwdë]X%zøþ5Xß¹ö _ÿ Û?ûòÆ½cò`ò|Aÿ ?¶÷äÿ  O?çöÏþüñ ÉñüþÙÿ ßþ4 y&gt; ÿ Û?ûòÆ&#39;Äóûgÿ ~OøÐäøþlÿ ïÉÿ  &lt;Ïíýù?ã@âùý³ÿ ¿&#39;ühÚÝäòÞAzÑ3ÛÈ4kA Z dò$0¼²&quot;)b}4®ì&amp;ì®Ï/¾3øVøº­#{8çÙ!)¹É¯¢UJ«Ôùæõªb=% ÿ &lt;N1&gt;ð¥¤/qýã:çqÆM,&amp;WEÒöµXc3jê·²¢µàÏ&gt;!ñ­iW6Qÿ l[ÂJm^Ôb#+¥F¤fºÅÍ«V§(5ï_ð:ëVÿ ®&#39;Ê9¦yÎ3³ÔJõ3Ãê­7¡åeÒÖKSµÔ¾:øÎÞèöp\Ç
+¤Ynë\PÉðîv;§bUG«~1x@±Ðllíb]RòÙ&amp;&lt;}Ø;t¬0¹]÷S±ÑÍëÒ#ï5vfxcãg/&lt;s§èz­½ºM&quot;¤ªbÃsÖ¶­áãFS1£âeZ0Z¾5øÏ¯·Äü3á{HÝRa±MÅ¹ç*¥ì=¥VmÍë{eE@@Y ïýkç^úMµHa@  P@?Æù×þ»­ YøCÿ &quot;\õÑÿ  uô P@  P@  P@  P@  P@  P@ r¿äJ¹ÿ }? s?¿äXý÷ÿ ÐtSøF¬a@ lè7E±òô5Hõ$Z0K	S&quot;^4©¦Áï[¢KÂ¾ÃÄÚ¿u{oooßmB13ôð©QÖìVyá¿øXâ+Ø Sdm¼£ÎìpÞrëp±&#39;¼E¬ëZeßu;}6o:$·c;Ü}8¹[Ü,Iâ¯	x¯ÄFçM½×,F5Çm¿z»!Aöõ¡Å°&#39;ñ7®&amp;ºÒu/jc¨iciSrºMÇ°XÂ¾»µñ¾&amp;ñ¢º¬éåÆQ6Ç
+ú(¡G[°±¥xÄÞ¿ºÃ&gt; ¶·Òîgó|à,ÑçÐý8ü.V¶áÉád?uB;kHaÇ&#39;=+9AÜG-aàMgLUÒì&lt;B±ø{Q¦ïz®îÀ	©¨0°ºÃùíþ\xAµüùÏT!rXøWË¥m¾ðV»©|=·ðÍþ­ldd&amp;Eå/EúûÑÊí`±wÆ¹Ôî´OF¿[WK@»&amp;äeÇB?ùÑ(õMÀ¤çü%~&#39;Ôÿ Sòü»q{b{Äþt£«¾ðÖ¥ë0Éy×zÒKæª°8ü³T£a&gt;xmü-áÅÓf¸K¯,&quot;±ÏjqV@8ðdú¾±i¯èºön±j»R¹W^xaøÎ£}PXã.ôMâ¼cc6³e«ä­([?yÇZõè1ð~±uã7Æ×-´ëÈm¾Îé4[ÆÞF@úÒ¡Ç[üàÿ ìOøVÔuGÔW·´¸7Û8 Àªöl,sú_ÂÝqt[Ï§!þÈrÍ&quot;&quot;èútàQfÑ¿ø_ª\xsÃZ»ÉÒ§Ynp`Å×Ö«$õ·oçøÿ 	eÕÔ^Dvg§rúôîßI;[Hð.·ájºÕ¶¯^¢Å¥Æ|Ìöö¥v;mà¿èzóx[^µ¶±½ÌÐÜ@\ÆÇ©§+[Çy§Cs7Wâå&quot;$ØÆöÇ¹«Î4¯xÓH½Ô.4¯ØÀ/®i·,rIÿ Ï ±Ñ]ø3WñÇÓRÕ éwksv|²ä2Û¡)­c«ñwç×|{áÏI}vZ1gòIgrAÈ=?k0µ¿ë5¾ñ/¼Gia&amp;¢Úà¹ÌBGq®V&quot;Çü­x¿Ázv¨øÖ{¯EÅÜÂ&quot;ª3ò¨8jhf¯ÅÍBÖ¼Úf¯©A¥,§Ùî\QÊõú°&lt;÷M»×&lt;sá_ÉâñÙÊ²ÌÖË`1ã«iõû_\/Å\^C$d-míÂÑýÜôì:C8YüâëzxW^¶¶Óo§iü7uÇè?[A;h·¦øÊHmSKÖìSl]Ïo»ÌcÕ¥[Lf¯Â?iæÔNn$c&lt;òíÚAØT?uXFàÛ/:ßî¯boíÒÞÞRJ¡É÷ÙúÖ UÐþ½|W{syº~¼|R&lt;OCÞá¿øÿ Ãé£i^/²]9	IkºdLçh9Å:ðmÌÿ #ñ­ÅìOoÙmíÂÊyÉÏOâj&amp;à©ìþ&#39;k¾1¼¼uÔ-ÚU1 Ûþà VÓát[}CBðß­í4éYÌr@ZhpB·ÓÂOü)³ºøe4{¿²½¼ËpÈ3æH3ß\Ò:óá5gÃÚ·¼Mäº\áÞ¬{©PÔrOµ4ìÆIñ&#39;áu÷u:x5ìÖÛzJH$¼lF@ÇÒ®RLÖx«Áv·àá?f·HÕ`uq¡ÇùëYÜßhôûÛ(µØÝé¶);R$@ÀÄý?* fðòKmCÆZ¥ôwÄ.BùjA3)ÏS¿ s0|&amp;ñKøBãÂw*´¸Á6$$dç#Ì=HñëEÅckÅïu/øWOÓµH­u/ym­1»(\&gt;ª-hÕn|Uoâëj·ÖH d0ïcÖ&amp;ðÏÃö²Õ|W{ªÞEuÿ 	*Â5 ¤d{ó@þð7ÄZ®¤ø¾É4hÜ¼ËBÓ&quot; ç¯ã¿øã]¸¾²Óõý6ßE½FÐÍj^DÃ`ç½ t¾	ðý¿¼1e¡ÚÈÒÇlK·V=Í lÐ@  P@  P@  P@ñ³þ@ö?õÙ¿ y=  P@  P@  P@ ßüãX¼ÿ ®#ùÐ&amp;Ë?´O,&lt;+àKÛcpÚ¡7ÍÏSXb*¨GÌúË*c1qv÷VìøIØ³&#39;$ñÚRåV&gt;¤ý|5,VÚ·çªKh¼-ý+ÑÀÂÉÈüÛqªStÔú`
+ï?&gt;</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server. </div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/540.html">540</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10099/">10099</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="90003"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Sub Resource Integrity Attribute Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script type=&quot;text/javascript&quot; src=&quot;https://app.mailjet.com/pas-nc-embedded-v1.js&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/aides_publiques">https://entreprise.api.gouv.fr/cas_usages/aides_publiques</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;link href=&quot;https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css&quot; rel=&quot;stylesheet&quot;&gt;</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">10</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Provide a valid integrity attribute to the tag.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/345.html">345</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/90003/">90003</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10017"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Cross-Domain JavaScript Source File Inclusion</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The page includes one or more script files from a third-party domain.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">https://app.mailjet.com/pas-nc-embedded-v1.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script type=&quot;text/javascript&quot; src=&quot;https://app.mailjet.com/pas-nc-embedded-v1.js&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/infolettre">https://entreprise.api.gouv.fr/infolettre</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">https://app.mailjet.com/pas-nc-embedded-v1.js</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script type=&quot;text/javascript&quot; src=&quot;https://app.mailjet.com/pas-nc-embedded-v1.js&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure JavaScript source files are loaded from only trusted sources, and the sources can&#39;t be controlled by end users of the application.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/829.html">829</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10017/">10017</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10110"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Dangerous JS Functions</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>A dangerous JS function seems to be in use that would leave the site vulnerable.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">eval</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>See the references for security advice on the use of these functions.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://angular.io/guide/security">https://angular.io/guide/security</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/749.html">749</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10110/">10110</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10063"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Permissions Policy Header Not Set</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/api/">https://entreprise.api.gouv.fr/api/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</a>
+							<br />
+						
+							<a href="https://developers.google.com/web/updates/2018/06/feature-policy">https://developers.google.com/web/updates/2018/06/feature-policy</a>
+							<br />
+						
+							<a href="https://scotthelme.co.uk/a-new-security-header-feature-policy/">https://scotthelme.co.uk/a-new-security-header-feature-policy/</a>
+							<br />
+						
+							<a href="https://w3c.github.io/webappsec-feature-policy/">https://w3c.github.io/webappsec-feature-policy/</a>
+							<br />
+						
+							<a href="https://www.smashingmagazine.com/2018/12/feature-policy/">https://www.smashingmagazine.com/2018/12/feature-policy/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10063/">10063</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10037"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Server Leaks Information via &quot;X-Powered-By&quot; HTTP Response Header Field(s)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The web/application server is leaking information via one or more &quot;X-Powered-By&quot; HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/api/">https://entreprise.api.gouv.fr/api/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte">https://entreprise.api.gouv.fr/compte</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/">https://entreprise.api.gouv.fr/compte/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/robots.txt">https://entreprise.api.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/sitemap.xml">https://entreprise.api.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">X-Powered-By: Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to suppress &quot;X-Powered-By&quot; headers.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx">http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</a>
+							<br />
+						
+							<a href="http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html">http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10037/">10037</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10036"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The web/application server is leaking version information via the &quot;Server&quot; HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/v3/...">https://entreprise.api.gouv.fr/v3/...</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nginx + Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/v4/...">https://entreprise.api.gouv.fr/v4/...</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">nginx + Phusion Passenger(R) 6.0.17</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to suppress the &quot;Server&quot; header or provide generic details.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://httpd.apache.org/docs/current/mod/core.html#servertokens">http://httpd.apache.org/docs/current/mod/core.html#servertokens</a>
+							<br />
+						
+							<a href="http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007">http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</a>
+							<br />
+						
+							<a href="http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx">http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</a>
+							<br />
+						
+							<a href="http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html">http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10036/">10036</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10035"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Strict-Transport-Security Header Not Set</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a>
+							<br />
+						
+							<a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
+							<br />
+						
+							<a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</a>
+							<br />
+						
+							<a href="http://caniuse.com/stricttransportsecurity">http://caniuse.com/stricttransportsecurity</a>
+							<br />
+						
+							<a href="http://tools.ietf.org/html/rfc6797">http://tools.ietf.org/html/rfc6797</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/319.html">319</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10035/">10035</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10035"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>HTTP Strict Transport Security (HSTS) headers were found, a response with multiple HSTS header entries is not compliant with the specification (RFC 6797) and only the first HSTS header will be processed others will be ignored by user agents or the HSTS policy may be incorrectly applied.</div>
+							<br />
+						
+							<div>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/api/">https://entreprise.api.gouv.fr/api/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte">https://entreprise.api.gouv.fr/compte</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/">https://entreprise.api.gouv.fr/compte/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/robots.txt">https://entreprise.api.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/sitemap.xml">https://entreprise.api.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that only one component in your stack: code, web server, application server, load balancer, etc. is configured to set or add a HTTP Strict-Transport-Security (HSTS) header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://tools.ietf.org/html/rfc6797#section-8.1">http://tools.ietf.org/html/rfc6797#section-8.1</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/319.html">319</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10035/">10035</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10096"></a>
+						<div>Low</div></th>
+					<th class="risk-1">Timestamp Disclosure - Unix</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>A timestamp was disclosed by the application/web server - Unix</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/cnetp/attestations_cotisations_conges_payes_chomage_intemperies">https://entreprise.api.gouv.fr/catalogue/cnetp/attestations_cotisations_conges_payes_chomage_intemperies</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1569139162</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/dgfip/v3/attestations_fiscales">https://entreprise.api.gouv.fr/catalogue/dgfip/v3/attestations_fiscales</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1569139162</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements">https://entreprise.api.gouv.fr/catalogue/insee/etablissements</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1618396818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements">https://entreprise.api.gouv.fr/catalogue/insee/etablissements</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634103818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements">https://entreprise.api.gouv.fr/catalogue/insee/etablissements</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634133818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1618396818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634103818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/etablissements_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634133818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1618396818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634103818</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles">https://entreprise.api.gouv.fr/catalogue/insee/unites_legales_diffusibles</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1634133818</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">http://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10096/">10096</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-1"><a
+						id="10021"></a>
+						<div>Low</div></th>
+					<th class="risk-1">X-Content-Type-Options Header Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &#39;nosniff&#39;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-5146e7478716e93602efe5fa751b739661d304b4db04273543b92260d639d308.css">https://entreprise.api.gouv.fr/assets/api_entreprise-5146e7478716e93602efe5fa751b739661d304b4db04273543b92260d639d308.css</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/donnees-certifiees-ba1c3b7cc1bef0b0e3b45f04d135c9ab749c7694e51c64957555278d71400924.svg">https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/donnees-certifiees-ba1c3b7cc1bef0b0e3b45f04d135c9ab749c7694e51c64957555278d71400924.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/fournisseur-donnees-abdc14adb51730ebd9ebce443e29c83eb743fb7bf2cc80b4ea234c0a476a6346.svg">https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/fournisseur-donnees-abdc14adb51730ebd9ebce443e29c83eb743fb7bf2cc80b4ea234c0a476a6346.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/interfacage-1bb480ebd0cad23d69dba302cf4db51173fc5f33f09666569d6ee122860bb78d.svg">https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/interfacage-1bb480ebd0cad23d69dba302cf4db51173fc5f33f09666569d6ee122860bb78d.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/un-seul-compte-922d4cf2db70469abcffdb468fe41ee366790fc7895acd66a3ab9d6123b1d0ef.svg">https://entreprise.api.gouv.fr/assets/api_entreprise/home/pictos/un-seul-compte-922d4cf2db70469abcffdb468fe41ee366790fc7895acd66a3ab9d6123b1d0ef.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/favicons/apple-touch-icon-6bba27eab475ac619cc15ce96c3efdcd93dda78018633318eee5bf429db0a2ca.png">https://entreprise.api.gouv.fr/assets/favicons/apple-touch-icon-6bba27eab475ac619cc15ce96c3efdcd93dda78018633318eee5bf429db0a2ca.png</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/favicons/favicon-5d0b3361488aa18aac28ec1add8f84649ea9a86ade4d03d6fcdf1d75a34f372b.svg">https://entreprise.api.gouv.fr/assets/favicons/favicon-5d0b3361488aa18aac28ec1add8f84649ea9a86ade4d03d6fcdf1d75a34f372b.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/favicons/favicon-ac3f5ac40d55bc86a12960f79dc3c51110fd7e924ab3e6b5934579f0732b2e55.ico">https://entreprise.api.gouv.fr/assets/favicons/favicon-ac3f5ac40d55bc86a12960f79dc3c51110fd7e924ab3e6b5934579f0732b2e55.ico</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/favicons/manifest-1c9cf8d2bf56aa0fb17ffc0d01e5829987296f365c9d028f7816dc24286ce153.webmanifest">https://entreprise.api.gouv.fr/assets/favicons/manifest-1c9cf8d2bf56aa0fb17ffc0d01e5829987296f365c9d028f7816dc24286ce153.webmanifest</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/robots.txt">https://entreprise.api.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">X-Content-Type-Options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">12</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &#39;nosniff&#39; for all web pages.</div>
+							<br />
+						
+							<div>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</a>
+							<br />
+						
+							<a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10021/">10021</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10094"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Base64 Disclosure</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2B4MuKrliAcOLR7ganizKHCyxsYwPhVlnfTZGrI64ClrXMox9fE6HKcxEyifg2Z</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">0lipFkydxkHGGDwjTBiYI9IPH5oOZ2Ja68BNq2FP8ftVtOn62dBfhC9yElzz</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">net/wiki/spaces/DB/pages/222789846/En-t+te+-+Header</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2BjAFP94Z1095WSXUkivVLp90emlUBfu</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">NJCB4APssoCWjDwApQUV8ONEJgw8vaMdEMdZzW5G</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2FVrLfCwZ2aoSDp63GVXnkb6VMlplLWNWzSoeN</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2BdtJHZBfh7eFsoP7COR1KbZDhIZ60XcAjLn2voqsHVqDxeeIwRv4QZhYBHqhTnaxl</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte">https://entreprise.api.gouv.fr/compte</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2BXQJ068GAXLkKDaV11ywAS9s4SUQjiLDyAehMCgnp2lHM8XqXUBNnsc8vnkGQRty2ZyKQPBndNmRUi1zw</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/">https://entreprise.api.gouv.fr/compte/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2F746h8SakrmnCezs2THSW6lytV9CWzd7nOuftaAFAJwFnyu141Y32Q9bEdFZ5fwogA1RmJPDGoWt2hln95aUxERlWrJ29Rq8vVMZjLtmWHs6TSD</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2BeJqZAMkeatdJ0PgQsrdlgKxrLpJNHlwo06SBfOXJAH4SKtTl60q5GYHmRTKvegnOfKnRMomP2IH0gzoLxLLFA6WvmAkMrPe5v2CU</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">CVbuJ0SlQy1VevMWwphdyOG9dCH7uwtHEWZSqSGLMa</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">2BgrDOZ6ijZ33wTYHLX7Ek6kYtzR8ZqzTtKgvvkAhp8e6LzcevCShGZ6NJ6nUrtGuFnyZmJCQrCH0rhPNHVUaKvYELfPOG</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">12</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://projects.webappsec.org/w/page/13246936/Information%20Leakage">http://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10094/">10094</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10019"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Content-Type Header Missing</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The Content-Type header was either missing or empty.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/robots.txt">https://entreprise.api.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/auth/api_gouv_entreprise">https://entreprise.api.gouv.fr/auth/api_gouv_entreprise</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">2</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/345.html">345</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">12</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10019/">10019</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10027"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Information Disclosure - Suspicious Comments</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">DB</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">query</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">select</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">TODO</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">select</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">from</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10027/">10027</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10109"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Modern Web Application</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/aides_publiques">https://entreprise.api.gouv.fr/cas_usages/aides_publiques</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/marches_publics">https://entreprise.api.gouv.fr/cas_usages/marches_publics</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cgu">https://entreprise.api.gouv.fr/cgu</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;a class=&quot;fr-nav__link center&quot; href=&quot;/catalogue&quot; target=&quot;_self&quot; &gt;
+              &lt;strong&gt;Catalogue des API&lt;/strong&gt;&lt;br&gt; &amp; documentation des données
+            &lt;/a&gt;</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>This is an informational alert and so no changes are required.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10109/">10109</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10049"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Non-Storable Content</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte">https://entreprise.api.gouv.fr/compte</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">302</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/">https://entreprise.api.gouv.fr/compte/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">302</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">6</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>The content may be marked as storable by ensuring that the following conditions are satisfied:</div>
+							<br />
+						
+							<div>The request method must be understood by the cache and defined as being cacheable (&quot;GET&quot;, &quot;HEAD&quot;, and &quot;POST&quot; are currently defined as cacheable)</div>
+							<br />
+						
+							<div>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</div>
+							<br />
+						
+							<div>The &quot;no-store&quot; cache directive must not appear in the request or response header fields</div>
+							<br />
+						
+							<div>For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;private&quot; response directive must not appear in the response</div>
+							<br />
+						
+							<div>For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;Authorization&quot; header field must not appear in the request, unless the response explicitly allows it (using one of the &quot;must-revalidate&quot;, &quot;public&quot;, or &quot;s-maxage&quot; Cache-Control response directives)</div>
+							<br />
+						
+							<div>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</div>
+							<br />
+						
+							<div>It must contain an &quot;Expires&quot; header field</div>
+							<br />
+						
+							<div>It must contain a &quot;max-age&quot; response directive</div>
+							<br />
+						
+							<div>For &quot;shared&quot; caches such as &quot;proxy&quot; caches, it must contain a &quot;s-maxage&quot; response directive</div>
+							<br />
+						
+							<div>It must contain a &quot;Cache Control Extension&quot; that allows it to be cached</div>
+							<br />
+						
+							<div>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a>
+							<br />
+						
+							<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>
+							<br />
+						
+							<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/524.html">524</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10015"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Re-examine Cache-control Directives</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/">https://entreprise.api.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages">https://entreprise.api.gouv.fr/cas_usages</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/aides_publiques">https://entreprise.api.gouv.fr/cas_usages/aides_publiques</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/editeur">https://entreprise.api.gouv.fr/cas_usages/editeur</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/marches_publics">https://entreprise.api.gouv.fr/cas_usages/marches_publics</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction">https://entreprise.api.gouv.fr/cas_usages/portail_gru_instruction</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/cas_usages/subventions_associations">https://entreprise.api.gouv.fr/cas_usages/subventions_associations</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/catalogue">https://entreprise.api.gouv.fr/catalogue</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/compte/se-connecter">https://entreprise.api.gouv.fr/compte/se-connecter</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/developpeurs">https://entreprise.api.gouv.fr/developpeurs</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/faq">https://entreprise.api.gouv.fr/faq</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cache-Control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">11</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>For secure content, ensure the cache-control HTTP header is set with &quot;no-cache, no-store, must-revalidate&quot;. If an asset should be cached consider setting the directives &quot;public, max-age, immutable&quot;.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</a>
+							<br />
+						
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</a>
+							<br />
+						
+							<a href="https://grayduck.mn/2021/09/13/cache-control-recommendations/">https://grayduck.mn/2021/09/13/cache-control-recommendations/</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/525.html">525</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10015/">10015</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10049"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Storable and Cacheable Content</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &quot;shared&quot; caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/api/">https://entreprise.api.gouv.fr/api/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js">https://entreprise.api.gouv.fr/assets/api_entreprise-19ccb76c00c5b8d9fc86df291e4a230b40c3dc6756a1525e048730f9327b4919.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=315360000</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js">https://entreprise.api.gouv.fr/assets/turbo-4851a9a0b1d947e810dfd0448a72aef261d455183ebea681f4f28a73640a9ece.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=315360000</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/sitemap.xml">https://entreprise.api.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">4</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</div>
+							<br />
+						
+							<div>Cache-Control: no-cache, no-store, must-revalidate, private</div>
+							<br />
+						
+							<div>Pragma: no-cache</div>
+							<br />
+						
+							<div>Expires: 0</div>
+							<br />
+						
+							<div>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a>
+							<br />
+						
+							<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>
+							<br />
+						
+							<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/524.html">524</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10049"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">Storable but Non-Cacheable Content</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://entreprise.api.gouv.fr/robots.txt">https://entreprise.api.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">no-cache</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%"></td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a>
+							<br />
+						
+							<a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>
+							<br />
+						
+							<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/524.html">524</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">13</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+	
+</body>
+</html>
+
