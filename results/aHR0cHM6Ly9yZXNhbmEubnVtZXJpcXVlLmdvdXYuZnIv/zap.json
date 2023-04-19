@@ -1,0 +1,1335 @@
+{
+	"@programName": "OWASP ZAP",
+	"@version": "2.12.0",
+	"@generated": "Wed, 19 Apr 2023 13:47:50",
+	"site":[ 
+		{
+			"@name": "https://resana.numerique.gouv.fr",
+			"@host": "resana.numerique.gouv.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" \"sso_force\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" \"sso_force\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ].</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=donnees_personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=inscription",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1680784374.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type='text/javascript' src='\"+hostTraduction+\"/public/js/traduction_\"+langue+\".\"+ramdom+\".js'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1680784374.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type='text/javascript' src='\"+hostTraduction+\"/public/js/traduction_\"+langue+\".js'></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=donnees_personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=inscription",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10003",
+					"alertRef": "10003",
+					"alert": "Vulnerable JS Library",
+					"name": "Vulnerable JS Library",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The identified library bootstrap, version 3.1.1 is vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/bootstrap.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "* Bootstrap v3.1.1",
+							"otherinfo": "CVE-2019-8331\nCVE-2018-14041\nCVE-2018-14040\nCVE-2018-14042\n CVE-2016-10735\n"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery-ui.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/*! jQuery UI - v1.10.4",
+							"otherinfo": "CVE-2021-41184\nCVE-2021-41183\nCVE-2021-41182\nCVE-2022-31160\n"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/*! jQuery v1.11.0",
+							"otherinfo": "CVE-2020-11023\nCVE-2020-11022\nCVE-2015-9251\nCVE-2019-11358\n"
+						}
+					],
+					"count": "3",
+					"solution": "<p>Please upgrade to the latest version of bootstrap.</p>",
+					"otherinfo": "<p>CVE-2019-8331</p><p>CVE-2018-14041</p><p>CVE-2018-14040</p><p>CVE-2018-14042</p><p> CVE-2016-10735</p><p></p>",
+					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p></p>",
+					"cweid": "829",
+					"wascid": "-1",
+					"sourceid": "100"
+				},
+				{
+					"pluginid": "10054",
+					"alertRef": "10054",
+					"alert": "Cookie without SameSite Attribute",
+					"name": "Cookie without SameSite Attribute",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "set-cookie: PHPSESSID",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "set-cookie: PHPSESSID",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "set-cookie: PHPSESSID",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "set-cookie: PHPSESSID",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
+					"cweid": "1275",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=donnees_personnelles",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=inscription",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "80"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=donnees_personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=inscription",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784360",
+							"otherinfo": "1680784360, which evaluates to: 2023-04-06 12:32:40"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784362",
+							"otherinfo": "1680784362, which evaluates to: 2023-04-06 12:32:42"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784371",
+							"otherinfo": "1680784371, which evaluates to: 2023-04-06 12:32:51"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784373",
+							"otherinfo": "1680784373, which evaluates to: 2023-04-06 12:32:53"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784374",
+							"otherinfo": "1680784374, which evaluates to: 2023-04-06 12:32:54"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1680784375",
+							"otherinfo": "1680784375, which evaluates to: 2023-04-06 12:32:55"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1681912060",
+							"otherinfo": "1681912060, which evaluates to: 2023-04-19 13:47:40"
+						}
+					],
+					"count": "7",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1680784360, which evaluates to: 2023-04-06 12:32:40</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_authentification.js?ts=1680784373",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "MTEyLDgsNzEsMTIyLDE5MSwyMzQsMjUxLDEwMg==",
+							"otherinfo": "112,8,71,122,191,234,251,102"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "D27CDB6E-AE6D-11cf-96B8-444553540000",
+							"otherinfo": "\\x000fn\uFFFD\\x000c\\x001e\uFFFD\uFFFD\\x0001:\\x000f\uFFFDuq\uFFFD\uFFFD\uFFFD\\x001f>\uFFFD9\uFFFD~x\uFFFDM4"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "fr/uploads/DINUM_SchemaPluriannuel_2020",
+							"otherinfo": "~\uFFFD\uFFFDZ\\x001av\uFFFD\uFFFD \uFFFD\\x000c\uFFFD'!zf\uFFFD\uFFFD\uFFFD\uFFFDjy\uFFFDz_\uFFFD\uFFFDm"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						}
+					],
+					"count": "8",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1680784374.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "SELECT",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"        if(elem[0].tagName != \"SCRIPT\" && elem[0].tagName != \"svg\" && elem[0].tagName != \"STYLE\" && elem[0].tagName != \"IFRAME\" \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "db",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected 2 times, the first in the element starting with: \"!function(a,b){\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.docu\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "username",
+							"otherinfo": "The following pattern was used: \\bUSERNAME\\b and was detected in the element starting with: \"},a,b,arguments.length>1)},show:function(){return Wb(this,!0)},hide:function(){return Wb(this)},toggle:function(a){return\"boolea\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=donnees_personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=inscription",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "13",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"        if(elem[0].tagName != \"SCRIPT\" && elem[0].tagName != \"svg\" && elem[0].tagName != \"STYLE\" && elem[0].tagName != \"IFRAME\" \", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "84"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a \n                                href=\"#\" \n                                id=\"inscription_spontane\" \n                                style=\"color: #3678BE\"\n                            >\n                                cr\u00E9er mon compte\n                            </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a \n                                href=\"#\" \n                                id=\"inscription_spontane\" \n                                style=\"color: #3678BE\"\n                            >\n                                cr\u00E9er mon compte\n                            </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a \n                                href=\"#\" \n                                id=\"inscription_spontane\" \n                                style=\"color: #3678BE\"\n                            >\n                                cr\u00E9er mon compte\n                            </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<a \n                                href=\"#\" \n                                id=\"inscription_spontane\" \n                                style=\"color: #3678BE\"\n                            >\n                                cr\u00E9er mon compte\n                            </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<a \n                                href=\"#\" \n                                id=\"inscription_spontane\" \n                                style=\"color: #3678BE\"\n                            >\n                                cr\u00E9er mon compte\n                            </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "6",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "302",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=apropos",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						}
+					],
+					"count": "8",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/css/error/page404.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/css/iFrontWork/iFrontWork.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "4",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "15"
+				},
+				{
+					"pluginid": "10031",
+					"alertRef": "10031",
+					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
+					"name": "User Controllable HTML Element Attribute (Potential XSS)",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "mail_inscription",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nmail_inscription=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "password",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\npassword=ZAP\r\n\r\nThe user-controlled value was:\r\nzap"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "sso_force",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [div] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "sso_force",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [aria-required] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "sso_force",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [readonly] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "sso_force",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "sso_force",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [p] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [div] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [aria-required] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [readonly] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [p] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
+						}
+					],
+					"count": "12",
+					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://resana.numerique.gouv.fr/public/utilisateur</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>mail_inscription=ZAP</p><p></p><p>The user-controlled value was:</p><p>zap</p>",
+					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
+					"cweid": "20",
+					"wascid": "20",
+					"sourceid": "114"
+				}
+			]
+		}
+	]
+}
