@@ -1,0 +1,1029 @@
+{
+	"@programName": "OWASP ZAP",
+	"@version": "2.12.0",
+	"@generated": "Wed, 19 Apr 2023 13:46:38",
+	"site":[ 
+		{
+			"@name": "https://www.tchap.gouv.fr",
+			"@host": "www.tchap.gouv.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "\n        default-src 'none';\n        style-src 'self' 'unsafe-inline' ;\n        script-src 'self' 'unsafe-eval' https://www.recaptcha.net https://www.gstatic.com;\n        img-src * blob: data:;\n        connect-src *;\n        font-src 'self' data: ;\n        media-src * blob: data:;\n        child-src * blob: data:;\n        worker-src 'self' blob: ;\n        frame-src * blob: data:;\n        form-action 'self' ;\n        manifest-src 'self' ;\n    ",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nimg-src, connect-src, frame-src, media-src"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>img-src, connect-src, frame-src, media-src</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-10",
+					"alert": "CSP: script-src unsafe-eval",
+					"name": "CSP: script-src unsafe-eval",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "\n        default-src 'none';\n        style-src 'self' 'unsafe-inline' ;\n        script-src 'self' 'unsafe-eval' https://www.recaptcha.net https://www.gstatic.com;\n        img-src * blob: data:;\n        connect-src *;\n        font-src 'self' data: ;\n        media-src * blob: data:;\n        child-src * blob: data:;\n        worker-src 'self' blob: ;\n        frame-src * blob: data:;\n        form-action 'self' ;\n        manifest-src 'self' ;\n    ",
+							"otherinfo": "script-src includes unsafe-eval."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-eval.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-5",
+					"alert": "CSP: script-src unsafe-inline",
+					"name": "CSP: script-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "script-src includes unsafe-inline."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "\n        default-src 'none';\n        style-src 'self' 'unsafe-inline' ;\n        script-src 'self' 'unsafe-eval' https://www.recaptcha.net https://www.gstatic.com;\n        img-src * blob: data:;\n        connect-src *;\n        font-src 'self' data: ;\n        media-src * blob: data:;\n        child-src * blob: data:;\n        worker-src 'self' blob: ;\n        frame-src * blob: data:;\n        form-action 'self' ;\n        manifest-src 'self' ;\n    ",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "45"
+				},
+				{
+					"pluginid": "10010",
+					"alertRef": "10010",
+					"alert": "Cookie No HttpOnly Flag",
+					"name": "Cookie No HttpOnly Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.css",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-114.de15abb.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-120.4a08bef.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-144.ab8b274.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-152.74e15e1.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-180.8fa6386.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-57.3307df9.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-60.b1ab995.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-76.ff504a3.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/favicon.a170a3d.ico",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+					"cweid": "1004",
+					"wascid": "13",
+					"sourceid": "54"
+				},
+				{
+					"pluginid": "10054",
+					"alertRef": "10054",
+					"alert": "Cookie with SameSite Attribute None",
+					"name": "Cookie with SameSite Attribute None",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.css",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-114.de15abb.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-120.4a08bef.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-144.ab8b274.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-152.74e15e1.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-180.8fa6386.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-57.3307df9.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-60.b1ab995.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-72.94eb05e.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-76.ff504a3.png",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/favicon.a170a3d.ico",
+							"method": "GET",
+							"param": "tchap_split_version",
+							"attack": "",
+							"evidence": "Set-Cookie: tchap_split_version",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
+					"cweid": "1275",
+					"wascid": "13",
+					"sourceid": "54"
+				},
+				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Eval",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "83"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
+					"cweid": "319",
+					"wascid": "15",
+					"sourceid": "45"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1416354905",
+							"otherinfo": "1416354905, which evaluates to: 2014-11-18 23:55:05"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1431655765",
+							"otherinfo": "1431655765, which evaluates to: 2015-05-15 02:09:25"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1444681467",
+							"otherinfo": "1444681467, which evaluates to: 2015-10-12 20:24:27"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1473231341",
+							"otherinfo": "1473231341, which evaluates to: 2016-09-07 06:55:41"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1502002290",
+							"otherinfo": "1502002290, which evaluates to: 2017-08-06 06:51:30"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1518500249",
+							"otherinfo": "1518500249, which evaluates to: 2018-02-13 05:37:29"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1530992060",
+							"otherinfo": "1530992060, which evaluates to: 2018-07-07 19:34:20"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1560198380",
+							"otherinfo": "1560198380, which evaluates to: 2019-06-10 20:26:20"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1700485571",
+							"otherinfo": "1700485571, which evaluates to: 2023-11-20 13:06:11"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1732584193",
+							"otherinfo": "1732584193, which evaluates to: 2024-11-26 01:23:13"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1732584194",
+							"otherinfo": "1732584194, which evaluates to: 2024-11-26 01:23:14"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1735328473",
+							"otherinfo": "1735328473, which evaluates to: 2024-12-27 19:41:13"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1770035416",
+							"otherinfo": "1770035416, which evaluates to: 2026-02-02 12:30:16"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1804603682",
+							"otherinfo": "1804603682, which evaluates to: 2027-03-09 14:48:02"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1839030562",
+							"otherinfo": "1839030562, which evaluates to: 2028-04-11 01:49:22"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1859775393",
+							"otherinfo": "1859775393, which evaluates to: 2028-12-07 04:16:33"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1873313359",
+							"otherinfo": "1873313359, which evaluates to: 2029-05-12 20:49:19"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1894986606",
+							"otherinfo": "1894986606, which evaluates to: 2030-01-18 17:10:06"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1926607734",
+							"otherinfo": "1926607734, which evaluates to: 2031-01-19 16:48:54"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1958414417",
+							"otherinfo": "1958414417, which evaluates to: 2032-01-22 20:00:17"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1990404162",
+							"otherinfo": "1990404162, which evaluates to: 2033-01-27 02:02:42"
+						}
+					],
+					"count": "22",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1416354905, which evaluates to: 2014-11-18 23:55:05</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "83"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/fonts/KaTeX/KaTeX_Size1-Regular",
+							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\uFFFDi7\uFFFD\uFFFD\uFFFD\uFFFDy\u048B7\uFFFD\uFFFD\\x0017\uFFFD\uFFFDV\uFFFD"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "getForwardingCurve25519KeyChain",
+							"otherinfo": "\uFFFD\uFFFDE\uFFFD\uFFFD\\x001a\uFFFD\u0627\uFFFD+\uFFFD\uFFFD\uFFFD\uFFFD_J{ \uFFFDj)"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/theme-dark.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/fonts/Inconsolata/QldKNThLqRwH-OJ1UHjlKGlX5qhExfHwNJU",
+							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\u021D\uFFFD'\uFFFD\uFFFDZ\uFFFD\uFFFD\u0415\u048DN\\x0012\uFFFDG\\x0001\uFFFD8\uFFFDT\\x001e9J\\x001aU\uFFFD\uFFFD\\x00111||\r%"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/theme-light-high-contrast.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/fonts/Inconsolata/QldKNThLqRwH-OJ1UHjlKGlX5qhExfHwNJU",
+							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\u021D\uFFFD'\uFFFD\uFFFDZ\uFFFD\uFFFD\u0415\u048DN\\x0012\uFFFDG\\x0001\uFFFD8\uFFFDT\\x001e9J\\x001aU\uFFFD\uFFFD\\x00111||\r%"
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/theme-light.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/fonts/Inconsolata/QldKNThLqRwH-OJ1UHjlKGlX5qhExfHwNJU",
+							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\u021D\uFFFD'\uFFFD\uFFFDZ\uFFFD\uFFFD\u0415\u048DN\\x0012\uFFFDG\\x0001\uFFFD8\uFFFDT\\x001e9J\\x001aU\uFFFD\uFFFD\\x00111||\r%"
+						}
+					],
+					"count": "5",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD'\uFFFD\uFFFD\uFFFDi7\uFFFD\uFFFD\uFFFD\uFFFDy\u048B7\uFFFD\uFFFD\\x0017\uFFFD\uFFFDV\uFFFD</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "54"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-12",
+					"alert": "CSP: Header & Meta",
+					"name": "CSP: Header & Meta",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>The message contained both CSP specified via header and via Meta tag. It was not possible to union these policies in order to perform an analysis. Therefore, they have been evaluated individually.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/bundles/fbb52a3fc028df27048d/bundle.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"!function(e){function t(t){for(var n,r,o=t[0],a=t[1],s=0,l=[];s<o.length;s++)r=o[s],Object.prototype.hasOwnProperty.call(i,r)&&i\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"<!-- TODO: Translate this? -->\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"!function(e){function t(t){for(var n,r,o=t[0],a=t[1],s=0,l=[];s<o.length;s++)r=o[s],Object.prototype.hasOwnProperty.call(i,r)&&i\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "83"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"bundles/fbb52a3fc028df27048d/bundle.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "1",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=0, no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/browserconfig.536ccf6.xml",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.tchap.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-114.de15abb.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-120.4a08bef.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-144.ab8b274.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-152.74e15e1.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-180.8fa6386.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-57.3307df9.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-60.b1ab995.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-72.94eb05e.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://www.tchap.gouv.fr/vector-icons/apple-touch-icon-76.ff504a3.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "45"
+				}
+			]
+		}
+	]
+}
