@@ -1,0 +1,536 @@
+{
+	"@programName": "OWASP ZAP",
+	"@version": "2.12.0",
+	"@generated": "Wed, 19 Apr 2023 13:24:44",
+	"site":[ 
+		{
+			"@name": "https://auth.agentconnect.gouv.fr",
+			"@host": "auth.agentconnect.gouv.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>font-src, form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-5",
+					"alert": "CSP: script-src unsafe-inline",
+					"name": "CSP: script-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';style-src 'self' 'unsafe-inline';script-src 'self' 'unsafe-inline';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/js/main.6d51549c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035",
+					"alert": "Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)",
+					"name": "Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) headers were found, a response with multiple HSTS header entries is not compliant with the specification (RFC 6797) and only the first HSTS header will be processed others will be ignored by user agents or the HSTS policy may be incorrectly applied.</p><p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL).</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/css/main.fb9ca1af.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/js/main.6d51549c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that only one component in your stack: code, web server, application server, load balancer, etc. is configured to set or add a HTTP Strict-Transport-Security (HSTS) header.</p>",
+					"otherinfo": "",
+					"reference": "<p>http://tools.ietf.org/html/rfc6797#section-8.1</p>",
+					"cweid": "319",
+					"wascid": "15",
+					"sourceid": "12"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Abc2b05eaac986cc2ef75b6bb4571b09dac42f6371d9976d6fa22274773483bdce7382ee1abcd436b1909d37cb5091798d7c34f643c79c4abba42202f74b76c59",
+							"otherinfo": "\uFFFD\\x0006\uFFFD\u067D9y\uFFFD\uFFFD\uFFFD\u039Csg\uFFFD\uFFFD\uFFFDm\uFFFD9\uFFFDV\uFFFD\uFFFD\u059C\uFFFDg\uFFFD\u07FD]\uFFFD\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDu\u01FB\uFFFD\u035E{V\uFFFDq\uFFFD7\uFFFD}\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD{s~\\x001f\uFFFD\uFFFD\uFFFD\uFFFD8i\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Af8a1e4f7a6c38e8794a5dcb1a600d0c813534b73829f4209b1482df3b47e550033614066ea59c8f20a3eed0844d8b74ee00b72ac14d4c8027b9bfde29ce3ff8a",
+							"otherinfo": "\uFFFD\\x0007\uFFFDkW\uFFFD\uFFFD\uFFFDs\\x001e\uFFFDxk\uFFFD\\oV\uFFFD\uFFFDGts\uFFFDw\uFFFD~\\x001b\uFFFD6\uFFFD\uFFFD6\uFFFD\uFFFD\uFFFD\uFFFD\u035Dv\uFFFD\uFFFD\uFFFDy\uFFFDM\uFFFD\uFFFD^4\uB9DA\uFFFD\uFFFD<m\\x001a\uFFFD\uFFFD\uFFFD\uFFFD8w\uFFFD\uFFFD\uFFFD\uFFFD\u047E\uFFFDi\uFFFDxw\uFFFD<\uFFFDn\uFFFD\uFFFD\uFFFD\uFFFD{o\\{w\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Af8a1e4f7a6c38e8794a5dcb1a600d0c813534b73829f4209b1482df3b47e550033614066ea59c8f20a3eed0844d8b74ee00b72ac14d4c8027b9bfde29ce3ff8a",
+							"otherinfo": "\uFFFD\\x0007\uFFFDkW\uFFFD\uFFFD\uFFFDs\\x001e\uFFFDxk\uFFFD\\oV\uFFFD\uFFFDGts\uFFFDw\uFFFD~\\x001b\uFFFD6\uFFFD\uFFFD6\uFFFD\uFFFD\uFFFD\uFFFD\u035Dv\uFFFD\uFFFD\uFFFDy\uFFFDM\uFFFD\uFFFD^4\uB9DA\uFFFD\uFFFD<m\\x001a\uFFFD\uFFFD\uFFFD\uFFFD8w\uFFFD\uFFFD\uFFFD\uFFFD\u047E\uFFFDi\uFFFDxw\uFFFD<\uFFFDn\uFFFD\uFFFD\uFFFD\uFFFD{o\\{w\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Af8a1e4f7a6c38e8794a5dcb1a600d0c813534b73829f4209b1482df3b47e550033614066ea59c8f20a3eed0844d8b74ee00b72ac14d4c8027b9bfde29ce3ff8a",
+							"otherinfo": "\uFFFD\\x0007\uFFFDkW\uFFFD\uFFFD\uFFFDs\\x001e\uFFFDxk\uFFFD\\oV\uFFFD\uFFFDGts\uFFFDw\uFFFD~\\x001b\uFFFD6\uFFFD\uFFFD6\uFFFD\uFFFD\uFFFD\uFFFD\u035Dv\uFFFD\uFFFD\uFFFDy\uFFFDM\uFFFD\uFFFD^4\uB9DA\uFFFD\uFFFD<m\\x001a\uFFFD\uFFFD\uFFFD\uFFFD8w\uFFFD\uFFFD\uFFFD\uFFFD\u047E\uFFFDi\uFFFDxw\uFFFD<\uFFFDn\uFFFD\uFFFD\uFFFD\uFFFD{o\\{w\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/css/main.fb9ca1af.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "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",
+							"otherinfo": "wOFF\\x0000\\x0001\\x0000\\x0000\\x0000\\x0000\\x0007<\\x0000\\x000b\\x0000\\x0000\\x0000\\x0000\\x000c\\x0008\\x0000\\x0001\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000GSUB\\x0000\\x0000\\x0001\\x0008\\x0000\\x0000\\x0000;\\x0000\\x0000\\x0000T \uFFFD%zOS/2\\x0000\\x0000\\x0001D\\x0000\\x0000\\x0000D\\x0000\\x0000\\x0000VC\uFFFDNucmap\\x0000\\x0000\\x0001\uFFFD\\x0000\\x0000\\x0000\uFFFD\\x0000\\x0000\\x0002\n\uFFFD\uFFFD+glyf\\x0000\\x0000\\x0002\\x0008\\x0000\\x0000\\x0002\uFFFD\\x0000\\x0000\\x0004\uFFFDo`^Vhead\\x0000\\x0000\\x0004\uFFFD\\x0000\\x0000\\x0000/\\x0000\\x0000\\x00006#\uFFFDD\uFFFDhhea\\x0000\\x0000\\x0005(\\x0000\\x0000\\x0000\\x001d\\x0000\\x0000\\x0000$\\x000e\uFFFD\\x00076hmtx\\x0000\\x0000\\x0005H\\x0000\\x0000\\x0000\\x000f\\x0000\\x0000\\x00004`\\x0000\\x0000\\x0000loca\\x0000\\x0000\\x0005X\\x0000\\x0000\\x0000\\x001c\\x0000\\x0000\\x0000\\x001c\\x0006\uFFFD\\x0007\uFFFDmaxp\\x0000\\x0000\\x0005t\\x0000\\x0000\\x0000\\x001f\\x0000\\x0000\\x0000 \\x0001\\x001b\\x0000Dname\\x0000\\x0000\\x0005\uFFFD\\x0000\\x0000\\x0001/\\x0000\\x0000\\x0002\"\uFFFD\uFFFD\uFFFD2post\\x0000\\x0000\\x0006\uFFFD\\x0000\\x0000\\x0000w\\x0000\\x0000\\x0000\u030E\uFFFDo\\x0008x\uFFFDc`d``\uFFFDb0`\uFFFDc`rq\uFFFD\ta\uFFFD\uFFFDI,\uFFFDc\uFFFDb`a\uFFFD\\x0000\uFFFD<2\uFFFD1'3=\uFFFD\uFFFD\\x0003\uFFFD\\x0003\u02B1\uFFFDi\\x000e f\uFFFD\uFFFD\\x0002\\x0000&;\\x0005H\\x0000x\uFFFDc`dOb\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD*\uFFFD:\uFFFD\uFFFD\uFFFDQ\\x000eB3_gHa\\x0012```b`ef\uFFFD\n\\x0002\uFFFD\\S\\x0018\\x000e<`x\uFFFD\u036E\uFFFD_\uFFFDa\\x0007\uFFFD\\x0006\uFFFD\r\uFFFD0#H\\x000e\\x0000\uFFFD\uFFFD\n\uFFFDx\uFFFD\uFFFD\uFFFD\r\\x00021\\x000c\uFFFD\uFFFDr\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x000c\uFFFD\\x0013S1\uFFFD79\uFFFD\\$\uFFFD\uFFFD\uFFFDg)n\uFFFD\\x0007\\x001b8\\x0003\uFFFDy\uFFFD\uFFFD\uFFFDf\uFFFD\uFFFDew\uFFFD\uFFFDp/?x\uFFFDN\uFFFD\uFFFDm\u07ED\uFFFDz\uFFFD\u0493w\uFFFD?\uFFFD\\\uFFFDr\uFFFD\u92D5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD$\\x000e*\uFFFD\uFFFD\t\uFFFD&[Q\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD8i\uFFFD8s\uFFFD8}\u0538\\x0007\uFFFDd\uFFFDj\u070D[<`~\\x0001_p\\x001e\uFFFDx\uFFFD}T\uFFFDK\\x001bQ\\x0010\uFFFD\u0677\\x001f\uFFFD\u017A5\u0276\uFFFD\\x00067\uFFFDlt\u0246\uFFFDk\uFFFD\\x0007*X<\uFFFDm\\x000f\uFFFD\\lA\u8874\\x0008\\x001eM\uFFFD\u0585\uFFFDD\u9974\uFFFDEz(-\uFFFD\\x0007\\x001ez-\uFFFD\\x0013J\uFFFD\uFFFDB\\x000f\\x0005+\\x001ek\uFFFD\uFFFD\uFFFDn\uFFFD\uFFFD\\x0018\uFFFD\uFFFD\u06DD}3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDy\\x000b\\x000c\uFFFD{\uFFFD=Pa\\x0010\uFFFD\\x00010\\x0017g\uFFFD\\x0012\\x0017d\uFFFD\\x000f\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01B0`!;\uFFFDDsfm\uFFFD`\\x0017\uFFFD?\uFFFDn\uFFFD\uFFFD^\uFFFDx\uFFFD0\uFFFD\uFFFDys\uFFFD4\uFFFDk\uFFFD/\uFFFD2:522%\uFFFD\uFFFD~\uFFFD\uFFFD\uFFFDng\uFFFD~\uFFFD<^\uFFFD#U\uFFFDu\uFFFD[\\x000f\\x001e?\uFFFD\uFFFDr\uFFFD\\x0000\\x0001\uFFFD\uFFFD\uFFFDpy\\x0016$\uFFFD\\x0000P\uFFFDA\\x001d%\uFFFDP\\x000c\u06F05[S\uFFFDz\uFFFD\uFFFD\uFFFD>sq\uFFFD\uFFFD\uFFFDtxxr\u02F3\uFFFDz\uFFFD\uFFFD\uFFFD\u00CE9\\x0000\u0581\uFFFD\\x000b\\x001a@\uFFFD@\uFFFDR\\x0008;LpZ\\x001bZ\uFFFD\uFFFD?\u0686\uFFFD\uFFFD%\uFFFDU\\\\x0014~\u0897\uFFFD\uFFFD;\uFFFD`&\uFFFD\\x001c\u06A4\uFFFD\uFFFD\uFFFDd\uFFFD\uFFFD\uFFFD\uFFFD=\uFFFD\uFFFDQ\uFFFDQ,\\x000b\\x0015\\x000f<\uFFFD\\x0001\uFFFDk\uFFFDS\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\uFFFD\n(\uFFFD0\uFFFDv$\\x000b\uFFFD\r\uFFFDy\uFFFD\\x0007\uFFFD\uFFFD\rwqAL7h\\x000f\\x00124\uFFFD8\uFFFD\\x000f\uFFFD\uFFFD\uFFFD\\x000e \\x00065R@N\uFFFDG!\uFFFD\u02C4\uFFFD&U\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0008^Y\uFFFDp\uFFFD\uFFFDc\uFFFD\uFFFD\uFFFD9G\uFFFDu\uFFFD\uFFFD\\x0003\uFFFD\uFFFD6&i3@\uFFFD\\x000c\\x0006\uFFFD$\uFFFD0\uFFFDF\uFFFD\\x000fJ[T\uFFFD\uFFFD\uFFFDT\uFFFD\uFFFDd1/;\r\uFFFD\\x001eZtK\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\y\uFFFD>\uFFFD\uFFFD4F\\x0005h\uFFFD\\x001d\uFFFDI0\uFFFD\uFFFD\uFFFD\uFFFD\"rRO\uFFFD\uFFFD.\uFFFDd,*E\uFFFDE\uFFFD\uFFFD\uFFFDs\uFFFDV6\uFFFDpS\uFFFDlJ\uFFFD\uFFFD\uFFFD\uFFFD\u0655\uFFFD\uFFFD4 \uFFFDr8\uFFFD]?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR\uFFFD_\uFFFDU\uFFFD\\x0003H\t\uFFFDB#\uFFFDo\uFFFD\uFFFD]\\x001a\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\uFFFD\\x0007\r4\\x0014\\x0011\uFFFD\uFFFD6\\x000f&&''\\x000e6\uFFFD\uFFFD\u0459\uFFFD{\uFFFD\\\u057FqT\u02DCw}\\x0008m\\x0001\uFFFD\uFFFD\\x001aET[\uFFFD\uFFFDp\uFFFD\\x0004\uFFFD?\uFFFDF.\uFFFD\uFFFD\\x000f\uFFFDC\uFFFDT\uFFFD\\x001e@[C\uFFFD\uFFFDt\uFFFD\uFFFDV\uFFFDw\n\uFFFDRagy\uFFFD\uFFFDyf\uFFFD\uFFFDw\uFFFD#\uFFFD^\uFFFD0K7\\x000c\uFFFD\u0639\uFFFDX\uFFFD\uFFFDUZZk\uFFFD\\x0007\uFFFD\uFFFD+\uFFFD\uFFFD\nQ\uFFFDFg\\x0007c\uFFFD\uFFFD/\uFFFD\uFFFD\uFFFD`\uFFFD\\x0018\uFFFDb\uFFFD]+q\uFFFDez5C\uFFFD\uFFFD\uFFFD\\x001e\uFFFD,s\u0270\uFFFD7A\uFFFD\uFFFD\uFFFDN\uFFFD24\u0370\"\uFFFD\\x0013\u0474\uFFFD\\x0006\uFFFDt\uFFFD\uFFFD\uFFFDO\uFFFD\uFFFD\uFFFD\\x001f!\uFFFD\uFFFDwc\uFFFD\uFFFD\uFFFD\uFFFDQjB5\u064D\uFFFD\\x001b\uFFFDr\uFFFD\u04F2\u06CD\uFFFDxCt\uFFFD\\x000eg\uFFFD\uFFFD\uFFFD\\x00020<Z\uFFFD\\x0000\\x0000\\x0000x\uFFFDc`d``\\x0000b\\x0005v\uFFFD\uFFFDx~\uFFFD\uFFFD\\x000c\uFFFD\\x001c\\x000c p/\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD]\\x0003\uFFFD\uFFFD``\\x0002\uFFFD\\x0002\\x0000\uFFFD\\x001a\t\uFFFD\\x0000x\uFFFDc`d``\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0002\uFFFD\\x0019\\x0018\\x0019P\\x0001/\\x00006\uFFFD\\x0002 \\x0000\\x0000\\x0000x\uFFFDc```\uFFFD \\x0011\\x0003\\x0000\t\uFFFD\\x0000a\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000@\\x0000h\\x0000\uFFFD\\x0000\uFFFD\\x0000\uFFFD\\x0000\uFFFD\\x0001&\\x0001l\\x0001\uFFFD\\x0002\\x0006\\x00026\\x0002lx\uFFFDc`d``\uFFFDe\uFFFD``a\\x0000\\x0001& \uFFFD\\x0002B\\x0006\uFFFD\uFFFD`>\\x0003\\x0000\\x000f}\\x0001`\\x0000x\uFFFDm\uFFFDKn\uFFFD0\\x0014Eo\uFFFDU\\x0005\uFFFDB\uFFFDT\uFFFD3\uFFFD\uFFFDN*\uFFFDg\uFFFD\uFFFD\\x0005\uFFFD\uFFFD\\x0001\uFFFD\\x0010\\x001c\\x0008J\uFFFD\uFFFD1Hl\uFFFD+\uFFFD\\x001a\uFFFD\uFFFD\uFFFD\uFFFD\u00EE\uFFFDK\uFFFDyb\uFFFDbK\uFFFDy\uFFFD\uFFFD\u0672\\x0001\uFFFD\uFFFD\\x0000\uFFFD\\x0008p\uFFFD\uFFFDz4p\uFFFD\uFFFD\uFFFDMR_\uFFFDE~\\x0012n\uFFFD\uFFFDg\uFFFD\\x000e\uFFFD@\uFFFD\uFFFDWL\uFFFD{x@\uFFFD\\x0013\uFFFDV}\uFFFD=\uFFFDp\\x0003wx\\x0013n\u04BF\\x000b\uFFFD\uFFFD\\x001f\uFFFDm<\uFFFDS\uFFFDC\uFFFD-\uFFFD\uFFFD\n?\uFFFD=\uFFFD\\x0004\uFFFDM\uFFFD\uFFFDA\\x001a\uFFFDb\uFFFD\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFD\\x0002+m\uFFFD\uFFFD\\x0014j\\x001c\uFFFD.n\uFFFD\\x000bm#\uFFFD7j}R\uFFFDq;q.Q\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD,3\uFFFD\uFFFDf\uFFFDc\\x0017\uFFFD+g\uFFFDa\">\uFFFDM\uFFFD\r*$\uFFFD|u\uFFFD\\x0018\\x0006\\x0005\uFFFD\uFFFD\uFFFD\u200C/\uFFFDW\uFFFD\uFFFD\uFFFD\\x0015;,m\uFFFD+\uFFFD1B\uFFFD\uFFFD\uFFFD\\x0016\uFFFD\\x0015>\\x001b\uFFFD\\x00075\\x0013\nk\uFFFD\uFFFDV8\uFFFD\uFFFD\t\uFFFDc\uFFFD\uFFFD}\\x00069i\uFFFD;\uFFFDt\uFFFDihJ\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDC\uFFFD|W\uFFFD\\x0019\uFFFD\uFFFD\u025F|\uFFFD\uFFFD\uFFFD\\x00011\uFFFD`2\\x0000x\uFFFDm\uFFFDA\\x000e\uFFFD0\\x000c\\x0004\uFFFD\uFFFDPRZ\uFFFD\uFFFD\\x001b<\uFFFD\uFFFD\uFFFD\uFFFDd%R\\x0002\uFFFD\uFFFD\\x0010\\x0007\\x0010\\x0007\uFFFD4\uFFFD15T7\uFFFD\uFFFD\uFFFDh\uFFFDA\uFFFD-v\u8C07A\uFFFD\\x0003\\x0006\uFFFD8R{\uFFFDr\uFFFDmJ1\uFFFD\\x001d\uFFFD\uFFFDQ8\u0613\uFFFD9{\uFFFD\uFFFD\uFFFD4\uFFFDz\uFFFD\u01BFP\uFFFDppQ*\uFFFD:\uFFFD\uFFFD\uFFFD\u061C\uFFFD\uFFFD\\x0015-\uFFFD9\\x0005\\x000ek-\\x001f)\uFFFD\uFFFD\t\\x0013w4\uFFFD\\x0000"
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/js/main.6d51549c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "layout-header-menu_menu__XDo7n",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\u07E1y\uFFFD^\uFFFD\u979E\uFFFD\uFFFDz{\uFFFD\uFFFDp\uFFFD\uFFFD"
+						}
+					],
+					"count": "6",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\uFFFD\\x0006\uFFFD\u067D9y\uFFFD\uFFFD\uFFFD\u039Csg\uFFFD\uFFFD\uFFFDm\uFFFD9\uFFFDV\uFFFD\uFFFD\u059C\uFFFDg\uFFFD\u07FD]\uFFFD\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDu\u01FB\uFFFD\u035E{V\uFFFDq\uFFFD7\uFFFD}\uFFFD\uFFFDw\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD{s~\\x001f\uFFFD\uFFFD\uFFFD\uFFFD8i\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFD</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/js/main.6d51549c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var e={5803:function(e,t,n){e.exports=n(3975)},1873:function(e,t,n){\"use strict\";var r=n(7968),a=n(2433),o=n(9645),i\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "1",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var e={5803:function(e,t,n){e.exports=n(3975)},1873:function(e,t,n){\"use strict\";var r=n(7968),a=n(2433),o=n(9645),i\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "17"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>\n  window.appError = {\n    code: 'Y000404',\n    id: '10528d9b-fb71-42f9-817a-9536e5fc0553',\n    message: 'Une erreur est survenue',\n  };\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>\n  window.appError = {\n    code: 'Y000404',\n    id: '7eb6aa55-329e-4ed9-b9ac-e67936c77853',\n    message: 'Une erreur est survenue',\n  };\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>\n  window.appError = {\n    code: 'Y000404',\n    id: '893907b2-74e1-4206-9d43-c4b8e245ba35',\n    message: 'Une erreur est survenue',\n  };\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>\n  window.appError = {\n    code: 'Y000404',\n    id: '66c3c4a0-eeaa-4e5b-afdb-bbd0759f35ef',\n    message: 'Une erreur est survenue',\n  };\n</script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "4",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "13"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/logo192.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
+					"instances":[ 
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/manifest.json",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/css/main.fb9ca1af.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/static/js/main.6d51549c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "12"
+				}
+			]
+		}
+	]
+}
