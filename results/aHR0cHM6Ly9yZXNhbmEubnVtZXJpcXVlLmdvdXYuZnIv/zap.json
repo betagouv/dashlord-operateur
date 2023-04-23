@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Wed, 19 Apr 2023 13:47:50",
+	"@generated": "Sun, 23 Apr 2023 01:40:00",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -768,8 +768,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1681912060",
-							"otherinfo": "1681912060, which evaluates to: 2023-04-19 13:47:40"
+							"evidence": "1682213988",
+							"otherinfo": "1682213988, which evaluates to: 2023-04-23 01:39:48"
 						}
 					],
 					"count": "7",
@@ -873,6 +873,14 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/iFrontWork/iFrontWork.js?ts=1680784371",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet."
+						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1680784374.js",
 							"method": "GET",
@@ -978,13 +986,13 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "13",
+					"count": "14",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"        if(elem[0].tagName != \"SCRIPT\" && elem[0].tagName != \"svg\" && elem[0].tagName != \"STYLE\" && elem[0].tagName != \"IFRAME\" \", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "84"
+					"sourceid": "83"
 				},
 				{
 					"pluginid": "10109",
@@ -1134,7 +1142,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10015",
@@ -1161,7 +1169,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1327,7 +1335,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "114"
+					"sourceid": "111"
 				}
 			]
 		}
