@@ -1,4 +1,4 @@
-# Nmap 7.92 scan initiated Sun Apr 23 02:19:19 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.data.gouv.fr
+# Nmap 7.92 scan initiated Sun Apr 30 02:18:52 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.data.gouv.fr
 Nmap scan report for www.data.gouv.fr (37.59.183.93)
 Host is up (0.091s latency).
 Not shown: 992 filtered tcp ports (no-response)
@@ -7,7 +7,13 @@ PORT    STATE  SERVICE        VERSION
 25/tcp  closed smtp
 80/tcp  open   http
 | fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, RPCCheck, X11Probe: 
+|   DNSStatusRequestTCP: 
+|     HTTP/1.1 400 Bad request
+|     content-length: 90
+|     cache-control: no-cache
+|     content-type: text/html
+|     connection: close
+|   DNSVersionBindReqTCP, Help, RPCCheck, SSLSessionReq, X11Probe: 
 |     HTTP/1.1 400 Bad request
 |     content-length: 90
 |     cache-control: no-cache
@@ -35,7 +41,7 @@ PORT    STATE  SERVICE        VERSION
 |   FourOhFourRequest: 
 |     HTTP/1.1 404 Not Found
 |     server: nginx
-|     date: Sun, 23 Apr 2023 02:19:49 GMT
+|     date: Sun, 30 Apr 2023 02:19:12 GMT
 |     content-type: text/html
 |     content-length: 146
 |     connection: close
@@ -49,7 +55,7 @@ PORT    STATE  SERVICE        VERSION
 |   GetRequest: 
 |     HTTP/1.1 200 OK
 |     server: nginx
-|     date: Sun, 23 Apr 2023 02:19:48 GMT
+|     date: Sun, 30 Apr 2023 02:19:11 GMT
 |     content-type: text/html
 |     content-length: 612
 |     last-modified: Thu, 12 May 2022 12:47:31 GMT
@@ -82,13 +88,13 @@ PORT    STATE  SERVICE        VERSION
 |   HTTPOptions: 
 |     HTTP/1.1 405 Not Allowed
 |     server: nginx
-|     date: Sun, 23 Apr 2023 02:19:48 GMT
+|     date: Sun, 30 Apr 2023 02:19:12 GMT
 |     content-type: text/html
-|     content-length: 166
+|     content-length: 150
 |     connection: close
 |     <html>
 |     <head><title>405 Not Allowed</title></head>
-|     <body bgcolor="white">
+|     <body>
 |     <center><h1>405 Not Allowed</h1></center>
 |     <hr><center>nginx</center>
 |     </body>
@@ -98,7 +104,7 @@ PORT    STATE  SERVICE        VERSION
 995/tcp closed pop3s
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=4/23%Time=644495BE%P=x86_64-alpine-linux-musl%r
+SF-Port80-TCP:V=7.92%I=7%D=4/30%Time=644DD019%P=x86_64-alpine-linux-musl%r
 SF:(GetRequest,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-length:\x200\r\nlo
 SF:cation:\x20https:///\r\ncache-control:\x20no-cache\r\nconnection:\x20cl
 SF:ose\r\n\r\n")%r(HTTPOptions,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-le
@@ -120,19 +126,22 @@ SF:x20request\.\n</body></html>\n")%r(DNSVersionBindReqTCP,CF,"HTTP/1\.1\x
 SF:20400\x20Bad\x20request\r\ncontent-length:\x2090\r\ncache-control:\x20n
 SF:o-cache\r\ncontent-type:\x20text/html\r\nconnection:\x20close\r\n\r\n<h
 SF:tml><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an
-SF:\x20invalid\x20request\.\n</body></html>\n")%r(DNSStatusRequestTCP,CF,"
+SF:\x20invalid\x20request\.\n</body></html>\n")%r(DNSStatusRequestTCP,75,"
 SF:HTTP/1\.1\x20400\x20Bad\x20request\r\ncontent-length:\x2090\r\ncache-co
 SF:ntrol:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnection:\x20clos
-SF:e\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x2
-SF:0sent\x20an\x20invalid\x20request\.\n</body></html>\n")%r(Help,CF,"HTTP
-SF:/1\.1\x20400\x20Bad\x20request\r\ncontent-length:\x2090\r\ncache-contro
-SF:l:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnection:\x20close\r\
-SF:n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sen
-SF:t\x20an\x20invalid\x20request\.\n</body></html>\n");
+SF:e\r\n\r\n")%r(Help,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\ncontent-le
+SF:ngth:\x2090\r\ncache-control:\x20no-cache\r\ncontent-type:\x20text/html
+SF:\r\nconnection:\x20close\r\n\r\n<html><body><h1>400\x20Bad\x20request</
+SF:h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body></ht
+SF:ml>\n")%r(SSLSessionReq,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nconte
+SF:nt-length:\x2090\r\ncache-control:\x20no-cache\r\ncontent-type:\x20text
+SF:/html\r\nconnection:\x20close\r\n\r\n<html><body><h1>400\x20Bad\x20requ
+SF:est</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body
+SF:></html>\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port443-TCP:V=7.92%T=SSL%I=7%D=4/23%Time=644495C4%P=x86_64-alpine-linux
+SF-Port443-TCP:V=7.92%T=SSL%I=7%D=4/30%Time=644DD01F%P=x86_64-alpine-linux
 SF:-musl%r(GetRequest,3A5,"HTTP/1\.1\x20200\x20OK\r\nserver:\x20nginx\r\nd
-SF:ate:\x20Sun,\x2023\x20Apr\x202023\x2002:19:48\x20GMT\r\ncontent-type:\x
+SF:ate:\x20Sun,\x2030\x20Apr\x202023\x2002:19:11\x20GMT\r\ncontent-type:\x
 SF:20text/html\r\ncontent-length:\x20612\r\nlast-modified:\x20Thu,\x2012\x
 SF:20May\x202022\x2012:47:31\x20GMT\r\netag:\x20\"627d01e3-264\"\r\nx-cont
 SF:ent-type-options:\x20nosniff\r\nx-xss-protection:\x201;\x20mode=block\r
@@ -149,19 +158,19 @@ SF:20required\.</p>\n\n<p>For\x20online\x20documentation\x20and\x20support
 SF:\x20please\x20refer\x20to\n<a\x20href=\"http://nginx\.org/\">nginx\.org
 SF:</a>\.<br/>\nCommercial\x20support\x20is\x20available\x20at\n<a\x20href
 SF:=\"http://nginx\.com/\">nginx\.com</a>\.</p>\n\n<p><em>Thank\x20you\x20
-SF:for\x20using")%r(HTTPOptions,137,"HTTP/1\.1\x20405\x20Not\x20Allowed\r\
-SF:nserver:\x20nginx\r\ndate:\x20Sun,\x2023\x20Apr\x202023\x2002:19:48\x20
-SF:GMT\r\ncontent-type:\x20text/html\r\ncontent-length:\x20166\r\nconnecti
+SF:for\x20using")%r(HTTPOptions,127,"HTTP/1\.1\x20405\x20Not\x20Allowed\r\
+SF:nserver:\x20nginx\r\ndate:\x20Sun,\x2030\x20Apr\x202023\x2002:19:12\x20
+SF:GMT\r\ncontent-type:\x20text/html\r\ncontent-length:\x20150\r\nconnecti
 SF:on:\x20close\r\n\r\n<html>\r\n<head><title>405\x20Not\x20Allowed</title
-SF:></head>\r\n<body\x20bgcolor=\"white\">\r\n<center><h1>405\x20Not\x20Al
-SF:lowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>
-SF:\r\n")%r(FourOhFourRequest,121,"HTTP/1\.1\x20404\x20Not\x20Found\r\nser
-SF:ver:\x20nginx\r\ndate:\x20Sun,\x2023\x20Apr\x202023\x2002:19:49\x20GMT\
-SF:r\ncontent-type:\x20text/html\r\ncontent-length:\x20146\r\nconnection:\
-SF:x20close\r\n\r\n<html>\r\n<head><title>404\x20Not\x20Found</title></hea
-SF:d>\r\n<body>\r\n<center><h1>404\x20Not\x20Found</h1></center>\r\n<hr><c
-SF:enter>nginx</center>\r\n</body>\r\n</html>\r\n");
+SF:></head>\r\n<body>\r\n<center><h1>405\x20Not\x20Allowed</h1></center>\r
+SF:\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n")%r(FourOhFourRe
+SF:quest,121,"HTTP/1\.1\x20404\x20Not\x20Found\r\nserver:\x20nginx\r\ndate
+SF::\x20Sun,\x2030\x20Apr\x202023\x2002:19:12\x20GMT\r\ncontent-type:\x20t
+SF:ext/html\r\ncontent-length:\x20146\r\nconnection:\x20close\r\n\r\n<html
+SF:>\r\n<head><title>404\x20Not\x20Found</title></head>\r\n<body>\r\n<cent
+SF:er><h1>404\x20Not\x20Found</h1></center>\r\n<hr><center>nginx</center>\
+SF:r\n</body>\r\n</html>\r\n");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Apr 23 02:19:58 2023 -- 1 IP address (1 host up) scanned in 38.82 seconds
+# Nmap done at Sun Apr 30 02:19:21 2023 -- 1 IP address (1 host up) scanned in 29.24 seconds
