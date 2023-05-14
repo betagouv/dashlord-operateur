@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 7 May 2023 01:59:39",
+	"@generated": "Sun, 14 May 2023 01:52:07",
 	"site":[ 
 		{
 			"@name": "https://www.hubee.numerique.gouv.fr",
@@ -28,6 +28,14 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/a-propos",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/comment-utiliser-hubee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -44,7 +52,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, prefetch-src, form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -71,6 +79,14 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/a-propos",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/comment-utiliser-hubee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -87,7 +103,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -114,6 +130,14 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/a-propos",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/comment-utiliser-hubee",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -130,7 +154,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -169,7 +193,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link href=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/css/hubee-2b5841.webflow.7fe6b0a59.min.css\" rel=\"stylesheet\" type=\"text/css\"/>",
+							"evidence": "<link href=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/css/hubee-2b5841.webflow.4956a3237.min.css\" rel=\"stylesheet\" type=\"text/css\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -185,7 +209,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js\" type=\"text/javascript\"></script>",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						},
 						{
@@ -209,7 +233,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link href=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/css/hubee-2b5841.webflow.7fe6b0a59.min.css\" rel=\"stylesheet\" type=\"text/css\"/>",
+							"evidence": "<link href=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/css/hubee-2b5841.webflow.4956a3237.min.css\" rel=\"stylesheet\" type=\"text/css\"/>",
 							"otherinfo": ""
 						},
 						{
@@ -225,7 +249,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js\" type=\"text/javascript\"></script>",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						}
 					],
@@ -235,7 +259,7 @@
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10017",
@@ -250,14 +274,6 @@
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
-							"param": "//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js",
-							"attack": "",
-							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/",
-							"method": "GET",
 							"param": "https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js",
 							"attack": "",
 							"evidence": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js\" type=\"text/javascript\"></script>",
@@ -266,17 +282,25 @@
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
-							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js",
+							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js",
 							"attack": "",
-							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js\" type=\"text/javascript\"></script>",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/comment-utiliser-hubee",
+							"uri": "https://www.hubee.numerique.gouv.fr/a-propos",
 							"method": "GET",
-							"param": "//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js",
+							"param": "https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js",
 							"attack": "",
-							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js\"></script>",
+							"evidence": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js\" type=\"text/javascript\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/a-propos",
+							"method": "GET",
+							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js",
+							"attack": "",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						},
 						{
@@ -290,17 +314,9 @@
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/comment-utiliser-hubee",
 							"method": "GET",
-							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js",
+							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js",
 							"attack": "",
-							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js\" type=\"text/javascript\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js",
-							"attack": "",
-							"evidence": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js\"></script>",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						},
 						{
@@ -314,13 +330,29 @@
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js",
+							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js",
 							"attack": "",
-							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.7de91f890.js\" type=\"text/javascript\"></script>",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/users/admin?pageNumber=0&pageSize=10",
+							"method": "GET",
+							"param": "https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js\" type=\"text/javascript\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/users/admin?pageNumber=0&pageSize=10",
+							"method": "GET",
+							"param": "https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js",
+							"attack": "",
+							"evidence": "<script src=\"https://global-uploads.webflow.com/62987c69557994988d440d3c/js/webflow.f32cf4b20.js\" type=\"text/javascript\"></script>",
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "10",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
@@ -500,7 +532,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10021",
@@ -725,7 +757,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -760,7 +792,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "15"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10015",
@@ -835,7 +867,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10050",
@@ -910,7 +942,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
