@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 14 May 2023 01:36:54",
+	"@generated": "Sun, 21 May 2023 01:41:01",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -84,6 +84,38 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						},
 						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
 							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
 							"method": "POST",
 							"param": "",
@@ -116,7 +148,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						}
 					],
-					"count": "12",
+					"count": "16",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
@@ -266,7 +298,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1682671932.js",
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1683884944.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -274,7 +306,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1682671932.js",
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1683884944.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -720,61 +752,77 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671919",
-							"otherinfo": "1682671919, which evaluates to: 2023-04-28 08:51:59"
+							"evidence": "1683884926",
+							"otherinfo": "1683884926, which evaluates to: 2023-05-12 09:48:46"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671921",
-							"otherinfo": "1682671921, which evaluates to: 2023-04-28 08:52:01"
+							"evidence": "1683884928",
+							"otherinfo": "1683884928, which evaluates to: 2023-05-12 09:48:48"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671929",
-							"otherinfo": "1682671929, which evaluates to: 2023-04-28 08:52:09"
+							"evidence": "1683884940",
+							"otherinfo": "1683884940, which evaluates to: 2023-05-12 09:49:00"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671930",
-							"otherinfo": "1682671930, which evaluates to: 2023-04-28 08:52:10"
+							"evidence": "1683884941",
+							"otherinfo": "1683884941, which evaluates to: 2023-05-12 09:49:01"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671931",
-							"otherinfo": "1682671931, which evaluates to: 2023-04-28 08:52:11"
+							"evidence": "1683884942",
+							"otherinfo": "1683884942, which evaluates to: 2023-05-12 09:49:02"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1682671932",
-							"otherinfo": "1682671932, which evaluates to: 2023-04-28 08:52:12"
+							"evidence": "1683884943",
+							"otherinfo": "1683884943, which evaluates to: 2023-05-12 09:49:03"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1684028205",
-							"otherinfo": "1684028205, which evaluates to: 2023-05-14 01:36:45"
+							"evidence": "1683884944",
+							"otherinfo": "1683884944, which evaluates to: 2023-05-12 09:49:04"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1683884947",
+							"otherinfo": "1683884947, which evaluates to: 2023-05-12 09:49:07"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1684633252",
+							"otherinfo": "1684633252, which evaluates to: 2023-05-21 01:40:52"
 						}
 					],
-					"count": "7",
+					"count": "9",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1682671919, which evaluates to: 2023-04-28 08:51:59</p>",
+					"otherinfo": "<p>1683884926, which evaluates to: 2023-05-12 09:48:46</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -807,7 +855,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_authentification.js?ts=1682671931",
+							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_authentification.js?ts=1683884943",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -873,14 +921,6 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/iFrontWork/iFrontWork.js?ts=1682671929",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet."
-						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
 							"method": "GET",
@@ -978,13 +1018,13 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bDB\\b and was detected 2 times, the first in the element starting with: \"!function(a,b){\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.docu\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "84"
+					"sourceid": "81"
 				},
 				{
 					"pluginid": "10109",
@@ -1161,7 +1201,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1279,55 +1319,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur\r\n\r\nappears to include user input in: \r\n\r\na(n) [p] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\nsso_force=true\r\n\r\nThe user-controlled value was:\r\ntrue"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
-							"method": "POST",
-							"param": "inscription_spontane",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [div] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
-							"method": "POST",
-							"param": "inscription_spontane",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [aria-required] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
-							"method": "POST",
-							"param": "inscription_spontane",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [readonly] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
-							"method": "POST",
-							"param": "inscription_spontane",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [input] tag [value] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
-							"method": "POST",
-							"param": "inscription_spontane",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\r\n\r\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\r\n\r\nappears to include user input in: \r\n\r\na(n) [p] tag [aria-hidden] attribute \r\n\r\nThe user input found was:\r\ninscription_spontane=true\r\n\r\nThe user-controlled value was:\r\ntrue"
 						}
 					],
-					"count": "12",
+					"count": "7",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://resana.numerique.gouv.fr/public/utilisateur</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>mail_inscription=ZAP</p><p></p><p>The user-controlled value was:</p><p>zap</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "112"
+					"sourceid": "110"
 				}
 			]
 		}
