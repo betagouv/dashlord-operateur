@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 4 Jun 2023 01:57:49",
+	"@generated": "Sun, 11 Jun 2023 01:49:11",
 	"site":[ 
 		{
 			"@name": "https://moncomptepro.beta.gouv.fr",
@@ -367,6 +367,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected 8 times, the first in the element starting with: \"    debug: new LogLevel(1, '#000091', '#8B8BFF'),\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://moncomptepro.beta.gouv.fr/assets/dsfr.nomodule.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
 							"evidence": "from",
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 8 times, the first in the element starting with: \"   * Copy properties from multiple sources including accessors.\", see evidence field for the suspicious comment/snippet."
 						},
@@ -387,7 +395,7 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected 3 times, the first in the element starting with: \"  // TODO : emit ascendant et descendant de changement ?\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bDB\\b and was detected in the element starting with: \"    doc: 'https://gouvfr.atlassian.net/wiki/spaces/DB/pages/222789846/En-t+te+-+Header'\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
