@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 18 Jun 2023 02:12:21",
+	"@generated": "Sun, 25 Jun 2023 02:18:55",
 	"site":[ 
 		{
 			"@name": "https://www.demarches-simplifiees.fr",
@@ -200,6 +200,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/super_admins/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/contact",
 							"method": "POST",
 							"param": "",
@@ -208,13 +216,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "12"
+					"sourceid": "11"
 				},
 				{
 					"pluginid": "90022",
@@ -241,7 +249,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "90"
+					"sourceid": "93"
 				},
 				{
 					"pluginid": "10055",
@@ -311,7 +319,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "94"
+					"sourceid": "95"
 				},
 				{
 					"pluginid": "10011",
@@ -372,6 +380,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/stats",
+							"method": "GET",
+							"param": "_csrf_token",
+							"attack": "",
+							"evidence": "set-cookie: _csrf_token",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/stats",
+							"method": "GET",
+							"param": "_DS_session",
+							"attack": "",
+							"evidence": "set-cookie: _DS_session",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/suivi",
 							"method": "GET",
 							"param": "_csrf_token",
@@ -404,7 +428,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "12",
 					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
@@ -445,7 +469,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "43"
+					"sourceid": "48"
 				},
 				{
 					"pluginid": "10063",
@@ -474,7 +498,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/mentions-legales",
+							"uri": "https://www.demarches-simplifiees.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -506,7 +530,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/suivi",
+							"uri": "https://www.demarches-simplifiees.fr/super_admins/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -552,7 +576,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "14"
 				},
 				{
 					"pluginid": "10096",
@@ -715,7 +739,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "79"
+					"sourceid": "77"
 				},
 				{
 					"pluginid": "10021",
@@ -728,7 +752,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.demarches-simplifiees.fr/assets/application-8c7a8cfb833896d68fcc13180e6b1532ae9ab4a06ddceb8e81be6cc6860ead7a.css",
+							"uri": "https://www.demarches-simplifiees.fr/assets/application-46e602376d748c13e37b4bab7f4e77637eb024d4dabd21bc31dcdfbf86d9484f.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -753,6 +777,14 @@
 						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/assets/favicons/96x96-88550c65e56babaaf4987b947f3b65011055baeeb694cbd6a769a31f531f7028.png",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/assets/landing/hero/dematerialiser-19cbb6f65e811f80da1781fc2b2f8b8a79624e28fe662647da1983f98f01b31b.svg",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -808,14 +840,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/main-a7e1b354.css",
-							"method": "GET",
-							"param": "X-Content-Type-Options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://www.demarches-simplifiees.fr/vite/assets/polyfills-1534b245-legacy.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
@@ -830,7 +854,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "48"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10094",
@@ -851,7 +875,7 @@
 							"otherinfo": "~\uFFFD\u06B2\u01ED\uFFFD\uFFFD\\x001a\uFFFD&\uFFFD\uFFFD\uFFFDz\\x000b\uFFFDj\uFFFD\uFFFD{\uFFFD{w\uFFFD\\x001aw\u07BB\uFFFD\uFFFD]\uFFFD\uFFFDw\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD^\uFFFD\u07CD\\x001fi\uFFFDxq\uFFFD7\uFFFD\uFFFD|\uFFFDx\uFFFD\uFFFD]\uFFFD6}"
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/assets/application-8c7a8cfb833896d68fcc13180e6b1532ae9ab4a06ddceb8e81be6cc6860ead7a.css",
+							"uri": "https://www.demarches-simplifiees.fr/assets/application-46e602376d748c13e37b4bab7f4e77637eb024d4dabd21bc31dcdfbf86d9484f.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -881,14 +905,6 @@
 							"attack": "",
 							"evidence": "fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32",
 							"otherinfo": "~\uFFFD\u06B2\u01ED\uFFFD\uFFFD\\x001a\uFFFD&\uFFFD\uFFFD\uFFFDz\\x000b\uFFFDj\uFFFD\uFFFD{\uFFFD{w\uFFFD\\x001aw\u07BB\uFFFD\uFFFD]\uFFFD\uFFFDw\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD^\uFFFD\u07CD\\x001fi\uFFFDxq\uFFFD7\uFFFD\uFFFD|\uFFFDx\uFFFD\uFFFD]\uFFFD6}"
-						},
-						{
-							"uri": "https://www.demarches-simplifiees.fr/france_connect/particulier",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "2BaA2lMn4Aad5OO6DZftALNllOgHXRnUWvO",
-							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFDS'\uFFFD\\x0006\uFFFD\uFFFD\uFFFD\r\uFFFD\uFFFD\\x0000\uFFFDe\uFFFD\uFFFD\\x0007]\\x0019\uFFFDZ\uFFFD"
 						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/mentions-legales",
@@ -929,6 +945,14 @@
 							"attack": "",
 							"evidence": "/vite/assets/Marianne-Light-7b92c55f",
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDl\uFFFD\u01AB\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\\x001b~\uFFFDvs\uFFFD_"
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-8cb48de1.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "assets/ComboAdresseSearch-44c08a19",
+							"otherinfo": "j\uFFFD\\x001e\uFFFD\uFFFD\u00A2f\uFFFD\\x0001\uFFFD\u07B2\u01D2y\uFFFD\u0707\uFFFD8sO\\x001a\uFFFD"
 						}
 					],
 					"count": "11",
@@ -937,7 +961,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "14"
 				},
 				{
 					"pluginid": "10024",
@@ -964,7 +988,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "118"
+					"sourceid": "104"
 				},
 				{
 					"pluginid": "10027",
@@ -1119,14 +1143,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/administration",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=0, private, must-revalidate",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.demarches-simplifiees.fr/agent_connect",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1191,6 +1207,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/users/password/reset-link-sent?email=foo-bar%40example.com",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=0, private, must-revalidate",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/users/sign_in",
 							"method": "GET",
 							"param": "Cache-Control",
@@ -1218,7 +1242,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.demarches-simplifiees.fr/assets/application-8c7a8cfb833896d68fcc13180e6b1532ae9ab4a06ddceb8e81be6cc6860ead7a.css",
+							"uri": "https://www.demarches-simplifiees.fr/assets/application-46e602376d748c13e37b4bab7f4e77637eb024d4dabd21bc31dcdfbf86d9484f.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1282,15 +1306,15 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/application-02eec4d1.js",
+							"uri": "https://www.demarches-simplifiees.fr/super_admins/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "max-age=315360000",
-							"otherinfo": ""
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/application-7dcd5ea8-legacy.js",
+							"uri": "https://www.demarches-simplifiees.fr/vite/assets/application-02eec4d1.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1304,7 +1328,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "48"
+					"sourceid": "49"
 				}
 			]
 		}
