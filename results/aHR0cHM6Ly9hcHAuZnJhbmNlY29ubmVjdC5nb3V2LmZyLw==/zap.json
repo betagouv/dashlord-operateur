@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.12.0",
-	"@generated": "Sun, 25 Jun 2023 02:42:36",
+	"@generated": "Sun, 2 Jul 2023 02:38:56",
 	"site":[ 
 		{
 			"@name": "https://app.franceconnect.gouv.fr",
@@ -69,7 +69,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -88,15 +88,23 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/cgu",
+							"method": "GET",
+							"param": "X-Frame-Options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -147,7 +155,7 @@
 					"reference": "<p>https://developer.mozilla.org/en/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10003",
@@ -236,7 +244,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10017",
@@ -287,7 +295,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -314,7 +322,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "28"
+					"sourceid": "29"
 				},
 				{
 					"pluginid": "10063",
@@ -466,7 +474,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=716e3e03c3471769158bc6ac69883c7d9e02068b",
+							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=4f22d52750f0ee9a7f1c597c5afc2b6651d2c2ad",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -576,7 +584,23 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://app.franceconnect.gouv.fr/js/jquery-3.6.0.min.js",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/stylesheets/bootstrap/3.2.0/css/bootstrap.min.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -600,7 +624,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=716e3e03c3471769158bc6ac69883c7d9e02068b",
+							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=4f22d52750f0ee9a7f1c597c5afc2b6651d2c2ad",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -616,13 +640,13 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
-					"count": "11",
+					"count": "13",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -639,21 +663,21 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AZ4uEm8dx6o-_BxCm7uj5cX459-NvB9ra",
-							"otherinfo": "\uFFFD\\x0006x\uFFFDI\uFFFDw\\x001e\uFFFD\uFFFD\uFFFDq\nn\uE3D7\\x0017\uFFFD~6\uFFFD}\uFFFD"
+							"evidence": "3AQzgev2e6U9bzSMx4eh0RdFVCG6LI3rWi",
+							"otherinfo": "\uFFFD\\x00043\uFFFD\uFFFD\uFFFD{\uFFFD=o4\uFFFD\u01C7\uFFFD\uFFFD\\x0017ET!\uFFFD,\uFFFD\uFFFDZ"
 						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3Ax8TVHK_ND1JLS9kJkRZW_bEM8posCIkI",
-							"otherinfo": "\uFFFD\\x000c|MQ\uFFFD\uFFFD\uFFFD\uFFFD$\uFFFD\uFFFD\uFFFD\uFFFD\\x0011eo\uFFFD\\x0010\uFFFD)\uFFFD\uFFFD\uFFFD\uFFFD"
+							"evidence": "3AtzuFJFJOdEhXDwwA1xB99TWzhQdFaG_d",
+							"otherinfo": "\uFFFD\\x000bs\uFFFDRE$\uFFFDD\uFFFDp\uFFFD\uFFFD\rq\\x0007\uFFFDS[8PtV\uFFFD\uFFFD"
 						}
 					],
 					"count": "2",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0006x\uFFFDI\uFFFDw\\x001e\uFFFD\uFFFD\uFFFDq</p><p>n\uE3D7\\x0017\uFFFD~6\uFFFD}\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x00043\uFFFD\uFFFD\uFFFD{\uFFFD=o4\uFFFD\u01C7\uFFFD\uFFFD\\x0017ET!\uFFFD,\uFFFD\uFFFDZ</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -727,7 +751,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -855,7 +879,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=716e3e03c3471769158bc6ac69883c7d9e02068b",
+							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=4f22d52750f0ee9a7f1c597c5afc2b6651d2c2ad",
 							"method": "GET",
 							"param": "",
 							"attack": "",
