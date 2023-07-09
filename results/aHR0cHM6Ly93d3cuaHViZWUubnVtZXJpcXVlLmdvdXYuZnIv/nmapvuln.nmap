@@ -1,12 +1,224 @@
-# Nmap 7.92 scan initiated Sun Jul  2 02:26:00 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.hubee.numerique.gouv.fr
-Nmap scan report for www.hubee.numerique.gouv.fr (52.206.163.162)
-Host is up (0.0023s latency).
-Other addresses for www.hubee.numerique.gouv.fr (not scanned): 3.233.126.24 34.234.52.18
-rDNS record for 52.206.163.162: ec2-52-206-163-162.compute-1.amazonaws.com
+# Nmap 7.92 scan initiated Sun Jul  9 02:41:53 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.hubee.numerique.gouv.fr
+Nmap scan report for www.hubee.numerique.gouv.fr (185.179.149.112)
+Host is up (0.15s latency).
 Not shown: 998 filtered tcp ports (no-response)
-PORT    STATE SERVICE    VERSION
-80/tcp  open  tcpwrapped
-443/tcp open  tcpwrapped
+PORT    STATE SERVICE   VERSION
+80/tcp  open  http
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 301 Moved Permanently
+|     Date: Sun, 09 Jul 2023 02:42:11 GMT
+|     Content-Type: text/html
+|     Content-Length: 166
+|     Connection: close
+|     Location: https://hubee.numerique.gouv.fr/nice%20ports%2C/Tri%6Eity.txt%2ebak
+|     <html>
+|     <head><title>301 Moved Permanently</title></head>
+|     <body>
+|     <center><h1>301 Moved Permanently</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 301 Moved Permanently
+|     Date: Sun, 09 Jul 2023 02:42:10 GMT
+|     Content-Type: text/html
+|     Content-Length: 166
+|     Connection: close
+|     Location: https://hubee.numerique.gouv.fr/
+|     <html>
+|     <head><title>301 Moved Permanently</title></head>
+|     <body>
+|     <center><h1>301 Moved Permanently</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   RPCCheck: 
+|     HTTP/1.1 400 Bad Request
+|     Date: Sun, 09 Jul 2023 02:42:17 GMT
+|     Content-Type: text/html
+|     Content-Length: 154
+|     Connection: close
+|     <html>
+|     <head><title>400 Bad Request</title></head>
+|     <body>
+|     <center><h1>400 Bad Request</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   RTSPRequest: 
+|     <html>
+|     <head><title>400 Bad Request</title></head>
+|     <body>
+|     <center><h1>400 Bad Request</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   X11Probe: 
+|     HTTP/1.1 400 Bad Request
+|     Date: Sun, 09 Jul 2023 02:42:11 GMT
+|     Content-Type: text/html
+|     Content-Length: 154
+|     Connection: close
+|     <html>
+|     <head><title>400 Bad Request</title></head>
+|     <body>
+|     <center><h1>400 Bad Request</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|_    </html>
+443/tcp open  ssl/https
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 404 Not Found
+|     Date: Sun, 09 Jul 2023 02:42:18 GMT
+|     Content-Type: text/html
+|     Content-Length: 168
+|     Connection: close
+|     ETag: "6401c0bc-a8"
+|     X-Varnish: 3243582
+|     Age: 0
+|     Via: 1.1 varnish (Varnish/6.0)
+|     Strict-Transport-Security: max-age=63072000
+|     X-Frame-Options: DENY
+|     X-Content-Type-Options: nosniff
+|     Referrer-Policy: origin-when-cross-origin
+|     X-XSS-Protection: 1; mode=block
+|     <html>
+|     <head>
+|     <title>404 Not Found</title>
+|     </head>
+|     <body>
+|     <center><h1>404 Not Found</h1></center>
+|     <center>Hubee</center>
+|     </body>
+|     </html>
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Date: Sun, 09 Jul 2023 02:42:17 GMT
+|     Content-Type: text/html
+|     Content-Length: 26009
+|     Connection: close
+|     Last-Modified: Thu, 11 May 2023 10:17:52 GMT
+|     ETag: "645cc0d0-6599"
+|     Accept-Ranges: bytes
+|     X-Varnish: 6519593
+|     Age: 0
+|     Via: 1.1 varnish (Varnish/6.0)
+|     Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+|     X-Frame-Options: DENY
+|     X-Content-Type-Options: nosniff
+|     Referrer-Policy: origin-when-cross-origin
+|     X-XSS-Protection: 1; mode=block
+|     <!DOCTYPE html><html lang="fr" style="--eq-body-width: 1176"><head>
+|     <meta charset="utf-8">
+|     <title>Portail HubEE Hub d'
+|     change de l'
+|     tat</title>
+|     <base href="./">
+|     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+|     <meta http-equiv="Content-Language" content="fr">
+|     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+|     <meta name="viewport" content="width=device-width,
+|   HTTPOptions: 
+|     HTTP/1.1 405 Not Allowed
+|     Date: Sun, 09 Jul 2023 02:42:17 GMT
+|     Content-Type: text/html
+|     Content-Length: 150
+|     Connection: close
+|     X-Varnish: 5678354
+|     Age: 0
+|     Via: 1.1 varnish (Varnish/6.0)
+|     Strict-Transport-Security: max-age=63072000
+|     X-Frame-Options: DENY
+|     X-Content-Type-Options: nosniff
+|     Referrer-Policy: origin-when-cross-origin
+|     X-XSS-Protection: 1; mode=block
+|     <html>
+|     <head><title>405 Not Allowed</title></head>
+|     <body>
+|     <center><h1>405 Not Allowed</h1></center>
+|     <hr><center>nginx</center>
+|     </body>
+|_    </html>
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.92%I=7%D=7/9%Time=64AA1E82%P=x86_64-alpine-linux-musl%r(
+SF:GetRequest,15A,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nDate:\x20Su
+SF:n,\x2009\x20Jul\x202023\x2002:42:10\x20GMT\r\nContent-Type:\x20text/htm
+SF:l\r\nContent-Length:\x20166\r\nConnection:\x20close\r\nLocation:\x20htt
+SF:ps://hubee\.numerique\.gouv\.fr/\r\n\r\n<html>\r\n<head><title>301\x20M
+SF:oved\x20Permanently</title></head>\r\n<body>\r\n<center><h1>301\x20Move
+SF:d\x20Permanently</h1></center>\r\n<hr><center>openresty</center>\r\n</b
+SF:ody>\r\n</html>\r\n")%r(HTTPOptions,15A,"HTTP/1\.1\x20301\x20Moved\x20P
+SF:ermanently\r\nDate:\x20Sun,\x2009\x20Jul\x202023\x2002:42:10\x20GMT\r\n
+SF:Content-Type:\x20text/html\r\nContent-Length:\x20166\r\nConnection:\x20
+SF:close\r\nLocation:\x20https://hubee\.numerique\.gouv\.fr/\r\n\r\n<html>
+SF:\r\n<head><title>301\x20Moved\x20Permanently</title></head>\r\n<body>\r
+SF:\n<center><h1>301\x20Moved\x20Permanently</h1></center>\r\n<hr><center>
+SF:openresty</center>\r\n</body>\r\n</html>\r\n")%r(RTSPRequest,9A,"<html>
+SF:\r\n<head><title>400\x20Bad\x20Request</title></head>\r\n<body>\r\n<cen
+SF:ter><h1>400\x20Bad\x20Request</h1></center>\r\n<hr><center>openresty</c
+SF:enter>\r\n</body>\r\n</html>\r\n")%r(X11Probe,11C,"HTTP/1\.1\x20400\x20
+SF:Bad\x20Request\r\nDate:\x20Sun,\x2009\x20Jul\x202023\x2002:42:11\x20GMT
+SF:\r\nContent-Type:\x20text/html\r\nContent-Length:\x20154\r\nConnection:
+SF:\x20close\r\n\r\n<html>\r\n<head><title>400\x20Bad\x20Request</title></
+SF:head>\r\n<body>\r\n<center><h1>400\x20Bad\x20Request</h1></center>\r\n<
+SF:hr><center>openresty</center>\r\n</body>\r\n</html>\r\n")%r(FourOhFourR
+SF:equest,17D,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nDate:\x20Sun,\x
+SF:2009\x20Jul\x202023\x2002:42:11\x20GMT\r\nContent-Type:\x20text/html\r\
+SF:nContent-Length:\x20166\r\nConnection:\x20close\r\nLocation:\x20https:/
+SF:/hubee\.numerique\.gouv\.fr/nice%20ports%2C/Tri%6Eity\.txt%2ebak\r\n\r\
+SF:n<html>\r\n<head><title>301\x20Moved\x20Permanently</title></head>\r\n<
+SF:body>\r\n<center><h1>301\x20Moved\x20Permanently</h1></center>\r\n<hr><
+SF:center>openresty</center>\r\n</body>\r\n</html>\r\n")%r(RPCCheck,11C,"H
+SF:TTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Sun,\x2009\x20Jul\x202023
+SF:\x2002:42:17\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x2
+SF:0154\r\nConnection:\x20close\r\n\r\n<html>\r\n<head><title>400\x20Bad\x
+SF:20Request</title></head>\r\n<body>\r\n<center><h1>400\x20Bad\x20Request
+SF:</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\
+SF:r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.92%T=SSL%I=7%D=7/9%Time=64AA1E89%P=x86_64-alpine-linux-
+SF:musl%r(GetRequest,36B0,"HTTP/1\.1\x20200\x20OK\r\nDate:\x20Sun,\x2009\x
+SF:20Jul\x202023\x2002:42:17\x20GMT\r\nContent-Type:\x20text/html\r\nConte
+SF:nt-Length:\x2026009\r\nConnection:\x20close\r\nLast-Modified:\x20Thu,\x
+SF:2011\x20May\x202023\x2010:17:52\x20GMT\r\nETag:\x20\"645cc0d0-6599\"\r\
+SF:nAccept-Ranges:\x20bytes\r\nX-Varnish:\x206519593\r\nAge:\x200\r\nVia:\
+SF:x201\.1\x20varnish\x20\(Varnish/6\.0\)\r\nStrict-Transport-Security:\x2
+SF:0max-age=63072000;\x20includeSubDomains;\x20preload\r\nX-Frame-Options:
+SF:\x20DENY\r\nX-Content-Type-Options:\x20nosniff\r\nReferrer-Policy:\x20o
+SF:rigin-when-cross-origin\r\nX-XSS-Protection:\x201;\x20mode=block\r\n\r\
+SF:n<!DOCTYPE\x20html><html\x20lang=\"fr\"\x20style=\"--eq-body-width:\x20
+SF:1176\"><head>\n\x20\x20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\x2
+SF:0\x20<title>Portail\x20HubEE\x20Hub\x20d'\xc3\xa9change\x20de\x20l'\xc3
+SF:\xa9tat</title>\n\x20\x20\x20\x20<base\x20href=\"\./\">\n\x20\x20\x20\x
+SF:20<meta\x20http-equiv=\"X-UA-Compatible\"\x20content=\"IE=EmulateIE11\"
+SF:>\n\x20\x20\x20\x20<meta\x20http-equiv=\"Content-Language\"\x20content=
+SF:\"fr\">\n\x20\x20\x20\x20<meta\x20http-equiv=\"Content-Type\"\x20conten
+SF:t=\"text/html;\x20charset=utf-8\">\n\x20\x20\x20\x20<meta\x20name=\"vie
+SF:wport\"\x20content=\"width=device-width,\x20")%r(HTTPOptions,205,"HTTP/
+SF:1\.1\x20405\x20Not\x20Allowed\r\nDate:\x20Sun,\x2009\x20Jul\x202023\x20
+SF:02:42:17\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x20150
+SF:\r\nConnection:\x20close\r\nX-Varnish:\x205678354\r\nAge:\x200\r\nVia:\
+SF:x201\.1\x20varnish\x20\(Varnish/6\.0\)\r\nStrict-Transport-Security:\x2
+SF:0max-age=63072000\r\nX-Frame-Options:\x20DENY\r\nX-Content-Type-Options
+SF::\x20nosniff\r\nReferrer-Policy:\x20origin-when-cross-origin\r\nX-XSS-P
+SF:rotection:\x201;\x20mode=block\r\n\r\n<html>\r\n<head><title>405\x20Not
+SF:\x20Allowed</title></head>\r\n<body>\r\n<center><h1>405\x20Not\x20Allow
+SF:ed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\
+SF:n")%r(FourOhFourRequest,22A,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\
+SF:x20Sun,\x2009\x20Jul\x202023\x2002:42:18\x20GMT\r\nContent-Type:\x20tex
+SF:t/html\r\nContent-Length:\x20168\r\nConnection:\x20close\r\nETag:\x20\"
+SF:6401c0bc-a8\"\r\nX-Varnish:\x203243582\r\nAge:\x200\r\nVia:\x201\.1\x20
+SF:varnish\x20\(Varnish/6\.0\)\r\nStrict-Transport-Security:\x20max-age=63
+SF:072000\r\nX-Frame-Options:\x20DENY\r\nX-Content-Type-Options:\x20nosnif
+SF:f\r\nReferrer-Policy:\x20origin-when-cross-origin\r\nX-XSS-Protection:\
+SF:x201;\x20mode=block\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<tit
+SF:le>404\x20Not\x20Found</title>\n\x20\x20</head>\n\x20\x20<body>\n\x20\x
+SF:20\x20\x20<center><h1>404\x20Not\x20Found</h1></center>\n\x20\x20\x20\x
+SF:20<hr\x20/>\n\x20\x20\x20\x20<center>Hubee</center>\n\x20\x20</body>\n<
+SF:/html>\n");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Jul  2 02:26:08 2023 -- 1 IP address (1 host up) scanned in 8.16 seconds
+# Nmap done at Sun Jul  9 02:42:41 2023 -- 1 IP address (1 host up) scanned in 47.78 seconds
