@@ -54,7 +54,7 @@
 <h1>Scan Report<br><small>Nmap 7.92</small>
 </h1>
 <pre style="white-space:pre-wrap; word-wrap:break-word;">nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.hubee.numerique.gouv.fr</pre>
-<p class="lead">Sun Jul  2 02:26:00 2023 – Sun Jul  2 02:26:08 2023<br>1 hosts scanned.
+<p class="lead">Sun Jul  9 02:41:53 2023 – Sun Jul  9 02:42:41 2023<br>1 hosts scanned.
               1 hosts up.
               0 hosts down.
             </p>
@@ -76,7 +76,7 @@
 </tr></thead>
 <tbody><tr>
 <td><span class="label label-success">up</span></td>
-<td>52.206.163.162</td>
+<td>185.179.149.112</td>
 <td>www.hubee.numerique.gouv.fr</td>
 <td>2</td>
 <td>0</td>
@@ -91,13 +91,10 @@
             });
           </script><h2 id="onlinehosts" class="target">Online Hosts</h2>
 <div class="panel panel-default">
-<div class="panel-heading clickable" data-toggle="collapse" data-target="#52-206-163-162"><h3 class="panel-title">52.206.163.162 - www.hubee.numerique.gouv.fr</h3></div>
-<div class="panel-body collapse in" id="52-206-163-162">
+<div class="panel-heading clickable" data-toggle="collapse" data-target="#185-179-149-112"><h3 class="panel-title">185.179.149.112 - www.hubee.numerique.gouv.fr</h3></div>
+<div class="panel-body collapse in" id="185-179-149-112">
 <h4>Hostnames</h4>
-<ul>
-<li>www.hubee.numerique.gouv.fr (user)</li>
-<li>ec2-52-206-163-162.compute-1.amazonaws.com (PTR)</li>
-</ul>
+<ul><li>www.hubee.numerique.gouv.fr (user)</li></ul>
 <h4>Ports</h4>
 <div class="table-responsive"><table class="table table-bordered">
 <thead><tr>
@@ -114,22 +111,162 @@
 <td title="Port">80</td>
 <td title="Protocol">tcp</td>
 <td title="State / Reason">open<br>syn-ack</td>
-<td title="Service">tcpwrapped</td>
+<td title="Service">http</td>
 <td title="Product"></td>
 <td title="Version"></td>
 <td title="Extra Info"></td>
 </tr>
-<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>fingerprint-strings</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  FourOhFourRequest: 
+    HTTP/1.1 301 Moved Permanently
+    Date: Sun, 09 Jul 2023 02:42:11 GMT
+    Content-Type: text/html
+    Content-Length: 166
+    Connection: close
+    Location: https://hubee.numerique.gouv.fr/nice%20ports%2C/Tri%6Eity.txt%2ebak
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  GetRequest, HTTPOptions: 
+    HTTP/1.1 301 Moved Permanently
+    Date: Sun, 09 Jul 2023 02:42:10 GMT
+    Content-Type: text/html
+    Content-Length: 166
+    Connection: close
+    Location: https://hubee.numerique.gouv.fr/
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  RPCCheck: 
+    HTTP/1.1 400 Bad Request
+    Date: Sun, 09 Jul 2023 02:42:17 GMT
+    Content-Type: text/html
+    Content-Length: 154
+    Connection: close
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  RTSPRequest: 
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  X11Probe: 
+    HTTP/1.1 400 Bad Request
+    Date: Sun, 09 Jul 2023 02:42:11 GMT
+    Content-Type: text/html
+    Content-Length: 154
+    Connection: close
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</pre>
+</td></tr>
 <tr class="success">
 <td title="Port">443</td>
 <td title="Protocol">tcp</td>
 <td title="State / Reason">open<br>syn-ack</td>
-<td title="Service">tcpwrapped</td>
+<td title="Service">https</td>
 <td title="Product"></td>
 <td title="Version"></td>
 <td title="Extra Info"></td>
 </tr>
-<tr><td colspan="7"><a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a></td></tr>
+<tr><td colspan="7">
+<a href="https://nvd.nist.gov/vuln/search/results?form_type=Advanced&amp;cves=on&amp;cpe_version="></a><h5>fingerprint-strings</h5>
+<pre style="white-space:pre-wrap; word-wrap:break-word;">
+  FourOhFourRequest: 
+    HTTP/1.1 404 Not Found
+    Date: Sun, 09 Jul 2023 02:42:18 GMT
+    Content-Type: text/html
+    Content-Length: 168
+    Connection: close
+    ETag: "6401c0bc-a8"
+    X-Varnish: 3243582
+    Age: 0
+    Via: 1.1 varnish (Varnish/6.0)
+    Strict-Transport-Security: max-age=63072000
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;404 Not Found&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;404 Not Found&lt;/h1&gt;&lt;/center&gt;
+    &lt;center&gt;Hubee&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+  GetRequest: 
+    HTTP/1.1 200 OK
+    Date: Sun, 09 Jul 2023 02:42:17 GMT
+    Content-Type: text/html
+    Content-Length: 26009
+    Connection: close
+    Last-Modified: Thu, 11 May 2023 10:17:52 GMT
+    ETag: "645cc0d0-6599"
+    Accept-Ranges: bytes
+    X-Varnish: 6519593
+    Age: 0
+    Via: 1.1 varnish (Varnish/6.0)
+    Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    &lt;!DOCTYPE html&gt;&lt;html lang="fr" style="--eq-body-width: 1176"&gt;&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;title&gt;Portail HubEE Hub d'
+    change de l'
+    tat&lt;/title&gt;
+    &lt;base href="./"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"&gt;
+    &lt;meta http-equiv="Content-Language" content="fr"&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width,
+  HTTPOptions: 
+    HTTP/1.1 405 Not Allowed
+    Date: Sun, 09 Jul 2023 02:42:17 GMT
+    Content-Type: text/html
+    Content-Length: 150
+    Connection: close
+    X-Varnish: 5678354
+    Age: 0
+    Via: 1.1 varnish (Varnish/6.0)
+    Strict-Transport-Security: max-age=63072000
+    X-Frame-Options: DENY
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: origin-when-cross-origin
+    X-XSS-Protection: 1; mode=block
+    &lt;html&gt;
+    &lt;head&gt;&lt;title&gt;405 Not Allowed&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;&lt;h1&gt;405 Not Allowed&lt;/h1&gt;&lt;/center&gt;
+    &lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</pre>
+</td></tr>
 </tbody>
 </table></div>
 </div>
@@ -148,20 +285,20 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>52.206.163.162 - www.hubee.numerique.gouv.fr</td>
+<td>185.179.149.112 - www.hubee.numerique.gouv.fr</td>
 <td>80</td>
 <td>tcp</td>
-<td>tcpwrapped</td>
+<td>http</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>52.206.163.162 - www.hubee.numerique.gouv.fr</td>
+<td>185.179.149.112 - www.hubee.numerique.gouv.fr</td>
 <td>443</td>
 <td>tcp</td>
-<td>tcpwrapped</td>
+<td>https</td>
 <td></td>
 <td></td>
 <td></td>
