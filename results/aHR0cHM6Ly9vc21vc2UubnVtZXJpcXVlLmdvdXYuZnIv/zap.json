@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
-	"@version": "2.12.0",
-	"@generated": "Sun, 9 Jul 2023 02:13:42",
+	"@version": "2.13.0",
+	"@generated": "Sun, 16 Jul 2023 02:17:38",
 	"site":[ 
 		{
 			"@name": "https://osmose.numerique.gouv.fr",
@@ -69,7 +69,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -84,7 +84,7 @@
 						{
 							"uri": "https://osmose.numerique.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "Cache-Control",
+							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -97,6 +97,49 @@
 					"cweid": "525",
 					"wascid": "13",
 					"sourceid": "7"
+				},
+				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"uri": "https://osmose.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "JSESSIONID",
+							"attack": "",
+							"evidence": "5455BA1EF78CA475EDA02535B3FCEB29.n1",
+							"otherinfo": "\ncookie:JSESSIONID"
+						},
+						{
+							"uri": "https://osmose.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "JSESSIONID",
+							"attack": "",
+							"evidence": "825491610E1E77B483931E1D1A4D4B97.n1",
+							"otherinfo": "\ncookie:JSESSIONID"
+						},
+						{
+							"uri": "https://osmose.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "JSESSIONID",
+							"attack": "",
+							"evidence": "5455BA1EF78CA475EDA02535B3FCEB29.n1",
+							"otherinfo": "\ncookie:JSESSIONID"
+						}
+					],
+					"count": "3",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p></p><p>cookie:JSESSIONID</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
