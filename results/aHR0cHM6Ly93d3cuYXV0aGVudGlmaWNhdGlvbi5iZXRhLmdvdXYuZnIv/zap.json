@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
-	"@version": "2.12.0",
-	"@generated": "Sun, 9 Jul 2023 01:55:33",
+	"@version": "2.13.0",
+	"@generated": "Sun, 16 Jul 2023 01:58:07",
 	"site":[ 
 		{
 			"@name": "https://www.authentification.beta.gouv.fr",
@@ -93,7 +93,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10011",
@@ -120,7 +120,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10054",
@@ -147,7 +147,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -267,7 +267,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -275,7 +275,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.nomodule.min.js",
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -443,7 +443,15 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/common.css",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
+							"method": "GET",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -451,15 +459,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.nomodule.min.js",
-							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -467,7 +467,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/utility/icons/icons.css",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -475,7 +475,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/comment-ca-marche.svg",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -483,7 +483,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/logo-betagouvfr.svg",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -491,7 +491,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/par-qui.svg",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -499,7 +499,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/personnalisable.svg",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -507,7 +507,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/pour-qui.svg",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -515,7 +515,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/js/checkEmail.js",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -523,7 +523,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/js/prism.js",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -531,7 +531,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/prism.css",
 							"method": "GET",
-							"param": "X-Content-Type-Options",
+							"param": "x-content-type-options",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
@@ -560,16 +560,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AWvMHe3Y0tU2l-XPiWc_3aCtoziKYJd1L",
-							"otherinfo": "\uFFFD\\x0005\uFFFD0w\uFFFDcKT\uFFFD_\uFFFD>%\uFFFD\uFFFDv\uFFFD\uFFFD\uFFFD\uFFFD)\uFFFD]\uFFFD"
+							"evidence": "3AV-zhtxsewrt0Ki-7PbDZE1HW6k7p8VzX",
+							"otherinfo": "\uFFFD\\x0005~\uFFFD\\x001bq\uFFFD\uFFFD+\uFFFDB\uFFFD\uFFFD\uFFFD\uFFFD\r\uFFFD5\\x001dn\uFFFD\uFFFD\\x0015\uFFFD"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AeEoGnR3KWxOpSBbXn2uXzDG78yKZRWn-",
-							"otherinfo": "\uFFFD\\x0007\uFFFD\uFFFDi\uFFFD\u0725\uFFFD:\uFFFD\uFFFDmy\uFFFD\uFFFD|\uFFFD\\x001b\uFFFD2)\uFFFDV\uFFFD"
+							"evidence": "3ApNsk8MxqSmywEyjdyCALXkVhkLXavkx0",
+							"otherinfo": "\uFFFD\nM\uFFFDO\\x000c\u01A4\uFFFD\uFFFD\\x00012\uFFFD\u0702\\x0000\uFFFD\uFFFDV\\x0019\\x000b]\uFFFD\uFFFD\uFFFD"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
@@ -606,7 +606,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0005\uFFFD0w\uFFFDcKT\uFFFD_\uFFFD>%\uFFFD\uFFFDv\uFFFD\uFFFD\uFFFD\uFFFD)\uFFFD]\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0005~\uFFFD\\x001bq\uFFFD\uFFFD+\uFFFDB\uFFFD\uFFFD\uFFFD\uFFFD\r\uFFFD5\\x001dn\uFFFD\uFFFD\\x0015\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -653,7 +653,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "37"
+					"sourceid": "38"
 				},
 				{
 					"pluginid": "10109",
@@ -711,7 +711,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/",
 							"method": "GET",
-							"param": "Cache-Control",
+							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -719,7 +719,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/documentation",
 							"method": "GET",
-							"param": "Cache-Control",
+							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -727,7 +727,7 @@
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
 							"method": "GET",
-							"param": "Cache-Control",
+							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -739,7 +739,50 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3AV-zhtxsewrt0Ki-7PbDZE1HW6k7p8VzX.nOShO%2BohhwlSLne6ULuy3jOyJZ4r9KIsltz8CfzAdt8",
+							"otherinfo": "\ncookie:connect.sid"
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3ApNsk8MxqSmywEyjdyCALXkVhkLXavkx0.PsZGmEQRPocLwF3vGFPm2fuAxLx2%2FpFe0j611e4MTkE",
+							"otherinfo": "\ncookie:connect.sid"
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3AV-zhtxsewrt0Ki-7PbDZE1HW6k7p8VzX.nOShO%2BohhwlSLne6ULuy3jOyJZ4r9KIsltz8CfzAdt8",
+							"otherinfo": "\ncookie:connect.sid"
+						}
+					],
+					"count": "3",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p></p><p>cookie:connect.sid</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -819,6 +862,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
 							"method": "GET",
 							"param": "",
@@ -828,14 +879,6 @@
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/utility/icons/icons.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.authentification.beta.gouv.fr/js/checkEmail.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
