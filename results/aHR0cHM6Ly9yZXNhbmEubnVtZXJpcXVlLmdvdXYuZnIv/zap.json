@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
-	"@version": "2.12.0",
-	"@generated": "Sun, 9 Jul 2023 02:13:36",
+	"@version": "2.13.0",
+	"@generated": "Sun, 16 Jul 2023 02:17:38",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -370,7 +370,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "* Bootstrap v3.1.1",
-							"otherinfo": "CVE-2019-8331\nCVE-2018-14041\nCVE-2018-14040\nCVE-2018-20677\nCVE-2018-20676\nCVE-2018-14042\nCVE-2016-10735\n"
+							"otherinfo": "CVE-2019-8331\nCVE-2018-14041\nCVE-2018-20677\nCVE-2018-20676\nCVE-2018-14042\nCVE-2016-10735\n"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery-ui.min.js",
@@ -391,7 +391,7 @@
 					],
 					"count": "3",
 					"solution": "<p>Please upgrade to the latest version of bootstrap.</p>",
-					"otherinfo": "<p>CVE-2019-8331</p><p>CVE-2018-14041</p><p>CVE-2018-14040</p><p>CVE-2018-20677</p><p>CVE-2018-20676</p><p>CVE-2018-14042</p><p>CVE-2016-10735</p><p></p>",
+					"otherinfo": "<p>CVE-2019-8331</p><p>CVE-2018-14041</p><p>CVE-2018-20677</p><p>CVE-2018-20676</p><p>CVE-2018-14042</p><p>CVE-2016-10735</p><p></p>",
 					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
@@ -768,8 +768,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1688868806",
-							"otherinfo": "1688868806, which evaluates to: 2023-07-09 02:13:26"
+							"evidence": "1689473850",
+							"otherinfo": "1689473850, which evaluates to: 2023-07-16 02:17:30"
 						}
 					],
 					"count": "7",
@@ -882,30 +882,6 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_api.js?ts=1688119979",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "ADMIN",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \" * @param {string} grantedProfile (ADMIN,STANDARD)\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_api.js?ts=1688119979",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \" * @param {string (user/device)} type\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1688119980.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "SELECT",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"        if(elem[0].tagName != \"SCRIPT\" && elem[0].tagName != \"svg\" && elem[0].tagName != \"STYLE\" && elem[0].tagName != \"IFRAME\" \", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
 							"method": "GET",
 							"param": "",
@@ -1002,7 +978,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "16",
+					"count": "13",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1173,7 +1149,7 @@
 						{
 							"uri": "https://resana.numerique.gouv.fr/robots.txt",
 							"method": "GET",
-							"param": "Cache-Control",
+							"param": "cache-control",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
@@ -1185,7 +1161,66 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "26vegllmqv0q1bso8qmk1hdj3k",
+							"otherinfo": "\ncookie:PHPSESSID"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "kjptsan08nritv1i9nvs7caco0",
+							"otherinfo": "\ncookie:PHPSESSID"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "5bqunqo1fccnluhn13l99ga47d",
+							"otherinfo": "\ncookie:PHPSESSID"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "kjptsan08nritv1i9nvs7caco0",
+							"otherinfo": "\ncookie:PHPSESSID"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/$",
+							"method": "GET",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "5bqunqo1fccnluhn13l99ga47d",
+							"otherinfo": "\ncookie:PHPSESSID"
+						}
+					],
+					"count": "5",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p></p><p>cookie:PHPSESSID</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
