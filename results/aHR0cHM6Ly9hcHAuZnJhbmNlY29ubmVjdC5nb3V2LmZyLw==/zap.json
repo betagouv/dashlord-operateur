@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 16 Jul 2023 02:54:10",
+	"@generated": "Sun, 23 Jul 2023 02:21:45",
 	"site":[ 
 		{
 			"@name": "https://app.franceconnect.gouv.fr",
@@ -182,7 +182,7 @@
 					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "33"
+					"sourceid": "35"
 				},
 				{
 					"pluginid": "10020",
@@ -655,33 +655,33 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AmG4PAKlOLdNKayV1BGRGmvdiiHANGhwa",
-							"otherinfo": "\uFFFD\t\uFFFD\uFFFD\uFFFD\n\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFDWPFDi\uFFFDv(\uFFFD\\x0000\u0461\uFFFD"
+							"evidence": "3AIg1_ClOv5zmWkwMgKEpGkU5duijqtxpY",
+							"otherinfo": "\uFFFD\\x0002 \uFFFD\uFFFD:\uFFFDs\uFFFDi02\\x0002\uFFFD\uFFFDi\\x0014\uFFFD\u06E2\uFFFD\uFFFDq\uFFFD"
 						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AveBYoSTTDpuK7RqYotA1e85RFtZDJyy_",
-							"otherinfo": "\uFFFD\\x000b\uFFFD\\x0005\uFFFD\\x0012M0\u9E2E\u0469\uFFFD-\\x0003W\uFFFD\uFFFD\\x0011md2r\uFFFD"
+							"evidence": "3A8ZoICi6iPIAVZfSGSAIBxRnKBN9IjZbH",
+							"otherinfo": "\uFFFD\\x000f\\x0019\uFFFD\uFFFD\uFFFD\uFFFD#\uFFFD\\x0001V_Hd\uFFFD \\x001cQ\uFFFD\uFFFDM\uFFFD\uFFFDl"
 						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AC3NI4bQUXUzJltyiAFkiE3oyziK3c7kx",
-							"otherinfo": "\uFFFD\\x0000\uFFFD4\uFFFD\\x001bAE\uFFFD\u0319m\uFFFD \\x0005\uFFFD!7\uFFFD,\uFFFD+w;\uFFFD"
+							"evidence": "3AVUkRrtTqBjoYGjmPw3UHXOj-ap8rAVDH",
+							"otherinfo": "\uFFFD\\x0005T\uFFFD\\x001a\uFFFDN\uFFFDc\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD7Pu\u038F\uFFFD\uFFFD\\x0015\\x000c"
 						}
 					],
 					"count": "3",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\t\uFFFD\uFFFD\uFFFD</p><p>\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFDWPFDi\uFFFDv(\uFFFD\\x0000\u0461\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0002 \uFFFD\uFFFD:\uFFFDs\uFFFDi02\\x0002\uFFFD\uFFFDi\\x0014\uFFFD\u06E2\uFFFD\uFFFDq\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -778,22 +778,186 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "public, max-age=2592000",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"uri": "https://app.franceconnect.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://app.franceconnect.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"uri": "https://app.franceconnect.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"uri": "https://app.franceconnect.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
 					"sourceid": "1"
 				},
 				{
@@ -811,7 +975,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AmG4PAKlOLdNKayV1BGRGmvdiiHANGhwa.56xvVjdgd74FUDtt4HRXjYfV9bZrwuURNkiA%2BNjjxdQ",
+							"evidence": "s%3A8ZoICi6iPIAVZfSGSAIBxRnKBN9IjZbH.8B%2FB8ThMPQbPMivx7d5CA%2FK1wLyQsAdgi9xPu8oymmI",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -819,7 +983,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AveBYoSTTDpuK7RqYotA1e85RFtZDJyy_.n%2F06p2%2FtWQJldiJe0wJEyNPUah27qXQuoVMp2%2FtJUTg",
+							"evidence": "s%3AIg1_ClOv5zmWkwMgKEpGkU5duijqtxpY.im5CnIKT8hsJtf1J7LuMve2LbYZF9CZjQJQ6Fjolh5U",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -827,15 +991,15 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AC3NI4bQUXUzJltyiAFkiE3oyziK3c7kx.Vx66y%2BK1CbhbWfTsWpIO14yfNKaI0GLswrxIymwXJtk",
+							"evidence": "s%3AVUkRrtTqBjoYGjmPw3UHXOj-ap8rAVDH.ERZtJFNoRowWYknpT2r0TCv%2BI5eQTgVXrSDxO1128zA",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
+							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AC3NI4bQUXUzJltyiAFkiE3oyziK3c7kx.Vx66y%2BK1CbhbWfTsWpIO14yfNKaI0GLswrxIymwXJtk",
+							"evidence": "s%3A8ZoICi6iPIAVZfSGSAIBxRnKBN9IjZbH.8B%2FB8ThMPQbPMivx7d5CA%2FK1wLyQsAdgi9xPu8oymmI",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
