@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 23 Jul 2023 01:45:42",
+	"@generated": "Sun, 30 Jul 2023 01:40:25",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -776,8 +776,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1690076734",
-							"otherinfo": "1690076734, which evaluates to: 2023-07-23 01:45:34"
+							"evidence": "1690681216",
+							"otherinfo": "1690681216, which evaluates to: 2023-07-30 01:40:16"
 						}
 					],
 					"count": "8",
@@ -882,6 +882,14 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
+							"uri": "https://resana.numerique.gouv.fr/public/js/iFrontWork/iFrontWork.js?ts=1689764078",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
 							"method": "GET",
 							"param": "",
@@ -978,13 +986,13 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bDB\\b and was detected 2 times, the first in the element starting with: \"!function(a,b){\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.docu\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "80"
+					"sourceid": "77"
 				},
 				{
 					"pluginid": "10109",
@@ -1188,17 +1196,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1231,17 +1231,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1274,17 +1266,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1317,17 +1301,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1350,7 +1326,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "m5075jbnad14ftr8kfk4vb7m7b",
+							"evidence": "0kbicaunbc2h43hjebj0fvset7",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1358,7 +1334,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "hs5bi4h5ii9m4fcfheigbluqil",
+							"evidence": "cv0m6vdu6f75o1jhimp428vfv6",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1366,7 +1342,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "nngr7jj49110i72re3se5ci05l",
+							"evidence": "1ek0d38rfh2pmoj8fgecgv3h25",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1374,19 +1350,11 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "hs5bi4h5ii9m4fcfheigbluqil",
-							"otherinfo": "\ncookie:PHPSESSID"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/$",
-							"method": "GET",
-							"param": "PHPSESSID",
-							"attack": "",
-							"evidence": "nngr7jj49110i72re3se5ci05l",
+							"evidence": "cv0m6vdu6f75o1jhimp428vfv6",
 							"otherinfo": "\ncookie:PHPSESSID"
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:PHPSESSID</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -1558,7 +1526,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "109"
+					"sourceid": "111"
 				}
 			]
 		}
