@@ -1,7 +1,7 @@
 {
 	"@programName": "OWASP ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 23 Jul 2023 01:29:15",
+	"@generated": "Sun, 30 Jul 2023 01:22:57",
 	"site":[ 
 		{
 			"@name": "https://www.authentification.beta.gouv.fr",
@@ -112,15 +112,23 @@
 							"attack": "",
 							"evidence": "Set-Cookie: connect.sid",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "Set-Cookie: connect.sid",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10054",
@@ -139,9 +147,17 @@
 							"attack": "",
 							"evidence": "Set-Cookie: connect.sid",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "Set-Cookie: connect.sid",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
@@ -246,7 +262,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10037",
@@ -307,7 +323,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/images/logo-betagouvfr.svg",
+							"uri": "https://www.authentification.beta.gouv.fr/images/par-qui.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -315,7 +331,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/images/par-qui.svg",
+							"uri": "https://www.authentification.beta.gouv.fr/images/personnalisable.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -361,7 +377,7 @@
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "29"
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10035",
@@ -489,7 +505,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/images/logo-betagouvfr.svg",
+							"uri": "https://www.authentification.beta.gouv.fr/images/par-qui.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -497,7 +513,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/images/par-qui.svg",
+							"uri": "https://www.authentification.beta.gouv.fr/images/personnalisable.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -543,7 +559,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "29"
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10094",
@@ -560,16 +576,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AF3849nQ5uYcN62DAx5Wv9WT9joNYt_8F",
-							"otherinfo": "\uFFFD\\x0001w\uFFFDgC\uFFFD\uFFFDp\u07B6\\x000c\\x000cyZ\uFFFDVO\uFFFD\uFFFD5\uFFFD\uFFFD"
+							"evidence": "3AoRSgmTOBTJ7O1qqHGlglFKAP910aH43d",
+							"otherinfo": "\uFFFD\n\\x0011J\t\uFFFD8\\x0014\uFFFD\uFFFD\uFFFDj\uFFFDq\uFFFD\uFFFDQJ\\x0000\uFFFDu\u0461\uFFFD\uFFFD"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3Alk6pz5fppoOb60acJy8jaqXdIOXjUN0R",
-							"otherinfo": "\uFFFD\td\uFFFD\uFFFD~\uFFFDh9\uFFFD\uFFFDi\uFFFDr\uFFFD6\uFFFD]\uFFFD\\x000e^5\r\uFFFD"
+							"evidence": "3A4JPo-7DfkfXTaWE-fj0Vt0SgGJSu3Ysi",
+							"otherinfo": "\uFFFD\\x000e\t>\uFFFD\uFFFD\r\uFFFD\\x001f]6\uFFFD\\x0013\uFFFD\uFFFD\uFFFD[tJ\\x0001\uFFFDJ\uFFFD\u0632"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
@@ -602,15 +618,23 @@
 							"attack": "",
 							"evidence": "XLJBajem4BpxAwR8WTq3Fq2bajfApZc4PA_Kh3J05BRao9AJJug_mp-MaRp6bddaPd1FJq_J3Ifl7Rmv-xiX1zZ0wXksV4HFmQsA6frdnJKQ3nWqMsND8Q5UhNS4Et8jAyg1NfsmthDEk9VWJsGy7rYXPsjoA5N8vLusj-_B8w5i7bxSehs1_H5Vh0eCtffGlP4h2bIUMxbX4bsC9su-pIxPmfUIVmM2sWfHGo3V6b9UE2RGHaR6wIry9ysEZmGYeu7bUSNb-6pevI204q4mSB2k2YMokAVVz_s9WnV98yDSyOLr2piRAl9Gqfn9QCYRw5AvJjPTqy67h-ZEEoohXShCrosyzfsJSqYOK3jgn9H829-deO-RpNBAdXznacbjOhI-1dZIrG1upcQoB2ncdjBBvuibauBaoMXlRehOMzeZ6sWPGLZk63fVTEE8X6cnPFqVp4_F9JUfE9AmCHPzLsXw_6FSESeDGUixm9PKZ8wq0Ql-RopUIbajjRiJwcaqXLHiQOQYFg2QvJqxg-_asKZUTO28lCPVwVR16LYXKfAUlRTdajRVC25VcPNIzLsg4-XrC55zqyHFINsvNb1dDClEOLIUIEhuE33Wo3YNTVElOgAJqaMtfba9ZXXYpqp_0000",
 							"otherinfo": "\\\uFFFDAj7\uFFFD\uFFFD\\x001aq\\x0003\\x0004|Y:\uFFFD\\x0016\uFFFD\uFFFDj7\uFFFD\uFFFD\uFFFD8<\\x000f\u0287rt\uFFFD\\x0014Z\uFFFD\uFFFD\t&\uFFFD?\uFFFD\uFFFD\uFFFDi\\x001azm\uFFFDZ=\uFFFDE&\uFFFD\uFFFD\u0707\uFFFD\uFFFD\\x0019\uFFFD\uFFFD\\x0018\uFFFD\uFFFD6t\uFFFDy,W\uFFFD\u0159\\x000b\\x0000\uFFFD\uFFFD\u075C\uFFFD\uFFFD\uFFFDu\uFFFD2\uFFFDC\uFFFD\\x000eT\uFFFD\u0538\\x0012\uFFFD#\\x0003(55\uFFFD&\uFFFD\\x0010\u0113\uFFFDV&\uFFFD\uFFFD\uFFFD\\x0017>\uFFFD\uFFFD\\x0003\uFFFD|\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000eb\uFFFDRz\\x001b5\uFFFD~U\uFFFDG\uFFFD\uFFFD\uFFFD\u0194\uFFFD!\u0672\\x00143\\x0016\uFFFD\uFFFD\\x0002\uFFFD\u02FE\uFFFD\uFFFDO\uFFFD\uFFFD\\x0008Vc6\uFFFDg\uFFFD\\x001a\uFFFD\uFFFD\uFFFDT\\x0013dF\\x001d\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD+\\x0004fa\uFFFDz\uFFFD\uFFFDQ#[\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\uFFFD&H\\x001d\uFFFD\u0643(\uFFFD\\x0005U\uFFFD\uFFFD=Zu}\uFFFD \uFFFD\uFFFD\uFFFD\uFFFD\u0698\uFFFD\\x0002_F\uFFFD\uFFFD\uFFFD@&\\x0011\u00D0/&3\u04EB.\uFFFD\uFFFD\uFFFDD\\x0012\uFFFD!](B\uFFFD\uFFFD2\uFFFD\uFFFD\tJ\uFFFD\\x000e+x\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07DDx\uF464\uFFFD@u|\uFFFDi\uFFFD\uFFFD:\\x0012>\uFFFD\uFFFDH\uFFFDmn\uFFFD\uFFFD(\\x0007i\uFFFDv0A\uFFFD\uFFFDj\uFFFDZ\uFFFD\uFFFD\uFFFDE\uFFFDN37\uFFFD\uFFFD\u014F\\x0018\uFFFDd\uFFFDw\uFFFDLA<_\uFFFD'<Z\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\\x0013\uFFFD&\\x0008s\uFFFD.\uFFFD\uFFFD\uFFFD\uFFFDR\\x0011'\uFFFD\\x0019H\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFD*\uFFFD\t~F\uFFFDT!\uFFFD\uFFFD\uFFFD\\x0018\uFFFD\uFFFD\u01AA\\\uFFFD\uFFFD@\uFFFD\\x0018\\x0016\r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06B0\uFFFDTL\uFFFD#\uFFFD\uFFFDTu\uFFFD\\x0017)\uFFFD\\x0014\uFFFD\\x0014\uFFFDj4U\\x000bnUp\uFFFDH\u033B \uFFFD\uFFFD\uFFFD\\x000b\uFFFDs\uFFFD!\uFFFD \uFFFD/5\uFFFD]\\x000c)D8\uFFFD\\x0014 Hn\\x0013}\u05A3v\rMQ%:\\x0000\t\uFFFD\uFFFD-}\uFFFD\uFFFDeu\u0626\uFFFD\uFFFDM4"
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3AhX9HHm_KJmzlFIFjNlJPQ8xRUDR7p9eN",
+							"otherinfo": "\uFFFD\\x0008W\uFFFDq\uFFFD\uFFFD\uFFFDf\uFFFDQH\\x00163e$\uFFFD<\uFFFD\\x0015\\x0003G\uFFFD}x"
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0001w\uFFFDgC\uFFFD\uFFFDp\u07B6\\x000c\\x000cyZ\uFFFDVO\uFFFD\uFFFD5\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD</p><p>\\x0011J\t\uFFFD8\\x0014\uFFFD\uFFFD\uFFFDj\uFFFDq\uFFFD\uFFFDQJ\\x0000\uFFFDu\u0461\uFFFD\uFFFD</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -653,7 +677,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "33"
+					"sourceid": "42"
 				},
 				{
 					"pluginid": "10109",
@@ -844,7 +868,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -896,7 +920,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AF3849nQ5uYcN62DAx5Wv9WT9joNYt_8F.WowZRtr2dZ1YqfUQErSfSFuFHF8mFVIhNptvTKJIzEk",
+							"evidence": "s%3A4JPo-7DfkfXTaWE-fj0Vt0SgGJSu3Ysi.RaF8EqkjTwEnPDFodjzpejyTJZ1Pxh%2Bd%2BZMKyiAU1lE",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -904,7 +928,15 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3Alk6pz5fppoOb60acJy8jaqXdIOXjUN0R.r8htv7nBo%2FWpRkgK0RLqymxFtG9lxYwsCHtd2oQEYhI",
+							"evidence": "s%3AoRSgmTOBTJ7O1qqHGlglFKAP910aH43d.q2LssmnrQbwVZtyySdC5l3%2BwjVNEkMpFCcgr4on8qnI",
+							"otherinfo": "\ncookie:connect.sid"
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3AhX9HHm_KJmzlFIFjNlJPQ8xRUDR7p9eN.xu%2B%2FTuwBijtSS%2B8hzRRZEl%2Fsh5yYxXEKOPCgA9MHi3A",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -912,11 +944,19 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3Alk6pz5fppoOb60acJy8jaqXdIOXjUN0R.r8htv7nBo%2FWpRkgK0RLqymxFtG9lxYwsCHtd2oQEYhI",
+							"evidence": "s%3AoRSgmTOBTJ7O1qqHGlglFKAP910aH43d.q2LssmnrQbwVZtyySdC5l3%2BwjVNEkMpFCcgr4on8qnI",
+							"otherinfo": "\ncookie:connect.sid"
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3AhX9HHm_KJmzlFIFjNlJPQ8xRUDR7p9eN.xu%2B%2FTuwBijtSS%2B8hzRRZEl%2Fsh5yYxXEKOPCgA9MHi3A",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:connect.sid</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -981,7 +1021,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1002,23 +1042,23 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.nomodule.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/utility/icons/icons.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/js/checkEmail.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1048,7 +1088,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "29"
+					"sourceid": "30"
 				}
 			]
 		}
