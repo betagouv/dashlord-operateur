@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 20 Aug 2023 01:42:50",
+	"@generated": "Sun, 27 Aug 2023 01:43:41",
 	"site":[ 
 		{
 			"@name": "https://www.demarches-simplifiees.fr",
@@ -206,15 +206,50 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/contact",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "13"
+					"sourceid": "42"
+				},
+				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.demarches-simplifiees.fr/contact",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "138"
 				},
 				{
 					"pluginid": "10055",
@@ -284,7 +319,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "94"
+					"sourceid": "142"
 				},
 				{
 					"pluginid": "10011",
@@ -313,6 +348,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/administration",
+							"method": "GET",
+							"param": "_csrf_token",
+							"attack": "",
+							"evidence": "set-cookie: _csrf_token",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/administration",
+							"method": "GET",
+							"param": "_DS_session",
+							"attack": "",
+							"evidence": "set-cookie: _DS_session",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/contact",
 							"method": "GET",
 							"param": "_csrf_token",
@@ -338,22 +389,6 @@
 						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/mentions-legales",
-							"method": "GET",
-							"param": "_DS_session",
-							"attack": "",
-							"evidence": "set-cookie: _DS_session",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.demarches-simplifiees.fr/suivi",
-							"method": "GET",
-							"param": "_csrf_token",
-							"attack": "",
-							"evidence": "set-cookie: _csrf_token",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.demarches-simplifiees.fr/suivi",
 							"method": "GET",
 							"param": "_DS_session",
 							"attack": "",
@@ -439,7 +474,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/commencer",
+							"uri": "https://www.demarches-simplifiees.fr/administration",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -447,7 +482,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/contact",
+							"uri": "https://www.demarches-simplifiees.fr/commencer",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -688,7 +723,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "77"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10021",
@@ -726,6 +761,14 @@
 						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/assets/favicons/96x96-88550c65e56babaaf4987b947f3b65011055baeeb694cbd6a769a31f531f7028.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/assets/landing/hero/dematerialiser-19cbb6f65e811f80da1781fc2b2f8b8a79624e28fe662647da1983f98f01b31b.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -781,14 +824,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/index-9250501c.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://www.demarches-simplifiees.fr/vite/assets/polyfills-08ad4c8e-legacy.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -803,7 +838,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "51"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10111",
@@ -846,7 +881,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "167"
+					"sourceid": "168"
 				},
 				{
 					"pluginid": "10094",
@@ -860,6 +895,14 @@
 					"instances":[ 
 						{
 							"uri": "https://www.demarches-simplifiees.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32",
+							"otherinfo": "~\uFFFD\u06B2\u01ED\uFFFD\uFFFD\\x001a\uFFFD&\uFFFD\uFFFD\uFFFDz\\x000b\uFFFDj\uFFFD\uFFFD{\uFFFD{w\uFFFD\\x001aw\u07BB\uFFFD\uFFFD]\uFFFD\uFFFDw\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD^\uFFFD\u07CD\\x001fi\uFFFDxq\uFFFD7\uFFFD\uFFFD|\uFFFDx\uFFFD\uFFFD]\uFFFD6}"
+						},
+						{
+							"uri": "https://www.demarches-simplifiees.fr/administration",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -937,14 +980,6 @@
 							"attack": "",
 							"evidence": "/vite/assets/Marianne-Light-7b92c55f",
 							"otherinfo": "\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDl\uFFFD\u01AB\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\\x001b~\uFFFDvs\uFFFD_"
-						},
-						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-b980b6aa.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "assets/ComboAdresseSearch-85bbdc3a",
-							"otherinfo": "j\uFFFD\\x001e\uFFFD\uFFFD\u00A2f\uFFFD\\x0001\uFFFD\u07B2\u01D2y\uFFFD\u0707\uFFFD9m\uFFFD\\\uFFFD"
 						}
 					],
 					"count": "11",
@@ -980,7 +1015,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "121"
+					"sourceid": "157"
 				},
 				{
 					"pluginid": "10027",
@@ -1001,6 +1036,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script>\n//<![CDATA[\nwindow.gon={};gon.autosave={\"debounce_delay\":1000,\"status_visible_duration\":6000};gon.autocomplete={\"api_ge\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/administration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script>\n//<![CDATA[\nwindow.gon={};gon.autosave={\"debounce_delay\":1000,\"status_visible_duration\":6000};gon.autocomplete={\"api_ge\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/contact",
 							"method": "GET",
 							"param": "",
@@ -1010,14 +1053,6 @@
 						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script>\n//<![CDATA[\nwindow.gon={};gon.autosave={\"debounce_delay\":1000,\"status_visible_duration\":6000};gon.autocomplete={\"api_ge\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://www.demarches-simplifiees.fr/suivi",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1242,6 +1277,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/rails/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1258,7 +1301,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1285,6 +1328,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/rails/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1301,7 +1352,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1328,6 +1379,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/rails/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1344,7 +1403,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1371,6 +1430,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.demarches-simplifiees.fr/rails/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.demarches-simplifiees.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1387,7 +1454,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1410,7 +1477,7 @@
 							"method": "GET",
 							"param": "_DS_session",
 							"attack": "",
-							"evidence": "4ZMwrfrZdXB1tLO4em5EdoC5XAui2eoFRGBSJUMjHvdQrhXSNaC0DMiYkjIPjnzWhGQiuBs3ojTXRMR6nq8NUbLrK1lxoIUceMqOxp8bnjPi9FgwlFigFMEmMzos9qfxsUOo0z8ShB5WyRCx1uFpz1XOTClxwwY2ldVvW9o3w%2BHZLD%2FL0gNgIMtWkG1GSmf%2Fk%2FiUnMnPw9aYTKvfWqtDblM4jS%2FF%2BqN8nDOoKE0vexmzZc7ESSzqYazrFka%2BvxcFsmj1Ux%2F2uIcz7WOXH5Yj7A5aCw%3D%3D--B3ArAJ%2Fuz2m5Kboe--wP4wfz9tq0gM4h1McGPVgg%3D%3D",
+							"evidence": "%2BVY6MYdupjT0Y4fSwIvSdS8CZbmT%2FSNIJlRIXyJU6rCmPB4bOCoVMVfLIQ%2BkX%2F%2FOZ5tGMXOaWOq8KLwIUJaG3CIeeKad9z9d0uECoTWKnfslCvztt9Y82xjyDGYjuRufqOn5b2zw5dIZj1edS2BA8HRCtBP9qkfhgC%2B3ehHuFobsKjbyXSYMGm%2FKc9k%2BrBfcy%2FMh%2FHbt42MK1uUl3eckrcvBbGHvzatTfpiF2iAYznhfTuxR4TQaeaiUezn%2FuDbOHrBSjiG4gA10dBmDct2ByJn0Eg%3D%3D--fs5BhNUBLl3PIyDA--kVQ7ABDJoh3bG5HTXoW9QQ%3D%3D",
 							"otherinfo": "\ncookie:_DS_session\ncookie:_csrf_token"
 						},
 						{
@@ -1418,7 +1485,7 @@
 							"method": "GET",
 							"param": "_DS_session",
 							"attack": "",
-							"evidence": "z98nEdcpkO%2F2mz9eR%2FZi4qFNnoe4UH98ESm%2FiuSRB0GFCzS5wSkIzYELa0n9oVY6HV49zWE3PZWXCoQvU7dVlnumF5OJ0%2B4a5epfL7e%2B7oOZ2e5q9ZeaTznghe9ZbO0ph9xbvxmuf0gSITo2j7P0L25bs0SQN6gysOna9qak36SdV1Z9O3qJ%2BEi2uyRS%2B%2F9hzILpa24FlvaI71DLyTlx1KrLqUTIOir9d5eGtHo%2FU6jWf5TZnGWDJegM7kUh%2FxNvyOu9pluvVNGD27bjBJwBjhK%2B1A%3D%3D--FOj5LbUcnge8kt6W--JZQJfks2NqH7d%2B0sBmB0nw%3D%3D",
+							"evidence": "26qzsTW%2FZBXw%2B56oeeGy3zlBC5orxhBYZlZ22LvPXXSZy3ITSS9xD%2FIO54Bw2yHPwZdmyuJYc4ez8eAO8okMHRclh0kxpCYoLFcNzhQqJOA6iuzpnHW6TKWS19oqHEL1qcHDNrlHqOLQiuwyQnsvGRKi54PevKIIGg2Z8bG3qPDrFo87wF2KNPk8S6bx0WKlKFmyn2COkIl26pXc9P9fJqkXTB%2BysugxBWp8Gzr4TGTdmCrXV1zjImHMHQuaBnI11fBAPJyVX27vSF4fNoV%2Fsw8UlA%3D%3D--3a9ZzDrBNrfu%2Ffm0--QvdtqsUUSvSjHV5auUzVpA%3D%3D",
 							"otherinfo": "\ncookie:_DS_session\ncookie:_csrf_token"
 						},
 						{
@@ -1426,7 +1493,7 @@
 							"method": "GET",
 							"param": "_csrf_token",
 							"attack": "",
-							"evidence": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IklpMWlZMWxKVkVsNlJERkNiVUpST1hocWFWbzJTa1V6YkdkWk5tcFhkMHBrV1ZJeGNXMUpURFZHVEZFaSIsImV4cCI6IjIwMjQtMDgtMjBUMDE6NDI6MzguNzA5WiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--939ab6ce3da8b87949d4d66cc3a479229d68c31b",
+							"evidence": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkluSnhaemszVWsxRFRqSnlTV04yVm5GQ05GQXlRbU10Y2t0TFQyWXRhWHB5ZERoU1NFOXZWbEptV0ZFaSIsImV4cCI6IjIwMjQtMDgtMjdUMDE6NDM6MjYuMjIwWiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--6b097d65e17dd4c8f55586b2d7870bac03d394d2",
 							"otherinfo": "\ncookie:_csrf_token"
 						},
 						{
@@ -1434,7 +1501,7 @@
 							"method": "GET",
 							"param": "_DS_session",
 							"attack": "",
-							"evidence": "z98nEdcpkO%2F2mz9eR%2FZi4qFNnoe4UH98ESm%2FiuSRB0GFCzS5wSkIzYELa0n9oVY6HV49zWE3PZWXCoQvU7dVlnumF5OJ0%2B4a5epfL7e%2B7oOZ2e5q9ZeaTznghe9ZbO0ph9xbvxmuf0gSITo2j7P0L25bs0SQN6gysOna9qak36SdV1Z9O3qJ%2BEi2uyRS%2B%2F9hzILpa24FlvaI71DLyTlx1KrLqUTIOir9d5eGtHo%2FU6jWf5TZnGWDJegM7kUh%2FxNvyOu9pluvVNGD27bjBJwBjhK%2B1A%3D%3D--FOj5LbUcnge8kt6W--JZQJfks2NqH7d%2B0sBmB0nw%3D%3D",
+							"evidence": "26qzsTW%2FZBXw%2B56oeeGy3zlBC5orxhBYZlZ22LvPXXSZy3ITSS9xD%2FIO54Bw2yHPwZdmyuJYc4ez8eAO8okMHRclh0kxpCYoLFcNzhQqJOA6iuzpnHW6TKWS19oqHEL1qcHDNrlHqOLQiuwyQnsvGRKi54PevKIIGg2Z8bG3qPDrFo87wF2KNPk8S6bx0WKlKFmyn2COkIl26pXc9P9fJqkXTB%2BysugxBWp8Gzr4TGTdmCrXV1zjImHMHQuaBnI11fBAPJyVX27vSF4fNoV%2Fsw8UlA%3D%3D--3a9ZzDrBNrfu%2Ffm0--QvdtqsUUSvSjHV5auUzVpA%3D%3D",
 							"otherinfo": "\ncookie:_DS_session"
 						}
 					],
@@ -1456,6 +1523,14 @@
 					"riskdesc": "Informational (Medium)",
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
+						{
+							"uri": "https://www.demarches-simplifiees.fr/assets/application-cae2b3e5fc02c12a55dd3eea26a5c92010421a5bd40dd9390a5a53097859f0f1.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=315360000",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2",
 							"method": "GET",
@@ -1521,14 +1596,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.demarches-simplifiees.fr/vite/assets/application-288c07a2-legacy.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=315360000",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.demarches-simplifiees.fr/vite/assets/polyfills-08ad4c8e-legacy.js",
 							"method": "GET",
 							"param": "",
@@ -1543,7 +1610,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "43"
+					"sourceid": "49"
 				}
 			]
 		}
