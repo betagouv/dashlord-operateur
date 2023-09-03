@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.13.0",
-	"@generated": "Sun, 27 Aug 2023 01:12:34",
+	"@generated": "Sun, 3 Sep 2023 01:13:52",
 	"site":[ 
 		{
 			"@name": "https://www.authentification.beta.gouv.fr",
@@ -42,7 +42,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "24"
+					"sourceid": "27"
 				},
 				{
 					"pluginid": "10038",
@@ -112,9 +112,17 @@
 							"attack": "",
 							"evidence": "Set-Cookie: connect.sid",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "Set-Cookie: connect.sid",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
@@ -139,9 +147,17 @@
 							"attack": "",
 							"evidence": "Set-Cookie: connect.sid",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "Set-Cookie: connect.sid",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
@@ -246,7 +262,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10037",
@@ -260,14 +276,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/common.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -300,6 +308,14 @@
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/comment-ca-marche.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/images/logo-betagouvfr.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -361,7 +377,7 @@
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "29"
+					"sourceid": "28"
 				},
 				{
 					"pluginid": "10035",
@@ -428,7 +444,7 @@
 					"reference": "<p>http://tools.ietf.org/html/rfc6797#section-8.1</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10021",
@@ -442,14 +458,6 @@
 					"instances":[ 
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/common.css",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -482,6 +490,14 @@
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/comment-ca-marche.svg",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.authentification.beta.gouv.fr/images/logo-betagouvfr.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -543,7 +559,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "29"
+					"sourceid": "28"
 				},
 				{
 					"pluginid": "10094",
@@ -560,16 +576,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AHUeg-OGdShXBSTNiUHEvX_W8Mm3FCz9B",
-							"otherinfo": "\uFFFD\\x0001\uFFFDz\\x000f\uFFFD\\x0019\u0521\\\\x0014\uFFFD6%\\x0007\\x0012\uFFFD\uFFFD[\uFFFD&\uFFFDP\uFFFD\uFFFD"
+							"evidence": "3AO4OiduT67e7RP2AMEUNNZwEM1kGivSRv",
+							"otherinfo": "\uFFFD\\x0003\uFFFD:'nO\uFFFD\uFFFD\uFFFD\\x0013\uFFFD\\x0000\uFFFD\\x00144\uFFFDp\\x0010\uFFFDd\\x001a+\uFFFDF"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ApIHFyY_OR9_H79LRYeHFEaqTIpG-XkD0",
-							"otherinfo": "\uFFFD\nH\\x001c\\\uFFFD\uFFFD\uFFFD}\uFFFD~\uFFFD-\\x0016\\x001e\\x001cQ\\x001a\uFFFD2)\\x001b\uFFFD\uFFFD\\x000f"
+							"evidence": "3AZbWyEq_GhzAPDXKLe4nw6AXUAOgPXhcT",
+							"otherinfo": "\uFFFD\\x0006[[!*\uFFFDhs\\x0000\uFFFD\uFFFD(\uFFFD\uFFFD\uFFFD\\x000e\uFFFD]@\\x000e\uFFFD\uFFFD\uFFFDq"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
@@ -596,6 +612,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD)\"\uFFFD\uFFFDZq\uFFFD?\\x000c\\x001f\uFFFDj\\x0007\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD|\uFFFD\u011F\uFFFD~\uFFFD\uFFFD\uFFFDw\uFFFDu\uFFFD"
 						},
 						{
+							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Ahkqe1bDF0_6h5M7SetT7Crl8aiwHAniQ",
+							"otherinfo": "\uFFFD\\x0008d\uFFFD\uFFFD[\\x000c]?\uFFFD\\x001eL\uFFFD'\uFFFDO\uFFFD\uFFFD\uFFFD\u01A2\uFFFDp'\uFFFD"
+						},
+						{
 							"uri": "https://www.authentification.beta.gouv.fr/images/authentification_diagram.svg",
 							"method": "GET",
 							"param": "",
@@ -604,9 +628,9 @@
 							"otherinfo": "\\\uFFFDAj7\uFFFD\uFFFD\\x001aq\\x0003\\x0004|Y:\uFFFD\\x0016\uFFFD\uFFFDj7\uFFFD\uFFFD\uFFFD8<\\x000f\u0287rt\uFFFD\\x0014Z\uFFFD\uFFFD\t&\uFFFD?\uFFFD\uFFFD\uFFFDi\\x001azm\uFFFDZ=\uFFFDE&\uFFFD\uFFFD\u0707\uFFFD\uFFFD\\x0019\uFFFD\uFFFD\\x0018\uFFFD\uFFFD6t\uFFFDy,W\uFFFD\u0159\\x000b\\x0000\uFFFD\uFFFD\u075C\uFFFD\uFFFD\uFFFDu\uFFFD2\uFFFDC\uFFFD\\x000eT\uFFFD\u0538\\x0012\uFFFD#\\x0003(55\uFFFD&\uFFFD\\x0010\u0113\uFFFDV&\uFFFD\uFFFD\uFFFD\\x0017>\uFFFD\uFFFD\\x0003\uFFFD|\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000eb\uFFFDRz\\x001b5\uFFFD~U\uFFFDG\uFFFD\uFFFD\uFFFD\u0194\uFFFD!\u0672\\x00143\\x0016\uFFFD\uFFFD\\x0002\uFFFD\u02FE\uFFFD\uFFFDO\uFFFD\uFFFD\\x0008Vc6\uFFFDg\uFFFD\\x001a\uFFFD\uFFFD\uFFFDT\\x0013dF\\x001d\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD+\\x0004fa\uFFFDz\uFFFD\uFFFDQ#[\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD\uFFFD&H\\x001d\uFFFD\u0643(\uFFFD\\x0005U\uFFFD\uFFFD=Zu}\uFFFD \uFFFD\uFFFD\uFFFD\uFFFD\u0698\uFFFD\\x0002_F\uFFFD\uFFFD\uFFFD@&\\x0011\u00D0/&3\u04EB.\uFFFD\uFFFD\uFFFDD\\x0012\uFFFD!](B\uFFFD\uFFFD2\uFFFD\uFFFD\tJ\uFFFD\\x000e+x\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07DDx\uF464\uFFFD@u|\uFFFDi\uFFFD\uFFFD:\\x0012>\uFFFD\uFFFDH\uFFFDmn\uFFFD\uFFFD(\\x0007i\uFFFDv0A\uFFFD\uFFFDj\uFFFDZ\uFFFD\uFFFD\uFFFDE\uFFFDN37\uFFFD\uFFFD\u014F\\x0018\uFFFDd\uFFFDw\uFFFDLA<_\uFFFD'<Z\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\\x0013\uFFFD&\\x0008s\uFFFD.\uFFFD\uFFFD\uFFFD\uFFFDR\\x0011'\uFFFD\\x0019H\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFD*\uFFFD\t~F\uFFFDT!\uFFFD\uFFFD\uFFFD\\x0018\uFFFD\uFFFD\u01AA\\\uFFFD\uFFFD@\uFFFD\\x0018\\x0016\r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06B0\uFFFDTL\uFFFD#\uFFFD\uFFFDTu\uFFFD\\x0017)\uFFFD\\x0014\uFFFD\\x0014\uFFFDj4U\\x000bnUp\uFFFDH\u033B \uFFFD\uFFFD\uFFFD\\x000b\uFFFDs\uFFFD!\uFFFD \uFFFD/5\uFFFD]\\x000c)D8\uFFFD\\x0014 Hn\\x0013}\u05A3v\rMQ%:\\x0000\t\uFFFD\uFFFD-}\uFFFD\uFFFDeu\u0626\uFFFD\uFFFDM4"
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0001\uFFFDz\\x000f\uFFFD\\x0019\u0521\\\\x0014\uFFFD6%\\x0007\\x0012\uFFFD\uFFFD[\uFFFD&\uFFFDP\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0003\uFFFD:'nO\uFFFD\uFFFD\uFFFD\\x0013\uFFFD\\x0000\uFFFD\\x00144\uFFFDp\\x0010\uFFFDd\\x001a+\uFFFDF</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -653,7 +677,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "42"
+					"sourceid": "36"
 				},
 				{
 					"pluginid": "10109",
@@ -696,7 +720,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -760,14 +784,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -776,13 +792,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -803,14 +819,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -819,7 +827,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -846,14 +854,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -862,7 +862,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -889,14 +889,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -905,13 +897,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10112",
@@ -928,7 +920,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AHUeg-OGdShXBSTNiUHEvX_W8Mm3FCz9B.MzC2H7ROxbLuOmhfuIzTalGdhlPU28fFYDuqtoZ52WQ",
+							"evidence": "s%3AO4OiduT67e7RP2AMEUNNZwEM1kGivSRv.uQrlGtWw4vV0bIB3rhppJ4rC0uDzRScreCkqIpUcdYA",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -936,7 +928,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3ApIHFyY_OR9_H79LRYeHFEaqTIpG-XkD0.ZY6Z2DpMsvd12KKY873%2BcT%2B4dRRooSW6D57ad9Hkvw8",
+							"evidence": "s%3AZbWyEq_GhzAPDXKLe4nw6AXUAOgPXhcT.qQC8U6iXPsOcJjWIntPeAcSu34wiPdyXb7ciuNbMnFE",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -944,7 +936,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AHUeg-OGdShXBSTNiUHEvX_W8Mm3FCz9B.MzC2H7ROxbLuOmhfuIzTalGdhlPU28fFYDuqtoZ52WQ",
+							"evidence": "s%3AO4OiduT67e7RP2AMEUNNZwEM1kGivSRv.uQrlGtWw4vV0bIB3rhppJ4rC0uDzRScreCkqIpUcdYA",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
@@ -983,14 +975,6 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1007,7 +991,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1034,7 +1018,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
+							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.module.min.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1058,6 +1042,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.authentification.beta.gouv.fr/js/checkEmail.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.authentification.beta.gouv.fr/js/prism.js",
 							"method": "GET",
 							"param": "",
@@ -1074,13 +1066,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "29"
+					"sourceid": "28"
 				}
 			]
 		}
