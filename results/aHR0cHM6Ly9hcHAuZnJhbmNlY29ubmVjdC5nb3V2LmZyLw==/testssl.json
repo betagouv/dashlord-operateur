@@ -339,7 +339,7 @@
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
               "severity"     : "HIGH",
-              "finding"      : "expires < 30 days (19)"
+              "finding"      : "expires < 30 days (12)"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -408,8 +408,8 @@
               "id"           : "DNS_CAArecord",
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
-              "severity"     : "LOW",
-              "finding"      : "--"
+              "severity"     : "OK",
+              "finding"      : "issue=certigna.fr"
           }
 ,         {
               "id"           : "certificate_transparency",
@@ -507,21 +507,28 @@
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "1693707160"
+              "finding"      : "1694311879"
+          }
+,         {
+              "id"           : "HSTS_multiple",
+              "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "finding"      : "Multiple HSTS headers. Using first header: max-age=15552000; includeSubDomains"
           }
 ,         {
               "id"           : "HSTS_time",
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "182 days (=15768000 seconds) > 15552000 seconds"
+              "finding"      : "180 days (=15552000 seconds) > 15552000 seconds"
           }
 ,         {
               "id"           : "HSTS_subdomains",
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
-              "severity"     : "INFO",
-              "finding"      : "only for this domain"
+              "severity"     : "OK",
+              "finding"      : "includes subdomains"
           }
 ,         {
               "id"           : "HSTS_preload",
@@ -573,11 +580,39 @@
               "finding"      : "All (1) at '/' marked as HttpOnly"
           }
 ,         {
-              "id"           : "security_headers",
+              "id"           : "X-Frame-Options",
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
-              "severity"     : "MEDIUM",
-              "finding"      : "--"
+              "severity"     : "OK",
+              "finding"      : "SAMEORIGIN"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests"
+          }
+,         {
+              "id"           : "X-XSS-Protection",
+              "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "0"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "origin,unsafe-url"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -1084,6 +1119,6 @@
               "ip"           : "app.franceconnect.gouv.fr/185.24.186.225",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "91"
+              "finding"      : "92"
           }
 ]
