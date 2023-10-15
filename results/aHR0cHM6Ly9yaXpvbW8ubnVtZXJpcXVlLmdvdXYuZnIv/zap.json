@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
-	"@version": "2.13.0",
-	"@generated": "Sun, 8 Oct 2023 01:22:18",
+	"@version": "2.14.0",
+	"@generated": "Sun, 15 Oct 2023 01:25:52",
 	"site":[ 
 		{
 			"@name": "https://rizomo.numerique.gouv.fr",
@@ -52,7 +52,7 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src *;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.data.gouv.fr https://chat.rizomo.numerique.gouv.fr/backoffice/assets/scripts/embbed-chatbot.min.js https://unpkg.com/@suitesnap/la-pastille@1.0.0/index.umd.js https://chat.rizomo.numerique.gouv.fr/;connect-src *;img-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;media-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;style-src 'self' 'unsafe-inline';frame-ancestors *;base-uri 'self';font-src 'self' https: data:;form-action 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nimg-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src, prefetch-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nimg-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
 							"uri": "https://rizomo.numerique.gouv.fr/sitemap.xml",
@@ -60,12 +60,12 @@
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "default-src *;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.data.gouv.fr https://chat.rizomo.numerique.gouv.fr/backoffice/assets/scripts/embbed-chatbot.min.js https://unpkg.com/@suitesnap/la-pastille@1.0.0/index.umd.js https://chat.rizomo.numerique.gouv.fr/;connect-src *;img-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;media-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;style-src 'self' 'unsafe-inline';frame-ancestors *;base-uri 'self';font-src 'self' https: data:;form-action 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nimg-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src, prefetch-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nimg-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src\n\nThe directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src, prefetch-src</p><p></p><p>The directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>img-src, connect-src, frame-src, frame-ancestors, font-src, media-src, manifest-src</p><p></p><p>The directive(s): frame-ancestors are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
@@ -314,7 +314,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "2",
@@ -718,7 +718,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10027",
@@ -914,17 +914,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://rizomo.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -957,17 +949,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://rizomo.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -992,31 +976,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://rizomo.numerique.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://rizomo.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1043,17 +1011,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://rizomo.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
