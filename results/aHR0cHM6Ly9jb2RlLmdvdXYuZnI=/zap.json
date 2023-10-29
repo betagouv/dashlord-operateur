@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 22 Oct 2023 01:13:05",
+	"@generated": "Sun, 29 Oct 2023 01:11:29",
 	"site":[ 
 		{
 			"@name": "https://code.gouv.fr",
@@ -34,7 +34,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1002"
+					"sourceid": "1000"
 				},
 				{
 					"pluginid": "10202",
@@ -61,9 +61,25 @@
 							"attack": "",
 							"evidence": "<form action=\"/newsletters/subscribe\" method=\"post\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" \"username\" ]."
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/unsubscribe/bluehats@mail.codegouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/newsletters/unsubscribe\" method=\"post\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" ]."
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/unsubscribe/logiciels-libres-dsi@mail.codegouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/newsletters/unsubscribe\" method=\"post\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" ]."
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" \"username\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -377,7 +393,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "1107"
+					"sourceid": "1106"
 				},
 				{
 					"pluginid": "90003",
@@ -554,7 +570,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "965"
+					"sourceid": "956"
 				},
 				{
 					"pluginid": "10063",
@@ -714,7 +730,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -722,7 +738,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/rencontre/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -936,7 +952,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -944,7 +960,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/rencontre/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1103,16 +1119,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "U77nqKyAnML6PhivBJF7v+9cenNXGxG0n5HoezDCDSjX2BSP1BmUEgQiJlMMvl1vDzF1xwiKbas/NIml",
-							"otherinfo": "S\uFFFD\u7A2C\uFFFD\uFFFD\uFFFD\uFFFD>\\x0018\uFFFD\\x0004\uFFFD{\uFFFD\uFFFD\\zsW\\x001b\\x0011\uFFFD\uFFFD\uFFFD\uFFFD{0\uFFFD\r(\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\\x0019\uFFFD\\x0012\\x0004\"&S\\x000c\uFFFD]o\\x000f1u\uFFFD\\x0008\uFFFDm\uFFFD?4\uFFFD\uFFFD"
+							"evidence": "ZLMo8n67fmMsGtUXiP7H5yEWo931JyebDs8WqUn+LEcrN4RfJnl9EYZy4zoDvphX41kGzI0nsfV/pl8s",
+							"otherinfo": "d\uFFFD(\uFFFD~\uFFFD~c,\\x001a\uFFFD\\x0017\uFFFD\uFFFD\uFFFD\uFFFD!\\x0016\uFFFD\uFFFD\uFFFD''\uFFFD\\x000e\uFFFD\\x0016\uFFFDI\uFFFD,G+7\uFFFD_&y}\\x0011\uFFFDr\uFFFD:\\x0003\uFFFD\uFFFDW\uFFFDY\\x0006\u030D'\uFFFD\uFFFD\uFFFD_,"
 						},
 						{
 							"uri": "https://code.gouv.fr/newsletters/subscribe/logiciels-libres-dsi@mail.codegouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "iS+KdW7T0XQoWn7Whr6CaZCA4R4g/rd0OA8MViQvb1FJ1Yhwwq/J4UIATELJzIFbm826g0Hfo0ekoSNx",
-							"otherinfo": "\uFFFD/\uFFFDun\uFFFD\uFFFDt(Z~\u0586\uFFFD\uFFFDi\uFFFD\uFFFD\uFFFD\\x001e \uFFFD\uFFFDt8\\x000f\\x000cV$/oQI\u0548p\u00AF\uFFFD\uFFFDB\\x0000LB\uFFFD\u0301[\uFFFD\u037A\uFFFDA\u07E3G\uFFFD\uFFFD#q"
+							"evidence": "hu6jClIF7GxmTNUVZe8ohuxMvPIn3GDblW0ZGeGhdYJ7UWE24e9ad+2LwnUwcm22PhsIOVp2BW7lksrh",
+							"otherinfo": "\uFFFD\uFFFD\nR\\x0005\uFFFDlfL\uFFFD\\x0015e\uFFFD(\uFFFD\uFFFDL\uFFFD\uFFFD'\uFFFD`\u06D5m\\x0019\\x0019\uFFFDu\uFFFD{Qa6\uFFFD\uFFFDZw\uFFFD\uFFFDu0rm\uFFFD>\\x001b\\x00089Zv\\x0005n\uFFFD\uFFFD\uFFFD"
 						}
 					],
 					"count": "12",
@@ -1121,7 +1137,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "381"
+					"sourceid": "377"
 				},
 				{
 					"pluginid": "10027",
@@ -1228,7 +1244,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "395"
+					"sourceid": "376"
 				},
 				{
 					"pluginid": "10109",
@@ -1388,7 +1404,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1396,7 +1412,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/rencontre/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1485,17 +1501,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1528,17 +1536,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1571,17 +1571,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1614,17 +1606,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1647,7 +1631,7 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "9aa0fdd6-a3f1-4457-ba68-80c3ca0a8c85",
+							"evidence": "8bd584e3-c8c2-4e84-a1ba-0000c3fdc847",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
@@ -1655,11 +1639,27 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "ccb9d1f7-76f0-42d1-a465-7750e0080f60",
+							"evidence": "5b4e3ecf-43eb-453b-b92f-6637cf179fe2",
+							"otherinfo": "\ncookie:ring-session"
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/subscribe/bluehats@mail.codegouv.fr",
+							"method": "GET",
+							"param": "ring-session",
+							"attack": "",
+							"evidence": "8bd584e3-c8c2-4e84-a1ba-0000c3fdc847",
+							"otherinfo": "\ncookie:ring-session"
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/subscribe/logiciels-libres-dsi@mail.codegouv.fr",
+							"method": "GET",
+							"param": "ring-session",
+							"attack": "",
+							"evidence": "5b4e3ecf-43eb-453b-b92f-6637cf179fe2",
 							"otherinfo": "\ncookie:ring-session"
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:ring-session</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -1718,14 +1718,6 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
@@ -1751,6 +1743,14 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://code.gouv.fr/sill/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
