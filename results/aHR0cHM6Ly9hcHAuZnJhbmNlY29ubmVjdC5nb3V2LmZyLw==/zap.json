@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 22 Oct 2023 02:54:03",
+	"@generated": "Sun, 29 Oct 2023 02:45:07",
 	"site":[ 
 		{
 			"@name": "https://app.franceconnect.gouv.fr",
@@ -20,22 +20,6 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -44,161 +28,40 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>font-src, form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>frame-ancestors, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "8"
 				},
 				{
-					"pluginid": "10055",
-					"alertRef": "10055-5",
-					"alert": "CSP: script-src unsafe-inline",
-					"name": "CSP: script-src unsafe-inline",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "script-src includes unsafe-inline."
-						}
-					],
-					"count": "2",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
-					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10055",
-					"alertRef": "10055-6",
-					"alert": "CSP: style-src unsafe-inline",
-					"name": "CSP: style-src unsafe-inline",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests",
-							"otherinfo": "style-src includes unsafe-inline."
-						}
-					],
-					"count": "2",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
-					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>",
-							"otherinfo": ""
-						}
-					],
-					"count": "4",
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10003",
-					"alertRef": "10003",
-					"alert": "Vulnerable JS Library",
-					"name": "Vulnerable JS Library",
-					"riskcode": "2",
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
 					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>The identified library bootstrap, version 3.2.0 is vulnerable.</p>",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.franceconnect.gouv.fr/js/bootstrap.min.js",
+							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "* Bootstrap v3.2.0",
-							"otherinfo": "CVE-2019-8331\nCVE-2018-14041\nCVE-2018-20677\nCVE-2018-20676\nCVE-2018-14042\nCVE-2016-10735\n"
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
 						}
 					],
 					"count": "1",
-					"solution": "<p>Please upgrade to the latest version of bootstrap.</p>",
-					"otherinfo": "<p>CVE-2019-8331</p><p>CVE-2018-14041</p><p>CVE-2018-20677</p><p>CVE-2018-20676</p><p>CVE-2018-14042</p><p>CVE-2016-10735</p><p></p>",
-					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
-					"cweid": "829",
-					"wascid": "-1",
-					"sourceid": "35"
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10054",
@@ -228,84 +91,6 @@
 					"sourceid": "6"
 				},
 				{
-					"pluginid": "10017",
-					"alertRef": "10017",
-					"alert": "Cross-Domain JavaScript Source File Inclusion",
-					"name": "Cross-Domain JavaScript Source File Inclusion",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "https://oss.maxcdn.com/respond/1.4.2/respond.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "https://oss.maxcdn.com/respond/1.4.2/respond.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>",
-							"otherinfo": ""
-						}
-					],
-					"count": "4",
-					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "829",
-					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10110",
-					"alertRef": "10110",
-					"alert": "Dangerous JS Functions",
-					"name": "Dangerous JS Functions",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/js/jquery-3.6.0.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Eval",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>See the references for security advice on the use of these functions.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://angular.io/guide/security</p>",
-					"cweid": "749",
-					"wascid": "-1",
-					"sourceid": "32"
-				},
-				{
 					"pluginid": "10063",
 					"alertRef": "10063-1",
 					"alert": "Permissions Policy Header Not Set",
@@ -316,46 +101,6 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/js/bootstrap.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/js/formatHelper.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/js/jquery-3.6.0.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -364,13 +109,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "1",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10035",
@@ -383,22 +128,6 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) headers were found, a response with multiple HSTS header entries is not compliant with the specification (RFC 6797) and only the first HSTS header will be processed others will be ignored by user agents or the HSTS policy may be incorrectly applied.</p><p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL).</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -407,40 +136,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>Ensure that only one component in your stack: code, web server, application server, load balancer, etc. is configured to set or add a HTTP Strict-Transport-Security (HSTS) header.</p>",
 					"otherinfo": "",
 					"reference": "<p>http://tools.ietf.org/html/rfc6797#section-8.1</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10096",
-					"alertRef": "10096",
-					"alert": "Timestamp Disclosure - Unix",
-					"name": "Timestamp Disclosure - Unix",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1717735209",
-							"otherinfo": "1717735209, which evaluates to: 2024-06-07 04:40:09"
-						}
-					],
-					"count": "1",
-					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1717735209, which evaluates to: 2024-06-07 04:40:09</p>",
-					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "13"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10094",
@@ -457,95 +159,52 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AeG5yPTAbq_IhlNrckTJpfwO4JfWm8AoD",
-							"otherinfo": "\uFFFD\\x0007\uFFFD\uFFFD#\uFFFD\\x0001\uFFFD\uFFFD\"\\x0019M\uFFFD\uFFFD\\x0013&\uFFFD\uFFFD;\uFFFD_Zo\\x0000\uFFFD"
+							"evidence": "3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k",
+							"otherinfo": "\uFFFD\\x0004\uFFFD\uFFFD7u\uFFFDi#w6\uEFA0g\uFFFD@<3Y\\x0001\uFFFDG\uFFFD\uFFFD"
 						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AgnqQc-2niueYFT78SYU7xsBUgzNPO2yd",
-							"otherinfo": "\uFFFD\\x0008'\uFFFD\\x0007>\uFFFDx\uFFFDy\uFFFDS\uFFFD\u0118S\uFFFDl\\x0005H34\uFFFD\uFFFD"
+							"evidence": "3AqKJX_bIqDetUI3XsUkNjG_9iGUrOX7eP",
+							"otherinfo": "\uFFFD\n\uFFFD%\uFFFD\"\uFFFD\u07B5B7^\uFFFD$61\uFFFD\uFFFD!\uFFFD\uFFFD\uFFFD\uFFFDx"
 						}
 					],
 					"count": "2",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0007\uFFFD\uFFFD#\uFFFD\\x0001\uFFFD\uFFFD\"\\x0019M\uFFFD\uFFFD\\x0013&\uFFFD\uFFFD;\uFFFD_Zo\\x0000\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0004\uFFFD\uFFFD7u\uFFFDi#w6\uEFA0g\uFFFD@<3Y\\x0001\uFFFDG\uFFFD\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
-					"pluginid": "10027",
-					"alertRef": "10027",
-					"alert": "Information Disclosure - Suspicious Comments",
-					"name": "Information Disclosure - Suspicious Comments",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
-					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script type=\"text/javascript\">\n    //tooltip to display when email support is click to copy\n    (function () {\n        if (docu\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/js/jquery-3.6.0.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "username",
-							"otherinfo": "The following pattern was used: \\bUSERNAME\\b and was detected in the element starting with: \"!function(e,t){\"use strict\";\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=e.document?t(e,!0):function(\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- If the user agent is below IE 10 we advise the user to update his browser -->\", see evidence field for the suspicious comment/snippet."
-						}
-					],
-					"count": "3",
-					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script type=\"text/javascript\"></p><p>    //tooltip to display when email support is click to copy</p><p>    (function () {</p><p>        if (docu\", see evidence field for the suspicious comment/snippet.</p>",
-					"reference": "",
-					"cweid": "200",
-					"wascid": "13",
-					"sourceid": "13"
-				},
-				{
-					"pluginid": "10109",
-					"alertRef": "10109",
-					"alert": "Modern Web Application",
-					"name": "Modern Web Application",
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
 					"riskcode": "0",
 					"confidence": "2",
 					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
 							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"back\" href=\"#\" onclick=\"window.history.back(); return false;\"><img src=\"/images/chevron_grey.svg\" height=\"16px\"/> retourner \u00E0 la page pr\u00E9c\u00E9dente</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "500",
+							"otherinfo": ""
 						}
 					],
 					"count": "1",
-					"solution": "<p>This is an informational alert and so no changes are required.</p>",
-					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
-					"reference": "",
-					"cweid": "-1",
-					"wascid": "-1",
-					"sourceid": "1"
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -558,22 +217,6 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -582,13 +225,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -609,7 +252,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -644,7 +287,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -658,7 +301,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -679,7 +322,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -693,7 +336,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -714,7 +357,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -728,7 +371,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10112",
@@ -745,7 +388,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AeG5yPTAbq_IhlNrckTJpfwO4JfWm8AoD.mjjA1sLU8QkE6kgzo92jew82GC67hSMhZm7j5IMogSo",
+							"evidence": "s%3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k.bt%2FcCjuIKel%2F5mWNAC3b0plPuasbgq5FZCk9JJ0tmV8",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -753,7 +396,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AgnqQc-2niueYFT78SYU7xsBUgzNPO2yd.CzYOMrjqpd%2BRrD%2FgrwDGN00ouhQrOjo6Tl0jUfqLeGM",
+							"evidence": "s%3AqKJX_bIqDetUI3XsUkNjG_9iGUrOX7eP.bV0Wg%2BS1cXmvjGepnXmbdVP8nL03NAdL87oMXH4zWDk",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -761,7 +404,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AgnqQc-2niueYFT78SYU7xsBUgzNPO2yd.CzYOMrjqpd%2BRrD%2FgrwDGN00ouhQrOjo6Tl0jUfqLeGM",
+							"evidence": "s%3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k.bt%2FcCjuIKel%2F5mWNAC3b0plPuasbgq5FZCk9JJ0tmV8",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
@@ -771,7 +414,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -783,38 +426,6 @@
 					"riskdesc": "Informational (Medium)",
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
-						{
-							"uri": "https://app.franceconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/cgu",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/images/chevron_grey.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/images/fc_logo_alt2_v2.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
 							"method": "GET",
@@ -830,55 +441,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/bootstrap/3.2.0/css/bootstrap.min.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/cookies_warning.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/flaticon.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/main.css?v=5e83ec647ea4c2e38b64ecc1ee58cbf706b30040",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.franceconnect.gouv.fr/stylesheets/style.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=2592000",
-							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "2",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
-					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				}
 			]
 		}
