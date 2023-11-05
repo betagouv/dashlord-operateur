@@ -1,0 +1,426 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "app.franceconnect.gouv.fr.",
+      "matched-at": "app.franceconnect.gouv.fr",
+      "extracted-results": [
+        "certigna.fr"
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 52059\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;app.franceconnect.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 52059\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;app.franceconnect.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\napp.franceconnect.gouv.fr.\t21600\tIN\tCAA\t0 issue \"certigna.fr\"\n",
+      "timestamp": "2023-11-05T02:58:09.318423319Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/options-method.yaml",
+      "template-url": "https://templates.nuclei.sh/public/options-method",
+      "template-id": "options-method",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/options-method.yaml",
+      "info": {
+        "name": "Allowed Options Method",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "misc",
+          "generic"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "extracted-results": [
+        "GET,HEAD"
+      ],
+      "request": "OPTIONS / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 8\r\nAllow: GET,HEAD\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: text/html; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:58:23 GMT\r\nEtag: W/\"8-ZRAf8oNBS3Bjb/SU2GYZCmbtmXg\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3Alf6dQWnLTrHnPSF6xDRHRw5sh2v-01lO.w9IxNN%2BAD0tulEI3RxZW%2FLLbYGKg3iSTi%2FW3tU0fmzw; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:18:23 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 138cd847bc0ce8b8ac7abbd1b49c2c9d\r\nX-Xss-Protection: 0\r\n\r\nGET,HEAD",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:58:23.432669977Z",
+      "curl-command": "curl -X 'OPTIONS' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/httponly-cookie-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/httponly-cookie-detect",
+      "template-id": "httponly-cookie-detect",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/httponly-cookie-detect.yaml",
+      "info": {
+        "name": "HttpOnly Cookie - Detect",
+        "author": [
+          "mr. bobo hp"
+        ],
+        "tags": [
+          "misconfig",
+          "http",
+          "cookie",
+          "generic"
+        ],
+        "description": "Checks whether cookies in the HTTP response contain the HttpOnly attribute. If the HttpOnly flag is set, it means that the cookie is HTTP-only\n",
+        "reference": [
+          "https://stackoverflow.com/questions/4316539/how-do-i-test-httponly-cookie-flag"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": null,
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 500 Internal Server Error\r\nConnection: close\r\nContent-Length: 77\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: application/json; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:58:31 GMT\r\nEtag: W/\"4d-CPIDWQsw5hBqctp5xJAMBJIItDQ\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3AuCU9BPOBZET3gfMS6DE9tVoj5iSe7-Ch.wUJD6EzZkn2SVECJ0qzSpDpV8RTSkdNrNUJPBnhlSoo; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:18:31 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 039e472a0f68e53ce24f9f3ba1ba05c9\r\nX-Xss-Protection: 0\r\n\r\n{\"status\":\"error\",\"message\":\"An error occurred. Please contact the support.\"}",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:58:31.836376484Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 500 Internal Server Error\r\nConnection: close\r\nContent-Length: 77\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: application/json; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:59:25 GMT\r\nEtag: W/\"4d-CPIDWQsw5hBqctp5xJAMBJIItDQ\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3AwrDKYIWPx1k4rvJvB1_lv4U5do8RU5Co.Fk9Jiy84P458%2B6%2BruCa%2FGbYEl3Nfm2pE8nEMkTCtSyA; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:19:25 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 7aaac811804f5b144534e61f55bcce5f\r\nX-Xss-Protection: 0\r\n\r\n{\"status\":\"error\",\"message\":\"An error occurred. Please contact the support.\"}",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:59:25.443691869Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 500 Internal Server Error\r\nConnection: close\r\nContent-Length: 77\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: application/json; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:59:25 GMT\r\nEtag: W/\"4d-CPIDWQsw5hBqctp5xJAMBJIItDQ\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3AwrDKYIWPx1k4rvJvB1_lv4U5do8RU5Co.Fk9Jiy84P458%2B6%2BruCa%2FGbYEl3Nfm2pE8nEMkTCtSyA; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:19:25 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 7aaac811804f5b144534e61f55bcce5f\r\nX-Xss-Protection: 0\r\n\r\n{\"status\":\"error\",\"message\":\"An error occurred. Please contact the support.\"}",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:59:25.443750569Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 500 Internal Server Error\r\nConnection: close\r\nContent-Length: 77\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: application/json; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:59:25 GMT\r\nEtag: W/\"4d-CPIDWQsw5hBqctp5xJAMBJIItDQ\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3AwrDKYIWPx1k4rvJvB1_lv4U5do8RU5Co.Fk9Jiy84P458%2B6%2BruCa%2FGbYEl3Nfm2pE8nEMkTCtSyA; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:19:25 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 7aaac811804f5b144534e61f55bcce5f\r\nX-Xss-Protection: 0\r\n\r\n{\"status\":\"error\",\"message\":\"An error occurred. Please contact the support.\"}",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:59:25.443769069Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/robots-txt-endpoint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/robots-txt-endpoint",
+      "template-id": "robots-txt-endpoint",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/robots-txt-endpoint.yaml",
+      "info": {
+        "name": "robots.txt endpoint prober",
+        "author": [
+          "caspergn",
+          "pdteam"
+        ],
+        "tags": [
+          "misc",
+          "generic"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 2
+        }
+      },
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/robots.txt",
+      "request": "GET /robots.txt HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: public, max-age=2592000\r\nContent-Security-Policy: img-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr data:;manifest-src 'self' app.franceconnect.gouv.fr;script-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;style-src 'self' 'unsafe-inline' app.franceconnect.gouv.fr;default-src 'self';base-uri 'self';font-src 'self' https: data:;frame-ancestors 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests\r\nContent-Type: text/plain; charset=UTF-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 02:59:42 GMT\r\nEtag: W/\"1a-18b5b98b380\"\r\nLast-Modified: Mon, 23 Oct 2023 08:13:36 GMT\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nStrict-Transport-Security: max-age=31536000\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 1fe11e2f9a50b9f920ac27cc77efaa51\r\nX-Xss-Protection: 0\r\n\r\nUser-agent: *\nDisallow: /\n",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T02:59:42.635017336Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/robots.txt'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "securesphere",
+      "type": "http",
+      "host": "https://app.franceconnect.gouv.fr/",
+      "matched-at": "https://app.franceconnect.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: app.franceconnect.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Security-Policy: default-src 'none'\r\nContent-Type: text/html; charset=utf-8\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 05 Nov 2023 03:00:05 GMT\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: origin,unsafe-url\r\nSet-Cookie: connect.sid=s%3Ar41OVtQrlT4XfDayZv0zxhjZbtn7zyEu.jIt1uPZ6f9fheieMXvi8W%2FMDrg%2FedOrmoBrnMa1w36M; Domain=.app.franceconnect.gouv.fr; Path=/; Expires=Sun, 05 Nov 2023 03:20:05 GMT; HttpOnly; Secure\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 9f104514b582990bb71491f7c6f496fd\r\nX-Xss-Protection: 0\r\n\r\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /</pre>\n</body>\n</html>\n",
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T03:00:05.781116923Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: app.franceconnect.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.franceconnect.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "app.franceconnect.gouv.fr",
+      "matched-at": "app.franceconnect.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T03:01:53.72329132Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "app.franceconnect.gouv.fr",
+      "matched-at": "app.franceconnect.gouv.fr:443",
+      "extracted-results": [
+        "app.franceconnect.gouv.fr",
+        "app2.franceconnect.gouv.fr",
+        "app1.franceconnect.gouv.fr"
+      ],
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T03:01:53.723906635Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "app.franceconnect.gouv.fr",
+      "matched-at": "app.franceconnect.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T03:01:54.030174005Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "app.franceconnect.gouv.fr",
+      "matched-at": "app.franceconnect.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "185.24.186.225",
+      "timestamp": "2023-11-05T03:01:55.348502727Z",
+      "matcher-status": true
+    }
+  ]
+]

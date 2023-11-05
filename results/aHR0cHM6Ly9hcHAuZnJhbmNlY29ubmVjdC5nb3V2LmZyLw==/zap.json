@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 29 Oct 2023 02:45:07",
+	"@generated": "Sun, 5 Nov 2023 02:51:56",
 	"site":[ 
 		{
 			"@name": "https://app.franceconnect.gouv.fr",
@@ -61,7 +61,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10054",
@@ -88,7 +88,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -159,21 +159,21 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k",
-							"otherinfo": "\uFFFD\\x0004\uFFFD\uFFFD7u\uFFFDi#w6\uEFA0g\uFFFD@<3Y\\x0001\uFFFDG\uFFFD\uFFFD"
+							"evidence": "3AOqFvkcXQeBhEC51oolDRY8AnYvw-qceD",
+							"otherinfo": "\uFFFD\\x0003\uFFFD\\x0016\uFFFD\\x001c]\\x0007\uFFFD\uFFFD@\uFFFD\u058A%\r\\x0016<\\x0002v/\uFFFD\uFFFDx"
 						},
 						{
 							"uri": "https://app.franceconnect.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AqKJX_bIqDetUI3XsUkNjG_9iGUrOX7eP",
-							"otherinfo": "\uFFFD\n\uFFFD%\uFFFD\"\uFFFD\u07B5B7^\uFFFD$61\uFFFD\uFFFD!\uFFFD\uFFFD\uFFFD\uFFFDx"
+							"evidence": "3AQTwoyQl8j6oGYpSbtsFfuXILmjoGzE63",
+							"otherinfo": "\uFFFD\\x0004\\x0013\u008C\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDf)I\uFFFDl\\x0015\uFFFD\uFFFD \uFFFD\uFFFD\uFFFDl\uFFFD\uFFFD"
 						}
 					],
 					"count": "2",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0004\uFFFD\uFFFD7u\uFFFDi#w6\uEFA0g\uFFFD@<3Y\\x0001\uFFFDG\uFFFD\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0003\uFFFD\\x0016\uFFFD\\x001c]\\x0007\uFFFD\uFFFD@\uFFFD\u058A%\r\\x0016<\\x0002v/\uFFFD\uFFFDx</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -252,6 +252,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -260,7 +268,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -287,6 +295,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -295,7 +311,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -322,6 +338,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -330,13 +354,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -357,6 +381,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -365,13 +397,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10112",
@@ -388,7 +420,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k.bt%2FcCjuIKel%2F5mWNAC3b0plPuasbgq5FZCk9JJ0tmV8",
+							"evidence": "s%3AOqFvkcXQeBhEC51oolDRY8AnYvw-qceD.nRV%2FspijBtwkjH9GtqIaiE6uxvoh0NZ4KkCNj7%2BdMxg",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -396,7 +428,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AqKJX_bIqDetUI3XsUkNjG_9iGUrOX7eP.bV0Wg%2BS1cXmvjGepnXmbdVP8nL03NAdL87oMXH4zWDk",
+							"evidence": "s%3AQTwoyQl8j6oGYpSbtsFfuXILmjoGzE63.aFvhAyfXlFwSgMJQIncq1QJLiXpB4YR9xXqlwRXCL%2Bk",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -404,7 +436,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3ASEvTd1zGkjdzbuvqBnjkA8M1kB10fM1k.bt%2FcCjuIKel%2F5mWNAC3b0plPuasbgq5FZCk9JJ0tmV8",
+							"evidence": "s%3AOqFvkcXQeBhEC51oolDRY8AnYvw-qceD.nRV%2FspijBtwkjH9GtqIaiE6uxvoh0NZ4KkCNj7%2BdMxg",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
