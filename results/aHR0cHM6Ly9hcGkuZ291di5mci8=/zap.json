@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 29 Oct 2023 02:19:20",
+	"@generated": "Sun, 5 Nov 2023 02:23:19",
 	"site":[ 
 		{
 			"@name": "https://api.gouv.fr",
@@ -234,6 +234,14 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
+							"uri": "https://api.gouv.fr/_next/static/chunks/1e7177e0-243fa33041e0e5ba.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/_next/static/chunks/9f96d65d-122a2632014666a3.js",
 							"method": "GET",
 							"param": "",
@@ -242,13 +250,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1026"
+					"sourceid": "1536"
 				},
 				{
 					"pluginid": "10063",
@@ -531,14 +539,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/rechercher-api",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.18.0 (Ubuntu)",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -556,6 +556,14 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0 (Ubuntu)",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/vie-privee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -638,14 +646,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/rechercher-api",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -663,6 +663,14 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/vie-privee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -780,14 +788,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://api.gouv.fr/rechercher-api",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -805,6 +805,14 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://api.gouv.fr/vie-privee",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -879,7 +887,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDtzp\t1\uFFFDj?\uFFFDO\uFFFD\uFFFD> \uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/API_Ingres_Nomenclatures",
+							"uri": "https://api.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -887,7 +895,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDtzp\t1\uFFFDj?\uFFFDO\uFFFD\uFFFD> \uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://api.gouv.fr/mentions-legales",
+							"uri": "https://api.gouv.fr/rechercher-api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -938,7 +946,95 @@
 					"desc": "<p>The Content-Type header was either missing or empty.</p>",
 					"instances":[ 
 						{
+							"uri": "https://api.gouv.fr/12148/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/guides/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/rna/v1/full_text/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/rna/v1/id/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/sirene/v1/full_text/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/sirene/v1/siren/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/sirene/v1/siret/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/sirene/v3/unites_legales/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/service/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/v2/publications/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -946,13 +1042,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "12",
 					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
 					"otherinfo": "",
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "705"
+					"sourceid": "1402"
 				},
 				{
 					"pluginid": "10027",
@@ -1203,14 +1299,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/documentation",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "s-maxage=31536000, stale-while-revalidate",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/equipe",
 							"method": "GET",
 							"param": "cache-control",
@@ -1243,6 +1331,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/services",
 							"method": "GET",
 							"param": "cache-control",
@@ -1257,9 +1353,17 @@
 							"attack": "",
 							"evidence": "public, max-age=0",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/vie-privee",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "11",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1506,7 +1610,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://api.gouv.fr/rechercher-api",
+							"uri": "https://api.gouv.fr/services",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1514,12 +1618,12 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/services",
+							"uri": "https://api.gouv.fr/vie-privee",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
 					"count": "9",
@@ -1563,7 +1667,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "139"
 				}
 			]
 		}
