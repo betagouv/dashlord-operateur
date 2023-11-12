@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 5 Nov 2023 02:38:31",
+	"@generated": "Sun, 12 Nov 2023 02:38:45",
 	"site":[ 
 		{
 			"@name": "https://franceconnect.gouv.fr",
@@ -34,7 +34,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "165"
+					"sourceid": "186"
 				},
 				{
 					"pluginid": "10038",
@@ -141,7 +141,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10020",
@@ -194,14 +194,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/franceconnect",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://franceconnect.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -242,7 +234,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
@@ -315,7 +307,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "76"
 				},
 				{
 					"pluginid": "10003",
@@ -342,7 +334,7 @@
 					"reference": "<p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "181"
+					"sourceid": "182"
 				},
 				{
 					"pluginid": "10017",
@@ -409,7 +401,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "76"
 				},
 				{
 					"pluginid": "10110",
@@ -436,7 +428,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "181"
+					"sourceid": "182"
 				},
 				{
 					"pluginid": "10063",
@@ -497,7 +489,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/mentions-legales",
+							"uri": "https://franceconnect.gouv.fr/js/main.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -505,7 +497,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/nos-services",
+							"uri": "https://franceconnect.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -658,7 +650,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "220"
+					"sourceid": "226"
 				},
 				{
 					"pluginid": "10096",
@@ -701,7 +693,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "96"
+					"sourceid": "129"
 				},
 				{
 					"pluginid": "10021",
@@ -722,6 +714,14 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/cgu",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -730,7 +730,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/css/reset.css",
+							"uri": "https://franceconnect.gouv.fr/css/fonts.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -738,7 +738,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/faq",
+							"uri": "https://franceconnect.gouv.fr/css/global.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/css/reset.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -770,14 +778,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/nos-services",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://franceconnect.gouv.fr/partenaires",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -787,14 +787,6 @@
 						},
 						{
 							"uri": "https://franceconnect.gouv.fr/plan-site",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://franceconnect.gouv.fr/presse",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -845,28 +837,20 @@
 							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\uFFFDMC\uFFFD\"\r\uFFFD\uFFFD|\uFFFD!\u029B\uFFFD}[\\x0016j\uFFFD\uFFFD6\uFFFD"
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/css/materialize-stepper.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/Kinark/Materialize-stepper/blob/b739771a5f948374d7464cf1ddaf93d9f8d6d369/dist/css/mstepper",
+							"otherinfo": "r\uFFFD\uFFFD*)\u06AEO\uFFFDj\u05EB\uFFFD\uFFFDb\uFFFD\uFB35\uFFFDiz\uFFFD\u06D6\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFDZ\uFFFD\uFFFDx\uFFFD~\uFFFDw\uFFFD:\uFFFD\uFFFD\uFFFDu\u059F\uFFFDw}\uFFFDzw~\uFFFD\uFFFD\u062C\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDiz"
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "fr/particuliers/vosdroits/R49454",
 							"otherinfo": "~\uFFFD\uFFFDj\uFFFDbr\uFFFDbz\uFFFD?\uFFFD\uFFFD\\x001d\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDx\uFFFD\uFFFDx"
-						},
-						{
-							"uri": "https://franceconnect.gouv.fr/files/CGU_Usager_v1.4.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "fb83B6965DEE02D9BD1EF48AF84D8744",
-							"otherinfo": "}\uFFFD7\\x0007\uFFFDz\uFFFD1\\x0004\uFFFD`\uFFFD\\x0004=D\\x0017\uFFFD\\x0000\\x0017\uFFFD\\x0003\uFFFD8"
-						},
-						{
-							"uri": "https://franceconnect.gouv.fr/files/CGU_Usager_v1.5.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/Type/Font/Subtype/TrueType/Name/F1/BaseFont/TimesNewRomanPS-BoldMT/Encoding/WinAnsiEncoding/FontDescriptor",
-							"otherinfo": "\uFFFD<\uFFFD{\uFFFDh\uFFFD\uFFFD\u04B9\uFFFDr\uFFFD\uFFFD\u04EE\uFFFD\u0297\uFFFD5\uFFFD\uFFFD\uFFFD]\\x0005\uFFFD\\x001e\\x0016\uFFFD\uFFFD\uFFFD8\uFFFDz\uFFFD^\uFFFD\\x001a&js\uFFFD\uFFFD\\x001a%t\uFFFD\uFFFD\\x0012w(v)\uFFFD\uFFFDh\uFFFD\\x0002{\"\\x0012w(v)\uFFFD\uFFFDZ'\uFFFD7\uFFFDr\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
 							"uri": "https://franceconnect.gouv.fr/files/CGU_Utilisateur_v1.7.pdf",
@@ -877,12 +861,20 @@
 							"otherinfo": "~\uFFFD\uFFFD\u05BF\uFFFD\uFFFD\uFFFD9\\x0011S\\x0011t\uFFFD\uFFFDM7\uFFFDu\uFFFD\uFFFDM\uFFFD\uFFFD]>\u05DF"
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/files/FC_Politique_Cookies_V1.1.pdf",
+							"uri": "https://franceconnect.gouv.fr/files/DINUM_PlanAnnuel_2020.pdf",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "143/ColorSpace/DeviceGray/BitsPerComponent",
-							"otherinfo": "\u05CD\uFFFD\n\uFFFDh\uFFFD*Zq\uFFFD\uFFFDz\uFFFD\uFFFDxj\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFD\u07AC*&\uFFFD\uFFFD\u079E"
+							"evidence": "/Type/Font/Subtype/TrueType/Name/F1/BaseFont/BCDEEE+Calibri-Bold/Encoding/WinAnsiEncoding/FontDescriptor",
+							"otherinfo": "\uFFFD<\uFFFD{\uFFFDh\uFFFD\uFFFD\u04B9\uFFFDr\uFFFD\uFFFD\u04EE\uFFFD\u0297\uFFFD5\uFFFD\uFFFD\uFFFD]\\x0005\uFFFD\\x001e\\x0016\uFFFD\uFFFD\uFFFD\\x0010\uFFFD\\x0010A>\t\uFFFDbn\uFFFD\uFFFD\\x0006\uFFFD]\uFFFDI\u0721\u0627\uFFFD\uFFFD\uFFFD\uFFFD\t\uFFFDI\u0721\u0627\uFFFD\uFFFDh\uFFFD\uFFFD\u07B1\uFFFD\uFFFD\uFFFD+"
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/files/DINUM_SchemaPluriannuel_2020.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/Type/Font/Subtype/TrueType/Name/F1/BaseFont/BCDEEE+Calibri-Bold/Encoding/WinAnsiEncoding/FontDescriptor",
+							"otherinfo": "\uFFFD<\uFFFD{\uFFFDh\uFFFD\uFFFD\u04B9\uFFFDr\uFFFD\uFFFD\u04EE\uFFFD\u0297\uFFFD5\uFFFD\uFFFD\uFFFD]\\x0005\uFFFD\\x001e\\x0016\uFFFD\uFFFD\uFFFD\\x0010\uFFFD\\x0010A>\t\uFFFDbn\uFFFD\uFFFD\\x0006\uFFFD]\uFFFDI\u0721\u0627\uFFFD\uFFFD\uFFFD\uFFFD\t\uFFFDI\u0721\u0627\uFFFD\uFFFDh\uFFFD\uFFFD\u07B1\uFFFD\uFFFD\uFFFD+"
 						},
 						{
 							"uri": "https://franceconnect.gouv.fr/files/FC_Politique_Protection_Donnees_Personnelles_V1.3.pdf",
@@ -923,7 +915,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "122"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10027",
@@ -982,7 +974,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "181"
+					"sourceid": "182"
 				},
 				{
 					"pluginid": "10109",
@@ -1033,7 +1025,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "96"
+					"sourceid": "129"
 				},
 				{
 					"pluginid": "10015",
@@ -1094,15 +1086,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/mentions-legales",
+							"uri": "https://franceconnect.gouv.fr/images/favicons/site.webmanifest",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "",
+							"evidence": "public, max-age=0",
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/nos-services",
+							"uri": "https://franceconnect.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1140,7 +1132,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1161,6 +1153,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1169,13 +1177,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1196,6 +1204,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1204,13 +1228,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1231,6 +1255,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1239,7 +1279,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1266,6 +1306,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1274,7 +1330,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1301,7 +1357,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/cgu",
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1309,7 +1365,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/faq",
+							"uri": "https://franceconnect.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1341,14 +1397,6 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/nos-services",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://franceconnect.gouv.fr/partenaires",
 							"method": "GET",
 							"param": "",
@@ -1357,7 +1405,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/presse",
+							"uri": "https://franceconnect.gouv.fr/plan-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1381,13 +1429,40 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
 					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
+					"instances":[ 
+						{
+							"uri": "https://franceconnect.gouv.fr/css/reset.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "90"
 				}
 			]
 		}
