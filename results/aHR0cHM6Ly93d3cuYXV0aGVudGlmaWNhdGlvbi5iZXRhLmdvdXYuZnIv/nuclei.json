@@ -32,9 +32,9 @@
       "type": "dns",
       "host": "www.authentification.beta.gouv.fr.",
       "matched-at": "www.authentification.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 34316\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 34316\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.authentification.beta.gouv.fr.\t3600\tIN\tCNAME\tauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\nauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-secnum-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2323953355 10000 2400 604800 1800\n",
-      "timestamp": "2023-11-05T01:29:01.085382195Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 6403\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 6403\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.authentification.beta.gouv.fr.\t3599\tIN\tCNAME\tauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\nauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\t300\tIN\tCNAME\tsc-lb-pool-01.osc-secnum-fr1.scalingo-network.com.\n\n;; AUTHORITY SECTION:\nscalingo-network.com.\t1800\tIN\tSOA\tburt.ns.cloudflare.com. dns.cloudflare.com. 2323953355 10000 2400 604800 1800\n",
+      "timestamp": "2023-11-12T01:32:50.512456534Z",
       "matcher-status": true
     },
     {
@@ -69,165 +69,9 @@
       "extracted-results": [
         "authentification-landing-prod.osc-secnum-fr1.scalingo.io."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 17831\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 17831\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.authentification.beta.gouv.fr.\t3599\tIN\tCNAME\tauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\n",
-      "timestamp": "2023-11-05T01:29:01.753143661Z",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://www.authentification.beta.gouv.fr/",
-      "matched-at": "https://www.authentification.beta.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826275995Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://www.authentification.beta.gouv.fr/",
-      "matched-at": "https://www.authentification.beta.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826330246Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-frame-options",
-      "type": "http",
-      "host": "https://www.authentification.beta.gouv.fr/",
-      "matched-at": "https://www.authentification.beta.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826349592Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-permitted-cross-domain-policies",
-      "type": "http",
-      "host": "https://www.authentification.beta.gouv.fr/",
-      "matched-at": "https://www.authentification.beta.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826366023Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 51317\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 51317\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.authentification.beta.gouv.fr.\t3600\tIN\tCNAME\tauthentification-landing-prod.osc-secnum-fr1.scalingo.io.\n",
+      "timestamp": "2023-11-12T01:32:51.404992869Z",
       "matcher-status": true
     },
     {
@@ -263,9 +107,9 @@
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826378376Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024035447Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -297,14 +141,14 @@
           "max-request": 1
         }
       },
-      "matcher-name": "clear-site-data",
+      "matcher-name": "cross-origin-embedder-policy",
       "type": "http",
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826390258Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024190948Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -341,9 +185,9 @@
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826402481Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024236048Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -375,14 +219,14 @@
           "max-request": 1
         }
       },
-      "matcher-name": "permissions-policy",
+      "matcher-name": "x-permitted-cross-domain-policies",
       "type": "http",
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826415795Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024247748Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -419,9 +263,48 @@
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826427978Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024258348Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://www.authentification.beta.gouv.fr/",
+      "matched-at": "https://www.authentification.beta.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024268248Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -458,9 +341,126 @@
       "host": "https://www.authentification.beta.gouv.fr/",
       "matched-at": "https://www.authentification.beta.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 01:30:09 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: 0141dda3-3697-41b3-ac54-1545f5e49069\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:30:09.826440341Z",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024277848Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://www.authentification.beta.gouv.fr/",
+      "matched-at": "https://www.authentification.beta.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024290348Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://www.authentification.beta.gouv.fr/",
+      "matched-at": "https://www.authentification.beta.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024300548Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://www.authentification.beta.gouv.fr/",
+      "matched-at": "https://www.authentification.beta.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.authentification.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 502 Bad Gateway\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Encoding: identity\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 01:33:55 GMT\r\nStrict-Transport-Security: max-age=31536000\r\nX-Request-Id: b9819306-3512-46ee-b4ca-4c660d4e66a1\r\n\r\n<!DOCTYPE html><html><head><meta charset='utf-8'><meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'><meta content='width=device-width, initial-scale=1.0' name='viewport'><title>Application Error</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit-transform: translateY(-40%); transform: translateY(-40%);}h1 { font-size: 2rem; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-family: \"Lato\", sans-serif; margin: 0; paddding: 0;}p { margin-left: auto; margin-right: auto; width: 768px;}p em { margin-top: 1em; font-family: \"Lato\", sans-serif;}</style></head><body><div id='wrapper'><h1>Application Error</h1><p><em>The application has stopped responding unexpectedly.<br>If you're the application owner, check your logs and metrics for details.</em></p></div></body></html>\n",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:33:56.024310048Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.authentification.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -489,8 +489,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:36:01.103556402Z",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:39:27.732282147Z",
       "matcher-status": true
     },
     {
@@ -518,8 +518,8 @@
       "extracted-results": [
         "www.authentification.beta.gouv.fr"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:36:01.103666948Z",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:39:27.73274675Z",
       "matcher-status": true
     },
     {
@@ -548,8 +548,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:36:09.324824397Z",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:39:35.389780054Z",
       "matcher-status": true
     },
     {
@@ -578,8 +578,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "148.253.96.193",
-      "timestamp": "2023-11-05T01:36:09.638893894Z",
+      "ip": "80.247.12.255",
+      "timestamp": "2023-11-12T01:39:35.801738978Z",
       "matcher-status": true
     }
   ]
