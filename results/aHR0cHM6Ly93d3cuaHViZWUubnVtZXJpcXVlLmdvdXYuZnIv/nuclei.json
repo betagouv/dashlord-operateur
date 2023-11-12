@@ -1,6 +1,43 @@
 [
   [
     {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.hubee.numerique.gouv.fr.",
+      "matched-at": "www.hubee.numerique.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 48517\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 48517\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.hubee.numerique.gouv.fr.\t300\tIN\tCNAME\tproxy-ssl.webflow.com.\nproxy-ssl.webflow.com.\t81\tIN\tCNAME\tproxy-ssl-geo.webflow.com.\n\n;; AUTHORITY SECTION:\nwebflow.com.\t900\tIN\tSOA\tns-1078.awsdns-06.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400\n",
+      "timestamp": "2023-11-12T02:18:46.666191118Z",
+      "matcher-status": true
+    },
+    {
       "template": "dns/dns-saas-service-detection.yaml",
       "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
       "template-id": "dns-saas-service-detection",
@@ -33,319 +70,9 @@
       "extracted-results": [
         "proxy-ssl.webflow.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 7607\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CNAME\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 7607\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.hubee.numerique.gouv.fr.\t300\tIN\tCNAME\tproxy-ssl.webflow.com.\n",
-      "timestamp": "2023-11-05T02:15:37.065450468Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "www.hubee.numerique.gouv.fr.",
-      "matched-at": "www.hubee.numerique.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 12233\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 12233\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\nwww.hubee.numerique.gouv.fr.\t300\tIN\tCNAME\tproxy-ssl.webflow.com.\nproxy-ssl.webflow.com.\t300\tIN\tCNAME\tproxy-ssl-geo.webflow.com.\n\n;; AUTHORITY SECTION:\nwebflow.com.\t900\tIN\tSOA\tns-1078.awsdns-06.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400\n",
-      "timestamp": "2023-11-05T02:15:37.125137685Z",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908259107Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "strict-transport-security",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908310653Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-content-type-options",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908327475Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "clear-site-data",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908344216Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-permitted-cross-domain-policies",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908359414Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "referrer-policy",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908375234Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908388779Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 12540\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 12540\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.hubee.numerique.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\nwww.hubee.numerique.gouv.fr.\t299\tIN\tCNAME\tproxy-ssl.webflow.com.\n",
+      "timestamp": "2023-11-12T02:18:47.644650032Z",
       "matcher-status": true
     },
     {
@@ -381,9 +108,9 @@
       "host": "https://www.hubee.numerique.gouv.fr/",
       "matched-at": "https://www.hubee.numerique.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908403356Z",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707774096Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
       "matcher-status": true
     },
@@ -415,53 +142,14 @@
           "max-request": 1
         }
       },
-      "matcher-name": "content-security-policy",
+      "matcher-name": "cross-origin-resource-policy",
       "type": "http",
       "host": "https://www.hubee.numerique.gouv.fr/",
       "matched-at": "https://www.hubee.numerique.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908425087Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "permissions-policy",
-      "type": "http",
-      "host": "https://www.hubee.numerique.gouv.fr/",
-      "matched-at": "https://www.hubee.numerique.gouv.fr/",
-      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908439384Z",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707829849Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
       "matcher-status": true
     },
@@ -498,9 +186,321 @@
       "host": "https://www.hubee.numerique.gouv.fr/",
       "matched-at": "https://www.hubee.numerique.gouv.fr/",
       "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:06 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:06.908451406Z",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707847172Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707861198Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707873381Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707886485Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707897966Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707960994Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "strict-transport-security",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.707988194Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.708001529Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://www.hubee.numerique.gouv.fr/",
+      "matched-at": "https://www.hubee.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:16 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:16.708013842Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
       "matcher-status": true
     },
@@ -540,9 +540,9 @@
       "host": "https://www.hubee.numerique.gouv.fr/",
       "matched-at": "https://www.hubee.numerique.gouv.fr/",
       "request": "POST / HTTP/1.1\r\nHost: www.hubee.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
-      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 05 Nov 2023 02:16:19 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:16:19.956633633Z",
+      "response": "HTTP/1.1 406 Not Acceptable\r\nConnection: close\r\nContent-Length: 160\r\nContent-Type: text/html\r\nDate: Sun, 12 Nov 2023 02:19:30 GMT\r\nX-Cluster-Name: us-east-1-prod-hosting-red\r\n\r\n<html>\r\n<head><title>406 Not Acceptable</title></head>\r\n<body>\r\n<center><h1>406 Not Acceptable</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:19:30.65799779Z",
       "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: www.hubee.numerique.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://www.hubee.numerique.gouv.fr/'",
       "matcher-status": true
     },
@@ -571,8 +571,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:19:36.104134558Z",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:23:34.772960489Z",
       "matcher-status": true
     },
     {
@@ -600,8 +600,8 @@
       "extracted-results": [
         "www.hubee.numerique.gouv.fr"
       ],
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:19:36.104261135Z",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:23:34.773077076Z",
       "matcher-status": true
     },
     {
@@ -630,8 +630,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:19:36.408097935Z",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:23:34.787848484Z",
       "matcher-status": true
     },
     {
@@ -660,8 +660,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "3.233.126.24",
-      "timestamp": "2023-11-05T02:19:36.439338169Z",
+      "ip": "34.234.52.18",
+      "timestamp": "2023-11-12T02:23:34.808058716Z",
       "matcher-status": true
     }
   ]
