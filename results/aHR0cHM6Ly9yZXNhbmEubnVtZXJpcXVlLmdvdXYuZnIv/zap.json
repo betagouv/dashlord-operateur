@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 5 Nov 2023 01:49:07",
+	"@generated": "Sun, 12 Nov 2023 01:51:22",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -84,6 +84,38 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						},
 						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
 							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
 							"method": "POST",
 							"param": "",
@@ -116,7 +148,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						}
 					],
-					"count": "12",
+					"count": "16",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -395,7 +427,7 @@
 					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "100"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10054",
@@ -588,7 +620,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "74"
+					"sourceid": "90"
 				},
 				{
 					"pluginid": "10063",
@@ -768,67 +800,11 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1699148941",
-							"otherinfo": "1699148941, which evaluates to: 2023-11-05 01:49:01"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079531",
-							"otherinfo": "1698079531, which evaluates to: 2023-10-23 16:45:31"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079532",
-							"otherinfo": "1698079532, which evaluates to: 2023-10-23 16:45:32"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079540",
-							"otherinfo": "1698079540, which evaluates to: 2023-10-23 16:45:40"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079541",
-							"otherinfo": "1698079541, which evaluates to: 2023-10-23 16:45:41"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079542",
-							"otherinfo": "1698079542, which evaluates to: 2023-10-23 16:45:42"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1698079543",
-							"otherinfo": "1698079543, which evaluates to: 2023-10-23 16:45:43"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1699148942",
-							"otherinfo": "1699148942, which evaluates to: 2023-11-05 01:49:02"
+							"evidence": "1699753876",
+							"otherinfo": "1699753876, which evaluates to: 2023-11-12 01:51:16"
 						}
 					],
-					"count": "14",
+					"count": "7",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1698079531, which evaluates to: 2023-10-23 16:45:31</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -946,22 +922,6 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"        if(elem[0].tagName != \"SCRIPT\" && elem[0].tagName != \"svg\" && elem[0].tagName != \"STYLE\" && elem[0].tagName != \"IFRAME\" \", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "db",
-							"otherinfo": "The following pattern was used: \\bDB\\b and was detected 2 times, the first in the element starting with: \"!function(a,b){\"object\"==typeof module&&\"object\"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.docu\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/vendor/jquery.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "username",
-							"otherinfo": "The following pattern was used: \\bUSERNAME\\b and was detected in the element starting with: \"},a,b,arguments.length>1)},show:function(){return Wb(this,!0)},hide:function(){return Wb(this)},toggle:function(a){return\"boolea\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1042,7 +1002,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- <div id=\"ic-aide\" class=\"ic-aide rounded shadow\" style=\"display:none;\">\n            <div class=\"ic-header\">\n               \", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "14",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1198,7 +1158,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10015",
@@ -1225,7 +1185,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1268,7 +1228,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1311,7 +1271,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1354,7 +1314,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1397,7 +1357,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10112",
@@ -1414,7 +1374,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "rsherku5rk1a2no9ptv1s8qojp",
+							"evidence": "601vv2t97qobs9jum9kainigpl",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1422,7 +1382,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "mfttoulncjh06efoo2q0k0n0ua",
+							"evidence": "hlnoi395ck90tadv64jlcjfs2r",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1430,7 +1390,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "q2r44qkjv31krd17b99u6b8pod",
+							"evidence": "5c2a9jolt15m71rf95g9mqmljv",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1438,7 +1398,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "mfttoulncjh06efoo2q0k0n0ua",
+							"evidence": "hlnoi395ck90tadv64jlcjfs2r",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1446,7 +1406,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "q2r44qkjv31krd17b99u6b8pod",
+							"evidence": "5c2a9jolt15m71rf95g9mqmljv",
 							"otherinfo": "\ncookie:PHPSESSID"
 						}
 					],
