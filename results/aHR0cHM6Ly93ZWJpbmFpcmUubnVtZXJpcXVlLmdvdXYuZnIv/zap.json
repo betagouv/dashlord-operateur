@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 5 Nov 2023 01:39:47",
+	"@generated": "Sun, 12 Nov 2023 01:44:16",
 	"site":[ 
 		{
 			"@name": "https://webinaire.numerique.gouv.fr",
@@ -90,9 +90,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "10",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
@@ -133,7 +141,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "75"
+					"sourceid": "73"
 				},
 				{
 					"pluginid": "10099",
@@ -168,7 +176,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "81"
+					"sourceid": "77"
 				},
 				{
 					"pluginid": "90003",
@@ -285,12 +293,12 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=iPE1wo9tg8t3LOEu&nonce=lpXvW4Um10F551rM].\nPredicted response size: 574.\nResponse Body Length: 775."
+							"otherinfo": "Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=RqbsNH7xKR8tsM0i&nonce=j8gmwZ0m2R8n2Kx8].\nPredicted response size: 574.\nResponse Body Length: 775."
 						}
 					],
 					"count": "1",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=iPE1wo9tg8t3LOEu&nonce=lpXvW4Um10F551rM].</p><p>Predicted response size: 574.</p><p>Response Body Length: 775.</p>",
+					"otherinfo": "<p>Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=RqbsNH7xKR8tsM0i&nonce=j8gmwZ0m2R8n2Kx8].</p><p>Predicted response size: 574.</p><p>Response Body Length: 775.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
@@ -709,7 +717,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10021",
@@ -731,6 +739,14 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/cgu",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -808,14 +824,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/static/js/scampi-modal.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
 					"count": "12",
@@ -854,6 +862,14 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9",
+							"otherinfo": "{\"current_provider\":\"default\"}"
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -917,20 +933,12 @@
 							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD"
 						},
 						{
-							"uri": "https://webinaire.numerique.gouv.fr/static/js/scampi-modal.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "com/nico3333fr/van11y-accessible-modal-window-aria/blob/master/LICENSE",
-							"otherinfo": "r\uFFFD\uFFFD\uFFFD'(\uFFFD}\uFFFD~\uFFFD\uFFFDj}u\uFFFD\uFFFDq\uFFFD,\uFFFD\uFFFD^\uFFFDj\\x001dj_\uFFFD\uFFFDwh\uFFFD\u6AC9\uFFFD\u06D6\uFFFD\uFFFD\uFFFD\uFFFD-z\uFFFD\uFFFD !\rH"
-						},
-						{
 							"uri": "https://webinaire.numerique.gouv.fr/welcome",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "eJyFkE9vgzAMxb8KyrmDoa3SxhGpO7XaLvtzQIrSxFBrIWGOA5qqfvcFAefdHL9n-5d3FSryRRL8RAgsKnFthLYIjiWaRlRZI-q6vvvAgL4Ru_QkCIN3AST_DrA4tDewiEH7rZkKhyaDXqHNBvItWtg2GCTQLCPh4r0wD6EqignO6FQScxd7IExQeefjmLdUeDRaamXtWenv9RorXq_h26Gc_DN3T_xwfD3ExeC806vBDl_j5-N7X96_7PclnRpxEzuhI9H818Q3ogFKARhoVbScRJMSSTiM3qX-zPgP4gRW-x7SaEuq6-fF4OZwjNxSE1WrbIDbH36zgpw",
-							"otherinfo": "x\uFFFD\uFFFD\uFFFDOo\uFFFD0\\x000c\u017F\n\u02B9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0011\uFFFD;\uFFFD\uFFFD.\uFFFDs@\uFFFD\uFFFD\uFFFDPk!a\uFFFD\\x0003\uFFFD\uFFFD~\uFFFD\\x0005\\x0001\uFFFD\uFFFD\\x001c\uFFFDg\uFFFD\uFFFDw\\x0015*\uFFFDE\\x0012\uFFFDD\\x0008,*qm\uFFFD\uFFFD\\x0008\uFFFD%\uFFFDFTY#\uAEBE\uFFFD\uFFFD\uFFFD\uFFFD\\x0011\uFFFD\uFFFD$\\x0008\uFFFDw\\x0001$\uFFFD\\x000e\uFFFD8\uFFFD7\uFFFD\uFFFDA\uFFFD\uFFFD\uFFFD\n\uFFFD&\uFFFD^\uFFFD\uFFFD\\x0006\uFFFD-Z\uFFFD6\\x0018$\uFFFD,#\uFFFD\uFFFD0\\x000f\uFFFD*\uFFFD\t\uFFFD\uFFFDT\\x0012s\\x0017{ LPy\uFFFD\u3637Tx4Zje\uFFFDY\uFFFD\uFFFD\uFFFD\\x001a+^\uFFFD\uFFFD\u06E1\uFFFD\uFFFD3wO\uFFFDp|=\uFFFD\uFFFD\uFFFD\u04EB\uFFFD\\x000e_\uFFFD\uFFFD\uFFFD{_\u07BF\uFFFD\uFFFD%\uFFFD\\x001aq\\x0013;\uFFFD#\uFFFD\uFFFD\uFFFD\uFFFD7\uFFFD\\x0001J\\x0001\\x0018hU\uFFFD\uFFFDD\uFFFD\\x0012I8\uFFFD\u07A5\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\\x0004V\uFFFD\\x001e\uFFFDhK\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDp\uFFFD\uFFFDR\\x0013U\uFFFDl\uFFFD\uFFFD\\x001f~\uFFFD\uFFFD\uFFFD"
+							"evidence": "eJyFkD9vgzAQxb8K8pxClKWIkalS1A4MHSpLlrEPcq3_EPscUkX57jUC5m7ne-_ufn4PJhNdRIBrgkisYQ_OlEFwJFBz1hSctW378okRPWeH_AwQJ-8iCPqdYHUor2EVo_J7MxcOdQFWoimm4Ac0sG_QGECRSAFX74Voik1VzdCjk1ksXbIQMEOVo0-3cgiVR62Eksb0Uv1s10jSdq279vHj7fV-7mqK70dcDc47tRm-69HOX0d76mp3Ot9rzp7swFQKYflr5ruhhpAD0DDIZCiLOieScQi9y_2F8R_EGYzyFvLoEORol8XglnC02FNjzSBNhOcft8aDAQ",
+							"otherinfo": "x\uFFFD\uFFFD\uFFFD?o\uFFFD0\\x0010\u017F\n\uFFFDB\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR\uFFFD\\x000e\\x000c\\x001d*K\uFFFD\uFFFD\\x000fr\uFFFD\uFFFD\\x0010\uFFFD\\x001cRE\uFFFD\uFFFD5\\x0002\uFFFDn\uFFFD{\uFFFD\uFFFD~~\\x000f&\\x0013]D\uFFFDk\uFFFDH\uFFFDa\\x000f\u0394Ap$Ps\uFFFD\\x0014\uFFFD\uFFFDm\uFFFD\uFFFD\\x0011=g\uFFFD\uFFFD\\x000c\\x0010'\uFFFD\"\\x0008\uFFFD\uFFFD`u(\uFFFDa\\x0015\uFFFD\uFFFD{3\\x0017\\x000eu\\x0001V\uFFFD)\uFFFD\uFFFD\\x00074\uFFFDo\uFFFD\\x0018@\uFFFDH\\x0001W\uFFFDh\uFFFDMU\uFFFD\u0423\uFFFDY,]\uFFFD\\x00100C\uFFFD\uFFFDO\uFFFDr\\x0008\uFFFDG\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR\uFFFDl\uFFFDH\uFFFDv\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD~\uFFFDj\uFFFD\uFFFDG\\\r\uFFFD;\uFFFD\\x0019\uFFFD\uFFFD\uFFFD\uFFFD_G{\uFFFDjw:\uFFFDk\u039E\uFFFD\uFFFDT\na\uFFFDk\u6EE1\uFFFD\uFFFD\\x0003\uFFFD0\uFFFDd(\uFFFD:'\uFFFDq\\x0008\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\uFFFD\\x0019\uFFFD\uFFFD\\x0016\uFFFD\uFFFD\\x0010\uFFFDh\uFFFD\uFFFD\uFFFD\uFFFDp\uFFFD\uFFFDSc\uFFFD M\uFFFD\uFFFD\\x001f\uFFFD\u0183\\x0001"
 						}
 					],
 					"count": "12",
@@ -1151,17 +1159,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1194,17 +1194,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1237,17 +1229,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1280,17 +1264,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1313,7 +1289,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUA.yj86z934rYV4bqfKBrnYw4Tmhjg",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzQ.vdnsaQiD5DHdXL3LjQH8IXG5gjY",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1321,15 +1297,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUQ.iVJidDKs9LY5JpXQ1-ueGz-El90",
-							"otherinfo": "\ncookie:session"
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/cgu",
-							"method": "GET",
-							"param": "session",
-							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUQ.iVJidDKs9LY5JpXQ1-ueGz-El90",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzg.4iQEASg4VxoOz6E-eiaARPZ7qiY",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1337,15 +1305,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUQ.iVJidDKs9LY5JpXQ1-ueGz-El90",
-							"otherinfo": "\ncookie:session"
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/donnees_personnelles",
-							"method": "GET",
-							"param": "session",
-							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUQ.iVJidDKs9LY5JpXQ1-ueGz-El90",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzg.4iQEASg4VxoOz6E-eiaARPZ7qiY",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1353,7 +1313,15 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUQ.iVJidDKs9LY5JpXQ1-ueGz-El90",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzg.4iQEASg4VxoOz6E-eiaARPZ7qiY",
+							"otherinfo": "\ncookie:session"
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/mentions_legales",
+							"method": "GET",
+							"param": "session",
+							"attack": "",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzg.4iQEASg4VxoOz6E-eiaARPZ7qiY",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1361,7 +1329,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": ".eJyFkE9vgzAMxb8KyrmDoa3SxhGpO7XaLvtzQIrSxFBrIWGOA5qqfvcFAefdHL9n-5d3FSryRRL8RAgsKnFthLYIjiWaRlRZI-q6vvvAgL4Ru_QkCIN3AST_DrA4tDewiEH7rZkKhyaDXqHNBvItWtg2GCTQLCPh4r0wD6EqignO6FQScxd7IExQeefjmLdUeDRaamXtWenv9RorXq_h26Gc_DN3T_xwfD3ExeC806vBDl_j5-N7X96_7PclnRpxEzuhI9H818Q3ogFKARhoVbScRJMSSTiM3qX-zPgP4gRW-x7SaEuq6-fF4OZwjNxSE1WrbIDbH36zgpw.ZUbyUQ.oNqTU4lKxxEHlqqobke87U_a70o",
+							"evidence": ".eJyFkD9vgzAQxb8K8pxClKWIkalS1A4MHSpLlrEPcq3_EPscUkX57jUC5m7ne-_ufn4PJhNdRIBrgkisYQ_OlEFwJFBz1hSctW378okRPWeH_AwQJ-8iCPqdYHUor2EVo_J7MxcOdQFWoimm4Ac0sG_QGECRSAFX74Voik1VzdCjk1ksXbIQMEOVo0-3cgiVR62Eksb0Uv1s10jSdq279vHj7fV-7mqK70dcDc47tRm-69HOX0d76mp3Ot9rzp7swFQKYflr5ruhhpAD0DDIZCiLOieScQi9y_2F8R_EGYzyFvLoEORol8XglnC02FNjzSBNhOcft8aDAQ.ZVAtzg.xOagumxAzkwmVmHFJ0UuOg0yscc",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1369,7 +1337,15 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZUbyUA.yj86z934rYV4bqfKBrnYw4Tmhjg",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzQ.vdnsaQiD5DHdXL3LjQH8IXG5gjY",
+							"otherinfo": "\ncookie:session"
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/donnees_personnelles",
+							"method": "GET",
+							"param": "session",
+							"attack": "",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZVAtzg.4iQEASg4VxoOz6E-eiaARPZ7qiY",
 							"otherinfo": "\ncookie:session"
 						}
 					],
@@ -1401,6 +1377,14 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1464,40 +1448,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "9",
+					"count": "10",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "10049",
-					"alertRef": "10049",
-					"alert": "Storable but Non-Cacheable Content",
-					"name": "Storable but Non-Cacheable Content",
-					"riskcode": "0",
-					"confidence": "2",
-					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
-					"instances":[ 
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/static/css/global.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "",
-					"otherinfo": "",
-					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
-					"cweid": "524",
-					"wascid": "13",
-					"sourceid": "52"
 				}
 			]
 		}
