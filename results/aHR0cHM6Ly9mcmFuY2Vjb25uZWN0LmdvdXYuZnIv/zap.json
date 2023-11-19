@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 12 Nov 2023 02:38:45",
+	"@generated": "Sun, 19 Nov 2023 02:33:40",
 	"site":[ 
 		{
 			"@name": "https://franceconnect.gouv.fr",
@@ -34,7 +34,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "186"
+					"sourceid": "173"
 				},
 				{
 					"pluginid": "10038",
@@ -141,7 +141,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -194,6 +194,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://franceconnect.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -234,13 +242,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "11",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -307,7 +315,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "76"
+					"sourceid": "59"
 				},
 				{
 					"pluginid": "10003",
@@ -334,7 +342,7 @@
 					"reference": "<p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "182"
+					"sourceid": "189"
 				},
 				{
 					"pluginid": "10017",
@@ -401,7 +409,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "76"
+					"sourceid": "59"
 				},
 				{
 					"pluginid": "10110",
@@ -428,7 +436,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "182"
+					"sourceid": "189"
 				},
 				{
 					"pluginid": "10063",
@@ -693,7 +701,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "129"
+					"sourceid": "119"
 				},
 				{
 					"pluginid": "10021",
@@ -730,7 +738,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/css/fonts.css",
+							"uri": "https://franceconnect.gouv.fr/css/global.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -738,7 +746,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/css/global.css",
+							"uri": "https://franceconnect.gouv.fr/css/header.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -837,20 +845,20 @@
 							"otherinfo": "\uFFFD\uFFFD'\uFFFD\uFFFD\uFFFDMC\uFFFD\"\r\uFFFD\uFFFD|\uFFFD!\u029B\uFFFD}[\\x0016j\uFFFD\uFFFD6\uFFFD"
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/css/materialize-stepper.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "com/Kinark/Materialize-stepper/blob/b739771a5f948374d7464cf1ddaf93d9f8d6d369/dist/css/mstepper",
-							"otherinfo": "r\uFFFD\uFFFD*)\u06AEO\uFFFDj\u05EB\uFFFD\uFFFDb\uFFFD\uFB35\uFFFDiz\uFFFD\u06D6\uFFFD\uFFFDo\uFFFD\uFFFD\uFFFDZ\uFFFD\uFFFDx\uFFFD~\uFFFDw\uFFFD:\uFFFD\uFFFD\uFFFDu\u059F\uFFFDw}\uFFFDzw~\uFFFD\uFFFD\u062C\uFFFD\uFFFD,\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDiz"
-						},
-						{
 							"uri": "https://franceconnect.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "fr/particuliers/vosdroits/R49454",
 							"otherinfo": "~\uFFFD\uFFFDj\uFFFDbr\uFFFDbz\uFFFD?\uFFFD\uFFFD\\x001d\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDx\uFFFD\uFFFDx"
+						},
+						{
+							"uri": "https://franceconnect.gouv.fr/files/CGU_Usager_v1.4.pdf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "fb83B6965DEE02D9BD1EF48AF84D8744",
+							"otherinfo": "}\uFFFD7\\x0007\uFFFDz\uFFFD1\\x0004\uFFFD`\uFFFD\\x0004=D\\x0017\uFFFD\\x0000\\x0017\uFFFD\\x0003\uFFFD8"
 						},
 						{
 							"uri": "https://franceconnect.gouv.fr/files/CGU_Utilisateur_v1.7.pdf",
@@ -974,7 +982,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "182"
+					"sourceid": "189"
 				},
 				{
 					"pluginid": "10109",
@@ -1025,7 +1033,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "129"
+					"sourceid": "119"
 				},
 				{
 					"pluginid": "10015",
@@ -1132,7 +1140,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1153,7 +1161,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1204,7 +1212,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1255,7 +1263,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1306,7 +1314,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://franceconnect.gouv.fr/franceconnect",
+							"uri": "https://franceconnect.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1336,7 +1344,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1462,7 +1470,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "90"
+					"sourceid": "63"
 				}
 			]
 		}
