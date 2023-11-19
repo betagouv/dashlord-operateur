@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 12 Nov 2023 01:51:22",
+	"@generated": "Sun, 19 Nov 2023 01:50:03",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -85,6 +85,38 @@
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" \"sso_force\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
 							"method": "POST",
 							"param": "",
 							"attack": "",
@@ -148,7 +180,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						}
 					],
-					"count": "16",
+					"count": "20",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -298,7 +330,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1698079542.js",
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1700233662.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -306,7 +338,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1698079542.js",
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1700233662.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -427,7 +459,7 @@
 					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "96"
+					"sourceid": "99"
 				},
 				{
 					"pluginid": "10054",
@@ -507,6 +539,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
+							"method": "GET",
+							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
+							"attack": "",
+							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=accessibilite",
 							"method": "GET",
 							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
@@ -571,14 +611,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur",
-							"method": "POST",
-							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
-							"attack": "",
-							"evidence": "<script id=\"ze-snippet\" src=\"https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2\"> </script>",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
 							"method": "POST",
 							"param": "https://static.zdassets.com/ekr/snippet.js?key=f5d6cc27-92cb-4661-b32d-4c4249eda5a2",
@@ -620,7 +652,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "90"
+					"sourceid": "79"
 				},
 				{
 					"pluginid": "10063",
@@ -752,61 +784,77 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079531",
-							"otherinfo": "1698079531, which evaluates to: 2023-10-23 16:45:31"
+							"evidence": "1700233647",
+							"otherinfo": "1700233647, which evaluates to: 2023-11-17 15:07:27"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079532",
-							"otherinfo": "1698079532, which evaluates to: 2023-10-23 16:45:32"
+							"evidence": "1700233648",
+							"otherinfo": "1700233648, which evaluates to: 2023-11-17 15:07:28"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079540",
-							"otherinfo": "1698079540, which evaluates to: 2023-10-23 16:45:40"
+							"evidence": "1700233657",
+							"otherinfo": "1700233657, which evaluates to: 2023-11-17 15:07:37"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079541",
-							"otherinfo": "1698079541, which evaluates to: 2023-10-23 16:45:41"
+							"evidence": "1700233658",
+							"otherinfo": "1700233658, which evaluates to: 2023-11-17 15:07:38"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079542",
-							"otherinfo": "1698079542, which evaluates to: 2023-10-23 16:45:42"
+							"evidence": "1700233660",
+							"otherinfo": "1700233660, which evaluates to: 2023-11-17 15:07:40"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1698079543",
-							"otherinfo": "1698079543, which evaluates to: 2023-10-23 16:45:43"
+							"evidence": "1700233661",
+							"otherinfo": "1700233661, which evaluates to: 2023-11-17 15:07:41"
 						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1699753876",
-							"otherinfo": "1699753876, which evaluates to: 2023-11-12 01:51:16"
+							"evidence": "1700233662",
+							"otherinfo": "1700233662, which evaluates to: 2023-11-17 15:07:42"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1700233663",
+							"otherinfo": "1700233663, which evaluates to: 2023-11-17 15:07:43"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1700358596",
+							"otherinfo": "1700358596, which evaluates to: 2023-11-19 01:49:56"
 						}
 					],
-					"count": "7",
+					"count": "9",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1698079531, which evaluates to: 2023-10-23 16:45:31</p>",
+					"otherinfo": "<p>1700233647, which evaluates to: 2023-11-17 15:07:27</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -839,7 +887,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_authentification.js?ts=1698079542",
+							"uri": "https://resana.numerique.gouv.fr/public/js/parsec/parsec_authentification.js?ts=1700233661",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -906,7 +954,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/iFrontWork/iFrontWork.js?ts=1698079540",
+							"uri": "https://resana.numerique.gouv.fr/public/js/iFrontWork/iFrontWork.js?ts=1700233658",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -914,7 +962,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 14 times, the first in the element starting with: \"            if(iellipse.find('select').length > 0)\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1698079542.js",
+							"uri": "https://resana.numerique.gouv.fr/public/js/traduction.1700233662.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1008,7 +1056,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "77"
+					"sourceid": "74"
 				},
 				{
 					"pluginid": "10109",
@@ -1185,7 +1233,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -1374,7 +1422,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "601vv2t97qobs9jum9kainigpl",
+							"evidence": "tqkoa5fci54db6bs6oi0ie8lnv",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1382,7 +1430,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "hlnoi395ck90tadv64jlcjfs2r",
+							"evidence": "evjo8a22g0ncu4t7ecpohqef6h",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1390,7 +1438,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "5c2a9jolt15m71rf95g9mqmljv",
+							"evidence": "eb72b1ev4e1egpgto0q7s7josl",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1398,7 +1446,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "hlnoi395ck90tadv64jlcjfs2r",
+							"evidence": "evjo8a22g0ncu4t7ecpohqef6h",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1406,7 +1454,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "5c2a9jolt15m71rf95g9mqmljv",
+							"evidence": "eb72b1ev4e1egpgto0q7s7josl",
 							"otherinfo": "\ncookie:PHPSESSID"
 						}
 					],
@@ -1542,7 +1590,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "111"
+					"sourceid": "108"
 				}
 			]
 		}
