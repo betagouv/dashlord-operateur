@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 19 Nov 2023 02:18:54",
+	"@generated": "Sun, 26 Nov 2023 02:24:27",
 	"site":[ 
 		{
 			"@name": "https://api.gouv.fr",
@@ -36,6 +36,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/feuille-de-route",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "",
@@ -98,14 +106,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://api.gouv.fr/rechercher-api",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -114,7 +114,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10020",
@@ -143,6 +143,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/feuille-de-route",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -200,14 +208,6 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/parcours-client?source=preFooter",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://api.gouv.fr/rechercher-api",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -256,7 +256,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1560"
+					"sourceid": "1505"
 				},
 				{
 					"pluginid": "10063",
@@ -697,6 +697,14 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
+							"uri": "https://api.gouv.fr/les-api/api-indemnisation-pole-emploi",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1956846326",
+							"otherinfo": "1956846326, which evaluates to: 2032-01-04 16:25:26"
+						},
+						{
 							"uri": "https://api.gouv.fr/les-api/api-recherche-entreprises",
 							"method": "GET",
 							"param": "",
@@ -721,13 +729,13 @@
 							"otherinfo": "1956846326, which evaluates to: 2032-01-04 16:25:26"
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1440756358, which evaluates to: 2015-08-28 10:05:58</p>",
+					"otherinfo": "<p>1956846326, which evaluates to: 2032-01-04 16:25:26</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "325"
+					"sourceid": "63"
 				},
 				{
 					"pluginid": "10021",
@@ -772,7 +780,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/api-recherche-entreprises",
+							"uri": "https://api.gouv.fr/les-api/api_comptes_bancaires_ficoba",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -863,6 +871,14 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDa\uFFFD\\x0001\\x0008\\x0008\uFFFDe\uFFFD\uFFFD#\uFFFD/\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
+							"uri": "https://api.gouv.fr/feuille-de-route",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/ZhwQEICK1l3f4joC-CvI0/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDa\uFFFD\\x0001\\x0008\\x0008\uFFFDe\uFFFD\uFFFD#\uFFFD/\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
 							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "",
@@ -935,7 +951,7 @@
 							"otherinfo": "~\uFFFD\uFFFDz\u03DA\uFFFD/\uFFFDjwk{\uFFFD^}\uFFFD\u079E\u061E\uFFFD\uFFFDu\uFFFD\uFFFDb"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDa\uFFFD\\x0001\\x0008\\x0008\uFFFDe\uFFFD\uFFFD#\uFFFD/\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -994,7 +1010,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/rna/v1/full_text/",
+							"uri": "https://api.gouv.fr/les-api/rna/v1/id/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://api.gouv.fr/les-api/rna/v1/siret/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1026,14 +1050,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/sirene/v3/unites_legales/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/service/",
 							"method": "GET",
 							"param": "",
@@ -1056,7 +1072,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "1410"
+					"sourceid": "1422"
 				},
 				{
 					"pluginid": "10027",
@@ -1377,7 +1393,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1398,7 +1414,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/robots.txt",
+							"uri": "https://api.gouv.fr/parcours-client?source=header",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1406,7 +1422,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/sitemap.xml",
+							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1441,7 +1457,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/robots.txt",
+							"uri": "https://api.gouv.fr/parcours-client?source=header",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1449,7 +1465,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/sitemap.xml",
+							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1484,7 +1500,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/robots.txt",
+							"uri": "https://api.gouv.fr/parcours-client?source=header",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1492,7 +1508,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/sitemap.xml",
+							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1527,7 +1543,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/robots.txt",
+							"uri": "https://api.gouv.fr/parcours-client?source=header",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1535,7 +1551,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/sitemap.xml",
+							"uri": "https://api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1594,7 +1610,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/api-recherche-entreprises",
+							"uri": "https://api.gouv.fr/les-api/api_comptes_bancaires_ficoba",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1675,7 +1691,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "60"
+					"sourceid": "62"
 				}
 			]
 		}
