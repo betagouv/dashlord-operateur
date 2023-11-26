@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 19 Nov 2023 02:04:45
+		Generated on Sun, 26 Nov 2023 02:07:00
 	</h3>
 
 	<h3>
@@ -156,7 +156,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>5</div>
+					<div>6</div>
 				</td>
 			</tr>
 			<tr>
@@ -172,7 +172,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>12</div>
+					<div>13</div>
 				</td>
 			</tr>
 			<tr>
@@ -196,6 +196,11 @@ td {
 					align="center">Risk Level</th>
 				<th width="20%"
 					align="center">Number of Instances</th>
+			</tr>
+			<tr>
+				<td><a href="#10202">Absence of Anti-CSRF Tokens</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
@@ -260,7 +265,7 @@ td {
 			<tr>
 				<td><a href="#10111">Authentication Request Identified</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">4</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10094">Base64 Disclosure</a></td>
@@ -290,22 +295,22 @@ td {
 			<tr>
 				<td><a href="#90005">Sec-Fetch-Dest Header is Missing</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#90005">Sec-Fetch-Mode Header is Missing</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#90005">Sec-Fetch-Site Header is Missing</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#90005">Sec-Fetch-User Header is Missing</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">3</td>
+				<td align="center">4</td>
 			</tr>
 			<tr>
 				<td><a href="#10112">Session Management Response Identified</a></td>
@@ -317,12 +322,226 @@ td {
 				<td align="center" class="risk-0">Informational</td>
 				<td align="center">9</td>
 			</tr>
+			<tr>
+				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">3</td>
+			</tr>
 		</table>
 		<div class="spacer-lg"></div>
 	
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10202"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Absence of Anti-CSRF Tokens</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>No Anti-CSRF tokens were found in a HTML submission form.</div>
+							<br />
+						
+							<div>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</div>
+							<br />
+						
+							<div>CSRF attacks are effective in a number of situations, including:</div>
+							<br />
+						
+							<div>    * The victim has an active session on the target site.</div>
+							<br />
+						
+							<div>    * The victim is authenticated via HTTP auth on the target site.</div>
+							<br />
+						
+							<div>    * The victim is on the same local network as the target site.</div>
+							<br />
+						
+							<div>CSRF has primarily been used to perform an action against a target site using the victim&#39;s privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte">https://www.demarches-simplifiees.fr/carte</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form data-turbo=&quot;true&quot; data-controller=&quot;autosubmit&quot; class=&quot;new_map_filter&quot; id=&quot;new_map_filter&quot; action=&quot;/carte&quot; accept-charset=&quot;UTF-8&quot; method=&quot;get&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;map_filter_kind_nb_demarches&quot; &quot;map_filter_kind_nb_dossiers&quot; ].</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form data-turbo=&quot;true&quot; data-controller=&quot;autosubmit&quot; class=&quot;new_map_filter&quot; id=&quot;new_map_filter&quot; action=&quot;/carte&quot; accept-charset=&quot;UTF-8&quot; method=&quot;get&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;map_filter_kind_nb_demarches&quot; &quot;map_filter_kind_nb_dossiers&quot; ].</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_dossiers">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_dossiers</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form data-turbo=&quot;true&quot; data-controller=&quot;autosubmit&quot; class=&quot;new_map_filter&quot; id=&quot;new_map_filter&quot; action=&quot;/carte&quot; accept-charset=&quot;UTF-8&quot; method=&quot;get&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;map_filter_kind_nb_demarches&quot; &quot;map_filter_kind_nb_dossiers&quot; ].</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Phase: Architecture and Design</div>
+							<br />
+						
+							<div>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</div>
+							<br />
+						
+							<div>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</div>
+							<br />
+						
+							<div>Phase: Implementation</div>
+							<br />
+						
+							<div>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</div>
+							<br />
+						
+							<div>Phase: Architecture and Design</div>
+							<br />
+						
+							<div>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</div>
+							<br />
+						
+							<div>Note that this can be bypassed using XSS.</div>
+							<br />
+						
+							<div>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</div>
+							<br />
+						
+							<div>Note that this can be bypassed using XSS.</div>
+							<br />
+						
+							<div>Use the ESAPI Session Management control.</div>
+							<br />
+						
+							<div>This control includes a component for CSRF.</div>
+							<br />
+						
+							<div>Do not use the GET method for any request that triggers a state change.</div>
+							<br />
+						
+							<div>Phase: Implementation</div>
+							<br />
+						
+							<div>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://projects.webappsec.org/Cross-Site-Request-Forgery">http://projects.webappsec.org/Cross-Site-Request-Forgery</a>
+							<br />
+						
+							<a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10202/">10202</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -1439,6 +1658,68 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_csrf_token</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">set-cookie: _csrf_token</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_DS_session</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">set-cookie: _DS_session</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/contact">https://www.demarches-simplifiees.fr/contact</a></td>
 					</tr>
 					<tr>
@@ -1533,68 +1814,6 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/mentions-legales">https://www.demarches-simplifiees.fr/mentions-legales</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">_DS_session</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">set-cookie: _DS_session</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/suivi">https://www.demarches-simplifiees.fr/suivi</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">_csrf_token</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">set-cookie: _csrf_token</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/suivi">https://www.demarches-simplifiees.fr/suivi</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1886,7 +2105,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1917,7 +2136,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/contact">https://www.demarches-simplifiees.fr/contact</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2041,37 +2260,6 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/suivi">https://www.demarches-simplifiees.fr/suivi</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/super_admins/">https://www.demarches-simplifiees.fr/super_admins/</a></td>
 					</tr>
 					<tr>
@@ -2134,7 +2322,38 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js">https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js">https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js">https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2261,7 +2480,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2292,7 +2511,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2323,7 +2542,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2354,7 +2573,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2385,7 +2604,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2416,7 +2635,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2447,7 +2666,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2478,7 +2697,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2509,7 +2728,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2540,7 +2759,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2571,7 +2790,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2602,7 +2821,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2633,7 +2852,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2664,7 +2883,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2695,7 +2914,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2726,7 +2945,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2757,7 +2976,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2788,7 +3007,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-593537fb.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js">https://www.demarches-simplifiees.fr/vite/assets/stimulus-loader-fadbc50c.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2872,7 +3091,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css">https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css">https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3064,6 +3283,38 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/landing/roles/usagers-7ddcf73c11bdd45c8811750fb3582b52739eef5e571268553afab7dac0893383.svg">https://www.demarches-simplifiees.fr/assets/landing/roles/usagers-7ddcf73c11bdd45c8811750fb3582b52739eef5e571268553afab7dac0893383.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2">https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2</a></td>
 					</tr>
 					<tr>
@@ -3128,7 +3379,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/_commonjsHelpers-042e6b4d.js">https://www.demarches-simplifiees.fr/vite/assets/_commonjsHelpers-042e6b4d.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js">https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3160,39 +3411,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-5d738c4b-legacy.js">https://www.demarches-simplifiees.fr/vite/assets/application-5d738c4b-legacy.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js">https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js">https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3343,7 +3562,8 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 						<td width="80%">userParam=user[email]
 userValue=foo-bar@example.com
 passwordParam=user[password]
-referer=https://www.demarches-simplifiees.fr/users/sign_up</td>
+referer=https://www.demarches-simplifiees.fr/users/sign_up
+csrfToken=authenticity_token</td>
 					</tr>
 				
 					<tr>
@@ -3412,47 +3632,13 @@ csrfToken=authenticity_token</td>
 						<td width="80%">userParam=user[email]
 userValue=foo-bar@example.com
 passwordParam=user[password]
-referer=https://www.demarches-simplifiees.fr/users/sign_in</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">POST</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">user[email]</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">user[password]</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">userParam=user[email]
-userValue=foo-bar@example.com
-passwordParam=user[password]
 referer=https://www.demarches-simplifiees.fr/users/sign_in
 csrfToken=authenticity_token</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">4</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -3536,7 +3722,38 @@ csrfToken=authenticity_token</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css">https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">~�ڲǭ���&amp;���z�j��{�{w�w޻��]��w�����^�ߍi�xq�7��|�x��]�6}</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css">https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3655,37 +3872,6 @@ csrfToken=authenticity_token</td>
 						<td width="20%"
 							class="indent2">Other Info</td>
 						<td width="80%">~�ڲǭ���&amp;���z�j��{�{w�w޻��]��w�����^�ߍi�xq�7��|�x��]�6}</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/france_connect/particulier">https://www.demarches-simplifiees.fr/france_connect/particulier</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">2B0QzGo1ecYsopINGNI9eMzM7MjVXi7R9a</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">��j5y�,���=x�����^.��</td>
 					</tr>
 				
 					<tr>
@@ -4013,6 +4199,39 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">user</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script&gt;
+//&lt;![CDATA[
+window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible_duration&quot;:6000};gon.autocomplete={&quot;api_ge&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/contact">https://www.demarches-simplifiees.fr/contact</a></td>
 					</tr>
 					<tr>
@@ -4079,39 +4298,6 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/suivi">https://www.demarches-simplifiees.fr/suivi</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">user</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bUSER\b and was detected in the element starting with: &quot;&lt;script&gt;
-//&lt;![CDATA[
-window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible_duration&quot;:6000};gon.autocomplete={&quot;api_ge&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
 					</tr>
 					<tr>
@@ -4145,7 +4331,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-5d738c4b-legacy.js">https://www.demarches-simplifiees.fr/vite/assets/application-5d738c4b-legacy.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js">https://www.demarches-simplifiees.fr/vite/assets/application-42bb50de-legacy.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4176,7 +4362,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js">https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js">https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4207,7 +4393,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js">https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js">https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4566,7 +4752,38 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/agent_connect">https://www.demarches-simplifiees.fr/agent_connect</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/administration">https://www.demarches-simplifiees.fr/administration</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0, private, must-revalidate</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte">https://www.demarches-simplifiees.fr/carte</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4814,37 +5031,6 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/password/reset-link-sent?email=foo-bar%40example.com">https://www.demarches-simplifiees.fr/users/password/reset-link-sent?email=foo-bar%40example.com</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">cache-control</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=0, private, must-revalidate</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
 					</tr>
 					<tr>
@@ -4935,6 +5121,37 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Dest</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
 					</tr>
 					<tr>
@@ -5027,7 +5244,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5081,6 +5298,37 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Mode</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
 					</tr>
 					<tr>
@@ -5173,7 +5421,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5227,6 +5475,37 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-Site</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
 					</tr>
 					<tr>
@@ -5319,7 +5598,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5373,6 +5652,37 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/commencer">https://www.demarches-simplifiees.fr/commencer</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Sec-Fetch-User</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
 					</tr>
 					<tr>
@@ -5465,7 +5775,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">3</td>
+					<td width="80%">4</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5539,7 +5849,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">lfLpuduZ8%2BceX4rldoLJplC7aR%2BQyyIn0zapPBdLIVzgkGx5jk25I6MWsrX2XxfDw%2BoOp%2BfMmPOxfFxMIsbuRA6sQYMKTB8%2FnRSs90nyWI4TjdPEY24B3tgvQIbaM9a6HTZlTiCIu1o4VtWapMXVLY7Jl%2BrL9BdrL6RT1QVo7X8sbt94wUv7kEHBHzZmrpmF6%2FH8HxYSpCTsVwsKiVYgy6rPiPbc0XcZ5QZCuz%2Bb24MXE%2F1DdklKV1pqUNjARDDihzlmr4B9w%2FkTHIbFnUSXxvexqw%3D%3D--U1YWQYwDE8x8quYd--suhQnxVI0rMAG8cPlEgC%2Bw%3D%3D</td>
+						<td width="80%">XOkO2%2FR%2BO4vD34NTvnZtZIigHbnX9JH8bJNyR8O3x1etBOZKG9jNuouWvnx%2BUnJqoPKQVQB51gdgjnezGidC3gt%2Bikz6bXnqRgSYXH5a5mwq1CFWHdQO9wiB%2BU1y6WPj%2BfvcT9QTq5c5zjlpw4EwE9FoQK33DB2PCWll0mm78h6YNSImb3AmIzhZca%2BczJ1p26TA2%2FDJD3JIH%2F1CJ5mrN%2BmTNNMR4%2FaQK1TYfpHnv9XEDPJ0RgYKjk5ZYEaQAA3dZmjZdguhb13%2F%2FMzL3MwA8syW7w%3D%3D--XxFNtsnukdarlDuX--W9hIn5G7RS80Sy4c5mdjew%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5572,7 +5882,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">mFYkwV%2F%2FYa6%2BnwukhEHGMLes0yTz0Jqk7ur73jkFuz10VKkUx6c0R0G63rFA1L9SDYGWgWEus0j7g0RozoE5j84OOZ01V3nFw56IMGTX8RV01oPK%2Fqic%2BuS4h2r64uT77Rf6oRsyNbTO49sReHHprgNJh0hYQC1qLEVii0GcETkUv6mdONLsagYWosf9zJa1%2BFeiTuu50gsGKEAHKIzQcx04XT5WQajtiGu9JtrmRyN1W4e4fBVk0rSznsOTOV2D4mxRNfCSaoad%2F1M%2BheIaMpdo2A%3D%3D--xYNq94pIJkpWeuOd--%2B1R0%2Fk%2B7LubnJhc1sjeOJg%3D%3D</td>
+						<td width="80%">sQFr3R5R6Xu%2FIrPQguRmYLqi1OOJJ62lp7V%2BZgeVXCIsF8yrj5%2Fmypd2QasqJ3Deoji%2Bj6HzQoj7McDkdWUJ4nqrPhQJ7xNCls2mgk%2BnHsq15TUPlC%2BulThpIaeLfTcsODa%2BS4v5Uz%2Fl05a9gEcfdfFOrb9hbo5zLKZO0WUgOHTTUg9bCoQdlaXLpzJ%2BxHKHx4S9nRpQVBtKrQ7EzzSx55ZCow3NCfEaYJvxxipliYNXYR2U%2FK6a6C%2BGgv%2FJaHB6e%2F4G5YYZbMPzX%2F0ER0DYBWpAJw%3D%3D--bcSPbYJOFmXVkmQn--F9%2BPPeSzNf%2FVvstP5WZQYg%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5605,7 +5915,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">z255RnedWdPV0cq%2F3HAn%2BTR6OG%2BzY83ZEc1%2F7zbuxuETwtWTtBaUQbYI5AgBpVHRPTGsVX2seDYyChIc75%2BDH2XbiE7%2FBZmMdIl17FsA3frQprOuBkXuuQu3CbS2lER0aW1KTydK4xrBR7djGX6W58UyY3mo80cvm2M752xu2t0egeDVACSo%2FkA%2FAACK3VoPjE6DeHfQoLy6SBch8UCFYkUMzcAUvZf68BnRotfSYEOIgykh0w5VjDHDO92EHxNp90a5ivtoH4f1f8%2BnL2gw4ZCuKA%3D%3D--v47xrZ%2FW3f3IYmU3--ttrvNY0qjAdxSenRIrUDFw%3D%3D</td>
+						<td width="80%">loSdIvU19ERqDxjXTBKJPbJBctuHD7VU6TJkY%2BBAULUd%2BDU4aTZFuFJFFcpKkrprcyWkDMH8m%2BWBEU80scswDyS%2FxKlmfew3Cbp9Hk5EPngA%2FdZQ%2Fkrd1je41LULxTFp8RlybrZA4ENw494JEZGlhhD4odl5SlHSByLMdijyJLF89k7cf3I3i0EA%2BTsUP%2BT2EdW0p2Yf4uvIIvbcSCdzzYqFHy0x3CF03Hbqc%2F8n8CE6QjeH6zuZbl2OwVGEjNe%2F0VjjQp1vAB3%2F862%2BIlvUC4VQFQ%3D%3D--PxSxFuVLx0aaq4kT--QefN17a37yhCNDzZrtlbuw%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5638,7 +5948,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IklsaHpZbkU0YjBkR1IwRkxlVGQxYVZOblNERmxTMmxCZW5CSmRsaExPVVpMV2tSblpteFphRTFNWHpRaSIsImV4cCI6IjIwMjQtMTEtMTlUMDI6MDQ6MjUuOTYzWiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--6cca98a87b018369b9f2e0839b7b7c829962887a</td>
+						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IklsQkxiM2N6TWxrNFEwbHZOVlV4TjJsdmJXY3RlVXRWVUdjMVMxOVNibTlhYlhsRmFqTnZkWEpIY2swaSIsImV4cCI6IjIwMjQtMTEtMjZUMDI6MDY6NDUuMTg1WiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--e901ba25fef0433a24613322b52a17248d837787</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5670,7 +5980,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">mFYkwV%2F%2FYa6%2BnwukhEHGMLes0yTz0Jqk7ur73jkFuz10VKkUx6c0R0G63rFA1L9SDYGWgWEus0j7g0RozoE5j84OOZ01V3nFw56IMGTX8RV01oPK%2Fqic%2BuS4h2r64uT77Rf6oRsyNbTO49sReHHprgNJh0hYQC1qLEVii0GcETkUv6mdONLsagYWosf9zJa1%2BFeiTuu50gsGKEAHKIzQcx04XT5WQajtiGu9JtrmRyN1W4e4fBVk0rSznsOTOV2D4mxRNfCSaoad%2F1M%2BheIaMpdo2A%3D%3D--xYNq94pIJkpWeuOd--%2B1R0%2Fk%2B7LubnJhc1sjeOJg%3D%3D</td>
+						<td width="80%">XOkO2%2FR%2BO4vD34NTvnZtZIigHbnX9JH8bJNyR8O3x1etBOZKG9jNuouWvnx%2BUnJqoPKQVQB51gdgjnezGidC3gt%2Bikz6bXnqRgSYXH5a5mwq1CFWHdQO9wiB%2BU1y6WPj%2BfvcT9QTq5c5zjlpw4EwE9FoQK33DB2PCWll0mm78h6YNSImb3AmIzhZca%2BczJ1p26TA2%2FDJD3JIH%2F1CJ5mrN%2BmTNNMR4%2FaQK1TYfpHnv9XEDPJ0RgYKjk5ZYEaQAA3dZmjZdguhb13%2F%2FMzL3MwA8syW7w%3D%3D--XxFNtsnukdarlDuX--W9hIn5G7RS80Sy4c5mdjew%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5702,7 +6012,7 @@ cookie:_DS_session</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IklsaHpZbkU0YjBkR1IwRkxlVGQxYVZOblNERmxTMmxCZW5CSmRsaExPVVpMV2tSblpteFphRTFNWHpRaSIsImV4cCI6IjIwMjQtMTEtMTlUMDI6MDQ6MjYuMzYyWiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--ff08187c8573a86702f5ac2218ea197a02aae45c</td>
+						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IklsQkxiM2N6TWxrNFEwbHZOVlV4TjJsdmJXY3RlVXRWVUdjMVMxOVNibTlhYlhsRmFqTnZkWEpIY2swaSIsImV4cCI6IjIwMjQtMTEtMjZUMDI6MDY6NDUuODUzWiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--7263c4351670866f21eda4a0dcc2b437067ca6fa</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5734,7 +6044,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">z255RnedWdPV0cq%2F3HAn%2BTR6OG%2BzY83ZEc1%2F7zbuxuETwtWTtBaUQbYI5AgBpVHRPTGsVX2seDYyChIc75%2BDH2XbiE7%2FBZmMdIl17FsA3frQprOuBkXuuQu3CbS2lER0aW1KTydK4xrBR7djGX6W58UyY3mo80cvm2M752xu2t0egeDVACSo%2FkA%2FAACK3VoPjE6DeHfQoLy6SBch8UCFYkUMzcAUvZf68BnRotfSYEOIgykh0w5VjDHDO92EHxNp90a5ivtoH4f1f8%2BnL2gw4ZCuKA%3D%3D--v47xrZ%2FW3f3IYmU3--ttrvNY0qjAdxSenRIrUDFw%3D%3D</td>
+						<td width="80%">loSdIvU19ERqDxjXTBKJPbJBctuHD7VU6TJkY%2BBAULUd%2BDU4aTZFuFJFFcpKkrprcyWkDMH8m%2BWBEU80scswDyS%2FxKlmfew3Cbp9Hk5EPngA%2FdZQ%2Fkrd1je41LULxTFp8RlybrZA4ENw494JEZGlhhD4odl5SlHSByLMdijyJLF89k7cf3I3i0EA%2BTsUP%2BT2EdW0p2Yf4uvIIvbcSCdzzYqFHy0x3CF03Hbqc%2F8n8CE6QjeH6zuZbl2OwVGEjNe%2F0VjjQp1vAB3%2F862%2BIlvUC4VQFQ%3D%3D--PxSxFuVLx0aaq4kT--QefN17a37yhCNDzZrtlbuw%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5798,7 +6108,7 @@ cookie:_DS_session</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css">https://www.demarches-simplifiees.fr/assets/application-3e11a507c193f77d3e58dcb9c3525131efb67262412f9e5331085d4e742b22e8.css</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css">https://www.demarches-simplifiees.fr/assets/application-d49ce4e2cae24b5d4702117c18d95f2942cc52cc99e0a3675bd35784bc48a229.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6046,7 +6356,7 @@ cookie:_DS_session</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js">https://www.demarches-simplifiees.fr/vite/assets/application-c98b16c1.js</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js">https://www.demarches-simplifiees.fr/vite/assets/application-7d8c002e.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6123,6 +6433,188 @@ cookie:_DS_session</td>
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10031"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">User Controllable HTML Element Attribute (Potential XSS)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">map_filter[kind]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+map_filter[kind]=nb_demarches
+
+The user-controlled value was:
+nb_demarches</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">map_filter[year]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023
+
+appears to include user input in: 
+
+a(n) [option] tag [value] attribute 
+
+The user input found was:
+map_filter[year]=2023
+
+The user-controlled value was:
+2023</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_dossiers">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_dossiers</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">map_filter[kind]</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_dossiers
+
+appears to include user input in: 
+
+a(n) [input] tag [value] attribute 
+
+The user input found was:
+map_filter[kind]=nb_dossiers
+
+The user-controlled value was:
+nb_dossiers</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate all input and sanitize output it before writing to any HTML attributes.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute">http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/20.html">20</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">20</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10031/">10031</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
