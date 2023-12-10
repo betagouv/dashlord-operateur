@@ -1,103 +1,149 @@
-# Nmap 7.92 scan initiated Sun Dec  3 02:14:16 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln app.calendso.incubateur.net
-Nmap scan report for app.calendso.incubateur.net (148.253.75.120)
-Host is up (0.15s latency).
-Other addresses for app.calendso.incubateur.net (not scanned): 109.232.233.130 109.232.236.90 5.104.101.30
-rDNS record for 148.253.75.120: ows-148-253-75-120.eu-west-2.compute.outscale.com
-Not shown: 998 filtered tcp ports (no-response)
-PORT    STATE SERVICE   VERSION
-80/tcp  open  http
+# Nmap 7.92 scan initiated Sun Dec 10 02:14:21 2023 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln app.calendso.incubateur.net
+Nmap scan report for app.calendso.incubateur.net (91.208.207.215)
+Host is up (0.14s latency).
+Other addresses for app.calendso.incubateur.net (not scanned): 46.252.181.103 91.208.207.217 185.42.117.108 46.252.181.104 91.208.207.214 91.208.207.218 91.208.207.216 185.42.117.109
+Not shown: 986 closed tcp ports (reset)
+PORT     STATE SERVICE    VERSION
+80/tcp   open  http
 | fingerprint-strings: 
-|   GetRequest, HTTPOptions: 
-|     HTTP/1.1 404 Not Found
-|     Date: Sun, 03 Dec 2023 02:14:33 GMT
-|     Content-Type: text/html
-|     Content-Length: 15436
-|     Connection: close
-|     Content-Encoding: identity
-|_    <!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Application doesn't exist - Scalingo</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit
-443/tcp open  ssl/https
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPBindReq, LDAPSearchReq, LPDString, RPCCheck, RTSPRequest, SMBProgNeg, SSLSessionReq, TLSSessionReq, TerminalServerCookie, X11Probe: 
+|     HTTP/1.1 400 Bad Request
+|     Cache-Control: no-cache
+|_    Connection: close
+179/tcp  open  tcpwrapped
+443/tcp  open  ssl/https
+1080/tcp open  socks?
+1081/tcp open  pvuniwien?
+3000/tcp open  ppp?
 | fingerprint-strings: 
-|   GetRequest, HTTPOptions: 
-|     HTTP/1.1 404 Not Found
-|     Date: Sun, 03 Dec 2023 02:14:40 GMT
-|     Content-Type: text/html
-|     Content-Length: 15436
-|     Connection: close
-|     Content-Encoding: identity
-|_    <!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>Application doesn't exist - Scalingo</title><style>html { height: 100%;}body { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; text-align: center; height: 100%; margin: 0; padding: 0; background: -webkit-gradient(linear, left top, left bottom, from(#1864ab), to(#099ec9)) left top/100% 100% no-repeat #1864ab; background: linear-gradient(to bottom, #1864ab, #099ec9) left top/100% 100% no-repeat #1864ab; color: white;}#wrapper { position: relative; top: 40%; -webkit
-2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+|   Kerberos: 
+|     =$g5
+|     yxD@
+|     #>9M
+|     Mc#[
+|     !)7INGr
+|     bs2d
+|   SMBProgNeg: 
+|     O<Ru
+|     ;4=z
+|     %\x8d
+|     Kc<v
+|     *<HC
+|     @QP]
+|   TLSSessionReq: 
+|     ysz+`
+|_    1^BJ
+5002/tcp open  ssh        (protocol 2.0)
+| fingerprint-strings: 
+|   NULL: 
+|_    SSH-2.0-SFTPGo_2.4.4-dev
+5225/tcp open  hp-server?
+5357/tcp open  wsdapi?
+5800/tcp open  amqp       RabbitMQ 3.12.6 (0-9)
+| amqp-info: 
+|   capabilities: 
+|     publisher_confirms: YES
+|     exchange_exchange_bindings: YES
+|     basic.nack: YES
+|     consumer_cancel_notify: YES
+|     connection.blocked: YES
+|     consumer_priorities: YES
+|     authentication_failure_close: YES
+|     per_consumer_qos: YES
+|     direct_reply_to: YES
+|   cluster_name: rabbit@393e6ca4ac36
+|   copyright: Copyright (c) 2007-2023 VMware, Inc. or its affiliates.
+|   information: Licensed under the MPL 2.0. Website: https://rabbitmq.com
+|   platform: Erlang/OTP 25.3.2.7
+|   product: RabbitMQ
+|   version: 3.12.6
+|   mechanisms: AMQPLAIN PLAIN
+|_  locales: en_US
+5811/tcp open  unknown
+5911/tcp open  http       JBoss Enterprise Application Platform
+5962/tcp open  unknown
+9999/tcp open  tcpwrapped
+3 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=12/3%Time=656BE489%P=x86_64-alpine-linux-musl%r
-SF:(GetRequest,2D04,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Sun,\x20
-SF:03\x20Dec\x202023\x2002:14:33\x20GMT\r\nContent-Type:\x20text/html\r\nC
-SF:ontent-Length:\x2015436\r\nConnection:\x20close\r\nContent-Encoding:\x2
-SF:0identity\r\n\r\n<!DOCTYPE\x20html><html><head><meta\x20http-equiv=\"co
-SF:ntent-type\"\x20content=\"text/html;\x20charset=UTF-8\"><meta\x20charse
-SF:t=\"utf-8\"><meta\x20content=\"IE=edge,chrome=1\"\x20http-equiv=\"X-UA-
-SF:Compatible\"><meta\x20content=\"width=device-width,\x20initial-scale=1\
-SF:.0\"\x20name=\"viewport\"><title>Application\x20doesn't\x20exist\x20-\x
-SF:20Scalingo</title><style>html\x20{\x20height:\x20100%;}body\x20{\x20-we
-SF:bkit-transform-style:\x20preserve-3d;\x20transform-style:\x20preserve-3
-SF:d;\x20text-align:\x20center;\x20height:\x20100%;\x20margin:\x200;\x20pa
-SF:dding:\x200;\x20background:\x20-webkit-gradient\(linear,\x20left\x20top
-SF:,\x20left\x20bottom,\x20from\(#1864ab\),\x20to\(#099ec9\)\)\x20left\x20
-SF:top/100%\x20100%\x20no-repeat\x20#1864ab;\x20background:\x20linear-grad
-SF:ient\(to\x20bottom,\x20#1864ab,\x20#099ec9\)\x20left\x20top/100%\x20100
-SF:%\x20no-repeat\x20#1864ab;\x20color:\x20white;}#wrapper\x20{\x20positio
-SF:n:\x20relative;\x20top:\x2040%;\x20-webkit")%r(HTTPOptions,3270,"HTTP/1
-SF:\.1\x20404\x20Not\x20Found\r\nDate:\x20Sun,\x2003\x20Dec\x202023\x2002:
-SF:14:33\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x2015436\
-SF:r\nConnection:\x20close\r\nContent-Encoding:\x20identity\r\n\r\n<!DOCTY
-SF:PE\x20html><html><head><meta\x20http-equiv=\"content-type\"\x20content=
-SF:\"text/html;\x20charset=UTF-8\"><meta\x20charset=\"utf-8\"><meta\x20con
-SF:tent=\"IE=edge,chrome=1\"\x20http-equiv=\"X-UA-Compatible\"><meta\x20co
-SF:ntent=\"width=device-width,\x20initial-scale=1\.0\"\x20name=\"viewport\
-SF:"><title>Application\x20doesn't\x20exist\x20-\x20Scalingo</title><style
-SF:>html\x20{\x20height:\x20100%;}body\x20{\x20-webkit-transform-style:\x2
-SF:0preserve-3d;\x20transform-style:\x20preserve-3d;\x20text-align:\x20cen
-SF:ter;\x20height:\x20100%;\x20margin:\x200;\x20padding:\x200;\x20backgrou
-SF:nd:\x20-webkit-gradient\(linear,\x20left\x20top,\x20left\x20bottom,\x20
-SF:from\(#1864ab\),\x20to\(#099ec9\)\)\x20left\x20top/100%\x20100%\x20no-r
-SF:epeat\x20#1864ab;\x20background:\x20linear-gradient\(to\x20bottom,\x20#
-SF:1864ab,\x20#099ec9\)\x20left\x20top/100%\x20100%\x20no-repeat\x20#1864a
-SF:b;\x20color:\x20white;}#wrapper\x20{\x20position:\x20relative;\x20top:\
-SF:x2040%;\x20-webkit");
+SF-Port80-TCP:V=7.92%I=7%D=12/10%Time=65751F06%P=x86_64-alpine-linux-musl%
+SF:r(GetRequest,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x
+SF:20no-cache\r\nConnection:\x20close\r\n\r\n")%r(HTTPOptions,48,"HTTP/1\.
+SF:1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnection:
+SF:\x20close\r\n\r\n")%r(RTSPRequest,48,"HTTP/1\.1\x20400\x20Bad\x20Reques
+SF:t\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r\n")%r(X11
+SF:Probe,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-ca
+SF:che\r\nConnection:\x20close\r\n\r\n")%r(FourOhFourRequest,48,"HTTP/1\.1
+SF:\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnection:\
+SF:x20close\r\n\r\n")%r(GenericLines,48,"HTTP/1\.1\x20400\x20Bad\x20Reques
+SF:t\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r\n")%r(RPC
+SF:Check,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-ca
+SF:che\r\nConnection:\x20close\r\n\r\n")%r(DNSVersionBindReqTCP,48,"HTTP/1
+SF:\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnectio
+SF:n:\x20close\r\n\r\n")%r(DNSStatusRequestTCP,48,"HTTP/1\.1\x20400\x20Bad
+SF:\x20Request\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r
+SF:\n")%r(Help,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x2
+SF:0no-cache\r\nConnection:\x20close\r\n\r\n")%r(SSLSessionReq,48,"HTTP/1\
+SF:.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnection
+SF::\x20close\r\n\r\n")%r(TerminalServerCookie,48,"HTTP/1\.1\x20400\x20Bad
+SF:\x20Request\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r
+SF:\n")%r(TLSSessionReq,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Co
+SF:ntrol:\x20no-cache\r\nConnection:\x20close\r\n\r\n")%r(Kerberos,48,"HTT
+SF:P/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnec
+SF:tion:\x20close\r\n\r\n")%r(SMBProgNeg,48,"HTTP/1\.1\x20400\x20Bad\x20Re
+SF:quest\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r\n")%r
+SF:(LPDString,48,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x20
+SF:no-cache\r\nConnection:\x20close\r\n\r\n")%r(LDAPSearchReq,48,"HTTP/1\.
+SF:1\x20400\x20Bad\x20Request\r\nCache-Control:\x20no-cache\r\nConnection:
+SF:\x20close\r\n\r\n")%r(LDAPBindReq,48,"HTTP/1\.1\x20400\x20Bad\x20Reques
+SF:t\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\n\r\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port443-TCP:V=7.92%T=SSL%I=7%D=12/3%Time=656BE490%P=x86_64-alpine-linux
-SF:-musl%r(GetRequest,3CEA,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20S
-SF:un,\x2003\x20Dec\x202023\x2002:14:40\x20GMT\r\nContent-Type:\x20text/ht
-SF:ml\r\nContent-Length:\x2015436\r\nConnection:\x20close\r\nContent-Encod
-SF:ing:\x20identity\r\n\r\n<!DOCTYPE\x20html><html><head><meta\x20http-equ
-SF:iv=\"content-type\"\x20content=\"text/html;\x20charset=UTF-8\"><meta\x2
-SF:0charset=\"utf-8\"><meta\x20content=\"IE=edge,chrome=1\"\x20http-equiv=
-SF:\"X-UA-Compatible\"><meta\x20content=\"width=device-width,\x20initial-s
-SF:cale=1\.0\"\x20name=\"viewport\"><title>Application\x20doesn't\x20exist
-SF:\x20-\x20Scalingo</title><style>html\x20{\x20height:\x20100%;}body\x20{
-SF:\x20-webkit-transform-style:\x20preserve-3d;\x20transform-style:\x20pre
-SF:serve-3d;\x20text-align:\x20center;\x20height:\x20100%;\x20margin:\x200
-SF:;\x20padding:\x200;\x20background:\x20-webkit-gradient\(linear,\x20left
-SF:\x20top,\x20left\x20bottom,\x20from\(#1864ab\),\x20to\(#099ec9\)\)\x20l
-SF:eft\x20top/100%\x20100%\x20no-repeat\x20#1864ab;\x20background:\x20line
-SF:ar-gradient\(to\x20bottom,\x20#1864ab,\x20#099ec9\)\x20left\x20top/100%
-SF:\x20100%\x20no-repeat\x20#1864ab;\x20color:\x20white;}#wrapper\x20{\x20
-SF:position:\x20relative;\x20top:\x2040%;\x20-webkit")%r(HTTPOptions,3CEA,
-SF:"HTTP/1\.1\x20404\x20Not\x20Found\r\nDate:\x20Sun,\x2003\x20Dec\x202023
-SF:\x2002:14:40\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x2
-SF:015436\r\nConnection:\x20close\r\nContent-Encoding:\x20identity\r\n\r\n
-SF:<!DOCTYPE\x20html><html><head><meta\x20http-equiv=\"content-type\"\x20c
-SF:ontent=\"text/html;\x20charset=UTF-8\"><meta\x20charset=\"utf-8\"><meta
-SF:\x20content=\"IE=edge,chrome=1\"\x20http-equiv=\"X-UA-Compatible\"><met
-SF:a\x20content=\"width=device-width,\x20initial-scale=1\.0\"\x20name=\"vi
-SF:ewport\"><title>Application\x20doesn't\x20exist\x20-\x20Scalingo</title
-SF:><style>html\x20{\x20height:\x20100%;}body\x20{\x20-webkit-transform-st
-SF:yle:\x20preserve-3d;\x20transform-style:\x20preserve-3d;\x20text-align:
-SF:\x20center;\x20height:\x20100%;\x20margin:\x200;\x20padding:\x200;\x20b
-SF:ackground:\x20-webkit-gradient\(linear,\x20left\x20top,\x20left\x20bott
-SF:om,\x20from\(#1864ab\),\x20to\(#099ec9\)\)\x20left\x20top/100%\x20100%\
-SF:x20no-repeat\x20#1864ab;\x20background:\x20linear-gradient\(to\x20botto
-SF:m,\x20#1864ab,\x20#099ec9\)\x20left\x20top/100%\x20100%\x20no-repeat\x2
-SF:0#1864ab;\x20color:\x20white;}#wrapper\x20{\x20position:\x20relative;\x
-SF:20top:\x2040%;\x20-webkit");
+SF-Port3000-TCP:V=7.92%I=7%D=12/10%Time=65751F46%P=x86_64-alpine-linux-mus
+SF:l%r(TLSSessionReq,192,"\xe0\x8cE\xc0\(\x9c\xa9\x90\x90\xf6I\x1d\x17\^BA
+SF:\xc0\xd4\xab\x1f\xee\x94\xac\"\xf3\xc0\$\x0f`\xf1\xc5d\x1f\xcdz\x8d1\x1
+SF:d\xf5\xf5\xd1\x83q\xa7\xc3\x1dysz\+`\xee1\^BJ\xd3M\nYl\xc2:\x08\xae\x06
+SF:\xc0\xda\|\xd6\x9f\xb8\xb2S\^\)\xde\xfb\+W\xad\x0eC\xa5\xf9\xa6,\xec\xc
+SF:9\xa8\x97\x20\xb0\xd5i\xa9Z\xa6\x9d\xe5hJ\x1d\xa8\xa9\xe9\x13l}w\xb4\x8
+SF:6\$\xdd\xe9\x97\xeapr\xbf\xddb\x86p\xfb\xa0p\x94\xbb\xe7O\x8e\xd5\x0c\x
+SF:1d\x9b\xdc\x8aV\x0e<\x83\xeaD\xd08\x7fx\xb2\xd1\xba\xfd\xfa\xe05o\x1c\x
+SF:84!m\x15X}\xc3\xd2fI\x86\"\xbe\x92\xbe1~#\xa8\xcfY\xcd\$\xbbX\xc6\x11\x
+SF:d7\x95x\xc7\xf5\xe2bU\*\xb9\xe5V\xef\x05\x0b\x03Y\xe889\x9a\xcf\x0frW\x
+SF:a79\xb1\xd0\x1b\x86\xed\xf7m#\x83j%\x82\xe3\xd943\xac\x92\x9e\x13\xb5O\
+SF:x9e\xf5\xe8\xf7\xef\xa5\xa7O\x8d\^\xd9\x9e\xdc\x9d\xf8\xc7=\*R\xe5\x16\
+SF:|\xdb\x13\x0f\xa0\xe5\x04B7\x86\x89q\xd6\xccC\x20Q\?\xca\"1\xea\xd6G\x9
+SF:3\x89\xfe\x84\x8c\xfdW6\x80C\x1b\xfeY\xd6\xad\x15\x93\xdb\xaca};\xb6\x1
+SF:9\xe5\xa9Q\x90\x1f\x03\xfe%\xf7\xd7\xc4a\xa1\xf8\xbb\xbf\xcbL\xce\xd1\x
+SF:fb\(\xb5VH\xc4\xdc\$&R\x99q\x01\x89\xc9\xa1Ynq\x86`\x82\x9c0\xf2\x02\xb
+SF:8\xff7w\^\t\x1a\x9f\xf1\0x\x89\x06\]\x1a\x88j\x1a\xf1\x9c\xc5B\xc1#P\x9
+SF:6f\xf4\xde\xb4\[\xd5\0<\x91\x088\[\xd6\xf1\xfb\x10\xd8\xd0\xf9\x15Ibi\x
+SF:d9\xd8E\xce;")%r(Kerberos,D5,"\xa6\xf1\x14\xbdn\xd0\x7f\xb1\x8bI\xc6\x9
+SF:b%9\xce\x20\xbe\x16\x8c\x8c\xcc\x94\xbf\xd7\xf95\x1dG\xe0'\x20L\xf5\xbf
+SF:\xaaH\xd8J_\xdeh\x8b\xcb=\$g5\xd8\xf7=\x7f\x06t7\x07\xb8\xc9yxD@\x87#>9
+SF:M\xcd~s\xaf4\x01\xaf\xb5\x9c\x9b\xec=w\xcd%\xd3\xa3\xc4\x8d\xf68\xdbX\x
+SF:ba\xae\xb1e0\x8d\x98\x1beL,\n\x1b\xf3>\xb8\x08h\x8aMc#\[\x0cu\xf5k\xc2/
+SF:6x\xc1:\xfd\xa5L\xa99:A\xbc\xd9:\xc6\xde\xe4\xa3\?\x90\xec!\)7INGr\xb7\
+SF:xbf2\x84\x9de\xbfct\xd4{=\xf5Q\x18\xd1\xcdiI\x92W\x88:Q\*\xa2\x86\r\x88
+SF:0T\xf5#\x04\xbe\xad\xba\x08\^\xe2C\xcc\xc1\xf6\xf9bs2d\xbb\?\xed\xa0B\x
+SF:aao\x8b8\xa5}\xce\r\x8a\x8e\x02\xe7\xc3")%r(SMBProgNeg,180,"n>\xdc\xe7a
+SF:\xa8\x20\xb10\x1bO<Ru\xc3\x0e\x18a\.\x88sL\0\xd5u\x8b\xad~\xae\xdf\xbe\
+SF:xdc\xf4jf-\xbb\xf8\xdf\xbf\xc2\xf1}\xe2\x87\xd6\?\xee\x92\x94&\x06\x10\
+SF:x94%\x7f\xbe\x9c\x1c\xcd\x94\xdfK\xdb\x84\xd6\xc3\x93\xdc!\xcew\x02\xa4
+SF:;4=z\x87\x01r\xac\x82\xbf\xe85\xd3\xa2\x13\x05q\xde\xf6H\xe1\xc9\xb59\x
+SF:a6\xab\xec\x8aO\xb9f\xa8h\xe6R4\xd0\xd77QP\xaa\x80n\x85\xd7\x8e\xda\xde
+SF:\x1e\x1f`\x7fN\xff\x10\xfb\xf4l\x05\xaf\xf6Y\x1a\xd1\xb1\xcc\xc0\rJQ\x8
+SF:e\xc2\xf98\x7f%\xcb\x99O\xcb\xe0\]\xe5\xc4\xd9\xf0b\xea\x1f\xec\xed\x85
+SF:\x12u\x05\x84\xcb\x8e\xe9N\xc1\xac\xb6\xa0\0\xdfs\xb2X\x12\xb8\x124\x0e
+SF:c!\x10V\x89\xd0\x9a\x11`\xf3B9\x06\xea\x86\xd5%\\\x8d\x18Ty\x93\x95\x14
+SF:\x82\xe7\xa4\xe2\xeb'\xe5Kc<v\xc0A\xfe\xc3`\x1b\x96\^}\xe3\x94\xcd\xafd
+SF:\xb5\x82\xfe0'\r\xf9\xdb\xa5\xfa2\x14\xc8\x989\x8a\x9a\xd9\x89\xb6\xed\
+SF:*<HC\x92\x7f#\xed\x84m\xa3\^T\xbf\xe8\x8e\xce9\xeb\x82\x8e\xbcx~\xf2a\x
+SF:06\xe7\x9d\xb5@QP\]\x0cMh\xfd-\x89Q\x1a\xfa\x11\xe0q\xdd\xf7_\xc8CZ\x13
+SF:\xfa\x94\xb8@\x11\xf3\xe4\x93\xb4\xa2\xd9\*y\x802a\xfeV\x19\xf0\xca\^\x
+SF:06\x20\x17_\xaf\xcf\x90\xf4o\xde\xe8l\x1eh\x10\*\xf0\xafT\xea\xf6\x96\x
+SF:10\xdaw\x8e\xdc:\x19n\x8f\xd2s\xe2B\xe5\x98p\xa0\.\xd1E\x86\x1c\x9c\xc6
+SF:\xaeoR");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5002-TCP:V=7.92%I=7%D=12/10%Time=65751F06%P=x86_64-alpine-linux-mus
+SF:l%r(NULL,1A,"SSH-2\.0-SFTPGo_2\.4\.4-dev\r\n");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Dec  3 02:15:06 2023 -- 1 IP address (1 host up) scanned in 50.50 seconds
+# Nmap done at Sun Dec 10 02:17:30 2023 -- 1 IP address (1 host up) scanned in 188.45 seconds
