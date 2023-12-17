@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 10 Dec 2023 02:30:07",
+	"@generated": "Sun, 17 Dec 2023 02:38:57",
 	"site":[ 
 		{
 			"@name": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
@@ -36,6 +36,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -44,13 +60,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -77,15 +93,93 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "13"
+				},
+				{
+					"pluginid": "10010",
+					"alertRef": "10010",
+					"alert": "Cookie No HttpOnly Flag",
+					"name": "Cookie No HttpOnly Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
+							"method": "GET",
+							"param": "NEXT_LOCALE",
+							"attack": "",
+							"evidence": "set-cookie: NEXT_LOCALE",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "NEXT_LOCALE",
+							"attack": "",
+							"evidence": "set-cookie: NEXT_LOCALE",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+					"cweid": "1004",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10011",
+					"alertRef": "10011",
+					"alert": "Cookie Without Secure Flag",
+					"name": "Cookie Without Secure Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
+					"instances":[ 
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
+							"method": "GET",
+							"param": "NEXT_LOCALE",
+							"attack": "",
+							"evidence": "set-cookie: NEXT_LOCALE",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "NEXT_LOCALE",
+							"attack": "",
+							"evidence": "set-cookie: NEXT_LOCALE",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
+					"cweid": "614",
+					"wascid": "13",
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -114,7 +208,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/364-f6b1dc276f649867.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/466-4bb2b1f21e07f5d0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -122,7 +216,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/675-298ebce0a04e1429.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/53-40555080c3779b49.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -130,7 +224,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/index-deaeeafe15448083.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/916-cb314165dfa2afe3.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-682bfa2835266e04.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -146,7 +248,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-259b79dae900d2db.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -154,15 +256,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/v4S3ZNw7e2MYllwqAukYb/_buildManifest.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/v4S3ZNw7e2MYllwqAukYb/_ssgManifest.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -192,7 +286,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10037",
@@ -221,6 +315,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -237,13 +339,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10096",
@@ -256,15 +358,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-93fe25fdbe937893.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1540483477",
-							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/_app-cd6981a3d089bc94.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/916-cb314165dfa2afe3.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -272,13 +366,13 @@
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "54"
+					"sourceid": "50"
 				},
 				{
 					"pluginid": "10021",
@@ -307,6 +401,22 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/53-40555080c3779b49.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-682bfa2835266e04.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -315,7 +425,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-259b79dae900d2db.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -355,23 +465,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/media/Marianne-Bold.f0ef9bad.woff2",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/media/Marianne-Medium.452138fa.woff2",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/media/Marianne-Regular.119b3a3e.woff2",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -385,7 +479,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10094",
@@ -398,23 +492,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/v4S3ZNw7e2MYllwqAukYb/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFDKvM\u00F7\uFFFD1\uFFFDe\u00A0.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/v4S3ZNw7e2MYllwqAukYb/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFDKvM\u00F7\uFFFD1\uFFFDe\u00A0.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/_app-cd6981a3d089bc94.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/466-4bb2b1f21e07f5d0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -422,37 +500,29 @@
 							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0002\\x0000\\x0000\\x0000Km)\uFFFD\\x0000\\x0000\\x0000\uFFFDIDATx\uFFFDc\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0430\uFFFD\uFFFD\uFFFD_\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u032C\\x0007\\x000c 0\uFFFD\uFFFDw\u07A7O\u07C0\uFFFD\uFFFD\uFFFD\\x0001\uFFFD\uFFFDv\uFFFD\uFFFD\\x0000\\x0002\uFFFD%%k@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03DCy\\x0008\\x0014.+[\uFFFD\u05B6\uFFFD\u00C7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFDa\\x000cg\uFFFD\uFFFD\u06F6\uFFFD\u008F\\x001f\uFFFD!\\x0012\uFFFD\uFFFD\uFFFD\u01CF\uFFFD\\x0016V\\x000c\uFFFD\uFFFD;7n<w\uFFFD\uFFFD\uFFFD@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{^O\uFFFD\\x000e2*\"b\uFFFD\\x0005\uFFFD_\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\u01CFg)\uFFFD\uFFFD\\x0018\\x0018\\x001e\uFFFD\uFFFD0\u0738\uFFFD\uFFFD?\\x0018\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\uFFFDt\uFFFD\uFFFDC\\x0006\\x0006\\x0000\uFFFD\\x0016\uFFFD-o\uFFFD\uFFFD0\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/css/6147e49e1b5968b6.css",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/613-c05985b2fe8c1e3b.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW",
+							"otherinfo": "2\uFFFDn\uFFFD\u4C99\uFFFDZ\uFFFD\uFFFD'>\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFD\\x0000B\\x000cAF\\x001c\uFFFDU~\\x0007-\uFFFDK\uFFFD\uFFFD\uFFFD\uFFFDL\uFFFD\\x000b\u0196W\"4\\x0016"
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/css/f45588318c7fed42.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5",
 							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/v4S3ZNw7e2MYllwqAukYb/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFDKvM\u00F7\uFFFD1\uFFFDe\u00A0.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/v4S3ZNw7e2MYllwqAukYb/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFDKvM\u00F7\uFFFD1\uFFFDe\u00A0.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						}
 					],
-					"count": "6",
+					"count": "3",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFDKvM\u00F7\uFFFD1\uFFFDe\u00A0.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2</p>",
+					"otherinfo": "<p>\uFFFDPNG</p><p>\\x001a</p><p>\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0002\\x0000\\x0000\\x0000Km)\uFFFD\\x0000\\x0000\\x0000\uFFFDIDATx\uFFFDc\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0430\uFFFD\uFFFD\uFFFD_\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u032C\\x0007\\x000c 0\uFFFD\uFFFDw\u07A7O\u07C0\uFFFD\uFFFD\uFFFD\\x0001\uFFFD\uFFFDv\uFFFD\uFFFD\\x0000\\x0002\uFFFD%%k@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03DCy\\x0008\\x0014.+[\uFFFD\u05B6\uFFFD\u00C7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFDa\\x000cg\uFFFD\uFFFD\u06F6\uFFFD\u008F\\x001f\uFFFD!\\x0012\uFFFD\uFFFD\uFFFD\u01CF\uFFFD\\x0016V\\x000c\uFFFD\uFFFD;7n<w\uFFFD\uFFFD\uFFFD@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{^O\uFFFD\\x000e2*\"b\uFFFD\\x0005\uFFFD_\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\u01CFg)\uFFFD\uFFFD\\x0018\\x0018\\x001e\uFFFD\uFFFD0\u0738\uFFFD\uFFFD?\\x0018\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\uFFFDt\uFFFD\uFFFDC\\x0006\\x0006\\x0000\uFFFD\\x0016\uFFFD-o\uFFFD\uFFFD0\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "51"
 				},
 				{
 					"pluginid": "10027",
@@ -465,68 +535,76 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/1dd3208c-7f607f64a775be97.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[293],{510:function(e,t,n){var r,l=n(7653),a=n(69397),o={us\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/466-4bb2b1f21e07f5d0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"origin\":null,\"_nextI18Next\":{\"initialI18nStore\":{\"fr\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[466],{8648:function(e,t,r){\"use strict\";function n(){return(n=Object.as\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"origin\":null,\"_nextI18Next\":{\"initialI18nStore\":{\"fr\"\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/675-298ebce0a04e1429.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[675],{23271:function(e,t,r){\"use strict\";Object.defineProperty(t,\"__esM\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/framework-80ea8c0f440c6a32.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "db",
-							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \" */var u,i,o,s,w,x,C=a(2784),_=a(14616);function p(n){for(var t=\"https://reactjs.org/docs/error-decoder.html?invariant=\"+n,a=1;a\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-93fe25fdbe937893.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[179],{84878:function(r,n){\"use strict\";function getDeploymentIdQueryOrE\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/_app-cd6981a3d089bc94.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/53-40555080c3779b49.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[888],{60832:function(m,_,C){\"use strict\";C.d(_,{Jc:function(){return ap\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[53],{95750:function(e,t){\"use strict\";function r(){return\"\"}Object.defi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/_app-cd6981a3d089bc94.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/571-7d0e46ff8feb380a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[571],{84571:function(e,t,n){n.d(t,{LC:function(){return U}\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/613-c05985b2fe8c1e3b.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \" */var R=C(2784),L=C(43100),B=\"function\"==typeof Object.is?Object.is:function(m,_){return m===_&&(0!==m||1/m==1/_)||m!=m&&_!=_},\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \" */var n=r(7653),o=r(66881),u=\"function\"==typeof Object.is?Object.is:function(t,e){return t===e&&(0!==t||1/t==1/e)||t!=t&&e!=e},\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/pages/index-deaeeafe15448083.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/72-6a34ba65ad274fae.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[405],{89208:function(e,t,n){(window.__NEXT_P=window.__NEXT_P||[]).push(\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[72],{1070:function(e,t,n){\"use strict\";Object.defineProperty(t,\"__esMod\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/891-b91a0728b9f58111.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[891],{95785:function(e,t,r){\"use strict\";r.r(t),r.d(t,{ErrorCode:functi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/layout-aaadb1194786d8e1.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[203],{28957:function(e,t,n){Promise.resolve().then(n.bind(n,49684)),Pro\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-ac63b9bef4c038f8.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[61],{23290:function(e,t,n){Promise.resolve().then(n.bind(n,53575))},535\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
@@ -537,29 +615,21 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"statusCode\":404}},\"page\":\"/_error\",\"qu\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"statusCode\":404}},\"page\":\"/_error\",\"qu\", see evidence field for the suspicious comment/snippet."
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"c:[\\\"$\\\",\\\"$Ld\\\",null,{\\\"locale\\\":\\\"en\\\",\\\"now\\\":\\\"$D2023-12-17T02:38:53.473Z\\\",\\\"timeZone\\\":\\\"Eu\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"origin\":null,\"_nextI18Next\":{\"initialI18nStore\":{\"fr\"\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[293],{510:function(e,t,n){var r,l=n(7653),a=n(69397),o={us\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "49"
 				},
 				{
 					"pluginid": "10109",
@@ -588,11 +658,19 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" class=\"fr-footer__bottom-link\">Mentions l\u00E9gales</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script>\n{\n\n    window.ssrWasPerformedWithIsDark = \"system\" === \"dark\";\n\tconst sanitizer = typeof trustedTypes !== \"undefined\" ? trustedTypes.createPolicy(\"react-dsfr-asap\", { createHTML: s => s }) : {\n\t\tcreateHTML: s => s,\n\t};\n    \n    const isDark = (() => {\n    \n    \tconst isDarkExplicitlyProvidedAsParameter = (() => {\n    \t\tif (\"system\" === \"system\") {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tswitch (\"system\") {\n    \t\t\tcase \"dark\": return true;\n    \t\t\tcase \"light\": return false;\n    \t\t}\n    \t})();\n    \n    \tconst isDarkFromLocalStorage = (() => {\n    \t\tconst colorSchemeReadFromLocalStorage = localStorage.getItem(\"scheme\");\n    \n    \t\tif (colorSchemeReadFromLocalStorage === null) {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tif (colorSchemeReadFromLocalStorage === \"system\") {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tswitch (colorSchemeReadFromLocalStorage) {\n    \t\t\tcase \"dark\":\n    \t\t\t\treturn true;\n    \t\t\tcase \"light\":\n    \t\t\t\treturn false;\n    \t\t}\n    \t})();\n    \n    \tconst isDarkFromOsPreference = (() => {\n    \t\tif (!window.matchMedia) {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\treturn window.matchMedia(\"(prefers-color-scheme: dark)\").matches;\n    \t})();\n    \n    \tconst isDarkFallback = false;\n    \n    \treturn (\n    \t\tisDarkFromLocalStorage ??\n    \t\tisDarkExplicitlyProvidedAsParameter ??\n    \t\tisDarkFromOsPreference ??\n    \t\tisDarkFallback\n    \t);\n    \n    })();\n    \n    [\"data-fr-scheme\", \"data-fr-theme\"].forEach(attr => document.documentElement.setAttribute(attr, isDark ? \"dark\" : \"light\"));\n\n    {\n\n        let element= document.getElementById(\"dsfr-root-color-scheme\");\n\n\t\tif( element !== null ){\n\t\t\telement.remove()\n\t\t}\n\n        element = document.createElement(\"style\");\n\n\t\tif (\"\" !== \"\") {\n\t\t\telement.setAttribute(\"nonce\", \"\");\n\t\t}\n\n        element.id = \"dsfr-root-color-scheme\";\n\n        element.innerHTML = sanitizer.createHTML(`:root { color-scheme: ${isDark ? \"dark\" : \"light\"}; }`);\n\n        document.head.appendChild(element);\n\n    }\n\n    {\n\n        const name = \"theme-color\";\n\n        let element = document.querySelector(`meta[name=${name}]`);\n\t\t\n\t\tif( element !== null ){\n\t\t\telement.remove();\n\t\t}\n\n        element = document.createElement(\"meta\");\n\n        element.name = name;\n\n        element.content = isDark ? \"#161616\" : \"#ffffff\";\n\n        document.head.appendChild(element);\n\n    }\n\n}\n</script>",
+							"evidence": "<script src=\"/_next/static/chunks/1dd3208c-7f607f64a775be97.js\" async=\"\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -600,17 +678,17 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script>\n{\n\n    window.ssrWasPerformedWithIsDark = \"system\" === \"dark\";\n\tconst sanitizer = typeof trustedTypes !== \"undefined\" ? trustedTypes.createPolicy(\"react-dsfr-asap\", { createHTML: s => s }) : {\n\t\tcreateHTML: s => s,\n\t};\n    \n    const isDark = (() => {\n    \n    \tconst isDarkExplicitlyProvidedAsParameter = (() => {\n    \t\tif (\"system\" === \"system\") {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tswitch (\"system\") {\n    \t\t\tcase \"dark\": return true;\n    \t\t\tcase \"light\": return false;\n    \t\t}\n    \t})();\n    \n    \tconst isDarkFromLocalStorage = (() => {\n    \t\tconst colorSchemeReadFromLocalStorage = localStorage.getItem(\"scheme\");\n    \n    \t\tif (colorSchemeReadFromLocalStorage === null) {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tif (colorSchemeReadFromLocalStorage === \"system\") {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\tswitch (colorSchemeReadFromLocalStorage) {\n    \t\t\tcase \"dark\":\n    \t\t\t\treturn true;\n    \t\t\tcase \"light\":\n    \t\t\t\treturn false;\n    \t\t}\n    \t})();\n    \n    \tconst isDarkFromOsPreference = (() => {\n    \t\tif (!window.matchMedia) {\n    \t\t\treturn undefined;\n    \t\t}\n    \n    \t\treturn window.matchMedia(\"(prefers-color-scheme: dark)\").matches;\n    \t})();\n    \n    \tconst isDarkFallback = false;\n    \n    \treturn (\n    \t\tisDarkFromLocalStorage ??\n    \t\tisDarkExplicitlyProvidedAsParameter ??\n    \t\tisDarkFromOsPreference ??\n    \t\tisDarkFallback\n    \t);\n    \n    })();\n    \n    [\"data-fr-scheme\", \"data-fr-theme\"].forEach(attr => document.documentElement.setAttribute(attr, isDark ? \"dark\" : \"light\"));\n\n    {\n\n        let element= document.getElementById(\"dsfr-root-color-scheme\");\n\n\t\tif( element !== null ){\n\t\t\telement.remove()\n\t\t}\n\n        element = document.createElement(\"style\");\n\n\t\tif (\"\" !== \"\") {\n\t\t\telement.setAttribute(\"nonce\", \"\");\n\t\t}\n\n        element.id = \"dsfr-root-color-scheme\";\n\n        element.innerHTML = sanitizer.createHTML(`:root { color-scheme: ${isDark ? \"dark\" : \"light\"}; }`);\n\n        document.head.appendChild(element);\n\n    }\n\n    {\n\n        const name = \"theme-color\";\n\n        let element = document.querySelector(`meta[name=${name}]`);\n\t\t\n\t\tif( element !== null ){\n\t\t\telement.remove();\n\t\t}\n\n        element = document.createElement(\"meta\");\n\n        element.name = name;\n\n        element.content = isDark ? \"#161616\" : \"#ffffff\";\n\n        document.head.appendChild(element);\n\n    }\n\n}\n</script>",
+							"evidence": "<script src=\"/_next/static/chunks/1dd3208c-7f607f64a775be97.js\" async=\"\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -639,6 +717,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -655,13 +741,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "90005",
@@ -674,15 +760,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -706,13 +784,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "90005",
@@ -725,15 +803,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -757,13 +827,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "90005",
@@ -776,15 +846,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -808,13 +870,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "90005",
@@ -827,15 +889,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -859,13 +913,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "34"
 				},
 				{
 					"pluginid": "10049",
@@ -878,7 +932,15 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-259b79dae900d2db.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-682bfa2835266e04.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-1fecb85153d90a65.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -916,31 +978,15 @@
 							"attack": "",
 							"evidence": "max-age=31536000",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/media/Marianne-Medium.452138fa.woff2",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/media/Marianne-Regular.119b3a3e.woff2",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "6",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "40"
+					"sourceid": "38"
 				}
 			]
 		}
