@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 17 Dec 2023 01:43:55",
+	"@generated": "Sun, 24 Dec 2023 01:45:30",
 	"site":[ 
 		{
 			"@name": "https://webinaire.numerique.gouv.fr",
@@ -141,7 +141,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "73"
+					"sourceid": "80"
 				},
 				{
 					"pluginid": "10099",
@@ -176,7 +176,7 @@
 					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
 					"cweid": "540",
 					"wascid": "13",
-					"sourceid": "88"
+					"sourceid": "87"
 				},
 				{
 					"pluginid": "90003",
@@ -293,16 +293,16 @@
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=tW1FoHEU7QiTUfNG&nonce=671UupMBBOSMHVC2].\nPredicted response size: 574.\nResponse Body Length: 775."
+							"otherinfo": "Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=covUeC456nwaDhlj&nonce=yVRWWoZe9TSM5YuG].\nPredicted response size: 574.\nResponse Body Length: 775."
 						}
 					],
 					"count": "1",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=tW1FoHEU7QiTUfNG&nonce=671UupMBBOSMHVC2].</p><p>Predicted response size: 574.</p><p>Response Body Length: 775.</p>",
+					"otherinfo": "<p>Location header URI length: 274 [https://authent.webinaire.numerique.gouv.fr/auth/realms/master/protocol/openid-connect/auth?client_id=BBB-Visio&response_type=code&scope=openid+email+profile&redirect_uri=https%3A%2F%2Fwebinaire.numerique.gouv.fr%2Foidc_callback&state=covUeC456nwaDhlj&nonce=yVRWWoZe9TSM5YuG].</p><p>Predicted response size: 574.</p><p>Response Body Length: 775.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "28"
+					"sourceid": "27"
 				},
 				{
 					"pluginid": "10011",
@@ -385,7 +385,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10054",
@@ -468,7 +468,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10017",
@@ -717,7 +717,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10021",
@@ -802,14 +802,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://webinaire.numerique.gouv.fr/static/css/spinner.css",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://webinaire.numerique.gouv.fr/static/css/toc.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -819,6 +811,14 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/static/images/favicon.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/static/js/scampi-modal.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -862,14 +862,6 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9",
-							"otherinfo": "{\"current_provider\":\"default\"}"
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -933,12 +925,20 @@
 							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD"
 						},
 						{
+							"uri": "https://webinaire.numerique.gouv.fr/static/js/scampi-modal.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/nico3333fr/van11y-accessible-modal-window-aria/blob/master/LICENSE",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD'(\uFFFD}\uFFFD~\uFFFD\uFFFDj}u\uFFFD\uFFFDq\uFFFD,\uFFFD\uFFFD^\uFFFDj\\x001dj_\uFFFD\uFFFDwh\uFFFD\u6AC9\uFFFD\u06D6\uFFFD\uFFFD\uFFFD\uFFFD-z\uFFFD\uFFFD !\rH"
+						},
+						{
 							"uri": "https://webinaire.numerique.gouv.fr/welcome",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "eJyFkEFPwzAMhf9KlfNoNQ5M6rEI2GUgBB2XSlGWOJtFGpfE2YSm_XdStT1zc_ye7S_vKlTikwzwkyCyqMW1E9oheJZoOlEXnWia5m6PEakTq_wMEAfyEST_DjA5NBmYxKhpaebCoymgV-iKIZBFB8sGgwE0yxRw8p6Yh1hX1QUO6FUWS596CJihyiOlc2lDRWi01Mq5g9Lf8zVWPF_jr_UzbZ_azTt-tvb1ZTJ48no2PGzWbRp2TfP2sdvuH-87cRMroVMI418z3xkNhByAAauS4yyanEjGYSSf-yPjP4gXcJp6yKM2qGM_LgY_hmPkkpqorXIRbn8vsYIa",
-							"otherinfo": "x\uFFFD\uFFFD\uFFFDAO\uFFFD0\\x000c\uFFFD\uFFFDJ\uFFFD\uFFFDh5\\x000eL\uFFFD\\x0008\uFFFDe \\x0004\\x001d\uFFFDJQ\uFFFD8\uFFFDE\\x001a\uFFFD\uFFFD\u0644\uFFFD\uFFFDwR\uFFFD=ss\uFFFD\uFFFD\uFFFD/\uFFFD*T\uFFFD\\x000c\uFFFD \uFFFD\uFFFD\u0175\\x0013\uFFFD!x\uFFFDh:Q\\x0017\uFFFDh\uFFFD\uFFFDn\uFFFD\\x0011\uFFFD\\x0013\uFFFD\uFFFD\\x000c\\x0010\\x0007\uFFFD\\x0011$\uFFFD\\x000e094\\x0019\uFFFD\u0128ii\uFFFD\u00A3)\uFFFDW\uFFFD!\uFFFDE\\x0007\uFFFD\\x0006\uFFFD\\x00014\uFFFD\\x0014p\uDA39\uDE07XW\uFFFD\\x0005\\x000e\uFFFDU\\x0016K\uFFFDz\\x0008\uFFFD\uFFFD\uFFFD#\uFFFDsiCEh\uFFFD\uFFFD\u02B9\uFFFD\uFFFD\uFFFD\uFFFD5V<_\uFFFD\uFFFD3m\uFFFD\uFFFD\uFFFD;~\uFFFD\uFFFD\uFFFDe2x\uFFFDz6<l\uFFFDm\\x001avM\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\uFFFD;q\\x0013+\uFFFDS\\x0008\uFFFD_3\uFFFD\\x0019\r\uFFFD\\x001c\uFFFD\\x0001\uFFFD\uFFFD\uFFFD,\uFFFD\uFFFDH\uFFFDa$\uFFFD\uFFFD#\uFFFD?\uFFFD\\x0017p\uFFFDz\u02236\uFFFDc?.\\x0006?\uFFFDc\u449A\uFFFD\uFFFDr\\x0011n/\uFFFD\uFFFD\\x001a"
+							"evidence": "eJyFkE1PwzAMhv9KlfNoLwyJHgsSJy58bAJVirLEWQ1pXPLRapr233HVlSs3x-9r-8l7FiqnTgb4yRCTqMW5Fdoh-CTRtKIuWtE0zc0OI1IrNvwMEAfyEWQ6DbA4NBlYxKhpbXLh0RTQK3TFEMiig3WDwQA6yRxw8XYpDbGuqgkO6BWLpc89BGSo8kh5LG2oCI2WWjl3UPr7ei2p9IcwvsPD7fbOT-qxc1-LwZPXV8Np97Lf0yfcv70-bz_yUysuYiN0DmH-K_ONaCBwAAasyi6xaDgRxklInvsz4z-IEzhNPfCoDerYz4vBz-EYuaYmaqtchMsv8g2DZw",
+							"otherinfo": "x\uFFFD\uFFFD\uFFFDMO\uFFFD0\\x000c\uFFFD\uFFFDJ\uFFFD\uFFFDh/\\x000c\uFFFD\\x001e\\x000b\\x0012'.|l\\x0002U\uFFFD\uFFFD\uFFFDY\ri\\\uFFFD\uFFFDj\uFFFD\uFFFD\uFFFDq\u0555+7\uFFFD\uFFFDk\uFFFD\uFFFD{\\x0016*\uFFFDN\\x0006\uFFFD\uFFFD\\x0010\uFFFD\uFFFD\u0179\\x0015\uFFFD!\uFFFD$\u0474\uFFFD.Z\uFFFD4\uFFFD\uFFFD\\x000e#R+6\uFFFD\\x000c\\x0010\\x0007\uFFFD\\x0011d:\r\uFFFD84\\x0019X\u0128imr\uFFFD\uFFFD\\x0014\uFFFD+t\uFFFD\\x0010\u0222\uFFFDu\uFFFD\uFFFD\\x0000:\uFFFD\\x001cp\uFFFDv)\r\uFFFD\uFFFD\uFFFD\t\\x000e\uFFFD\\x0015\uFFFD\uFFFD\uFFFD=\\x0004d\uFFFD\uFFFDHy,m\uFFFD\\x0008\uFFFD\uFFFDZ9wP\uFFFD\uFFFDz-\uFFFD\uFFFD0\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDO\uFFFDs_\uFFFD\uFFFD\uFFFD\uFFFDW\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFD'\u073F\uFFFD>o?\uFFFDS+.b#t\\x000ea\uFFFD+\uFFFDh p\\x0000\\x0006\uFFFD\uFFFD.\uFFFDh8\\x0011\uFFFDIH\uFFFD\uFFFD3\uFFFD?\uFFFD\\x00138M=\uFFFD\r\uFFFD\uFFFD\u03CB\uFFFD\uFFFD\uFFFD\\x0018\uFFFD\uFFFD&j\uFFFD\\\uFFFD\uFFFD/\uFFFD\r\uFFFDg"
 						}
 					],
 					"count": "12",
@@ -1025,7 +1025,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -1175,7 +1175,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1218,7 +1218,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1261,7 +1261,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1304,7 +1304,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10112",
@@ -1321,7 +1321,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SRw._qM87mZTznKk7Somrwtcioknnzw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNJw.Rv5U52ijM68JTk8DV8_OZd6oDno",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1329,7 +1329,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1337,7 +1337,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1345,7 +1345,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1353,7 +1353,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1361,7 +1361,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1369,7 +1369,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SSA.g2GXp3h2WsKzOBFRB2wjs4d7Lvw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNKA.Wa25RwEYiQdLIOQpcFCva8Q8Ou0",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1377,7 +1377,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": ".eJyFkEFPwzAMhf9KlfNoNQ5M6rEI2GUgBB2XSlGWOJtFGpfE2YSm_XdStT1zc_ye7S_vKlTikwzwkyCyqMW1E9oheJZoOlEXnWia5m6PEakTq_wMEAfyEST_DjA5NBmYxKhpaebCoymgV-iKIZBFB8sGgwE0yxRw8p6Yh1hX1QUO6FUWS596CJihyiOlc2lDRWi01Mq5g9Lf8zVWPF_jr_UzbZ_azTt-tvb1ZTJ48no2PGzWbRp2TfP2sdvuH-87cRMroVMI418z3xkNhByAAauS4yyanEjGYSSf-yPjP4gXcJp6yKM2qGM_LgY_hmPkkpqorXIRbn8vsYIa.ZX5SSA.aHeDnhlGRxuTuE6XgkI6wEdF1u4",
+							"evidence": ".eJyFkE1PwzAMhv9KlfNoLwyJHgsSJy58bAJVirLEWQ1pXPLRapr233HVlSs3x-9r-8l7FiqnTgb4yRCTqMW5Fdoh-CTRtKIuWtE0zc0OI1IrNvwMEAfyEWQ6DbA4NBlYxKhpbXLh0RTQK3TFEMiig3WDwQA6yRxw8XYpDbGuqgkO6BWLpc89BGSo8kh5LG2oCI2WWjl3UPr7ei2p9IcwvsPD7fbOT-qxc1-LwZPXV8Np97Lf0yfcv70-bz_yUysuYiN0DmH-K_ONaCBwAAasyi6xaDgRxklInvsz4z-IEzhNPfCoDerYz4vBz-EYuaYmaqtchMsv8g2DZw.ZYeNKA.Oa2wzu_rembKifh17gTmz0wTFho",
 							"otherinfo": "\ncookie:session"
 						},
 						{
@@ -1385,7 +1385,7 @@
 							"method": "GET",
 							"param": "session",
 							"attack": "",
-							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZX5SRw._qM87mZTznKk7Somrwtcioknnzw",
+							"evidence": "eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZYeNJw.Rv5U52ijM68JTk8DV8_OZd6oDno",
 							"otherinfo": "\ncookie:session"
 						}
 					],
@@ -1395,7 +1395,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1424,7 +1424,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://webinaire.numerique.gouv.fr/cgu",
+							"uri": "https://webinaire.numerique.gouv.fr/documentation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1433,6 +1433,14 @@
 						},
 						{
 							"uri": "https://webinaire.numerique.gouv.fr/donnees_personnelles",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://webinaire.numerique.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1472,7 +1480,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1497,17 +1505,9 @@
 							"attack": "",
 							"evidence": "no-cache",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://webinaire.numerique.gouv.fr/static/images/favicon.png",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
