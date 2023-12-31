@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 24 Dec 2023 03:08:05",
+	"@generated": "Sun, 31 Dec 2023 03:11:54",
 	"site":[ 
 		{
 			"@name": "https://geo.api.gouv.fr",
@@ -106,7 +106,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10020",
@@ -119,7 +119,7 @@
 					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
 					"instances":[ 
 						{
-							"uri": "https://geo.api.gouv.fr/",
+							"uri": "https://geo.api.gouv.fr/cgu",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -127,7 +127,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://geo.api.gouv.fr/cgu",
+							"uri": "https://geo.api.gouv.fr/decoupage-administratif",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -189,7 +189,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "55"
 				},
 				{
 					"pluginid": "90003",
@@ -280,7 +280,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10003",
@@ -398,7 +398,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -420,6 +420,14 @@
 						},
 						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/commons.2395489357e08973ae69.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/e161207b85902a61127cb728510f76fae81a6ab6.97fd58bed49ded012730.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -475,14 +483,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/SNUb0R95jrnViD9oYvrZX/_ssgManifest.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://geo.api.gouv.fr/decoupage-administratif",
 							"method": "GET",
 							"param": "",
@@ -505,7 +505,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -534,6 +534,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/e161207b85902a61127cb728510f76fae81a6ab6.97fd58bed49ded012730.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/framework.8683c114909ee93ee89f.js",
 							"method": "GET",
 							"param": "",
@@ -551,14 +559,6 @@
 						},
 						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/pages/_app-4a28277922c9f0664a87.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/pages/index-5be28c05ca76aba53b43.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -612,7 +612,7 @@
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10036",
@@ -641,6 +641,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/e161207b85902a61127cb728510f76fae81a6ab6.97fd58bed49ded012730.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.10.3 (Ubuntu)",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/framework.8683c114909ee93ee89f.js",
 							"method": "GET",
 							"param": "",
@@ -658,14 +666,6 @@
 						},
 						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/pages/_app-4a28277922c9f0664a87.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.10.3 (Ubuntu)",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/pages/index-5be28c05ca76aba53b43.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -719,7 +719,7 @@
 					"reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -754,7 +754,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10021",
@@ -776,6 +776,14 @@
 						},
 						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/commons.2395489357e08973ae69.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/e161207b85902a61127cb728510f76fae81a6ab6.97fd58bed49ded012730.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -823,14 +831,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/SNUb0R95jrnViD9oYvrZX/_buildManifest.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://geo.api.gouv.fr/decoupage-administratif",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -861,7 +861,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -968,7 +968,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -1075,7 +1075,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10109",
@@ -1174,7 +1174,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -1259,7 +1259,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://geo.api.gouv.fr/regions",
+							"uri": "https://geo.api.gouv.fr/regions/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1281,7 +1281,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1294,7 +1294,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/webpack-33f5ebc0a8127b11bf41.js",
+							"uri": "https://geo.api.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1324,7 +1324,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "35"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1337,7 +1337,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/webpack-33f5ebc0a8127b11bf41.js",
+							"uri": "https://geo.api.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1367,7 +1367,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "35"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1380,7 +1380,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/webpack-33f5ebc0a8127b11bf41.js",
+							"uri": "https://geo.api.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1410,7 +1410,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "35"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1423,7 +1423,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/webpack-33f5ebc0a8127b11bf41.js",
+							"uri": "https://geo.api.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1453,7 +1453,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "35"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1482,6 +1482,22 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/e161207b85902a61127cb728510f76fae81a6ab6.97fd58bed49ded012730.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://geo.api.gouv.fr/_next/static/chunks/framework.8683c114909ee93ee89f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/main-d8ed6497c242373e7302.js",
 							"method": "GET",
 							"param": "",
@@ -1498,23 +1514,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://geo.api.gouv.fr/_next/static/chunks/pages/index-5be28c05ca76aba53b43.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://geo.api.gouv.fr/_next/static/chunks/webpack-33f5ebc0a8127b11bf41.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://geo.api.gouv.fr/_next/static/SNUb0R95jrnViD9oYvrZX/_buildManifest.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1544,7 +1544,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1579,7 +1579,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "39"
+					"sourceid": "35"
 				}
 			]
 		}
