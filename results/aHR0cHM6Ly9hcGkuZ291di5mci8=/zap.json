@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 24 Dec 2023 02:27:55",
+	"@generated": "Sun, 31 Dec 2023 02:25:23",
 	"site":[ 
 		{
 			"@name": "https://api.gouv.fr",
@@ -36,6 +36,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
@@ -45,14 +53,6 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/guides",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -114,7 +114,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -143,6 +143,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -152,14 +160,6 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/guides",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -199,14 +199,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/parcours-client?source=header",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/parcours-client?source=preFooter",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -215,13 +207,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10110",
@@ -256,7 +248,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1481"
+					"sourceid": "1383"
 				},
 				{
 					"pluginid": "10063",
@@ -293,7 +285,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -301,7 +293,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -392,6 +384,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Next.js",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
@@ -401,14 +401,6 @@
 						},
 						{
 							"uri": "https://api.gouv.fr/guides",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -499,7 +491,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/equipe",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -507,7 +499,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -523,7 +515,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
+							"uri": "https://api.gouv.fr/nouvelle-api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -606,7 +598,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/equipe",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -614,7 +606,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -630,7 +622,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
+							"uri": "https://api.gouv.fr/nouvelle-api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -719,7 +711,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "89"
+					"sourceid": "61"
 				},
 				{
 					"pluginid": "10021",
@@ -748,7 +740,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/equipe",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -756,7 +748,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/feuille-de-route",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -772,7 +772,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
+							"uri": "https://api.gouv.fr/nouvelle-api",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -820,7 +820,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
@@ -855,6 +855,22 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/eM3oOgp3RIlQe6v2a3tM4/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
+							"uri": "https://api.gouv.fr/feuille-de-route",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/eM3oOgp3RIlQe6v2a3tM4/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
 							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "",
@@ -863,23 +879,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/eM3oOgp3RIlQe6v2a3tM4/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
 							"uri": "https://api.gouv.fr/les-api/api-annuaire-education",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/eM3oOgp3RIlQe6v2a3tM4/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFD\uFFFD\u0783\uFFFD\uFFFDtH\uFFFD\\x0007\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -994,7 +994,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/sirene/v1/full_text/",
+							"uri": "https://api.gouv.fr/les-api/rna/v1/id/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1002,7 +1002,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/sirene/v1/siren/",
+							"uri": "https://api.gouv.fr/les-api/sirene/v1/full_text/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1048,7 +1048,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "1457"
+					"sourceid": "1462"
 				},
 				{
 					"pluginid": "10027",
@@ -1077,6 +1077,14 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/apropos\",\"query\":{},\"buildI\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{}},\"page\":\"/equipe\",\"query\":{},\"buildId\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
@@ -1091,14 +1099,6 @@
 							"attack": "",
 							"evidence": "query",
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"guidesForAnAPI\":[{\"path\":\"/guides/aide\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" crossorigin=\"\">{\"props\":{\"pageProps\":{\"api\":{\"title\":\"AgentConnect\",\"tagline\"\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://api.gouv.fr/les-api/api-annuaire-education",
@@ -1184,6 +1184,14 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
+							"uri": "https://api.gouv.fr/equipe",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<noscript data-n-css=\"\"></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
+						},
+						{
 							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
@@ -1198,14 +1206,6 @@
 							"attack": "",
 							"evidence": "<noscript data-n-css=\"\"></noscript>",
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"api-description\" class=\"jsx-2526723944 hidden-anchor\">This is a hidden anchor. It is a trick to avoid having the header hiding the top of the page.</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
 							"uri": "https://api.gouv.fr/les-api/api-annuaire-education",
@@ -1291,7 +1291,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1299,7 +1299,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/guides",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1315,11 +1315,11 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
+							"uri": "https://api.gouv.fr/nouvelle-api",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
-							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"evidence": "",
 							"otherinfo": ""
 						},
 						{
@@ -1347,14 +1347,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "public, max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1363,13 +1355,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1570,15 +1562,15 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://api.gouv.fr/guides",
+							"uri": "https://api.gouv.fr/equipe",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/agent-connect",
+							"uri": "https://api.gouv.fr/feuille-de-route",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1594,12 +1586,12 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://api.gouv.fr/les-api/franceconnect",
+							"uri": "https://api.gouv.fr/nouvelle-api",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "s-maxage=31536000",
-							"otherinfo": ""
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
 							"uri": "https://api.gouv.fr/parcours-client",
@@ -1632,7 +1624,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1667,7 +1659,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "59"
+					"sourceid": "60"
 				}
 			]
 		}
