@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 31 Dec 2023 02:10:02
+		Generated on Sun, 7 Jan 2024 02:08:30
 	</h3>
 
 	<h3>
@@ -205,22 +205,22 @@ td {
 			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: script-src unsafe-eval</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: script-src unsafe-inline</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: style-src unsafe-inline</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
@@ -230,7 +230,7 @@ td {
 			<tr>
 				<td><a href="#10055">CSP: Notices</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10010">Cookie No HttpOnly Flag</a></td>
@@ -285,7 +285,7 @@ td {
 			<tr>
 				<td><a href="#10049">Non-Storable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10015">Re-examine Cache-control Directives</a></td>
@@ -315,12 +315,12 @@ td {
 			<tr>
 				<td><a href="#10112">Session Management Response Identified</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">5</td>
+				<td align="center">6</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">9</td>
+				<td align="center">8</td>
 			</tr>
 			<tr>
 				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
@@ -404,7 +404,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -629,9 +629,43 @@ img-src, frame-ancestors, form-action
 The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">img-src &#39;self&#39; data: blob: *.openstreetmap.org *.cloud.ovh.net * static.demarches-simplifiees.fr stats.data.gouv.fr; script-src &#39;self&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; blob: *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com code.jquery.com unpkg.com stats.data.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com unpkg.com; connect-src &#39;self&#39; wss://*.crisp.chat *.crisp.chat app.franceconnect.gouv.fr openmaptiles.geo.data.gouv.fr openmaptiles.github.io tiles.geo.api.gouv.fr wxs.ign.fr www.demarches-simplifiees.fr sentry.io static.demarches-simplifiees.fr api-adresse.data.gouv.fr data.education.gouv.fr geo.api.gouv.fr stats.data.gouv.fr; frame-src &#39;self&#39; stats.data.gouv.fr; default-src &#39;self&#39; data: blob: &#39;report-sample&#39; fonts.gstatic.com in-automate.sendinblue.com player.vimeo.com app.franceconnect.gouv.fr *.crisp.chat crisp.chat *.crisp.help *.sibautomation.com sibautomation.com data sentry.io static.demarches-simplifiees.fr; report-uri https://demarchessimplifieestest.report-uri.com/r/d/csp/reportOnly</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: 
+img-src, frame-ancestors, form-action
+
+The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -759,9 +793,40 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 						<td width="80%">script-src includes unsafe-eval.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">img-src &#39;self&#39; data: blob: *.openstreetmap.org *.cloud.ovh.net * static.demarches-simplifiees.fr stats.data.gouv.fr; script-src &#39;self&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; blob: *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com code.jquery.com unpkg.com stats.data.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com unpkg.com; connect-src &#39;self&#39; wss://*.crisp.chat *.crisp.chat app.franceconnect.gouv.fr openmaptiles.geo.data.gouv.fr openmaptiles.github.io tiles.geo.api.gouv.fr wxs.ign.fr www.demarches-simplifiees.fr sentry.io static.demarches-simplifiees.fr api-adresse.data.gouv.fr data.education.gouv.fr geo.api.gouv.fr stats.data.gouv.fr; frame-src &#39;self&#39; stats.data.gouv.fr; default-src &#39;self&#39; data: blob: &#39;report-sample&#39; fonts.gstatic.com in-automate.sendinblue.com player.vimeo.com app.franceconnect.gouv.fr *.crisp.chat crisp.chat *.crisp.help *.sibautomation.com sibautomation.com data sentry.io static.demarches-simplifiees.fr; report-uri https://demarchessimplifieestest.report-uri.com/r/d/csp/reportOnly</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-eval.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -889,9 +954,40 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 						<td width="80%">script-src includes unsafe-inline.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">img-src &#39;self&#39; data: blob: *.openstreetmap.org *.cloud.ovh.net * static.demarches-simplifiees.fr stats.data.gouv.fr; script-src &#39;self&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; blob: *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com code.jquery.com unpkg.com stats.data.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com unpkg.com; connect-src &#39;self&#39; wss://*.crisp.chat *.crisp.chat app.franceconnect.gouv.fr openmaptiles.geo.data.gouv.fr openmaptiles.github.io tiles.geo.api.gouv.fr wxs.ign.fr www.demarches-simplifiees.fr sentry.io static.demarches-simplifiees.fr api-adresse.data.gouv.fr data.education.gouv.fr geo.api.gouv.fr stats.data.gouv.fr; frame-src &#39;self&#39; stats.data.gouv.fr; default-src &#39;self&#39; data: blob: &#39;report-sample&#39; fonts.gstatic.com in-automate.sendinblue.com player.vimeo.com app.franceconnect.gouv.fr *.crisp.chat crisp.chat *.crisp.help *.sibautomation.com sibautomation.com data sentry.io static.demarches-simplifiees.fr; report-uri https://demarchessimplifieestest.report-uri.com/r/d/csp/reportOnly</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">script-src includes unsafe-inline.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1019,9 +1115,40 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 						<td width="80%">style-src includes unsafe-inline.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">img-src &#39;self&#39; data: blob: *.openstreetmap.org *.cloud.ovh.net * static.demarches-simplifiees.fr stats.data.gouv.fr; script-src &#39;self&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; blob: *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com code.jquery.com unpkg.com stats.data.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com unpkg.com; connect-src &#39;self&#39; wss://*.crisp.chat *.crisp.chat app.franceconnect.gouv.fr openmaptiles.geo.data.gouv.fr openmaptiles.github.io tiles.geo.api.gouv.fr wxs.ign.fr www.demarches-simplifiees.fr sentry.io static.demarches-simplifiees.fr api-adresse.data.gouv.fr data.education.gouv.fr geo.api.gouv.fr stats.data.gouv.fr; frame-src &#39;self&#39; stats.data.gouv.fr; default-src &#39;self&#39; data: blob: &#39;report-sample&#39; fonts.gstatic.com in-automate.sendinblue.com player.vimeo.com app.franceconnect.gouv.fr *.crisp.chat crisp.chat *.crisp.help *.sibautomation.com sibautomation.com data sentry.io static.demarches-simplifiees.fr; report-uri https://demarchessimplifieestest.report-uri.com/r/d/csp/reportOnly</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">style-src includes unsafe-inline.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1410,9 +1537,42 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 </td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">img-src &#39;self&#39; data: blob: *.openstreetmap.org *.cloud.ovh.net * static.demarches-simplifiees.fr stats.data.gouv.fr; script-src &#39;self&#39; &#39;unsafe-eval&#39; &#39;unsafe-inline&#39; blob: *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com code.jquery.com unpkg.com stats.data.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; *.crisp.chat crisp.chat cdn.jsdelivr.net maxcdn.bootstrapcdn.com unpkg.com; connect-src &#39;self&#39; wss://*.crisp.chat *.crisp.chat app.franceconnect.gouv.fr openmaptiles.geo.data.gouv.fr openmaptiles.github.io tiles.geo.api.gouv.fr wxs.ign.fr www.demarches-simplifiees.fr sentry.io static.demarches-simplifiees.fr api-adresse.data.gouv.fr data.education.gouv.fr geo.api.gouv.fr stats.data.gouv.fr; frame-src &#39;self&#39; stats.data.gouv.fr; default-src &#39;self&#39; data: blob: &#39;report-sample&#39; fonts.gstatic.com in-automate.sendinblue.com player.vimeo.com app.franceconnect.gouv.fr *.crisp.chat crisp.chat *.crisp.help *.sibautomation.com sibautomation.com data sentry.io static.demarches-simplifiees.fr; report-uri https://demarchessimplifieestest.report-uri.com/r/d/csp/reportOnly</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">Warnings:
+The report-uri directive has been deprecated in favor of the new report-to directive
+</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1782,7 +1942,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/mentions-legales">https://www.demarches-simplifiees.fr/mentions-legales</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/declaration-accessibilite">https://www.demarches-simplifiees.fr/declaration-accessibilite</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1813,7 +1973,7 @@ The report-uri directive has been deprecated in favor of the new report-to direc
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/mentions-legales">https://www.demarches-simplifiees.fr/mentions-legales</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/declaration-accessibilite">https://www.demarches-simplifiees.fr/declaration-accessibilite</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3251,6 +3411,38 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/landing/hero/dematerialiser-19cbb6f65e811f80da1781fc2b2f8b8a79624e28fe662647da1983f98f01b31b.svg">https://www.demarches-simplifiees.fr/assets/landing/hero/dematerialiser-19cbb6f65e811f80da1781fc2b2f8b8a79624e28fe662647da1983f98f01b31b.svg</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2">https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2</a></td>
 					</tr>
 					<tr>
@@ -3316,38 +3508,6 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/robots.txt">https://www.demarches-simplifiees.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/_commonjsHelpers-4gQjN7DL.js">https://www.demarches-simplifiees.fr/vite/assets/_commonjsHelpers-4gQjN7DL.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3752,38 +3912,6 @@ csrfToken=authenticity_token</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/agent_connect/login">https://www.demarches-simplifiees.fr/agent_connect/login</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">CtIUwI8m9sRzUBAA4N3tOkovwq942w3dsXl7z97DjgaoA0yTfO7pFNY</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">
-���&amp;��sP ���:J/¯x�ݱy{��Î�L�|���</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-2100cc70b69c062841c8d66d142b24dc6151a5c15e0b200795a4ee2076dc6fa6.css">https://www.demarches-simplifiees.fr/assets/application-2100cc70b69c062841c8d66d142b24dc6151a5c15e0b200795a4ee2076dc6fa6.css</a></td>
 					</tr>
 					<tr>
@@ -4029,6 +4157,37 @@ csrfToken=authenticity_token</td>
 						<td width="80%">���{����l��%����ϥz���Ȗ�5</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/polyfills-legacy-DIlu0INS.js">https://www.demarches-simplifiees.fr/vite/assets/polyfills-legacy-DIlu0INS.js</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"> �Q� ��0ӏA�QU�a��qן���Y�����ۯ���]�㞻�</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
 					<td width="80%">11</td>
@@ -4265,7 +4424,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/mentions-legales">https://www.demarches-simplifiees.fr/mentions-legales</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/declaration-accessibilite">https://www.demarches-simplifiees.fr/declaration-accessibilite</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4628,9 +4787,40 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 						<td width="80%"></td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">private</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5154,7 +5344,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/robots.txt">https://www.demarches-simplifiees.fr/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5300,7 +5490,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/robots.txt">https://www.demarches-simplifiees.fr/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5446,7 +5636,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/robots.txt">https://www.demarches-simplifiees.fr/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5592,7 +5782,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/rails/">https://www.demarches-simplifiees.fr/rails/</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/robots.txt">https://www.demarches-simplifiees.fr/robots.txt</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5727,7 +5917,7 @@ window.gon={};gon.autosave={&quot;debounce_delay&quot;:1000,&quot;status_visible
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">USpqFtaoJCLaQZvOmWMRZGkru3MhiwKrxpLz1VEvbwyR1jONNgfHwsXbUY%2BbAGz89%2BKaWbDseVFKGh8egBfHi4iccuTT%2BbsUHCEBpkKwY0MPCvypdY831Qq7amhPqgGJvl5yv0JqouSk37c10ChyIipeTNcFjzjMEPT2SgdEZ5%2BlGPhUM2oleOfZJFeAKURNOxH3V5OWNpS%2B62eNHSarX6y1hwTil59p41OXHK1ZgqfeGzehCCLkmGdRpxrtTuOeOEUNqKmAq9apawI%2F870IOBcLtA%3D%3D--B6Vwq4yIPYr6DJ2z--sQQdHNzRQ%2FCzd4cg1onrVg%3D%3D</td>
+						<td width="80%">Y%2FhmsgiOXGuba1GZO1k%2B1aCmvUvBz6Ul5tS8CTwlu7yqtRBGa5IPgiRHxYoPrOqmDU3ReHa89cA90Wt4skQ0Wtvyr%2FiDUY%2FX1oHuUgPDyL%2FR0N1JL4fUbP%2BEjtnSi2INgEcxY5LRbsykUSLhNEXR1EDVg0djmI10lIsckDAd4Bnc%2FXKahKYOfgA2TR5cDHCs5P7sG%2BiTs%2FvJAwuBHDubeLT6iNAE%2B6rHYulx4PGir8XQpKATBgOBTsBckuACOUwAaNIyLzW9Hl%2Bwxo21722IW2H5Ew%3D%3D--oZanuIzQHx2I%2FKXu--ie9aArlQW5pL4CMwJE7bHA%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5760,7 +5950,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">v5cIcLL141KqFGnd6%2B0Od9qIgzdQqn56oWh9AW1DI5KfAll97Ns3JycIxwWPEV3kZkB8oJbmzfD5DnrLXHAuHCyrt9J3DXd1Brx1Gwk6iuqOyB6HdDEKjd31ChKtpeZw5lO%2BicMy8jYRztaA8%2Bju1I48LF3PC0yvHiLYYQ8oJoFspbyL%2BqvrbGh31%2B5Hx0yjqUkLoj64xkNnR3B3mbgSUK1Mi0wZ6wlu5SkU%2FWh0ghbAv14wAL5YlgXByHPtL8faB47DB3BjnuL1qk6SnzYsxxt7JA%3D%3D--nXb%2F16Dea54STibj--d91pKglS%2Bbj5dfJfEl%2FpNw%3D%3D</td>
+						<td width="80%">zuP1pprPmMaNpgYGqE02tB9VPwGBJyM9SumEG7rBLNWIBKl84X%2FLumeAhGVbJnE%2FhevrKiEqUDC3VKk2eiJdiV%2BZHtA2nsyl5rgZCqdgCKGoMzRLqRAEfRHHZBFYbhPUtj3QVFNW2PJy6O9ck%2BiVQP1AYfNRhz25Z5zjBRqbz%2F2eYN%2BxXste4mxs0Qze%2Bp6vt%2B5BBE4tnRJZ1HMDq1Pa445gxuyTaK1s6Zw1ts2%2B0iLs4eMelFSQ4oIyAOjhWqlqBRZ%2FgbaZmhdNkNkJQh%2FSM9dVXw%3D%3D--h4uaM6aOpg0I%2B8du--XSW6byYM%2BuStFEu3FoY14g%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5793,7 +5983,40 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">o%2FJG4Fbl2N4kxSzXaYGR3o0PUBYeUqwiEcNZR4coPaRrPNcKE%2BbaI3mVkk5DiYYzJEhqZKbiIzRVWD2cIaqtm5sX3nvwjAK2bMxuYjnqKNUOOKhlqkZ4rY8nF%2Fc1L8P3f%2BEU4Jb15oJWi%2BN0%2FfcbvbX6GGuS5IpUdhJq6SwDcBz3NiXJOKmjbx6bDVKSHD%2Bgo4XiRpExzowYp%2B55hGyC9j%2BNppO1dcvtgl4CTDUtfgaof4eJNKumxMvEVGxXl8jBKE9enbkydT7SFOf5WYduLBnOfQ%3D%3D--KxCcETllro1gzVmi--e7a2wEWvdM8G%2Fvl%2F9RBekA%3D%3D</td>
+						<td width="80%">jUrGx0T7bghgqpdt721yvQ7zEY3wz1q1Z1K%2Fg2wiZ5WLMCzFaa8qS6hL76KBc%2FuzJ1DFdvCvMcW35Ar29eagwG15%2F13GJe0tlxU%2BMOOOnqsMXOXQL4qjuEQOFRutYmQTATSA4q5WnINmlNDaow22nBIc%2B%2BR5G2gOGjHCcKdP%2FfXpQHMbUJXfq64LUh6OfOfN36aEBMM%2FsHHMkCxrLHRmYv8otv32ce4%2FHgjan90SxLHkhpDG5DFSCIg7%2BIGvWrQW43sbBU8qnM4xjr6AlroxBrdsJA%3D%3D--7LejMouHIYA9QoDE--01FjUs95Pf%2BQlq9YeWQMVg%3D%3D</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">
+cookie:_DS_session
+cookie:_csrf_token</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/users/sign_in">https://www.demarches-simplifiees.fr/users/sign_in</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_DS_session</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">y1%2FTZq0UxaXHQmAn%2FEoX053UqxlFuOJeSsJGk0%2F9ZyIB5u8c%2BYTg4sOIGtvqX%2Fdd6%2Bo2cibw9xuxIETwZCa671eB0iJG0Qjg02kuGZO3eG%2F2IXZCYF7DyUzichtQQkwgljtnnaQ9H8Ihl5nzopxys%2Bdblmj2eZ59Ztj9AGlGyl1tP%2FNPW7YggvwiWsMQlAKv7dFIz%2BVWf%2BSu%2B8acqiRrQ1wpRWuT7Ffot5cEsL6Jt3QuUxEwlv0xHPAGEMLaus4fT1lgF0pfigTZqU0q%2FaF9AQLjJg%3D%3D--%2BU1OCFWcGg7DCMeR--5jb930ahvSABYE6ln%2F1xVA%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5826,7 +6049,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IklteGtlRVJRTmpsamRrWXllRmhHU1RkT0xXeHJUa0paTTBGclVGQnhTRlo0UlV4WGNUWlFOVXhQYVVFaSIsImV4cCI6IjIwMjQtMTItMzFUMDI6MDk6NDQuMDc4WiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--f8e99d1b6e19dca6ce6071a412d20dd3b295c03a</td>
+						<td width="80%">eyJfcmFpbHMiOnsibWVzc2FnZSI6IkluQlRPVEpFZERKdFMwNVhSRUpGYWxkWFpXTmFRVGhvT1ZreWQzRjFhbFptTFROV2FrUnlNMFpKWHpnaSIsImV4cCI6IjIwMjUtMDEtMDdUMDI6MDg6MjAuMTI5WiIsInB1ciI6ImNvb2tpZS5fY3NyZl90b2tlbiJ9fQ%3D%3D--f3415233961aec3323dd155c83a45f6637e188c2</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5858,7 +6081,7 @@ cookie:_csrf_token</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">v5cIcLL141KqFGnd6%2B0Od9qIgzdQqn56oWh9AW1DI5KfAll97Ns3JycIxwWPEV3kZkB8oJbmzfD5DnrLXHAuHCyrt9J3DXd1Brx1Gwk6iuqOyB6HdDEKjd31ChKtpeZw5lO%2BicMy8jYRztaA8%2Bju1I48LF3PC0yvHiLYYQ8oJoFspbyL%2BqvrbGh31%2B5Hx0yjqUkLoj64xkNnR3B3mbgSUK1Mi0wZ6wlu5SkU%2FWh0ghbAv14wAL5YlgXByHPtL8faB47DB3BjnuL1qk6SnzYsxxt7JA%3D%3D--nXb%2F16Dea54STibj--d91pKglS%2Bbj5dfJfEl%2FpNw%3D%3D</td>
+						<td width="80%">Y%2FhmsgiOXGuba1GZO1k%2B1aCmvUvBz6Ul5tS8CTwlu7yqtRBGa5IPgiRHxYoPrOqmDU3ReHa89cA90Wt4skQ0Wtvyr%2FiDUY%2FX1oHuUgPDyL%2FR0N1JL4fUbP%2BEjtnSi2INgEcxY5LRbsykUSLhNEXR1EDVg0djmI10lIsckDAd4Bnc%2FXKahKYOfgA2TR5cDHCs5P7sG%2BiTs%2FvJAwuBHDubeLT6iNAE%2B6rHYulx4PGir8XQpKATBgOBTsBckuACOUwAaNIyLzW9Hl%2Bwxo21722IW2H5Ew%3D%3D--oZanuIzQHx2I%2FKXu--ie9aArlQW5pL4CMwJE7bHA%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -5869,7 +6092,7 @@ cookie:_DS_session</td>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">5</td>
+					<td width="80%">6</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -5918,6 +6141,37 @@ cookie:_DS_session</td>
 				<TR vAlign="top">
 					<TD colspan="2"></TD>
 				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/assets/application-2100cc70b69c062841c8d66d142b24dc6151a5c15e0b200795a4ee2076dc6fa6.css">https://www.demarches-simplifiees.fr/assets/application-2100cc70b69c062841c8d66d142b24dc6151a5c15e0b200795a4ee2076dc6fa6.css</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=315360000</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
 				
 					<tr>
 						<td width="20%"
@@ -6046,37 +6300,6 @@ cookie:_DS_session</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/save_locale?locale=en">https://www.demarches-simplifiees.fr/save_locale?locale=en</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.demarches-simplifiees.fr/save_locale?locale=fr">https://www.demarches-simplifiees.fr/save_locale?locale=fr</a></td>
 					</tr>
 					<tr>
@@ -6167,40 +6390,9 @@ cookie:_DS_session</td>
 						<td width="80%">In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/vite/assets/application-esUraM6T.js">https://www.demarches-simplifiees.fr/vite/assets/application-esUraM6T.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=315360000</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">9</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -6272,7 +6464,7 @@ cookie:_DS_session</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6299,7 +6491,7 @@ cookie:_DS_session</td>
 							class="indent2">Other Info</td>
 						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
 
-https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023
+https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024
 
 appears to include user input in: 
 
@@ -6315,7 +6507,7 @@ nb_demarches</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023</a></td>
+						<td width="80%"><a href="https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024">https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6342,17 +6534,17 @@ nb_demarches</td>
 							class="indent2">Other Info</td>
 						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
 
-https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2023
+https://www.demarches-simplifiees.fr/carte?map_filter%5Bkind%5D=nb_demarches&amp;map_filter%5Byear%5D=2024
 
 appears to include user input in: 
 
 a(n) [option] tag [value] attribute 
 
 The user input found was:
-map_filter[year]=2023
+map_filter[year]=2024
 
 The user-controlled value was:
-2023</td>
+2024</td>
 					</tr>
 				
 					<tr>
