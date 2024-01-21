@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 14 Jan 2024 01:26:04",
+	"@generated": "Sun, 21 Jan 2024 01:24:02",
 	"site":[ 
 		{
 			"@name": "https://www.authentification.beta.gouv.fr",
@@ -39,10 +39,10 @@
 					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>frame-ancestors, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
-					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "29"
+					"sourceid": "26"
 				},
 				{
 					"pluginid": "10038",
@@ -90,10 +90,10 @@
 					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10011",
@@ -120,7 +120,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10054",
@@ -147,7 +147,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -246,7 +246,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -358,14 +358,14 @@
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "28"
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10035",
-					"alertRef": "10035",
+					"alertRef": "10035-3",
 					"alert": "Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)",
 					"name": "Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)",
 					"riskcode": "1",
@@ -425,7 +425,7 @@
 					"count": "6",
 					"solution": "<p>Ensure that only one component in your stack: code, web server, application server, load balancer, etc. is configured to set or add a HTTP Strict-Transport-Security (HSTS) header.</p>",
 					"otherinfo": "",
-					"reference": "<p>http://tools.ietf.org/html/rfc6797#section-8.1</p>",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc6797#section-8.1</p>",
 					"cweid": "319",
 					"wascid": "15",
 					"sourceid": "6"
@@ -540,10 +540,10 @@
 					"count": "12",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
-					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "28"
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10094",
@@ -560,16 +560,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AGWEIwJwDP64OsUiI3lEAbwYynBTpsbDK",
-							"otherinfo": "\uFFFD\\x0001\uFFFD\\x0010\uFFFD\t\uFFFD3\uFFFD\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\uFFFD\\x0010\\x0006\uFFFDc)\uFFFDN\uFFFD\\x001b\\x000c"
+							"evidence": "3AxKH-DfB_dAAEzXJZlIMLz3nzS58VOrRA",
+							"otherinfo": "\uFFFD\\x000cJ\\x001f\uFFFD\uFFFD\\x0007\uFFFD@\\x0000L\uFFFD%\uFFFDH0\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFDS\uFFFDD"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3ASBLrSeWCcYXfjVwpTG3EtDKP04MLm2Y1",
-							"otherinfo": "\uFFFD\\x0004\uFFFD.\uFFFD\uFFFDX'\\x0018]\uFFFD\uFFFD\u0094\uFFFD\uFFFDKC(\uFFFD80\uFFFD\uFFFDc"
+							"evidence": "3A_I4ZGZLAl70qsrn90QyTZXwI392bQwHn",
+							"otherinfo": "\uFFFD\\x000f\uFFFD\u1459,\t{\u04AB+\uFFFD\uFFFD\\x0010\uFFFD6W\uFFFD\uFFFD\uFFFD\u06740\\x001e"
 						},
 						{
 							"uri": "https://www.authentification.beta.gouv.fr/dsfr/dsfr.css",
@@ -606,7 +606,7 @@
 					],
 					"count": "6",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0001\uFFFD\\x0010\uFFFD\t\uFFFD3\uFFFD\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\uFFFD\\x0010\\x0006\uFFFDc)\uFFFDN\uFFFD\\x001b\\x000c</p>",
+					"otherinfo": "<p>\uFFFD\\x000cJ\\x001f\uFFFD\uFFFD\\x0007\uFFFD@\\x0000L\uFFFD%\uFFFDH0\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFDS\uFFFDD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -653,7 +653,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "39"
+					"sourceid": "37"
 				},
 				{
 					"pluginid": "10109",
@@ -739,7 +739,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -760,7 +760,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"uri": "https://www.authentification.beta.gouv.fr/documentation",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -768,7 +768,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -782,7 +782,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -803,7 +803,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"uri": "https://www.authentification.beta.gouv.fr/documentation",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -811,7 +811,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -825,7 +825,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -846,7 +846,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"uri": "https://www.authentification.beta.gouv.fr/documentation",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -854,7 +854,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -868,7 +868,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -889,7 +889,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/glossaire",
+							"uri": "https://www.authentification.beta.gouv.fr/documentation",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -897,7 +897,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.authentification.beta.gouv.fr/sitemap.xml",
+							"uri": "https://www.authentification.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -928,7 +928,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AGWEIwJwDP64OsUiI3lEAbwYynBTpsbDK.PR6838m9MNzXcK3uU%2F56PZHxItfb7YtabmRVe7pcIlE",
+							"evidence": "s%3A_I4ZGZLAl70qsrn90QyTZXwI392bQwHn.GPYpGzG3iMROUqcSghWULhaVXV65hGYcWgibwdRUwXE",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -936,7 +936,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3ASBLrSeWCcYXfjVwpTG3EtDKP04MLm2Y1.tmCKcx%2BvlqAYdZOJm1vzHpeEifASQvvOvViscMeZi4I",
+							"evidence": "s%3AxKH-DfB_dAAEzXJZlIMLz3nzS58VOrRA.ikkRCCnhtbwjEq64UMNVMXpr%2BCl5Uy87blitqP93who",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
@@ -944,7 +944,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3ASBLrSeWCcYXfjVwpTG3EtDKP04MLm2Y1.tmCKcx%2BvlqAYdZOJm1vzHpeEifASQvvOvViscMeZi4I",
+							"evidence": "s%3A_I4ZGZLAl70qsrn90QyTZXwI392bQwHn.GPYpGzG3iMROUqcSghWULhaVXV65hGYcWgibwdRUwXE",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
@@ -954,7 +954,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1013,7 +1013,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1080,7 +1080,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "28"
+					"sourceid": "30"
 				}
 			]
 		}
