@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 14 Jan 2024 01:15:42",
+	"@generated": "Sun, 21 Jan 2024 01:15:54",
 	"site":[ 
 		{
 			"@name": "https://code.gouv.fr",
@@ -34,7 +34,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p><p>http://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1002"
+					"sourceid": "994"
 				},
 				{
 					"pluginid": "10202",
@@ -82,10 +82,10 @@
 					"count": "4",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" \"username\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "371"
+					"sourceid": "373"
 				},
 				{
 					"pluginid": "10038",
@@ -154,7 +154,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/contact/",
+							"uri": "https://code.gouv.fr/fr/communs/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -162,7 +162,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
+							"uri": "https://code.gouv.fr/fr/contact/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -197,7 +197,7 @@
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -251,58 +251,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1221"
-				},
-				{
-					"pluginid": "10033",
-					"alertRef": "10033",
-					"alert": "Directory Browsing",
-					"name": "Directory Browsing",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>It is possible to view a listing of the directory contents. Directory listings may reveal hidden scripts, include files, backup source files, etc., which can be accessed to reveal sensitive information.</p>",
-					"instances":[ 
-						{
-							"uri": "https://code.gouv.fr/mimo/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<title>Index of /mimo/</title>",
-							"otherinfo": "Web server identified: Apache 2"
-						},
-						{
-							"uri": "https://code.gouv.fr/mimo/Paquets%20et%20binaires/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<title>Index of /mimo/Paquets et binaires/</title>",
-							"otherinfo": "Web server identified: Apache 2"
-						},
-						{
-							"uri": "https://code.gouv.fr/mimo/Paquets%20et%20binaires/MIMO%20enrichie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<title>Index of /mimo/Paquets et binaires/MIMO enrichie/</title>",
-							"otherinfo": "Web server identified: Apache 2"
-						},
-						{
-							"uri": "https://code.gouv.fr/mimo/Paquets%20et%20binaires/MIMO/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<title>Index of /mimo/Paquets et binaires/MIMO/</title>",
-							"otherinfo": "Web server identified: Apache 2"
-						}
-					],
-					"count": "4",
-					"solution": "<p>Configure the web server to disable directory browsing.</p>",
-					"otherinfo": "<p>Web server identified: Apache 2</p>",
-					"reference": "<p>https://cwe.mitre.org/data/definitions/548.html</p>",
-					"cweid": "548",
-					"wascid": "16",
-					"sourceid": "1340"
+					"sourceid": "1273"
 				},
 				{
 					"pluginid": "10020",
@@ -355,14 +304,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -379,6 +320,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/communs/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/contact/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -387,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
+							"uri": "https://code.gouv.fr/fr/explicabilite/",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -395,7 +344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/explicabilite/",
+							"uri": "https://code.gouv.fr/fr/mission/",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -418,49 +367,6 @@
 					"cweid": "1021",
 					"wascid": "15",
 					"sourceid": "1"
-				},
-				{
-					"pluginid": "10099",
-					"alertRef": "10099",
-					"alert": "Source Code Disclosure - Perl",
-					"name": "Source Code Disclosure - Perl",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>Application Source Code was disclosed by the web server - Perl</p>",
-					"instances":[ 
-						{
-							"uri": "https://code.gouv.fr/docs/20_Jan_2023_-_BlueHats_-_Retex_SAMBA-AD_-_v1.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "$#R1RIG",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/docs/compte-rendu-journee-bluehats-mutualisons-1er-juillet-2022-version-1.0.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "$#cmaX",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/docs/SILL-recherche-utilisateur-T4-2022.pdf",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "$#csgh",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server. </p>",
-					"otherinfo": "",
-					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
-					"cweid": "540",
-					"wascid": "13",
-					"sourceid": "1167"
 				},
 				{
 					"pluginid": "90003",
@@ -489,6 +395,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/bluehats/",
 							"method": "GET",
 							"param": "",
@@ -498,14 +412,6 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -529,6 +435,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/communs/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/contact/",
 							"method": "GET",
 							"param": "",
@@ -537,7 +451,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
+							"uri": "https://code.gouv.fr/fr/explicabilite/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -545,7 +459,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/explicabilite/",
+							"uri": "https://code.gouv.fr/fr/mission/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -569,7 +483,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
@@ -610,7 +524,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "371"
+					"sourceid": "373"
 				},
 				{
 					"pluginid": "10017",
@@ -622,6 +536,22 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
+						{
+							"uri": "https://code.gouv.fr/demos/catala/",
+							"method": "GET",
+							"param": "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js",
+							"attack": "",
+							"evidence": "<script id=\"MathJax-script\" async src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/",
+							"method": "GET",
+							"param": "https://polyfill.io/v3/polyfill.min.js?features=es6",
+							"attack": "",
+							"evidence": "<script src=\"https://polyfill.io/v3/polyfill.min.js?features=es6\"></script>",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://code.gouv.fr/documentation/",
 							"method": "GET",
@@ -647,13 +577,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "949"
+					"sourceid": "1118"
 				},
 				{
 					"pluginid": "10110",
@@ -666,6 +596,14 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/public/js/codegouvfr.js",
 							"method": "GET",
 							"param": "",
@@ -674,13 +612,128 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>See the references for security advice on the use of these functions.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "957"
+					"sourceid": "1351"
+				},
+				{
+					"pluginid": "110009",
+					"alertRef": "110009",
+					"alert": "Full Path Disclosure",
+					"name": "Full Path Disclosure",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>The full path of files which might be sensitive has been exposed to the client.</p>",
+					"instances":[ 
+						{
+							"uri": "https://code.gouv.fr/fr/blog/appel-a-interventions-journees-bluehats-2023/&quot;&gt;conf%C3%A9rences",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/blog/appel-a-interventions-journees-bluehats-2023/&quot;&gt;proposer",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/blog/faites-reconnaitre-vos-efforts-dutilisation-de-logiciels-libres/&quot;&gt;notre",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/blog/rejoignez-la-mission-logiciels-libres/&quot;&gt;deux",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/&quot;&gt;BlueHats&lt;/a&gt;",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_24/&quot;&gt;",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_25/&quot;&gt;",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/journees-2023/&quot;&gt;",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/libreoffice-2023/&quot;&gt;journ%C3%A9e",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/manifest.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/publications/tech-gouv-strategie-et-feuille-de-route-2019-2021/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Disable directory browsing in your web server. Refer to the web server documentation.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
+					"cweid": "209",
+					"wascid": "13",
+					"sourceid": "981"
 				},
 				{
 					"pluginid": "10063",
@@ -733,6 +786,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
@@ -750,14 +811,6 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/contact/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,6 +885,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.22.1",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/bluehats/",
 							"method": "GET",
 							"param": "",
@@ -841,14 +902,6 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.22.1",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -899,14 +952,14 @@
 					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress the \"Server\" header or provide generic details.</p>",
 					"otherinfo": "",
-					"reference": "<p>http://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>http://msdn.microsoft.com/en-us/library/ff648552.aspx#ht_urlscan_007</p><p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+					"reference": "<p>https://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "200",
 					"wascid": "13",
 					"sourceid": "6"
 				},
 				{
 					"pluginid": "10035",
-					"alertRef": "10035",
+					"alertRef": "10035-1",
 					"alert": "Strict-Transport-Security Header Not Set",
 					"name": "Strict-Transport-Security Header Not Set",
 					"riskcode": "1",
@@ -924,6 +977,14 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/awesome/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -971,14 +1032,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/explicabilite/",
 							"method": "GET",
 							"param": "",
@@ -1014,7 +1067,7 @@
 					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
 					"sourceid": "1"
@@ -1132,7 +1185,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "451"
+					"sourceid": "481"
 				},
 				{
 					"pluginid": "10021",
@@ -1201,7 +1254,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/contact/",
+							"uri": "https://code.gouv.fr/fr/communs/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1209,7 +1262,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
+							"uri": "https://code.gouv.fr/fr/contact/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1244,7 +1297,7 @@
 					"count": "12",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
-					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -1284,6 +1337,14 @@
 							"otherinfo": "k\u05EC\uFFFD\uFFFDnxv\uFFFD\uFFFD\uFFFD)zt\uFFFD\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFD\u01FF\\x0010\uFFFD\uFFFD"
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/blog/de-la-transparence-a-lexplicabilite-automatisee-des-algorithmes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "fr/loda/article_lc/LEGIARTI000037823131",
+							"otherinfo": "~\uFFFD\uFFFD\u05BFj\uFFFDbrW\uFFFD\uFFFD\uFFFD\uFFFD\\x0010b\\x0000E24\uFFFDM7\uFFFD\u0377\uFFFD}"
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/blog/definition-ospo/",
 							"method": "GET",
 							"param": "",
@@ -1316,14 +1377,6 @@
 							"otherinfo": "~\uFFFD\uFFFD{\\x001b\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0011\uFFFD\uFFFD\\x0008\uFFFDZ\uFFFDv\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/motivation-contributions-open-source/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "teresa/logicielsLIGM/documents/Seminaires/2021avrilBlueHats_TGD",
-							"otherinfo": "\uFFFD\uFFFD\u07B1\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\uFFFDl,\uFFFD\uFFFD\uFFFD\uFFFD\\x001c\uFFFDg\uFFFD\uFFFD\uFFFD\uFFFDzh\uFFFDj*\u07B3\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD)A\uFFFD\uFFFDj\uFFFD?L`"
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/mission/gtt-ll-amdac/",
 							"method": "GET",
 							"param": "",
@@ -1344,16 +1397,16 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "g0jsqbkVYPapfPjEYo+Peiso0cb+cdvat+FgmOAXArpHoM4/oq1vDsHL3YG40iOWZzwPVOpXQB1CU3Bf",
-							"otherinfo": "\uFFFDH\uCA79\\x0015`\uFFFD\uFFFD|\uFFFD\uFFFDb\uFFFD\uFFFDz+(\uFFFD\uFFFD\uFFFDq\uFFFD\u06B7\uFFFD`\uFFFD\uFFFD\\x0017\\x0002\uFFFDG\uFFFD\uFFFD?\uFFFD\uFFFDo\\x000e\uFFFD\uFFFD\u0741\uFFFD\uFFFD#\uFFFDg<\\x000fT\uFFFDW@\\x001dBSp_"
+							"evidence": "PADkb4R+WXU4nPxBRIg02ofj815s1l/mxTsnuzb+S81hobCSl3HVoEL7pU05szrH40yICWpOgnheXDWW",
+							"otherinfo": "<\\x0000\uFFFDo\uFFFD~Yu8\uFFFD\uFFFDAD\uFFFD4\u0687\uFFFD\uFFFD^l\uFFFD_\uFFFD\uFFFD;'\uFFFD6\uFFFDK\uFFFDa\uFFFD\uFFFD\uFFFD\uFFFDq\u0560B\uFFFD\uFFFDM9\uFFFD:\uFFFD\uFFFDL\uFFFD\tjN\uFFFDx^\\5\uFFFD"
 						},
 						{
 							"uri": "https://code.gouv.fr/newsletters/subscribe/logiciels-libres-dsi@mail.codegouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "iR6ESAGLDcDoRavwhoizla5qtAtwohVN+M70Si5mwaUR9LtXsReupErMeXTPkc9eSHOsw+HXuZUlUJE6",
-							"otherinfo": "\uFFFD\\x001e\uFFFDH\\x0001\uFFFD\r\uFFFD\uFFFDE\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDj\uFFFD\\x000bp\uFFFD\\x0015M\uFFFD\uFFFD\uFFFDJ.f\uFFFD\uFFFD\\x0011\uFFFD\uFFFDW\uFFFD\\x0017\uFFFD\uFFFDJ\uFFFDyt\u03D1\uFFFD^Hs\uFFFD\uFFFD\uFFFD\u05F9\uFFFD%P\uFFFD:"
+							"evidence": "oyCrZUeZG4WVHOUem4lg2NeY3xeQ+Gg+oDo/tUIxCu4fn+63blRfr1h630Erg3KRjGnaBaPK9r9jw2k4",
+							"otherinfo": "\uFFFD \uFFFDeG\uFFFD\\x001b\uFFFD\uFFFD\\x001c\uFFFD\\x001e\uFFFD\uFFFD`\uFFFD\u05D8\uFFFD\\x0017\uFFFD\uFFFDh>\uFFFD:?\uFFFDB1\n\uFFFD\\x001f\uFFFD\uFFFDnT_\uFFFDXz\uFFFDA+\uFFFDr\uFFFD\uFFFDi\uFFFD\\x0005\uFFFD\uFFFD\uFFFD\uFFFDc\uFFFDi8"
 						}
 					],
 					"count": "12",
@@ -1362,7 +1415,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "392"
+					"sourceid": "415"
 				},
 				{
 					"pluginid": "10027",
@@ -1374,6 +1427,54 @@
 					"riskdesc": "Informational (Low)",
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected 2 times, the first in the element starting with: \"`+Array(r+1).join(e.spaces):\"\"),n.push(\"</\"+a+\">\")):n.push(\"/>\"),n.join(\"\")}function P0(t,e,r,n){return t.reduce(function(a,i){v\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "db",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"`))}catch{}return m}return s}(Error);Cn.AssertionError=a;function i(o,s){if(arguments.length===0&&(o=!0),n.assertIsRefWrapper.re\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \" */var mC=X,vC=Symbol.for(\"react.element\"),gC=Symbol.for(\"react.fragment\"),yC=Object.prototype.hasOwnProperty,wC=mC.__SECRET_INT\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 5 times, the first in the element starting with: \" * The buffer module from node.js, for the browser.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 3 times, the first in the element starting with: \"`}}}return i}(this)},t}(),jS=/(a)(d)/gi,vm=function(t){return String.fromCharCode(t+(t>25?39:97))};function Gc(t){var e,r=\"\";for\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://code.gouv.fr/demos/catala/assets/index-f3b04861.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "TODO",
+							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in the element starting with: \"`])));var Mm,Fm,Bm,jm=globalThis&&globalThis.__assign||function(){return jm=Object.assign||function(t){for(var e,r=1,n=arguments\", see evidence field for the suspicious comment/snippet."
+						},
 						{
 							"uri": "https://code.gouv.fr/js/dsfr.module.min.js",
 							"method": "GET",
@@ -1455,13 +1556,13 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"const e=new class{constructor(){this.modules={}}create(e){const t=new e;this.modules[t.type]=t}getModule(e){return this.modules[\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "10",
+					"count": "16",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"const e=new class{constructor(){this.modules={}}create(e){const t=new e;this.modules[t.type]=t}getModule(e){return this.modules[\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bBUG\\b and was detected 2 times, the first in the element starting with: \"`+Array(r+1).join(e.spaces):\"\"),n.push(\"</\"+a+\">\")):n.push(\"/>\"),n.join(\"\")}function P0(t,e,r,n){return t.reduce(function(a,i){v\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "382"
+					"sourceid": "1351"
 				},
 				{
 					"pluginid": "10109",
@@ -1576,7 +1677,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "357"
+					"sourceid": "365"
 				},
 				{
 					"pluginid": "10015",
@@ -1645,7 +1746,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/contact/",
+							"uri": "https://code.gouv.fr/fr/communs/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1653,7 +1754,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/",
+							"uri": "https://code.gouv.fr/fr/contact/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1720,7 +1821,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1763,7 +1864,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1790,14 +1891,6 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://code.gouv.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1806,7 +1899,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1814,13 +1907,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -1849,7 +1942,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1880,7 +1973,7 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "73aed4f2-01c0-4edd-ae2c-f1547fd02ff0",
+							"evidence": "8bf56858-1233-4f9b-b4b8-cfb255010925",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
@@ -1888,7 +1981,7 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "6db55ab8-b889-4302-8590-ee6969c6d32e",
+							"evidence": "4f1a8259-e9f4-4f91-8160-16e995ea8c80",
 							"otherinfo": "\ncookie:ring-session"
 						}
 					],
@@ -1898,7 +1991,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "371"
+					"sourceid": "373"
 				},
 				{
 					"pluginid": "10049",
@@ -1935,6 +2028,14 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/bluehats/",
 							"method": "GET",
 							"param": "",
@@ -1960,14 +2061,6 @@
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/contact/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/explicabilite/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2029,10 +2122,10 @@
 					"count": "1",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://code.gouv.fr/fr/sill/?name=Peertube</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [title] attribute </p><p></p><p>The user input found was:</p><p>name=Peertube</p><p></p><p>The user-controlled value was:</p><p>peertube - nouvelle fen\u00EAtre</p>",
-					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "1317"
+					"sourceid": "1368"
 				}
 			]
 		}
