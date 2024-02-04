@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 28 Jan 2024 01:33:50",
+	"@generated": "Sun, 4 Feb 2024 01:40:17",
 	"site":[ 
 		{
 			"@name": "https://webconf.numerique.gouv.fr",
@@ -101,7 +101,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "110"
+					"sourceid": "108"
 				},
 				{
 					"pluginid": "10038",
@@ -315,7 +315,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "90003",
@@ -449,7 +449,7 @@
 					"reference": "<p>https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-11358</p><p>https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b</p><p>https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "83"
+					"sourceid": "84"
 				},
 				{
 					"pluginid": "10011",
@@ -484,7 +484,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "101"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10054",
@@ -519,7 +519,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "101"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10017",
@@ -653,7 +653,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "83"
+					"sourceid": "84"
 				},
 				{
 					"pluginid": "10063",
@@ -829,6 +829,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://webconf.numerique.gouv.fr/faq",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://webconf.numerique.gouv.fr/mentions_legales",
 							"method": "GET",
 							"param": "",
@@ -838,14 +846,6 @@
 						},
 						{
 							"uri": "https://webconf.numerique.gouv.fr/public/images/icons/favicon.ico",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://webconf.numerique.gouv.fr/public/stylesheets/pages/common.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -952,7 +952,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://webconf.numerique.gouv.fr/public/stylesheets/pages/common.css",
+							"uri": "https://webconf.numerique.gouv.fr/public/stylesheets/template.min.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -974,7 +974,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "12"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10021",
@@ -1035,6 +1035,14 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://webconf.numerique.gouv.fr/donnees_personnelles",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://webconf.numerique.gouv.fr/faq",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1052,14 +1060,6 @@
 						},
 						{
 							"uri": "https://webconf.numerique.gouv.fr/public/images/icons/favicon.ico",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://webconf.numerique.gouv.fr/public/stylesheets/pages/common.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1106,8 +1106,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "eyJyb29tIjoibm9tc2Fsb24xMjMiLCJhY1N0YXRlIjoiZ3NzaWFlem1heSIsImFjTm9uY2UiOiJ2a2htMmtjb2VqZCJ9",
-							"otherinfo": "{\"room\":\"nomsalon123\",\"acState\":\"gssiaezmay\",\"acNonce\":\"vkhm2kcoejd\"}"
+							"evidence": "eyJyb29tIjoibm9tc2Fsb24xMjMiLCJhY1N0YXRlIjoiaXJkczQwcnY4diIsImFjTm9uY2UiOiJ1a2gyYzV0Y2ZiIn0=",
+							"otherinfo": "{\"room\":\"nomsalon123\",\"acState\":\"irds40rv8v\",\"acNonce\":\"ukh2c5tcfb\"}"
 						},
 						{
 							"uri": "https://webconf.numerique.gouv.fr/mentions_legales",
@@ -1124,7 +1124,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "62"
+					"sourceid": "58"
 				},
 				{
 					"pluginid": "10027",
@@ -1151,7 +1151,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "83"
+					"sourceid": "84"
 				},
 				{
 					"pluginid": "10109",
@@ -1413,14 +1413,6 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://webconf.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://webconf.numerique.gouv.fr/$",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1445,13 +1437,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "10"
 				},
 				{
 					"pluginid": "90005",
@@ -1464,14 +1456,6 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://webconf.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://webconf.numerique.gouv.fr/$",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1496,13 +1480,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "10"
 				},
 				{
 					"pluginid": "90005",
@@ -1515,14 +1499,6 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://webconf.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://webconf.numerique.gouv.fr/$",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1532,6 +1508,14 @@
 						},
 						{
 							"uri": "https://webconf.numerique.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://webconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1545,7 +1529,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "10"
 				},
 				{
 					"pluginid": "90005",
@@ -1557,14 +1541,6 @@
 					"riskdesc": "Informational (High)",
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
-						{
-							"uri": "https://webconf.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
 						{
 							"uri": "https://webconf.numerique.gouv.fr/$",
 							"method": "GET",
@@ -1590,13 +1566,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "10"
 				},
 				{
 					"pluginid": "10112",
@@ -1613,7 +1589,7 @@
 							"method": "GET",
 							"param": "wce_session.sig",
 							"attack": "",
-							"evidence": "Odu9XWklYR2ky_7_unsy0h-R5NQ",
+							"evidence": "1HDCdgg7IneTcpFxSZW90vcsm4M",
 							"otherinfo": "\ncookie:wce_session.sig\ncookie:wce_session"
 						},
 						{
@@ -1621,7 +1597,7 @@
 							"method": "GET",
 							"param": "wce_session",
 							"attack": "",
-							"evidence": "eyJyb29tIjoibm9tc2Fsb24xMjMiLCJhY1N0YXRlIjoiZ3NzaWFlem1heSIsImFjTm9uY2UiOiJ2a2htMmtjb2VqZCJ9",
+							"evidence": "eyJyb29tIjoibm9tc2Fsb24xMjMiLCJhY1N0YXRlIjoiaXJkczQwcnY4diIsImFjTm9uY2UiOiJ1a2gyYzV0Y2ZiIn0=",
 							"otherinfo": "\ncookie:wce_session"
 						},
 						{
@@ -1629,7 +1605,7 @@
 							"method": "GET",
 							"param": "wce_session.sig",
 							"attack": "",
-							"evidence": "Odu9XWklYR2ky_7_unsy0h-R5NQ",
+							"evidence": "1HDCdgg7IneTcpFxSZW90vcsm4M",
 							"otherinfo": "\ncookie:wce_session.sig"
 						}
 					],
@@ -1639,7 +1615,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "101"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10049",
@@ -1684,7 +1660,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://webconf.numerique.gouv.fr/apropos",
+							"uri": "https://webconf.numerique.gouv.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1692,7 +1668,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://webconf.numerique.gouv.fr/contact",
+							"uri": "https://webconf.numerique.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
 							"attack": "",
