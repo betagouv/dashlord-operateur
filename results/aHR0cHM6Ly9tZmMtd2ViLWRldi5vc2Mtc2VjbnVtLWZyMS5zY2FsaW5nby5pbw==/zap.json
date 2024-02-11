@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 4 Feb 2024 02:56:35",
+	"@generated": "Sun, 11 Feb 2024 02:53:44",
 	"site":[ 
 		{
 			"@name": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
@@ -36,14 +36,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -60,7 +52,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
@@ -93,23 +85,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10010",
@@ -128,17 +112,9 @@
 							"attack": "",
 							"evidence": "set-cookie: NEXT_LOCALE",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "NEXT_LOCALE",
-							"attack": "",
-							"evidence": "set-cookie: NEXT_LOCALE",
-							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
@@ -163,23 +139,15 @@
 							"attack": "",
 							"evidence": "set-cookie: NEXT_LOCALE",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "NEXT_LOCALE",
-							"attack": "",
-							"evidence": "set-cookie: NEXT_LOCALE",
-							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Whenever a cookie contains sensitive information or is a session token, then it should always be passed using an encrypted channel. Ensure that the secure flag is set for cookies containing such sensitive information.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "13"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -208,6 +176,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/16-0b462f644f2a89de.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/1dd3208c-62a18749a3529c05.js",
 							"method": "GET",
 							"param": "",
@@ -224,7 +200,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-8142914dfd7e7ed8.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-9b1283f399f627db.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -232,7 +208,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-9bdcc56bcc3c6e62.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-3609a86c4653e2ad.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -248,15 +224,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-7984b36502d6d283.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-b0fd6f42f3960f95.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -286,7 +254,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10037",
@@ -315,14 +283,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Next.js",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -339,13 +299,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "13"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -372,7 +332,7 @@
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "64"
+					"sourceid": "63"
 				},
 				{
 					"pluginid": "10021",
@@ -401,7 +361,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/1dd3208c-62a18749a3529c05.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/72-a80edeb8046a1bba.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -409,7 +369,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-9bdcc56bcc3c6e62.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-9b1283f399f627db.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-3609a86c4653e2ad.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -425,7 +393,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-7984b36502d6d283.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-b0fd6f42f3960f95.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -463,14 +431,6 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
 					"count": "11",
@@ -479,7 +439,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "13"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -508,7 +468,7 @@
 							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0008\\x0008\\x0002\\x0000\\x0000\\x0000Km)\uFFFD\\x0000\\x0000\\x0000\uFFFDIDATx\uFFFDc\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0430\uFFFD\uFFFD\uFFFD_\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u032C\\x0007\\x000c 0\uFFFD\uFFFDw\u07A7O\u07C0\uFFFD\uFFFD\uFFFD\\x0001\uFFFD\uFFFDv\uFFFD\uFFFD\\x0000\\x0002\uFFFD%%k@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03DCy\\x0008\\x0014.+[\uFFFD\u05B6\uFFFD\u00C7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDg\uFFFDa\\x000cg\uFFFD\uFFFD\u06F6\uFFFD\u008F\\x001f\uFFFD!\\x0012\uFFFD\uFFFD\uFFFD\u01CF\uFFFD\\x0016V\\x000c\uFFFD\uFFFD;7n<w\uFFFD\uFFFD\uFFFD@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{^O\uFFFD\\x000e2*\"b\uFFFD\\x0005\uFFFD_\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\u01CFg)\uFFFD\uFFFD\\x0018\\x0018\\x001e\uFFFD\uFFFD0\u0738\uFFFD\uFFFD?\\x0018\uFFFD\uFFFD\uFFFD\\x000f\uFFFD\uFFFDt\uFFFD\uFFFDC\\x0006\\x0006\\x0000\uFFFD\\x0016\uFFFD-o\uFFFD\uFFFD0\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/css/caa3f7a830415216.css",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/css/731601bcad481e68.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -522,7 +482,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "65"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "10027",
@@ -591,20 +551,20 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[891],{95785:function(e,t,r){\"use strict\";r.r(t),r.d(t,{ErrorCode:functi\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/layout-5ebdc5e1382a5a10.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/layout-7d905e121070658c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[203],{23490:function(e,t,n){Promise.resolve().then(n.bind(n,34338)),Pro\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[203],{34595:function(e,t,n){Promise.resolve().then(n.bind(n,34338)),Pro\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-8142914dfd7e7ed8.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/app/%5Blocale%5D/page-9b1283f399f627db.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[61],{13601:function(e,t,n){Promise.resolve().then(n.bind(n,46843))},468\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[61],{84011:function(e,t,n){Promise.resolve().then(n.bind(n,46843))},468\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
@@ -613,23 +573,15 @@
 							"attack": "",
 							"evidence": "query",
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"f:[\\\"$\\\",\\\"$L10\\\",null,{\\\"locale\\\":\\\"en\\\",\\\"now\\\":\\\"$D2024-02-04T02:56:31.837Z\\\",\\\"timeZone\\\":\\\"E\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[16],{95750:function(e,t){\"use strict\";function r(){return\"\"}Object.defi\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "49"
+					"sourceid": "47"
 				},
 				{
 					"pluginid": "10109",
@@ -658,14 +610,6 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/en",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" class=\"fr-footer__bottom-link\">Mentions l\u00E9gales</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -682,7 +626,7 @@
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "5",
+					"count": "4",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -701,23 +645,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-store",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-store",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -733,13 +661,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "2",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "45"
 				},
 				{
 					"pluginid": "90005",
@@ -782,7 +710,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "90005",
@@ -825,7 +753,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "90005",
@@ -911,7 +839,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "13"
 				},
 				{
 					"pluginid": "10049",
@@ -924,7 +852,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-9bdcc56bcc3c6e62.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/main-app-3609a86c4653e2ad.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -940,7 +868,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-7984b36502d6d283.js",
+							"uri": "https://mfc-web-dev.osc-secnum-fr1.scalingo.io/_next/static/chunks/webpack-b0fd6f42f3960f95.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -986,7 +914,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "38"
+					"sourceid": "37"
 				}
 			]
 		}
