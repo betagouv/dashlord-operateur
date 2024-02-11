@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 4 Feb 2024 02:29:40",
+	"@generated": "Sun, 11 Feb 2024 02:27:34",
 	"site":[ 
 		{
 			"@name": "https://www.hubee.numerique.gouv.fr",
@@ -42,7 +42,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "62"
+					"sourceid": "53"
 				},
 				{
 					"pluginid": "10055",
@@ -117,7 +117,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "71"
+					"sourceid": "70"
 				},
 				{
 					"pluginid": "10038",
@@ -390,14 +390,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.module.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.nomodule.min.js.map",
 							"method": "GET",
 							"param": "",
@@ -430,6 +422,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/segment-1/segme",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -438,7 +438,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/socket.io/socket.io.js",
+							"uri": "https://www.hubee.numerique.gouv.fr/statistiques",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -481,14 +481,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/aide",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
 							"method": "GET",
 							"param": "",
@@ -497,7 +489,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.module.min.js",
+							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.nomodule.min.js.map",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -514,6 +506,14 @@
 						},
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/favicon/favicon.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/favicon/favicon.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -604,22 +604,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.min.css",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.module.min.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -629,6 +613,14 @@
 						},
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/favicon/favicon.ico",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/favicon/favicon.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -660,7 +652,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/statuts",
+							"uri": "https://www.hubee.numerique.gouv.fr/img/medecin.jpg",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/utility.min.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -856,9 +856,17 @@
 							"attack": "",
 							"evidence": "select",
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>\r\n        const socket = io();\r\n\r\n        socket.on('nbConnectedUsers', function (nbConnectedUsers) {\r\n            docum\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/thematique-1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>\r\n        const socket = io();\r\n\r\n        socket.on('nbConnectedUsers', function (nbConnectedUsers) {\r\n            docum\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script></p><p>        const socket = io();</p><p></p><p>        socket.on('nbConnectedUsers', function (nbConnectedUsers) {</p><p>            docum\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1067,7 +1075,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
+							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1081,23 +1089,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "27"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1110,7 +1110,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
+							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1124,23 +1124,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "27"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1153,7 +1145,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
+							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1167,23 +1159,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "27"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1196,7 +1180,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
+							"uri": "https://www.hubee.numerique.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1210,23 +1194,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "27"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1239,14 +1215,6 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/aide",
 							"method": "GET",
 							"param": "",
@@ -1256,14 +1224,6 @@
 						},
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.nomodule.min.js.map",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1287,14 +1247,6 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1303,13 +1255,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "8",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "35"
 				},
 				{
 					"pluginid": "10049",
@@ -1338,7 +1290,23 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/favicon/favicon.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/favicon/manifest.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/utility.min.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1346,7 +1314,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "5",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
