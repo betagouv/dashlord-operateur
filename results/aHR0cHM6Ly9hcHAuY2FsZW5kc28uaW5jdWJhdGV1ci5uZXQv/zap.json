@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 11 Feb 2024 02:13:56",
+	"@generated": "Sun, 18 Feb 2024 02:08:49",
 	"site":[ 
 		{
 			"@name": "https://app.calendso.incubateur.net",
@@ -42,7 +42,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "101"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10038",
@@ -95,7 +95,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/favicon.icon",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -103,7 +103,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/privacy",
+							"uri": "https://app.calendso.incubateur.net/favicon.icon",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -221,7 +221,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/7043-cd05a33c2782160b.js",
+							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/app/error-9a58a36a6c5281f4.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -360,7 +360,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/favicon.icon",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -368,7 +368,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/privacy",
+							"uri": "https://app.calendso.incubateur.net/favicon.icon",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -435,7 +435,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.calendso.incubateur.net/",
+							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/main-app-42f0fdd8181ae35d.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -537,7 +537,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "73"
 				},
 				{
 					"pluginid": "10096",
@@ -561,10 +561,10 @@
 					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37</p>",
-					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "92"
+					"sourceid": "96"
 				},
 				{
 					"pluginid": "10021",
@@ -578,14 +578,6 @@
 					"instances":[ 
 						{
 							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/1053-8a483b3b08357368.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/1dd3208c-b775ab960e8ea07f.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -641,6 +633,22 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/pages/_app-81b0c7bac552f0fc.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/webpack-920f2de9a99364d9.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -649,7 +657,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/css/403c8616c6587088.css",
+							"uri": "https://app.calendso.incubateur.net/_next/static/css/47723c38aac6b08a.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -673,13 +681,13 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "73"
+					"sourceid": "74"
 				},
 				{
 					"pluginid": "10111",
@@ -692,31 +700,31 @@
 					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "password",
-							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP"
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "password",
-							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP"
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "password",
-							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP"
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
@@ -726,7 +734,7 @@
 					],
 					"count": "4",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p><p>referer=https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP</p>",
+					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p><p>referer=https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
 					"cweid": "-1",
 					"wascid": "-1",
@@ -775,15 +783,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDum]c\uFFFD\u046Az\uFFFD\\x0000\uFFFD/\uFFFD\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=0fd8f13bebb8bc9419e9793a4328bcf567fa9e83236f0bf43b80ec5347dcf1f6&email=zaproxy%40example.com",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_next/static/91bV1jwdGqeuMA4y_fXMX/_buildManifest",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDum]c\uFFFD\u046Az\uFFFD\\x0000\uFFFD/\uFFFD\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=1b0a738367e87daf1f8134067863ea0b6d530675e1c4084b8280f116617a11cc&email=zaproxy%40example.com",
+							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=eb14f0e6286ae8b1ca857067a745ab6a6a6da43a6b053ff894f79dfc6db70fad&email=zaproxy%40example.com",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -799,7 +799,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDum]c\uFFFD\u046Az\uFFFD\\x0000\uFFFD/\uFFFD\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -807,7 +807,7 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDum]c\uFFFD\u046Az\uFFFD\\x0000\uFFFD/\uFFFD\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -832,6 +832,14 @@
 						},
 						{
 							"uri": "https://app.calendso.incubateur.net/signup",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/_next/static/91bV1jwdGqeuMA4y_fXMX/_buildManifest",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uCD6Bbs\uFFFDum]c\uFFFD\u046Az\uFFFD\\x0000\uFFFD/\uFFFD\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\uFFFD'\u07B2"
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/signup?email=zaproxy%40example.com&password=ZAP&username=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -901,7 +909,7 @@
 					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=0fd8f13bebb8bc9419e9793a4328bcf567fa9e83236f0bf43b80ec5347dcf1f6&email=zaproxy%40example.com",
+							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=eb14f0e6286ae8b1ca857067a745ab6a6a6da43a6b053ff894f79dfc6db70fad&email=zaproxy%40example.com",
 							"method": "GET",
 							"param": "csrfToken",
 							"attack": "",
@@ -909,7 +917,7 @@
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ncsrfToken"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=0fd8f13bebb8bc9419e9793a4328bcf567fa9e83236f0bf43b80ec5347dcf1f6&email=zaproxy%40example.com",
+							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=eb14f0e6286ae8b1ca857067a745ab6a6a6da43a6b053ff894f79dfc6db70fad&email=zaproxy%40example.com",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
@@ -917,7 +925,7 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=1b0a738367e87daf1f8134067863ea0b6d530675e1c4084b8280f116617a11cc&email=zaproxy%40example.com",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "csrfToken",
 							"attack": "",
@@ -925,7 +933,7 @@
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ncsrfToken"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=1b0a738367e87daf1f8134067863ea0b6d530675e1c4084b8280f116617a11cc&email=zaproxy%40example.com",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
@@ -933,39 +941,7 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=8c59ab3c0535bd70c81ada9b49cd851fa7bc101dc11a7aaf15841db76b99eba5&email=zaproxy%40example.com",
-							"method": "GET",
-							"param": "csrfToken",
-							"attack": "",
-							"evidence": "csrfToken",
-							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ncsrfToken"
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=8c59ab3c0535bd70c81ada9b49cd851fa7bc101dc11a7aaf15841db76b99eba5&email=zaproxy%40example.com",
-							"method": "GET",
-							"param": "email",
-							"attack": "",
-							"evidence": "zaproxy@example.com",
-							"otherinfo": "The URL contains email address(es)."
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
-							"method": "GET",
-							"param": "csrfToken",
-							"attack": "",
-							"evidence": "csrfToken",
-							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ncsrfToken"
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
-							"method": "GET",
-							"param": "email",
-							"attack": "",
-							"evidence": "zaproxy@example.com",
-							"otherinfo": "The URL contains email address(es)."
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
@@ -973,7 +949,7 @@
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: pass\npassword"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "csrfToken",
 							"attack": "",
@@ -981,7 +957,7 @@
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: token\ncsrfToken"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
@@ -989,21 +965,45 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
 							"evidence": "password",
 							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: pass\npassword"
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/signup?email=zaproxy%40example.com&password=ZAP&username=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/signup?email=zaproxy%40example.com&password=ZAP&username=ZAP",
+							"method": "GET",
+							"param": "password",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: pass\npassword"
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/signup?email=zaproxy%40example.com&password=ZAP&username=ZAP",
+							"method": "GET",
+							"param": "username",
+							"attack": "",
+							"evidence": "username",
+							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: user\nusername"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Do not pass sensitive information in URIs.</p>",
 					"otherinfo": "<p>The URL contains potentially sensitive information. The following string was found via the pattern: token</p><p>csrfToken</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "138"
+					"sourceid": "137"
 				},
 				{
 					"pluginid": "10027",
@@ -1021,7 +1021,7 @@
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" nonce=\"\">{\"props\":{\"pageProps\":{\"newLocale\":\"en\",\"csrfToken\":\"e881a52f87c4489\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" nonce=\"\">{\"props\":{\"pageProps\":{\"newLocale\":\"en\",\"csrfToken\":\"1cbe169a19b1640\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/1053-8a483b3b08357368.js",
@@ -1038,14 +1038,6 @@
 							"attack": "",
 							"evidence": "query",
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1053],{95750:function(e,t){\"use strict\";function getDeploymentIdQueryOr\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/7043-cd05a33c2782160b.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "ADMIN",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"In case this error is unexpected for you, please report it in https://github.com/prisma/prisma/issues`)},m.DbNull=d.instances.Db\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/8895-adf499799e8f1a6d.js",
@@ -1078,6 +1070,14 @@
 							"attack": "",
 							"evidence": "user",
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 3 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"3:I[51999,[],\\\"\\\"]\\n5:I[82991,[\\\"8895\\\",\\\"static/chunks/8895-adf499799e8f1a6d.js\\\",\\\"7043\\\",\\\"sta\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" nonce=\"\">{\"props\":{\"pageProps\":{\"newLocale\":\"en\",\"csrfToken\":\"b64a3d5a5a71157\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"uri": "https://app.calendso.incubateur.net/favicon.icon",
@@ -1114,7 +1114,7 @@
 					],
 					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" nonce=\"\">{\"props\":{\"pageProps\":{\"newLocale\":\"en\",\"csrfToken\":\"e881a52f87c4489\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\" nonce=\"\">{\"props\":{\"pageProps\":{\"newLocale\":\"en\",\"csrfToken\":\"1cbe169a19b1640\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
@@ -1171,15 +1171,15 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/favicon.icon",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script src=\"/_next/static/chunks/1dd3208c-b775ab960e8ea07f.js\" async=\"\"></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+							"evidence": "<noscript data-n-css=\"\"></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/privacy",
+							"uri": "https://app.calendso.incubateur.net/favicon.icon",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1308,7 +1308,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -1370,15 +1370,23 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1405,15 +1413,23 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1434,7 +1450,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/robots.txt",
+							"uri": "https://app.calendso.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1448,7 +1464,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1475,9 +1491,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1500,7 +1524,7 @@
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "gjamsgxkhl9",
+							"evidence": "pz3hcdzcdml",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
@@ -1508,63 +1532,47 @@
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/91bV1jwdGqeuMA4y_fXMX/_ssgManifest.js",
+							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/pages/signup-3129dec3d6fac436.js",
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/4142-fa23dc2b56b17725.js",
+							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=eb14f0e6286ae8b1ca857067a745ab6a6a6da43a6b053ff894f79dfc6db70fad&email=zaproxy%40example.com",
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/framework-dd17dd774597d00b.js",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/pages/auth",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/_next/static/chunks/pages/auth/forgot-password-9b3df0d65b6b3f0e.js",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
-							"otherinfo": "\ncookie:__clnds"
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/api/logo",
-							"method": "GET",
-							"param": "__clnds",
-							"attack": "",
-							"evidence": "h6jda73vy7",
-							"otherinfo": "\ncookie:__clnds"
-						},
-						{
-							"uri": "https://app.calendso.incubateur.net/auth/forgot-password?csrfToken=1b0a738367e87daf1f8134067863ea0b6d530675e1c4084b8280f116617a11cc&email=zaproxy%40example.com",
-							"method": "GET",
-							"param": "__clnds",
-							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						},
 						{
@@ -1572,11 +1580,19 @@
 							"method": "GET",
 							"param": "__clnds",
 							"attack": "",
-							"evidence": "h6jda73vy7",
+							"evidence": "atjoifwn4hr",
+							"otherinfo": "\ncookie:__clnds"
+						},
+						{
+							"uri": "https://app.calendso.incubateur.net/mock-event-type-list.svg",
+							"method": "GET",
+							"param": "__clnds",
+							"attack": "",
+							"evidence": "atjoifwn4hr",
 							"otherinfo": "\ncookie:__clnds"
 						}
 					],
-					"count": "10",
+					"count": "9",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:__clnds</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -1617,7 +1633,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "66"
+					"sourceid": "65"
 				},
 				{
 					"pluginid": "10049",
@@ -1665,73 +1681,73 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP",
+							"uri": "https://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://app.calendso.incubateur.net/auth/login?csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						}
 					],
 					"count": "8",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://app.calendso.incubateur.net/auth/login?csrfToken=2fa1351cf45b256fce722088e19cd8d20f06078c70f7aa662c8624957cc057e5&csrfToken=331eb632e42c5f8f66bd14e8b22d849aac919a556fc3ac8e3ed23b02b464b090&csrfToken=acca41a547d02023d20c8a2f3b3ed3e43382ffe1acf4e21d88c6f1c3befda620&csrfToken=e51acd42dbd4f8c2d2add2471ff95558808532076724666b7e374d6661c40489&email=zaproxy%40example.com&password=ZAP</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>email=zaproxy@example.com</p><p></p><p>The user-controlled value was:</p><p>zaproxy@example.com</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://app.calendso.incubateur.net/auth/login?csrfToken=8bd7bee52e26b5c4c553f5db2030960394bd414e1a863d09b38421de81ed4a76&csrfToken=8cfb9a118ec5eadba9b6f7187a1b9f018858110ba2b3b819bc2a25d56f5e9747&csrfToken=a0089a575f428cb171d888c1dbffb807598ae62c0791ad50f3116993ba8b65f0&csrfToken=b64a3d5a5a711571510f1b45a7449fe95fc139bac1b26fb008c50578940be339&email=zaproxy%40example.com&password=ZAP</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>email=zaproxy@example.com</p><p></p><p>The user-controlled value was:</p><p>zaproxy@example.com</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
