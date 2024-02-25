@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 18 Feb 2024 01:07:33",
+	"@generated": "Sun, 25 Feb 2024 01:07:45",
 	"site":[ 
 		{
 			"@name": "https://code.gouv.fr",
@@ -34,7 +34,7 @@
 					"reference": "<p>https://openwall.info/wiki/john/sample-hashes</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "972"
+					"sourceid": "1001"
 				},
 				{
 					"pluginid": "10202",
@@ -61,31 +61,15 @@
 							"attack": "",
 							"evidence": "<form action=\"/newsletters/subscribe\" method=\"post\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" \"username\" ]."
-						},
-						{
-							"uri": "https://code.gouv.fr/newsletters/unsubscribe/bluehats@mail.codegouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/newsletters/unsubscribe\" method=\"post\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" ]."
-						},
-						{
-							"uri": "https://code.gouv.fr/newsletters/unsubscribe/logiciels-libres-dsi@mail.codegouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"/newsletters/unsubscribe\" method=\"post\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" ]."
 						}
 					],
-					"count": "4",
+					"count": "2",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"__anti-forgery-token\" \"mailing-list\" \"subscriber\" \"username\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "861"
+					"sourceid": "398"
 				},
 				{
 					"pluginid": "10038",
@@ -106,38 +90,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "",
@@ -146,7 +98,55 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -162,23 +162,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -235,7 +219,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1162"
+					"sourceid": "1308"
 				},
 				{
 					"pluginid": "10033",
@@ -286,7 +270,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/548.html</p>",
 					"cweid": "548",
 					"wascid": "16",
-					"sourceid": "1409"
+					"sourceid": "1396"
 				},
 				{
 					"pluginid": "10020",
@@ -307,46 +291,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/bluehats/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -355,7 +299,55 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -371,7 +363,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
+							"uri": "https://code.gouv.fr/fr/mission/conseil-logiciels-libres/",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -379,15 +371,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -422,38 +406,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "",
@@ -462,7 +414,55 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -478,23 +478,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"me\" href=\"https://social.numerique.gouv.fr/@codegouvfr\">",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -543,7 +527,7 @@
 					"reference": "<p>https://reactjs.org/blog/2018/08/01/react-v-16-4-2.html</p><p>https://github.com/facebook/react/blob/master/CHANGELOG.md</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "1389"
+					"sourceid": "1369"
 				},
 				{
 					"pluginid": "10011",
@@ -578,7 +562,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "861"
+					"sourceid": "398"
 				},
 				{
 					"pluginid": "10017",
@@ -637,7 +621,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1002"
+					"sourceid": "1155"
 				},
 				{
 					"pluginid": "10110",
@@ -680,7 +664,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "1405"
+					"sourceid": "1392"
 				},
 				{
 					"pluginid": "110009",
@@ -693,7 +677,7 @@
 					"desc": "<p>The full path of files which might be sensitive has been exposed to the client.</p>",
 					"instances":[ 
 						{
-							"uri": "https://code.gouv.fr/DINUM",
+							"uri": "https://code.gouv.fr/about",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -701,7 +685,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/doc/glossary/",
+							"uri": "https://code.gouv.fr/fr/blog/de-la-transparence-a-lexplicabilite-automatisee-des-algorithmes/&quot;&gt;Une",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -709,7 +693,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/action-plan-for-free-software-and-digital-commons/plan-action-logiciels-libres-communs-numeriques/plan-action-logiciels-libres-communs-numeriques.en.md",
+							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_26/&quot;&gt;",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -717,7 +701,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/action-plan-for-free-software-and-digital-commons/plan-action-logiciels-libres-communs-numeriques/plan-action-logiciels-libres-communs-numeriques.it.md",
+							"uri": "https://code.gouv.fr/fr/bluehats/journees-2023/&quot;&gt;",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -725,7 +709,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/blog/appel-a-interventions-journees-bluehats-2023/bluehats@code.gouv.fr",
+							"uri": "https://code.gouv.fr/fr/bluehats/journees-2023/&quot;&gt;Pr%C3%A9sentations",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -733,7 +717,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/doc/sill/",
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/&quot;&gt;Les",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/system/",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/mission/conseil-logiciels-libres/&quot;&gt;Conseil",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -749,15 +741,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/~codegouvfr/dev@lists.sr.ht",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/system/",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/libs",
+							"uri": "https://code.gouv.fr/manifest.webmanifest",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -795,7 +779,7 @@
 					"reference": "<p>https://owasp.org/www-community/attacks/Full_Path_Disclosure</p>",
 					"cweid": "209",
 					"wascid": "13",
-					"sourceid": "973"
+					"sourceid": "991"
 				},
 				{
 					"pluginid": "10063",
@@ -816,46 +800,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/bluehats/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "",
@@ -864,7 +808,55 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -880,23 +872,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -912,7 +888,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -939,22 +915,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.22.1",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.22.1",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "",
@@ -971,7 +931,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/bluehats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -979,7 +939,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/",
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -987,7 +947,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -995,7 +955,23 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.22.1",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.22.1",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1025,7 +1001,7 @@
 					"reference": "<p>https://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10035",
@@ -1046,30 +1022,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "",
@@ -1078,7 +1030,47 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1094,23 +1086,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1225,20 +1201,12 @@
 							"otherinfo": "1672075076, which evaluates to: 2022-12-26 17:17:56"
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_3/",
+							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_7/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1569231468",
-							"otherinfo": "1569231468, which evaluates to: 2019-09-23 09:37:48"
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_3/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1571036385",
-							"otherinfo": "1571036385, which evaluates to: 2019-10-14 06:59:45"
+							"evidence": "1600673740",
+							"otherinfo": "1600673740, which evaluates to: 2020-09-21 07:35:40"
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-presentation-2022/",
@@ -1249,13 +1217,13 @@
 							"otherinfo": "1647254344, which evaluates to: 2022-03-14 10:39:04"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1664287204, which evaluates to: 2022-09-27 14:00:04</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "279"
+					"sourceid": "488"
 				},
 				{
 					"pluginid": "10021",
@@ -1276,38 +1244,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1316,7 +1252,55 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1332,23 +1316,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1383,6 +1351,30 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
+							"uri": "https://code.gouv.fr/css/dsfr.min.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5",
+							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
+						},
+						{
+							"uri": "https://code.gouv.fr/feed/feed.json",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "org/view/2024/Call_For_Presentations",
+							"otherinfo": "\uFFFD\uFFFD?\uFFFD'\uFFFD\uFFFDm6\uFFFD\uFFFD_\u0162\uFFFD\u03ED\uFFFD\\x001e\uFFFD\u05AD\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://code.gouv.fr/feed/feed.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/posts/direction-interministerielle-du-numerique-dinum_garagethon-bluehats-les-9-et-10-janvier-activity-7153421078281834496-AACS/",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFDb\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD{^\uFFFDh\uFFFD\uFFFD\uFFFD^\uFFFD'\uFFFD\uFFFD\uF77B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDv)\uFFFD\uFFFD\\x001a\uFFFD\uFFFD\\x001e\uFFFD\\x001a'\uFFFD\uFFFDnz\\x0016\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD~z\u07F5\uFFFD\uFFFD\u069E\uFFFD\uFFFD\uFFFD\u6736+\uFFFD/\uFFFD\u05DD\uFFFD\uFFFD];\uFFFDo5\uFFFD~8\uFFFD\uFFFD\uFFFD\\x0000$\uFFFD"
+						},
+						{
 							"uri": "https://code.gouv.fr/fr/blog/de-la-transparence-a-lexplicabilite-automatisee-des-algorithmes/",
 							"method": "GET",
 							"param": "",
@@ -1415,20 +1407,12 @@
 							"otherinfo": "~\uFFFD\uFFFDz\uFFFD(\uFFFD\uFFFD\\x001e\uFFFD\uFFFD^\uFFFD\uFFFD\uFFFD.&\uFFFD{\uFFFD':\uFFFDb\uFFFD0\"u\uFFFD\\x000bh7\uFFFD\uFFFD\u0228\uFFFD\\x0000%\uFFFD\uFFFD\uFFFDz\uFFFD\\x000bx\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDz\uFFFD\"\uFFFDqb\uFFFD\uFFFD^\uFFFD]\uFFFD\\x0008 XH"
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-contributions-2022/joram/",
+							"uri": "https://code.gouv.fr/fr/bluehats/bluehats_26/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "com/document/d/1L0EDzyAx8DsBeP8jnh4KwpiRQpcYCVifyKl8ApbjEwE/edit",
-							"otherinfo": "r\uFFFD\uFFFDv\uFFFD.\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD/A\\x0003\uFFFD 1\uFFFD;\\x0001x\uFFFD#\uFFFD\\x001e\n\u0098\uFFFDB\uFFFD\\x0018\tX\uFFFD\u0229|\\x0002\uFFFD\uFFFD\\x0013\\x0001?y\u062D"
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-contributions-2022/ota/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "com/OpenTermsArchive/declarations-france/issues/168",
-							"otherinfo": "r\uFFFD\uFFFD:\uFFFD\uFFFDM\uFFFD\uFFFD\n\u0706+\uFFFD\uFFFD\u05DC\uFFFD\uFFFD\u06B6*'\uFFFD\uFFFD\uFFFDjw\\x001e\uFFFD+,\uFFFD\uFFFD?\u05EF"
+							"evidence": "com/posts/direction-interministerielle-du-numerique-dinum_garagethon-bluehats-les-9-et-10-janvier-activity-7153421078281834496-AACS/",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD\uFFFDb\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD{^\uFFFDh\uFFFD\uFFFD\uFFFD^\uFFFD'\uFFFD\uFFFD\uF77B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDv)\uFFFD\uFFFD\\x001a\uFFFD\uFFFD\\x001e\uFFFD\\x001a'\uFFFD\uFFFDnz\\x0016\uFFFD\uFFFD\uFFFD^\uFFFD\uFFFD~z\u07F5\uFFFD\uFFFD\u069E\uFFFD\uFFFD\uFFFD\u6736+\uFFFD/\uFFFD\u05DD\uFFFD\uFFFD];\uFFFDo5\uFFFD~8\uFFFD\uFFFD\uFFFD\\x0000$\uFFFD"
 						},
 						{
 							"uri": "https://code.gouv.fr/fr/bluehats/khartis/",
@@ -1439,53 +1423,37 @@
 							"otherinfo": "~\uFFFD\uFFFD{\\x001b\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0011\uFFFD\uFFFD\\x0008\uFFFDZ\uFFFDv\uFFFD\uFFFD"
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/motivation-contributions-open-source/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "teresa/logicielsLIGM/documents/Seminaires/2021avrilBlueHats_TGD",
-							"otherinfo": "\uFFFD\uFFFD\u07B1\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\uFFFDl,\uFFFD\uFFFD\uFFFD\uFFFD\\x001c\uFFFDg\uFFFD\uFFFD\uFFFD\uFFFDzh\uFFFDj*\u07B3\uFFFD\uFFFD\uFFFDV\uFFFD\uFFFD)A\uFFFD\uFFFDj\uFFFD?L`"
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/outils-framasoft-administration-publique-yakforms/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "org/nextcloud/s/qwoKPgRxko894yj",
-							"otherinfo": "\uFFFD\uFFFD?\uFFFD\uFFFDmrZ.w\uFFFD?\uFFFD\n\n>\\x0004q\uFFFD\uFFFD=\uFFFD("
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/propriete-intellectuelle-marches-publics/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "fr/files/files/directions_services/apie/propriete_intellectuelle/publications/Guide_CCAG2104",
-							"otherinfo": "~\uFFFD\u07CAW\uFFFD\uFFFD\uFFFD\uFFFDz\uFFFD\u074A\uFFFD\uFFFD\uFFFD*'\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFDz\uFFFD\u06A6'\uFFFD\uFFFD\uFFFD)\uFFFD'\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDnzY^\uFFFD\uFFFD\uFFFD\uFFFD'\\x001a\uFFFD*'\uFFFD\uFFFD\u05FF\\x0008 \\x0006\uFFFD]8"
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/bluehats/samba-ad/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/docs/20_Jan_2023_-_BlueHats_-_Retex_SAMBA-AD_-_v1",
-							"otherinfo": "\uFFFD\uFFFD\\x001c\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDm6\uFFFD\uFFFD\uFFFD\\x0006[\uFFFD\\x001d\uFFFDl\uFFFD\uFFFD\uFFFDz\u05F1\uFFFD \\x000c\\x0004\\x000f\uFFFD\\x000f\uFFFD\uFFFD\uFFFD"
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/mission/gtt-ll-amdac/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "fr/nextcloud/s/cm5BSf8J3SwjYR7",
 							"otherinfo": "~\uFFFD\uFFFD{\\x001b\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u071B\uFFFDR\uFFFDwK\\x0008\uFFFDG"
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/subscribe/bluehats@mail.codegouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "5V5Het2qM8GIUD220YRP9Z9xFYcR2MTqAVLKRugtGELRF4OU46Sx0mTZyBG0HBHC441hfrzclXqTYYwt",
+							"otherinfo": "\uFFFD^Gz\u076A3\uFFFD\uFFFDP=\uFFFD\u0444O\uFFFD\uFFFDq\\x0015\uFFFD\\x0011\uFFFD\uFFFD\uFFFD\\x0001R\uFFFDF\uFFFD-\\x0018B\uFFFD\\x0017\uFFFD\uFFFD\u3931\uFFFDd\uFFFD\uFFFD\\x0011\uFFFD\\x001c\\x0011\uFFFD\uFFFDa~\uFFFD\u0715z\uFFFDa\uFFFD-"
+						},
+						{
+							"uri": "https://code.gouv.fr/newsletters/subscribe/logiciels-libres-dsi@mail.codegouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "XZeWsxQgXtTn0Tj/0s+IyZFv+96nILDwUFsFwAQ7C8T02gPc0CrWL/9OFHbwlzV0KW6V6h1Nhg8AvoFd",
+							"otherinfo": "]\uFFFD\uFFFD\uFFFD\\x0014 ^\uFFFD\uFFFD\uFFFD8\uFFFD\uFFFD\u03C8\u0251o\uFFFD\u07A7 \uFFFD\uFFFDP[\\x0005\uFFFD\\x0004;\\x000b\uFFFD\uFFFD\uFFFD\\x0003\uFFFD\uFFFD*\uFFFD/\uFFFDN\\x0014v\uFFFD5t)n\uFFFD\uFFFD\\x001dM\uFFFD\\x000f\\x0000\uFFFD\uFFFD]"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>~\uFFFD\uFFFD\u05BFj\uFFFDbrW\uFFFD\uFFFD\uFFFD\uFFFD\\x0010b\\x0000E24\uFFFDM7\uFFFD\u0377\uFFFD}</p>",
+					"otherinfo": "<p>\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "299"
+					"sourceid": "551"
 				},
 				{
 					"pluginid": "10027",
@@ -1632,7 +1600,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "1389"
+					"sourceid": "1369"
 				},
 				{
 					"pluginid": "10109",
@@ -1677,7 +1645,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/blog/tags/explicabilite/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1685,27 +1653,27 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-contributions-2022/ade4/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">BSOC 2022\u00A0: ade4</a>",
+							"evidence": "<a class=\"fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label\" aria-disabled=\"true\"\n         role=\"link\">\n        Page pr\u00E9c\u00E9dente\n      </a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-contributions-2022/asqatasun/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/rencontre/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">BSOC 2022\u00A0: Asqatasun</a>",
+							"evidence": "<a class=\"fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label\" aria-disabled=\"true\"\n         role=\"link\">\n        Page pr\u00E9c\u00E9dente\n      </a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/bluehats/bsoc-contributions-2022/bokeh/",
+							"uri": "https://code.gouv.fr/fr/mentions-legales/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">BSOC 2022\u00A0: Bokeh</a>",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Mentions l\u00E9gales</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
@@ -1717,28 +1685,28 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/gtt-ll-amdac/",
+							"uri": "https://code.gouv.fr/fr/utiliser/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Groupe de travail logiciels libres pour les AMDAC</a>",
+							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Renforcer le recours aux logiciels libres et aux communs num\u00E9riques</a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Objectifs, engagements et rituels de la mission logiciels libres</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<noscript>\n      <div class=\"fr-container\" style=\"margin: 2em;\">\n\t<h3>No Javascript? No problem.</h3>\n\t<p>We do understand why you might not want to use Javascript.</p>\n\t<p>To access to the data exposed in this website, please refer to <a class=\"fr-link\" href=\"https://git.sr.ht/~codegouvfr/code.gouv.fr\">this repository</a>.</p>\n\t<h3>Pas de Javascript? Pas de souci.</h3>\n\t<p>Nous comprenons bien pourquoi vous ne souhaitez pas utiliser de Javascript.</p>\n\t<p>Pour acc\u00E9der aux donn\u00E9es expos\u00E9es via ce site web, merci de vous r\u00E9f\u00E9rer \u00E0 <a class=\"fr-link\" href=\"https://git.sr.ht/~codegouvfr/code.gouv.fr\">ce d\u00E9p\u00F4t</a>.</p>\n      </div>\n    </noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
+							"uri": "https://code.gouv.fr/sill/add-software",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"fr-breadcrumb__link\" aria-current=\"page\">Offre de services de la mission logiciels libres</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+							"evidence": "<noscript><h3>No Javascript? No problem.</h3><p>We do understand why you might not want to use Javascript.</p><p>To access to the data exposed in this website, please refer to <a href=\"/api/sill.json\">this link</a>.</p><h3>Pas de Javascript? Pas de souci.</h3><p>Nous comprenons bien pourquoi vous ne souhaitez pas utiliser de Javascript.</p><p>Pour acc\u00E9der aux donn\u00E9es expos\u00E9es via ce site web, merci de vous r\u00E9f\u00E9rer \u00E0 <a href=\"/api/sill.json\">ce lien</a>.</p></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						}
 					],
 					"count": "12",
@@ -1768,38 +1736,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/mission/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/en/search-results/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1808,7 +1744,55 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/atelier/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/doc/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1824,23 +1808,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://code.gouv.fr/fr/plan-action-logiciels-libres-et-communs-numeriques/",
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1883,7 +1851,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1891,7 +1859,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/sitemap.xml",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1905,7 +1873,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1926,7 +1894,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1934,7 +1902,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/sitemap.xml",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1948,7 +1916,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1969,7 +1937,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1977,7 +1945,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/sitemap.xml",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1991,7 +1959,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -2012,7 +1980,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/robots.txt",
+							"uri": "https://code.gouv.fr/fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2020,7 +1988,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://code.gouv.fr/sitemap.xml",
+							"uri": "https://code.gouv.fr/fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2034,7 +2002,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "7"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10112",
@@ -2051,7 +2019,7 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "3b378c4a-8a01-4ccf-9b3d-fea3ed372c27",
+							"evidence": "88a79fe7-b43b-4191-861a-2cad0c84fb1e",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
@@ -2059,89 +2027,81 @@
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/demos/catala/assets",
+							"uri": "https://code.gouv.fr/fr/blog/definition-ospo/&quot;&gt;Open",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/demos/catala/dsfr/favicon",
+							"uri": "https://code.gouv.fr/fr/blog/faites-reconnaitre-vos-efforts-dutilisation-de-logiciels-libres/&quot;&gt;notre",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/demos/catala/dsfr/favicon/favicon.svg",
+							"uri": "https://code.gouv.fr/fr/blog/sauvez-la-date-hackathon-bluehats-2024",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/demos/catala/dsfr/fonts",
+							"uri": "https://code.gouv.fr/fr/blog/sauvez-la-date-hackathon-bluehats-2024/&quot;&gt;hackathon",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/demos/catala/dsfr/fonts/Marianne-Bold.woff2",
+							"uri": "https://code.gouv.fr/img/BDnYRFi2A7-1680.png",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/dsfr/fonts/Marianne-Light_Italic.woff2",
+							"uri": "https://code.gouv.fr/img/hBS2GaaIN4-2002.jpeg",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/sill/detail%60;",
+							"uri": "https://code.gouv.fr/img/zPESa7iBON-1208.jpeg&quot;",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						},
 						{
-							"uri": "https://code.gouv.fr/sill/dsfr/dsfr.min.css",
+							"uri": "https://code.gouv.fr/mimo&quot;&gt;code.gouv.fr/mimo&lt;/a&gt;.&lt;",
 							"method": "GET",
 							"param": "ring-session",
 							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
-							"otherinfo": "\ncookie:ring-session"
-						},
-						{
-							"uri": "https://code.gouv.fr/sill/dsfr/favicon/favicon.svg",
-							"method": "GET",
-							"param": "ring-session",
-							"attack": "",
-							"evidence": "4749fadb-d7a8-4d84-a9a2-921fa3319b01",
+							"evidence": "4a06fade-978c-4693-9726-d85ec732a2d1",
 							"otherinfo": "\ncookie:ring-session"
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:ring-session</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "861"
+					"sourceid": "398"
 				},
 				{
 					"pluginid": "10049",
@@ -2155,22 +2115,6 @@
 					"instances":[ 
 						{
 							"uri": "https://code.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://code.gouv.fr/en/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"uri": "https://code.gouv.fr/en/action-plan-for-free-software-and-digital-commons/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2194,7 +2138,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/accessibilite/",
+							"uri": "https://code.gouv.fr/fr/awesome/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2202,7 +2146,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/",
+							"uri": "https://code.gouv.fr/fr/bluehats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2210,7 +2154,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/mission-logiciels-libres-engagements-et-rituels/",
+							"uri": "https://code.gouv.fr/fr/bluehats/prix-bluehats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2218,7 +2162,23 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://code.gouv.fr/fr/mission/offre-de-services/",
+							"uri": "https://code.gouv.fr/fr/bluehats/tags/gazette/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://code.gouv.fr/fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://code.gouv.fr/public/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2248,7 +2208,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "1"
 				}
 			]
 		}
