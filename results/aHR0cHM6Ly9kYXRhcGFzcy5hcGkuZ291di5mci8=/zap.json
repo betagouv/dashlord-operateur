@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 18 Feb 2024 02:34:03",
+	"@generated": "Sun, 25 Feb 2024 02:35:57",
 	"site":[ 
 		{
 			"@name": "https://datapass.api.gouv.fr",
@@ -58,7 +58,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10110",
@@ -71,7 +71,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -130,7 +130,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -166,6 +166,14 @@
 						},
 						{
 							"uri": "https://datapass.api.gouv.fr/%5C%22mailto:datapass@api.gouv.fr?subject=Erreur%2520sur%2520datapass.api.gouv.fr%5C%22",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://datapass.api.gouv.fr/docs/presentation_de_l_api_impot_particulier_v2.5.pdf",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -237,7 +245,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/css/main.c5f78145.css",
+							"uri": "https://datapass.api.gouv.fr/static/css/main.17802e77.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -245,7 +261,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
-					"count": "11",
+					"count": "13",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
@@ -264,7 +280,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"uri": "https://datapass.api.gouv.fr/static/css/main.c5f78145.css",
+							"uri": "https://datapass.api.gouv.fr/static/css/main.17802e77.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -272,7 +288,7 @@
 							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -299,31 +315,31 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "admin",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected 3 times, the first in the element starting with: \"`;return e.push(`Changement ${a} de ${d}${s}${d} en ${d}${c}${d}`),e}const By=e=>(0,qe.chain)(e).omit([\"updated_at\"]).transform(\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected 3 times, the first in the element starting with: \"`;return e.push(`Changement ${a} de ${d}${s}${d} en ${d}${c}${d}`),e}const av=e=>(0,Ve.chain)(e).omit([\"updated_at\"]).transform(\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "administrator",
-							"otherinfo": "The following pattern was used: \\bADMINISTRATOR\\b and was detected in the element starting with: \" 3. \"-\" cannot repeat`);jr.customSchemes.push([e,t])}function KM(){jr.scanner=HM(jr.customSchemes);for(let e=0;e<jr.tokenQueue.l\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bADMINISTRATOR\\b and was detected in the element starting with: \" 3. \"-\" cannot repeat`);Br.customSchemes.push([e,t])}function ZM(){Br.scanner=GM(Br.customSchemes);for(let e=0;e<Br.tokenQueue.l\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "DB",
-							"otherinfo": "The following pattern was used: \\bDB\\b and was detected 5 times, the first in the element starting with: \"***************************************************************************** */var bA=function(e,t){return bA=Object.setPrototy\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected 3 times, the first in the element starting with: \"***************************************************************************** */var CA=function(e,t){return CA=Object.setPrototy\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -331,41 +347,41 @@
 							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected 2 times, the first in the element starting with: \" */R.exports=function(g){return g!=null&&g.constructor!=null&&typeof g.constructor.isBuffer==\"function\"&&g.constructor.isBuffer(\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 28 times, the first in the element starting with: \"`)),E}},2833:function(R){R.exports=L;function L(g){return g}},3491:function(R,L,g){\"use strict\";R.exports=b;var C=g(5435),v=g(28\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 30 times, the first in the element starting with: \"`)),E}},2833:function(R){R.exports=M;function M(g){return g}},3491:function(R,M,g){\"use strict\";R.exports=S;var C=g(5435),v=g(28\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected 3 times, the first in the element starting with: \" */function kt(){return kt=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t]\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected 3 times, the first in the element starting with: \" */function Rt(){return Rt=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t]\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "SELECT",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 3 times, the first in the element starting with: \" */(function(g,C){R.exports=C()})(this,function(){return function(){var L={686:function(v,P,x){\"use strict\";x.d(P,{default:funct\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 3 times, the first in the element starting with: \" */(function(g,C){R.exports=C()})(this,function(){return function(){var M={686:function(v,P,x){\"use strict\";x.d(P,{default:funct\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/js/main.a29f6ee5.js",
+							"uri": "https://datapass.api.gouv.fr/static/js/main.ef84e301.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 4 times, the first in the element starting with: \"Url: ${_o(e)}`),!0)}function ai(e,t){return!t||!t.length?!1:Pi(e).some(n=>t.some(r=>Ft(n,r)))}function Ci(e,t){if(!t||!t.length)\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 4 times, the first in the element starting with: \"Url: ${xo(e)}`),!0)}function si(e,t){return!t||!t.length?!1:Oi(e).some(n=>t.some(r=>Ft(n,r)))}function Pi(e,t){if(!t||!t.length)\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "8",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bADMIN\\b and was detected 3 times, the first in the element starting with: \"`;return e.push(`Changement ${a} de ${d}${s}${d} en ${d}${c}${d}`),e}const By=e=>(0,qe.chain)(e).omit([\"updated_at\"]).transform(\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bADMIN\\b and was detected 3 times, the first in the element starting with: \"`;return e.push(`Changement ${a} de ${d}${s}${d} en ${d}${c}${d}`),e}const av=e=>(0,Ve.chain)(e).omit([\"updated_at\"]).transform(\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
@@ -386,7 +402,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.a29f6ee5.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.ef84e301.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -394,7 +410,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.a29f6ee5.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.ef84e301.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -402,7 +418,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.a29f6ee5.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.ef84e301.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -410,7 +426,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script defer=\"defer\" src=\"/static/js/main.a29f6ee5.js\"></script>",
+							"evidence": "<script defer=\"defer\" src=\"/static/js/main.ef84e301.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -420,7 +436,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -471,7 +487,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -533,17 +549,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -584,17 +592,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -627,31 +627,15 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://datapass.api.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "2",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -686,17 +670,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -763,7 +739,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://datapass.api.gouv.fr/static/css/main.c5f78145.css",
+							"uri": "https://datapass.api.gouv.fr/static/css/main.17802e77.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -777,7 +753,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "24"
+					"sourceid": "25"
 				}
 			]
 		}
