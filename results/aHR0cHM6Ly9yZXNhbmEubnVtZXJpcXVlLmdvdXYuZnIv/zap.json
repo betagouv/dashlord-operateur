@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 25 Feb 2024 01:55:28",
+	"@generated": "Sun, 3 Mar 2024 01:56:46",
 	"site":[ 
 		{
 			"@name": "https://resana.numerique.gouv.fr",
@@ -114,9 +114,41 @@
 							"attack": "",
 							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/utilisateur/verificationEmailUser\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_connexion\" class=\" form-connexion\" action=\"/public/utilisateur\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"bouton_meconnecter\" \"btn_suivant\" \"choix_formule\" \"id_licence\" \"information_id\" \"langue\" \"mail_inscription\" \"new_licence\" \"parsec_password_derive\" \"password\" \"perimetre_id\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"/public/agentConnect/authentication2OpenId\" method=\"POST\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"authentification_password\" ]."
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" id=\"form_passwordoublie\" action=\"/public/utilisateur/demandeReinitialisationMotDePasse\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 4: \"mail_inscription2\" ]."
 						}
 					],
-					"count": "12",
+					"count": "16",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"inscription_spontane\" \"user_mail\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -395,7 +427,7 @@
 					"reference": "<p>https://github.com/twbs/bootstrap/issues/28236</p><p>https://github.com/advisories/GHSA-pj7m-g53m-7638</p><p>https://github.com/twbs/bootstrap/issues/20184</p><p>https://github.com/advisories/GHSA-ph58-4vrj-w6hr</p><p>https://github.com/twbs/bootstrap/issues/20631</p><p>https://github.com/advisories/GHSA-4p24-vmcr-4gqj</p><p>https://github.com/advisories/GHSA-9v3m-8fp8-mj99</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-20676</p><p></p>",
 					"cweid": "829",
 					"wascid": "-1",
-					"sourceid": "95"
+					"sourceid": "98"
 				},
 				{
 					"pluginid": "10054",
@@ -588,7 +620,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "93"
+					"sourceid": "79"
 				},
 				{
 					"pluginid": "10063",
@@ -752,8 +784,8 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1708826122",
-							"otherinfo": "1708826122, which evaluates to: 2024-02-25 01:55:22"
+							"evidence": "1709431000",
+							"otherinfo": "1709431000, which evaluates to: 2024-03-03 01:56:40"
 						}
 					],
 					"count": "5",
@@ -774,6 +806,14 @@
 					"riskdesc": "Informational (Medium)",
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
+						{
+							"uri": "https://resana.numerique.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/public/agentConnect/authentication2OpenId",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
+						},
 						{
 							"uri": "https://resana.numerique.gouv.fr/public/",
 							"method": "GET",
@@ -831,13 +871,13 @@
 							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!"
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD'?j\\x0007\uFFFD\uFFFD*'\uFFFD\uFFFD-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01AD\uFFFD\uFFFD\uFFFD:\uFFFD\uFFFD!</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "20"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -952,7 +992,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "75"
+					"sourceid": "77"
 				},
 				{
 					"pluginid": "10109",
@@ -979,7 +1019,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "65"
+					"sourceid": "67"
 				},
 				{
 					"pluginid": "10049",
@@ -1040,7 +1080,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=cgu",
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1048,7 +1088,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=contact",
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=declaration",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/afficherPageConnexionAnnexe?page=mention_legale",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1056,7 +1104,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1089,7 +1137,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1132,7 +1180,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1175,7 +1223,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1194,9 +1242,25 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1245,7 +1309,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10112",
@@ -1262,7 +1326,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "rgdtbqtuol9mc0iihf9829sc0b",
+							"evidence": "jk1lu3qdumaag61b1ii1t06s6d",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1270,7 +1334,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "6l9fup0rl3kgr4orohd8fa5amj",
+							"evidence": "d5ffai1bofd6nas6hq3cs13k1c",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1278,15 +1342,7 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "78br8phargv8j90rjrkrgebp5b",
-							"otherinfo": "\ncookie:PHPSESSID"
-						},
-						{
-							"uri": "https://resana.numerique.gouv.fr/public/agentConnect",
-							"method": "GET",
-							"param": "PHPSESSID",
-							"attack": "",
-							"evidence": "6l9fup0rl3kgr4orohd8fa5amj",
+							"evidence": "58h2jdnv1qok6unsmeicacfs47",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
@@ -1294,15 +1350,23 @@
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "78br8phargv8j90rjrkrgebp5b",
+							"evidence": "58h2jdnv1qok6unsmeicacfs47",
 							"otherinfo": "\ncookie:PHPSESSID"
 						},
 						{
-							"uri": "https://resana.numerique.gouv.fr/public/fontawesome/css/all.css?ts='1707841509'",
+							"uri": "https://resana.numerique.gouv.fr/public/img/icon",
 							"method": "GET",
 							"param": "PHPSESSID",
 							"attack": "",
-							"evidence": "6l9fup0rl3kgr4orohd8fa5amj",
+							"evidence": "d5ffai1bofd6nas6hq3cs13k1c",
+							"otherinfo": "\ncookie:PHPSESSID"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/demandeReinitialisationMotDePasse",
+							"method": "POST",
+							"param": "PHPSESSID",
+							"attack": "",
+							"evidence": "d5ffai1bofd6nas6hq3cs13k1c",
 							"otherinfo": "\ncookie:PHPSESSID"
 						}
 					],
@@ -1430,9 +1494,49 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur\n\nappears to include user input in: \n\na(n) [p] tag [aria-hidden] attribute \n\nThe user input found was:\nsso_force=true\n\nThe user-controlled value was:\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\n\nappears to include user input in: \n\na(n) [div] tag [aria-hidden] attribute \n\nThe user input found was:\ninscription_spontane=true\n\nThe user-controlled value was:\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\n\nappears to include user input in: \n\na(n) [input] tag [aria-required] attribute \n\nThe user input found was:\ninscription_spontane=true\n\nThe user-controlled value was:\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\n\nappears to include user input in: \n\na(n) [input] tag [readonly] attribute \n\nThe user input found was:\ninscription_spontane=true\n\nThe user-controlled value was:\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\n\nappears to include user input in: \n\na(n) [input] tag [value] attribute \n\nThe user input found was:\ninscription_spontane=true\n\nThe user-controlled value was:\ntrue"
+						},
+						{
+							"uri": "https://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser",
+							"method": "POST",
+							"param": "inscription_spontane",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://resana.numerique.gouv.fr/public/utilisateur/verificationEmailUser\n\nappears to include user input in: \n\na(n) [p] tag [aria-hidden] attribute \n\nThe user input found was:\ninscription_spontane=true\n\nThe user-controlled value was:\ntrue"
 						}
 					],
-					"count": "7",
+					"count": "12",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://resana.numerique.gouv.fr/public/utilisateur</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [input] tag [value] attribute </p><p></p><p>The user input found was:</p><p>mail_inscription=ZAP</p><p></p><p>The user-controlled value was:</p><p>zap</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
