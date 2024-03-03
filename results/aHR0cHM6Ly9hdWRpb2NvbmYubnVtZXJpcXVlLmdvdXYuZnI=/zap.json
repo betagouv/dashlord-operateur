@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 25 Feb 2024 01:38:45",
+	"@generated": "Sun, 3 Mar 2024 01:39:42",
 	"site":[ 
 		{
 			"@name": "https://audioconf.numerique.gouv.fr",
@@ -42,7 +42,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -77,7 +77,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "21"
+					"sourceid": "22"
 				},
 				{
 					"pluginid": "10038",
@@ -144,7 +144,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -211,7 +211,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10011",
@@ -238,7 +238,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10054",
@@ -307,14 +307,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/static/gouvfr/js/dsfr.nomodule.min.js",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "Set-Cookie: sc-sticky-session",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/images/favicon/favicon-16x16.png",
 							"method": "GET",
 							"param": "sc-sticky-session",
@@ -331,7 +323,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/static/remixicon/remixicon.css",
+							"uri": "https://audioconf.numerique.gouv.fr/stats",
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
@@ -339,21 +331,21 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/stats",
-							"method": "GET",
+							"uri": "https://audioconf.numerique.gouv.fr/commencer-authentification",
+							"method": "POST",
 							"param": "sc-sticky-session",
 							"attack": "",
 							"evidence": "Set-Cookie: sc-sticky-session",
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that the SameSite attribute is set to either 'lax' or ideally 'strict' for all cookies.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -489,14 +481,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/questions-frequentes",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -529,14 +513,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/static/gouvfr/js/dsfr.nomodule.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/images/favicon/favicon-16x16.png",
 							"method": "GET",
 							"param": "",
@@ -559,15 +535,23 @@
 							"attack": "",
 							"evidence": "X-Powered-By: Express",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://audioconf.numerique.gouv.fr/commencer-authentification",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10021",
@@ -674,7 +658,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -687,109 +671,93 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"uri": "https://audioconf.numerique.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "3AaeDzwd3HotMWJA0hsxomyvATOSrCInGa",
-							"otherinfo": "\uFFFD\\x0006\uFFFD\\x000f<\\x001d\uFFFDz-1b@\uFFFD\\x001b1\uFFFDl\uFFFD\\x00013\uFFFD\uFFFD\"'\\x0019"
-						},
-						{
-							"uri": "https://audioconf.numerique.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "3AhfPJY4W35M2MTLaaPnUciWvNatSavZQD",
-							"otherinfo": "\uFFFD\\x0008_<\uFFFD8[~L\uFFFD\uFFFD\uFFFDi\uFFFD\uFFFDQ\u0216\uFFFD\u05ADI\uFFFD\uFFFD@"
-						},
-						{
-							"uri": "https://audioconf.numerique.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
-						},
-						{
 							"uri": "https://audioconf.numerique.gouv.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
+						},
+						{
+							"uri": "https://audioconf.numerique.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/questions-frequentes",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/css/custom.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
-						},
-						{
-							"uri": "https://audioconf.numerique.gouv.fr/static/gouvfr/js/dsfr.module.min.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/images/favicon/favicon-16x16.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/images/favicon/favicon-32x32.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
 						},
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFD\uFFFDn?\uFFFD\uFFFD{=S\u0131\uA228\uFFFD\t\uFFFD\uFFFDRz^\\x0006Mh\\x000b\uFFFD\uFFFD\\x0002\nlCd\uFFFD:\\x0016\u02B4\uFFFD\u03F2%\\x0005+\\x0019}Y\uFFFD\uFFFDW"
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "<{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO"
+						},
+						{
+							"uri": "https://audioconf.numerique.gouv.fr/commencer-authentification",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "8UVTABfdlcOQLOLZ1w-YWkAZVa63II1aQ-VYraZgbTTCZEhv_TRCReYVBcwnzZbVVXXqDuPxOi0fB_NDZWndxDf6vzQagUU1lW39LapQQ6jU0L7QYmvqdRGUQlR_h5vTZblt5jm4mr7_Aw28ow6ypXTt0P6GvFIDQv5p5_byFLc",
+							"otherinfo": "\uFFFDES\\x0000\\x0017\u0755\u00D0,\uFFFD\uFFFD\uFFFD\\x000f\uFFFDZ@\\x0019U\uFFFD\uFFFD \uFFFDZC\uFFFDX\uFFFD\uFFFD`m4\uFFFDdHo\uFFFD4BE\uFFFD\\x0015\\x0005\uFFFD'\u0356\uFFFDUu\uFFFD\\x000e\uFFFD\uFFFD:-\\x001f\\x0007\uFFFDCei\uFFFD\uFFFD7\uFFFD\uFFFD4\\x001a\uFFFDE5\uFFFDm\uFFFD-\uFFFDPC\uFFFD\uFFFD\u043E\uFFFDbk\uFFFDu\\x0011\uFFFDBT\uFFFD\uFFFD\uFFFDe\uFFFDm\uFFFD9\uFFFD\uFFFD\uFFFD\uFFFD\\x0003\r\uFFFD\uFFFD\\x000e\uFFFD\uFFFDt\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR\\x0003B\uFFFDi\uFFFD\uFFFD\uFFFD\\x0014\uFFFD"
 						}
 					],
-					"count": "12",
+					"count": "10",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0006\uFFFD\\x000f<\\x001d\uFFFDz-1b@\uFFFD\\x001b1\uFFFDl\uFFFD\\x00013\uFFFD\uFFFD\"'\\x0019</p>",
+					"otherinfo": "<p><{\\x0019>\uFFFD\uFFFD\\x0004\\x000fK\\x00141\uFFFDx\\x001e\\x001a\uFFFDd\uFFFDX\u0697\uFFFD\uFFFD3k\uFFFD\uFFFDO\uFFFD\uFFFDRd\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD9\uFFFD \\x0008E\uFFFD\uFFFDB\uFFFD0_}\uFFFD\uFFFD''\u01A5\uFFFD\\\uFFFDA[\"\uFFFDO</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "30"
 				},
 				{
 					"pluginid": "10027",
@@ -888,7 +856,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -955,7 +923,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -984,7 +952,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
+							"uri": "https://audioconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1027,7 +995,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
+							"uri": "https://audioconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1041,7 +1009,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1070,7 +1038,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
+							"uri": "https://audioconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1084,7 +1052,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1113,7 +1081,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://audioconf.numerique.gouv.fr/robots.txt",
+							"uri": "https://audioconf.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1127,7 +1095,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10112",
@@ -1144,7 +1112,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AaeDzwd3HotMWJA0hsxomyvATOSrCInGa.jHiC2teRzWb3HMy762ThMmLHSARlzcaFf426LiG1o9w",
+							"evidence": "s%3AOIDct0WIXsfNV_ktcX4KWT88XTTNwdGC.Iz%2FkGJpOcvc4ILZHuMk9GHvtgZz1befHn8j2zTWk59A",
 							"otherinfo": "\ncookie:connect.sid\ncookie:sc-sticky-session"
 						},
 						{
@@ -1152,7 +1120,7 @@
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AhfPJY4W35M2MTLaaPnUciWvNatSavZQD.8qETbT%2BZCRxB97xg6B4LPFA%2BFV8GV1IEuaBhhLPaj3o",
+							"evidence": "s%3AxFpdRC5p62NL-PgUTgba0hbEzGIo-PUK.Cq0E6BbrTF96YhVRrlAgPGPg2rhT5YngvgmIqwVNQpc",
 							"otherinfo": "\ncookie:connect.sid\ncookie:sc-sticky-session"
 						},
 						{
@@ -1160,7 +1128,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1168,15 +1136,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
-							"otherinfo": "\ncookie:sc-sticky-session"
-						},
-						{
-							"uri": "https://audioconf.numerique.gouv.fr/questions-frequentes",
-							"method": "GET",
-							"param": "sc-sticky-session",
-							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1184,7 +1144,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1192,7 +1152,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1200,7 +1160,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1208,7 +1168,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1216,7 +1176,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1224,7 +1184,7 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						},
 						{
@@ -1232,7 +1192,15 @@
 							"method": "GET",
 							"param": "sc-sticky-session",
 							"attack": "",
-							"evidence": "PHsZPr/nBA9LFDHxeB4ah4RuP/PYez1TxLHqiKjqCa/MUnpeBk1oC5TCAgpsQ2S0OhbKtKTPsiUFKxl9WYCZVw==",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
+							"otherinfo": "\ncookie:sc-sticky-session"
+						},
+						{
+							"uri": "https://audioconf.numerique.gouv.fr/commencer-authentification",
+							"method": "POST",
+							"param": "sc-sticky-session",
+							"attack": "",
+							"evidence": "PHsZPr/nBA9LFDHxeB4ah2SSWNqXx8Uza6XNT5uZUmTH7OTSE+g5ySAIRbTAQu8wX32isCcnxqXZXMVBWyLLTw==",
 							"otherinfo": "\ncookie:sc-sticky-session"
 						}
 					],
@@ -1242,7 +1210,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1279,6 +1247,14 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
+							"uri": "https://audioconf.numerique.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
 							"uri": "https://audioconf.numerique.gouv.fr/questions-frequentes",
 							"method": "GET",
 							"param": "",
@@ -1311,13 +1287,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "7",
+					"count": "8",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -1331,14 +1307,6 @@
 					"instances":[ 
 						{
 							"uri": "https://audioconf.numerique.gouv.fr/static/css/custom.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://audioconf.numerique.gouv.fr/static/gouvfr/js/dsfr.module.min.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1362,7 +1330,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
