@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 25 Feb 2024 01:07:16",
+	"@generated": "Sun, 3 Mar 2024 01:06:25",
 	"site":[ 
 		{
 			"@name": "https://auth.agentconnect.gouv.fr",
@@ -28,7 +28,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -36,7 +36,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nfont-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -71,7 +71,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -79,7 +79,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -114,7 +114,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -122,7 +122,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -187,9 +187,17 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -280,6 +288,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://auth.agentconnect.gouv.fr/img/default-error.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://auth.agentconnect.gouv.fr/img/fca-logo.svg",
 							"method": "GET",
 							"param": "",
@@ -296,13 +312,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Ensure that only one component in your stack: code, web server, application server, load balancer, etc. is configured to set or add a HTTP Strict-Transport-Security (HSTS) header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc6797#section-8.1</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "24"
+					"sourceid": "22"
 				},
 				{
 					"pluginid": "10094",
@@ -329,7 +345,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "37"
+					"sourceid": "42"
 				},
 				{
 					"pluginid": "10027",
@@ -356,7 +372,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "34"
+					"sourceid": "41"
 				},
 				{
 					"pluginid": "10109",
@@ -399,9 +415,17 @@
 							"attack": "",
 							"evidence": "<a role=\"link\" aria-disabled=\"true\" title=\"Retour \u00E0 l\u2019accueil du site\">\n                <p class=\"fr-logo\">\n                  R\u00E9publique\n                  <br>Fran\u00E7aise\n                </p>\n              </a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a role=\"link\" aria-disabled=\"true\" title=\"Retour \u00E0 l\u2019accueil du site\">\n                <p class=\"fr-logo\">\n                  R\u00E9publique\n                  <br>Fran\u00E7aise\n                </p>\n              </a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -442,7 +466,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "33"
+					"sourceid": "35"
 				},
 				{
 					"pluginid": "90005",
@@ -463,7 +487,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.fc.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -514,7 +538,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.fc.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -565,7 +589,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.fc.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -616,7 +640,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
+							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.fc.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -667,23 +691,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://auth.agentconnect.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
 							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.fc.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=3600",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://auth.agentconnect.gouv.fr/css/dsfr.sticky-footer.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -731,6 +739,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://auth.agentconnect.gouv.fr/favicon/manifest.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=3600",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://auth.agentconnect.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -740,6 +756,14 @@
 						},
 						{
 							"uri": "https://auth.agentconnect.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://auth.agentconnect.gouv.fr/utility/icons.min.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
