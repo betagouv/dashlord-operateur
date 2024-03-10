@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 3 Mar 2024 02:26:51",
+	"@generated": "Sun, 10 Mar 2024 02:17:34",
 	"site":[ 
 		{
 			"@name": "https://www.hubee.numerique.gouv.fr",
@@ -42,7 +42,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "58"
+					"sourceid": "56"
 				},
 				{
 					"pluginid": "10055",
@@ -117,7 +117,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "71"
+					"sourceid": "73"
 				},
 				{
 					"pluginid": "10038",
@@ -326,7 +326,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "45"
 				},
 				{
 					"pluginid": "10017",
@@ -353,7 +353,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "47"
+					"sourceid": "45"
 				},
 				{
 					"pluginid": "10063",
@@ -430,7 +430,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
+							"uri": "https://www.hubee.numerique.gouv.fr/segment-1/segme",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -438,7 +438,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/statistiques",
+							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -481,7 +481,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
+							"uri": "https://www.hubee.numerique.gouv.fr/aide",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -489,7 +489,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.nomodule.min.js.map",
+							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -604,14 +604,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.module.min.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://www.hubee.numerique.gouv.fr/favicon/apple-touch-icon.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -661,6 +653,14 @@
 						},
 						{
 							"uri": "https://www.hubee.numerique.gouv.fr/img/medecin.jpg",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/utility.min.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -802,6 +802,14 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"const e=new class{constructor(){this.modules={}}create(e){const t=new e;this.modules[t.type]=t}getModule(e){return this.modules[\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/dsfr.nomodule.min.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){\"use strict\";var t=function(){this.modules={}},e={isActive:{configurable:!0},isLegacy:{configurable:!0}};t.prototype\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/fonctionnement",
 							"method": "GET",
 							"param": "",
@@ -842,6 +850,14 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 4 times, the first in the element starting with: \"        // some user agents have empty `location.port`\", see evidence field for the suspicious comment/snippet."
 						},
 						{
+							"uri": "https://www.hubee.numerique.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>\r\n        const socket = io();\r\n\r\n        socket.on('nbConnectedUsers', function (nbConnectedUsers) {\r\n            docum\", see evidence field for the suspicious comment/snippet."
+						},
+						{
 							"uri": "https://www.hubee.numerique.gouv.fr/statuts",
 							"method": "GET",
 							"param": "",
@@ -856,9 +872,17 @@
 							"attack": "",
 							"evidence": "select",
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>\r\n        const socket = io();\r\n\r\n        socket.on('nbConnectedUsers', function (nbConnectedUsers) {\r\n            docum\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://www.hubee.numerique.gouv.fr/thematique-2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script>\r\n        const socket = io();\r\n\r\n        socket.on('nbConnectedUsers', function (nbConnectedUsers) {\r\n            docum\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "14",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"<script></p><p>        const socket = io();</p><p></p><p>        socket.on('nbConnectedUsers', function (nbConnectedUsers) {</p><p>            docum\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1075,7 +1099,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
+							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1083,7 +1107,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
+							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1118,7 +1142,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
+							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1126,7 +1150,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
+							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1161,7 +1185,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
+							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1169,7 +1193,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
+							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1204,7 +1228,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/datapass",
+							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1212,7 +1236,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://www.hubee.numerique.gouv.fr/robots.txt",
+							"uri": "https://www.hubee.numerique.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
