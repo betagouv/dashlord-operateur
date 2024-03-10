@@ -1,0 +1,791 @@
+[
+  [
+    {
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
+      "info": {
+        "name": "MX Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "mx"
+        ],
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
+        "reference": [
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "osmose.numerique.gouv.fr.",
+      "matched-at": "osmose.numerique.gouv.fr",
+      "extracted-results": [
+        "10 mx01.xsalto.net.",
+        "20 mx02.xsalto.net."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 46185\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 46185\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nosmose.numerique.gouv.fr.\t3600\tIN\tMX\t10 mx01.xsalto.net.\nosmose.numerique.gouv.fr.\t3600\tIN\tMX\t20 mx02.xsalto.net.\n",
+      "timestamp": "2024-03-10T01:57:18.008920165Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "osmose.numerique.gouv.fr.",
+      "matched-at": "osmose.numerique.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 21621\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 21621\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nnumerique.gouv.fr.\t1800\tIN\tSOA\ta.ns.developpement-durable.gouv.fr. gestiondns.equipement.gouv.fr. 2024022800 14400 3600 3000000 3600\n",
+      "timestamp": "2024-03-10T01:57:18.921813081Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "osmose.numerique.gouv.fr.",
+      "matched-at": "osmose.numerique.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 include:spf.xsalto.com include:spf.akio.cloud ~all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 49437\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 49437\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;osmose.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nosmose.numerique.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 include:spf.xsalto.com include:spf.akio.cloud ~all\"\n",
+      "timestamp": "2024-03-10T01:57:19.104219783Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/options-method.yaml",
+      "template-url": "https://templates.nuclei.sh/public/options-method",
+      "template-id": "options-method",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/options-method.yaml",
+      "info": {
+        "name": "Allowed Options Method",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "miscellaneous",
+          "misc",
+          "generic"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "extracted-results": [
+        "GET,POST,OPTIONS,HEAD"
+      ],
+      "request": "OPTIONS / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nAllow: GET,POST,OPTIONS,HEAD\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:57:24 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\nContent-Length: 0\r\n\r\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:57:25.008278148Z",
+      "curl-command": "curl -X 'OPTIONS' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/xss-deprecated-header.yaml",
+      "template-url": "https://templates.nuclei.sh/public/xss-deprecated-header",
+      "template-id": "xss-deprecated-header",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/xss-deprecated-header.yaml",
+      "info": {
+        "name": "XSS-Protection Header - Cross-Site Scripting",
+        "author": [
+          "joshlarsen"
+        ],
+        "tags": [
+          "xss",
+          "misconfig",
+          "generic"
+        ],
+        "description": "Setting the XSS-Protection header is deprecated. Setting the header to anything other than `0` can actually introduce an XSS vulnerability.",
+        "reference": [
+          "https://developer.mozilla.org/en-us/docs/web/http/headers/x-xss-protection",
+          "https://owasp.org/www-project-secure-headers/#x-xss-protection"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": null,
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "extracted-results": [
+        "1"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:57:29 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:57:29.855951928Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/metatag-cms.yaml",
+      "template-url": "https://templates.nuclei.sh/public/metatag-cms",
+      "template-id": "metatag-cms",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/metatag-cms.yaml",
+      "info": {
+        "name": "Metatag CMS Detection",
+        "author": [
+          "dadevel"
+        ],
+        "tags": [
+          "tech",
+          "cms"
+        ],
+        "description": "Generic CMS Detection using html meta generator tag",
+        "reference": [
+          "https://www.w3schools.com/tags/att_meta_name.asp"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "extracted-results": [
+        "Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:57:54 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:57:55.159951358Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/exposed-panels/jcms-panel.yaml",
+      "template-url": "https://templates.nuclei.sh/public/jalios-jcms-panel",
+      "template-id": "jalios-jcms-panel",
+      "template-path": "/home/runner/nuclei-templates/http/exposed-panels/jcms-panel.yaml",
+      "info": {
+        "name": "Jalios JCMS Login Panel - Detect",
+        "author": [
+          "righettod"
+        ],
+        "tags": [
+          "panel",
+          "jalios",
+          "jcms"
+        ],
+        "description": "Jalios JCMS login panel was detected.",
+        "reference": [
+          "https://www.jalios.com/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 2,
+          "product": "jcms",
+          "shodan-query": "html:\"Jalios JCMS\"",
+          "vendor": "jalios",
+          "verified": true
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:57:59 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:57:59.529829592Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.39767586Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397760083Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397798304Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397813071Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397826817Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397840853Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397854759Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 10 Mar 2024 01:58:04 GMT\r\nLast-Modified: Thu, 03 Aug 2023 15:56:48 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n<!DOCTYPE html>\n<html lang=\"fr\" xml:lang=\"fr\" dir=\"ltr\">\n<head>\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <meta name=\"robots\" content=\"noindex\">\n  <meta name=\"Generator\" content=\"Jalios JCMS - Copyright (C) Jalios S.A. 2001 - 2020 - https://www.jalios.com/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>OSMOSE - Maintenance en cours</title>\n  <link rel=\"stylesheet\" href=\"/pack1.css\" media=\"all\">\n  <link rel=\"stylesheet\" href=\"/pack2.css\" media=\"all\">\n  <link rel=\"shortcut icon\" href=\"/favicon.png\">\n  <meta property=\"og:title\" content=\"Maintenance\">\n  <meta property=\"og:site_name\" content=\"OSMOSE\">\n</head>\n<body class=\"agora agoraCustom agora-default agora-login-logo inFO agora-custom-styles private-login-no-channel-name body site-osmose zone_Public\">\n\n<a id=\"top\" style=\"display:block;\"></a>\n\n<div class=\"dinum-login-page\">\n \n  <div class=\"dinum-header\">\n    <img src=\"/login-logo.png\" alt=\"Marianne République Française Logo Osmose\">\n  </div>\n\n  <div class=\"authentication private-login has-custom-header has-custom-footer has-target-content\" style=\"background-image: url(&#39;/login-background.png&#39;)\">\n    <div class=\"login-panel well\">\n      \n         <h2 class=\"baseline\">La plateforme collaborative des <br> communautés professionnelles de l’État</h2>\n\n        \n      <hr>\n       <div class=\"box-content\">\n\t   \n<h1>Site en cours de maintenance</h1>\n<p>Le service OSMOSE est actuellement arrêté pour une opération de maintenance.</p>\n<p>Le service sera bientôt de nouveau opérationnel.</p>\n<p>Nous vous remercions pour votre compréhension.</p>\n<p>L'équipe produit OSMOSE de la DINUM</p>\n\t   \n\t   </div>\n      <hr>\n     \n        \n        <div class=\"custom-footer\"><div class=\"wysiwyg\">\n <p style=\"text-align: left;\">Pour rejoindre OSMOSE, contacter un animateur de communauté ou à défaut, écrire à :</p> \n <p style=\"text-align: left;\"><a href=\"mailto:contact@osmose.numerique.fr\">contact@osmose.numerique.gouv.fr</a></p> \n <p style=\"text-align: center;\">&nbsp;</p> \n <p style=\"text-align: center;\"><em>Un service proposé par la direction interministérielle du numérique (DINUM).</em></p>\n</div>\n</div>\n\n\n    </div>\n  </div>\n\n  <div class=\"dinum-footer\">\n    \n      <div class=\"dinum-footer-inner\">\n\n        <div class=\"footer-column about-column\">\n          \n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">osmose.numerique.gouv.fr</span></h3> \n <p>Un service proposé par la <a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/dinum/\" target=\"_blank\" rel=\"noopener\">direction interministérielle du numérique (DINUM)</a></p>\n</div>\n          \n        </div>\n<!--\n        <div class=\"footer-column menu-column\">\n          <ul>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251949\">Contact</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251950\">A propos</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251951\">Accessibilité</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251952\">Mentions légales</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251953\">Données personnelles</a></li>\n                <li><a href=\"https://osmose.numerique.gouv.fr/plugins/DINUMThemePlugin/jsp/displayPage.jsp?id=c_2251954\">Conditions générales d'utilisation</a></li>\n          </ul>\n        </div>\n-->\n        <div class=\"footer-column external-link-column\">\n          <div class=\"wysiwyg\">\n <h3><span style=\"color: #ffffff;\">Les sites publics</span></h3> \n <p><a style=\"color: #ffffff;\" href=\"https://www.elysee.fr/\" target=\"_blank\" rel=\"noopener\">elysee.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.data.gouv.fr/\" target=\"_blank\" rel=\"noopener\">data.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.service-public.fr/\" target=\"_blank\" rel=\"noopener\">service-public.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.gouvernement.fr/\" target=\"_blank\" rel=\"noopener\">gouvernement.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.legifrance.gouv.fr/\" target=\"_blank\" rel=\"noopener\">legifrance.gouv.fr</a></p> \n <p><a style=\"color: #ffffff;\" href=\"https://www.numerique.gouv.fr/\" target=\"_blank\" rel=\"noopener\">numerique.gouv.fr</a></p>\n</div>\n        </div>\n      </div>\n    \n  </div>\n\n</div>\n\n</body>\n</html>\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:04.397874796Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/security-txt.yaml",
+      "template-url": "https://templates.nuclei.sh/public/security-txt",
+      "template-id": "security-txt",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/security-txt.yaml",
+      "info": {
+        "name": "security.txt File",
+        "author": [
+          "bad5ect0r",
+          "noraj"
+        ],
+        "tags": [
+          "miscellaneous",
+          "misc",
+          "generic"
+        ],
+        "description": "File similar to robots.txt but intended to be read by humans wishing to contact a website’s owner about security issues. Often defines a security policy and contact details.\n",
+        "reference": [
+          "https://securitytxt.org/",
+          "https://community.turgensec.com/security-txt-progress-in-ethical-security-research/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 2,
+          "shodan-query": "http.securitytxt:contact http.status:200",
+          "verified": true
+        }
+      },
+      "type": "http",
+      "host": "https://osmose.numerique.gouv.fr/",
+      "matched-at": "https://osmose.numerique.gouv.fr/.well-known/security.txt",
+      "extracted-results": [
+        " https://www.jalios.com/jcms/reel_5010/en/contact-us"
+      ],
+      "request": "GET /.well-known/security.txt HTTP/1.1\r\nHost: osmose.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 137\r\nAccept-Ranges: bytes\r\nContent-Type: text/plain\r\nDate: Sun, 10 Mar 2024 01:58:14 GMT\r\nLast-Modified: Tue, 21 Apr 2020 11:24:28 GMT\r\nReferrer-Policy: strict-origin\r\nStrict-Transport-Security: max-age=31536000; includeSubdomains; preload\r\nX-Content-Type-Options: nosniff\r\nX-Xss-Protection: 1\r\n\r\n# If you would like to report a security issue\nContact: https://www.jalios.com/jcms/reel_5010/en/contact-us\nmailto: security@jalios.com\n\n",
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T01:58:14.274420628Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://osmose.numerique.gouv.fr/.well-known/security.txt'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "osmose.numerique.gouv.fr",
+      "matched-at": "osmose.numerique.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T02:00:09.819869269Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "osmose.numerique.gouv.fr",
+      "matched-at": "osmose.numerique.gouv.fr:443",
+      "extracted-results": [
+        "*.osmose.numerique.gouv.fr",
+        "osmose.numerique.gouv.fr"
+      ],
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T02:00:09.819986365Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/wildcard-tls.yaml",
+      "template-url": "https://templates.nuclei.sh/public/wildcard-tls",
+      "template-id": "wildcard-tls",
+      "template-path": "/home/runner/nuclei-templates/ssl/wildcard-tls.yaml",
+      "info": {
+        "name": "Wildcard TLS Certificate",
+        "author": [
+          "lucky0x0d"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "wildcard"
+        ],
+        "description": "Checks a sites certificate to see if there are wildcard CN or SAN entries.\n",
+        "reference": [
+          "https://cheatsheetseries.owasp.org/cheatsheets/transport_layer_protection_cheat_sheet.html#carefully-consider-the-use-of-wildcard-certificates"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "osmose.numerique.gouv.fr",
+      "matched-at": "osmose.numerique.gouv.fr:443",
+      "extracted-results": [
+        " SAN: [*.osmose.numerique.gouv.fr osmose.numerique.gouv.fr]",
+        "CN: *.osmose.numerique.gouv.fr"
+      ],
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T02:00:09.820035717Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "osmose.numerique.gouv.fr",
+      "matched-at": "osmose.numerique.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T02:00:10.339835951Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "osmose.numerique.gouv.fr",
+      "matched-at": "osmose.numerique.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "148.253.96.234",
+      "timestamp": "2024-03-10T02:00:11.230372917Z",
+      "matcher-status": true
+    }
+  ]
+]
