@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 31 Mar 2024 03:22:05",
+	"@generated": "Sun, 7 Apr 2024 03:20:24",
 	"site":[ 
 		{
 			"@name": "https://app.dvf.etalab.gouv.fr",
@@ -58,7 +58,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10020",
@@ -77,17 +77,9 @@
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
@@ -184,9 +176,57 @@
 							"attack": "",
 							"evidence": "<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>",
+							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "16",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
@@ -259,9 +299,41 @@
 							"attack": "",
 							"evidence": "<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "https://cdn.jsdelivr.net/momentjs/latest/moment.min.js",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "https://unpkg.com/lodash@4.17.11/lodash.min.js",
+							"attack": "",
+							"evidence": "<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>",
+							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "11",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
@@ -457,7 +529,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -492,7 +564,7 @@
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10021",
@@ -514,6 +586,14 @@
 						},
 						{
 							"uri": "https://app.dvf.etalab.gouv.fr/css/app.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://app.dvf.etalab.gouv.fr/css/app.css?version=11",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -553,14 +633,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://app.dvf.etalab.gouv.fr/images/preview-vector.png",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://app.dvf.etalab.gouv.fr/js/component.boite-accordeon.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -585,14 +657,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://app.dvf.etalab.gouv.fr/js/index.js?v=3",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://app.dvf.etalab.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -601,7 +665,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
 					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
@@ -642,7 +706,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -669,7 +733,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "31"
+					"sourceid": "32"
 				},
 				{
 					"pluginid": "10109",
@@ -696,7 +760,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10015",
@@ -739,7 +803,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -760,6 +824,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.dvf.etalab.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -768,7 +840,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -795,6 +867,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.dvf.etalab.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -803,7 +883,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -830,6 +910,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.dvf.etalab.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -838,13 +926,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -865,6 +953,14 @@
 							"otherinfo": ""
 						},
 						{
+							"uri": "https://app.dvf.etalab.gouv.fr/faq.html",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"uri": "https://app.dvf.etalab.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -873,7 +969,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -932,7 +1028,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"uri": "https://app.dvf.etalab.gouv.fr/images/preview-vector.png",
+							"uri": "https://app.dvf.etalab.gouv.fr/images/preview-ortho.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
