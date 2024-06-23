@@ -1,0 +1,41 @@
+[
+  [
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "www.authentification.beta.gouv.fr.",
+      "matched-at": "www.authentification.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 15981\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NXDOMAIN, id: 15981\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;www.authentification.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nbeta.gouv.fr.\t300\tIN\tSOA\tdns18.ovh.net. tech.ovh.net. 2024061900 86400 3600 3600000 300\n",
+      "timestamp": "2024-06-23T01:39:33.917541981Z",
+      "matcher-status": true
+    }
+  ]
+]
