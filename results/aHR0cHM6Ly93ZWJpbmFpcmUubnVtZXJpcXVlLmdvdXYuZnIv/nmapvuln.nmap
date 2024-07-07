@@ -1,44 +1,182 @@
-# Nmap 7.92 scan initiated Sun Jun 30 01:51:55 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln webinaire.numerique.gouv.fr
+# Nmap 7.92 scan initiated Sun Jul  7 01:54:58 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln webinaire.numerique.gouv.fr
 Nmap scan report for webinaire.numerique.gouv.fr (51.15.207.28)
-Host is up (0.089s latency).
+Host is up (0.16s latency).
 Not shown: 995 closed tcp ports (reset)
-PORT     STATE    SERVICE   VERSION
-22/tcp   open     ssh       OpenSSH 7.9p1 Debian 10+deb10u4 (protocol 2.0)
-| vulners: 
-|   cpe:/a:openbsd:openssh:7.9p1: 
-|     	CVE-2023-38408	9.8	https://vulners.com/cve/CVE-2023-38408
-|     	B8190CDB-3EB9-5631-9828-8064A1575B23	9.8	https://vulners.com/githubexploit/B8190CDB-3EB9-5631-9828-8064A1575B23	*EXPLOIT*
-|     	8FC9C5AB-3968-5F3C-825E-E8DB5379A623	9.8	https://vulners.com/githubexploit/8FC9C5AB-3968-5F3C-825E-E8DB5379A623	*EXPLOIT*
-|     	CVE-2020-15778	7.8	https://vulners.com/cve/CVE-2020-15778
-|     	CVE-2019-16905	7.8	https://vulners.com/cve/CVE-2019-16905
-|     	SSV:92579	7.5	https://vulners.com/seebug/SSV:92579	*EXPLOIT*
-|     	PACKETSTORM:173661	7.5	https://vulners.com/packetstorm/PACKETSTORM:173661	*EXPLOIT*
-|     	F0979183-AE88-53B4-86CF-3AF0523F3807	7.5	https://vulners.com/githubexploit/F0979183-AE88-53B4-86CF-3AF0523F3807	*EXPLOIT*
-|     	1337DAY-ID-26576	7.5	https://vulners.com/zdt/1337DAY-ID-26576	*EXPLOIT*
-|     	CVE-2021-41617	7.0	https://vulners.com/cve/CVE-2021-41617
-|     	EDB-ID:46516	6.8	https://vulners.com/exploitdb/EDB-ID:46516	*EXPLOIT*
-|     	EDB-ID:46193	6.8	https://vulners.com/exploitdb/EDB-ID:46193	*EXPLOIT*
-|     	CVE-2019-6110	6.8	https://vulners.com/cve/CVE-2019-6110
-|     	CVE-2019-6109	6.8	https://vulners.com/cve/CVE-2019-6109
-|     	C94132FD-1FA5-5342-B6EE-0DAF45EEFFE3	6.8	https://vulners.com/githubexploit/C94132FD-1FA5-5342-B6EE-0DAF45EEFFE3	*EXPLOIT*
-|     	10213DBE-F683-58BB-B6D3-353173626207	6.8	https://vulners.com/githubexploit/10213DBE-F683-58BB-B6D3-353173626207	*EXPLOIT*
-|     	CVE-2023-51385	6.5	https://vulners.com/cve/CVE-2023-51385
-|     	CVE-2023-48795	5.9	https://vulners.com/cve/CVE-2023-48795
-|     	CVE-2020-14145	5.9	https://vulners.com/cve/CVE-2020-14145
-|     	CVE-2019-6111	5.9	https://vulners.com/cve/CVE-2019-6111
-|     	EXPLOITPACK:98FE96309F9524B8C84C508837551A19	5.8	https://vulners.com/exploitpack/EXPLOITPACK:98FE96309F9524B8C84C508837551A19	*EXPLOIT*
-|     	EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97	5.8	https://vulners.com/exploitpack/EXPLOITPACK:5330EA02EBDE345BFC9D6DDDD97F9E97	*EXPLOIT*
-|     	1337DAY-ID-32328	5.8	https://vulners.com/zdt/1337DAY-ID-32328	*EXPLOIT*
-|     	1337DAY-ID-32009	5.8	https://vulners.com/zdt/1337DAY-ID-32009	*EXPLOIT*
-|     	CVE-2018-20685	5.3	https://vulners.com/cve/CVE-2018-20685
-|     	CVE-2016-20012	5.3	https://vulners.com/cve/CVE-2016-20012
-|     	PACKETSTORM:151227	0.0	https://vulners.com/packetstorm/PACKETSTORM:151227	*EXPLOIT*
-|_    	PACKETSTORM:140261	0.0	https://vulners.com/packetstorm/PACKETSTORM:140261	*EXPLOIT*
-80/tcp   open     http      nginx
-443/tcp  open     ssl/http  nginx
-5000/tcp filtered upnp
-8443/tcp filtered https-alt
-Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+PORT     STATE    SERVICE       VERSION
+22/tcp   filtered ssh
+80/tcp   open     http          nginx
+443/tcp  open     ssl/http      nginx
+5000/tcp open     upnp?
+| fingerprint-strings: 
+|   GenericLines: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 193
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid Request Line &#x27;Invalid HTTP request line: &#x27;&#x27;&#x27;
+|     </body>
+|     </html>
+|   GetRequest: 
+|     HTTP/1.0 302 FOUND
+|     Server: gunicorn
+|     Date: Sun, 07 Jul 2024 01:55:08 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Content-Length: 197
+|     Location: /home
+|     Vary: Cookie
+|     Set-Cookie: session=eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.Zon1fA.ew8lxHc__8Qs2I5HN-BuDj-sazo; HttpOnly; Path=/
+|     <!doctype html>
+|     <html lang=en>
+|     <title>Redirecting...</title>
+|     <h1>Redirecting...</h1>
+|     <p>You should be redirected automatically to the target URL: <a href="/home">/home</a>. If not, click the link.
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Server: gunicorn
+|     Date: Sun, 07 Jul 2024 01:55:24 GMT
+|     Connection: close
+|     Content-Type: text/html; charset=utf-8
+|     Allow: HEAD, OPTIONS, GET
+|     Content-Length: 0
+|   Help: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 197
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid Request Line &#x27;Invalid HTTP request line: &#x27;HELP&#x27;&#x27;
+|     </body>
+|     </html>
+|   RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Connection: close
+|     Content-Type: text/html
+|     Content-Length: 196
+|     <html>
+|     <head>
+|     <title>Bad Request</title>
+|     </head>
+|     <body>
+|     <h1><p>Bad Request</p></h1>
+|     Invalid HTTP Version &#x27;Invalid HTTP Version: &#x27;RTSP/1.0&#x27;&#x27;
+|     </body>
+|_    </html>
+8443/tcp open     ssl/https-alt
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 404 Not Found
+|     Connection: close
+|     Content-Length: 74
+|     Content-Type: text/html
+|     Date: Sun, 07 Jul 2024 01:55:16 GMT
+|     <html><head><title>Error</title></head><body>404 - Not Found</body></html>
+|   GetRequest: 
+|     HTTP/1.1 200 OK
+|     Connection: close
+|     Last-Modified: Tue, 25 Jan 2022 09:09:53 GMT
+|     Content-Length: 1087
+|     Content-Type: text/html
+|     Accept-Ranges: bytes
+|     Date: Sun, 07 Jul 2024 01:55:15 GMT
+|     <!--
+|     Copyright 2016 Red Hat, Inc. and/or its affiliates
+|     other contributors as indicated by the @author tags.
+|     Licensed under the Apache License, Version 2.0 (the "License");
+|     this file except in compliance with the License.
+|     obtain a copy of the License at
+|     http://www.apache.org/licenses/LICENSE-2.0
+|     Unless required by applicable law or agreed to in writing, software
+|     distributed under the License is distributed on an "AS IS" BASIS,
+|     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+|     License for the specific language governing permissions and
+|     limitations under the License.
+|     <!DOCTYPE html PU
+|   HTTPOptions: 
+|     HTTP/1.1 405 Method Not Allowed
+|     Allow: GET, HEAD, POST
+|     Connection: close
+|     Content-Length: 83
+|     Content-Type: text/html
+|     Date: Sun, 07 Jul 2024 01:55:15 GMT
+|_    <html><head><title>Error</title></head><body>405 - Method Not Allowed</body></html>
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5000-TCP:V=7.92%I=7%D=7/7%Time=6689F57C%P=x86_64-alpine-linux-musl%
+SF:r(GenericLines,11E,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x
+SF:20close\r\nContent-Type:\x20text/html\r\nContent-Length:\x20193\r\n\r\n
+SF:<html>\n\x20\x20<head>\n\x20\x20\x20\x20<title>Bad\x20Request</title>\n
+SF:\x20\x20</head>\n\x20\x20<body>\n\x20\x20\x20\x20<h1><p>Bad\x20Request<
+SF:/p></h1>\n\x20\x20\x20\x20Invalid\x20Request\x20Line\x20&#x27;Invalid\x
+SF:20HTTP\x20request\x20line:\x20&#x27;&#x27;&#x27;\n\x20\x20</body>\n</ht
+SF:ml>\n")%r(GetRequest,1F4,"HTTP/1\.0\x20302\x20FOUND\r\nServer:\x20gunic
+SF:orn\r\nDate:\x20Sun,\x2007\x20Jul\x202024\x2001:55:08\x20GMT\r\nConnect
+SF:ion:\x20close\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nConten
+SF:t-Length:\x20197\r\nLocation:\x20/home\r\nVary:\x20Cookie\r\nSet-Cookie
+SF::\x20session=eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9\.Zon1fA\.ew8lxHc_
+SF:_8Qs2I5HN-BuDj-sazo;\x20HttpOnly;\x20Path=/\r\n\r\n<!doctype\x20html>\n
+SF:<html\x20lang=en>\n<title>Redirecting\.\.\.</title>\n<h1>Redirecting\.\
+SF:.\.</h1>\n<p>You\x20should\x20be\x20redirected\x20automatically\x20to\x
+SF:20the\x20target\x20URL:\x20<a\x20href=\"/home\">/home</a>\.\x20If\x20no
+SF:t,\x20click\x20the\x20link\.\n")%r(RTSPRequest,121,"HTTP/1\.1\x20400\x2
+SF:0Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r
+SF:\nContent-Length:\x20196\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x20\x2
+SF:0<title>Bad\x20Request</title>\n\x20\x20</head>\n\x20\x20<body>\n\x20\x
+SF:20\x20\x20<h1><p>Bad\x20Request</p></h1>\n\x20\x20\x20\x20Invalid\x20HT
+SF:TP\x20Version\x20&#x27;Invalid\x20HTTP\x20Version:\x20&#x27;RTSP/1\.0&#
+SF:x27;&#x27;\n\x20\x20</body>\n</html>\n")%r(HTTPOptions,B3,"HTTP/1\.0\x2
+SF:0200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Sun,\x2007\x20Jul\x202024
+SF:\x2001:55:24\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/ht
+SF:ml;\x20charset=utf-8\r\nAllow:\x20HEAD,\x20OPTIONS,\x20GET\r\nContent-L
+SF:ength:\x200\r\n\r\n")%r(Help,122,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
+SF:nConnection:\x20close\r\nContent-Type:\x20text/html\r\nContent-Length:\
+SF:x20197\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<title>Bad\x20Req
+SF:uest</title>\n\x20\x20</head>\n\x20\x20<body>\n\x20\x20\x20\x20<h1><p>B
+SF:ad\x20Request</p></h1>\n\x20\x20\x20\x20Invalid\x20Request\x20Line\x20&
+SF:#x27;Invalid\x20HTTP\x20request\x20line:\x20&#x27;HELP&#x27;&#x27;\n\x2
+SF:0\x20</body>\n</html>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8443-TCP:V=7.92%T=SSL%I=7%D=7/7%Time=6689F583%P=x86_64-alpine-linux
+SF:-musl%r(GetRequest,4FD,"HTTP/1\.1\x20200\x20OK\r\nConnection:\x20close\
+SF:r\nLast-Modified:\x20Tue,\x2025\x20Jan\x202022\x2009:09:53\x20GMT\r\nCo
+SF:ntent-Length:\x201087\r\nContent-Type:\x20text/html\r\nAccept-Ranges:\x
+SF:20bytes\r\nDate:\x20Sun,\x2007\x20Jul\x202024\x2001:55:15\x20GMT\r\n\r\
+SF:n<!--\n\x20\x20~\x20Copyright\x202016\x20Red\x20Hat,\x20Inc\.\x20and/or
+SF:\x20its\x20affiliates\n\x20\x20~\x20and\x20other\x20contributors\x20as\
+SF:x20indicated\x20by\x20the\x20@author\x20tags\.\n\x20\x20~\n\x20\x20~\x2
+SF:0Licensed\x20under\x20the\x20Apache\x20License,\x20Version\x202\.0\x20\
+SF:(the\x20\"License\"\);\n\x20\x20~\x20you\x20may\x20not\x20use\x20this\x
+SF:20file\x20except\x20in\x20compliance\x20with\x20the\x20License\.\n\x20\
+SF:x20~\x20You\x20may\x20obtain\x20a\x20copy\x20of\x20the\x20License\x20at
+SF:\n\x20\x20~\n\x20\x20~\x20http://www\.apache\.org/licenses/LICENSE-2\.0
+SF:\n\x20\x20~\n\x20\x20~\x20Unless\x20required\x20by\x20applicable\x20law
+SF:\x20or\x20agreed\x20to\x20in\x20writing,\x20software\n\x20\x20~\x20dist
+SF:ributed\x20under\x20the\x20License\x20is\x20distributed\x20on\x20an\x20
+SF:\"AS\x20IS\"\x20BASIS,\n\x20\x20~\x20WITHOUT\x20WARRANTIES\x20OR\x20CON
+SF:DITIONS\x20OF\x20ANY\x20KIND,\x20either\x20express\x20or\x20implied\.\n
+SF:\x20\x20~\x20See\x20the\x20License\x20for\x20the\x20specific\x20languag
+SF:e\x20governing\x20permissions\x20and\n\x20\x20~\x20limitations\x20under
+SF:\x20the\x20License\.\n\x20\x20-->\n<!DOCTYPE\x20html\x20PU")%r(HTTPOpti
+SF:ons,F3,"HTTP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nAllow:\x20GET,\
+SF:x20HEAD,\x20POST\r\nConnection:\x20close\r\nContent-Length:\x2083\r\nCo
+SF:ntent-Type:\x20text/html\r\nDate:\x20Sun,\x2007\x20Jul\x202024\x2001:55
+SF::15\x20GMT\r\n\r\n<html><head><title>Error</title></head><body>405\x20-
+SF:\x20Method\x20Not\x20Allowed</body></html>")%r(FourOhFourRequest,C9,"HT
+SF:TP/1\.1\x20404\x20Not\x20Found\r\nConnection:\x20close\r\nContent-Lengt
+SF:h:\x2074\r\nContent-Type:\x20text/html\r\nDate:\x20Sun,\x2007\x20Jul\x2
+SF:02024\x2001:55:16\x20GMT\r\n\r\n<html><head><title>Error</title></head>
+SF:<body>404\x20-\x20Not\x20Found</body></html>");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Jun 30 01:52:12 2024 -- 1 IP address (1 host up) scanned in 16.97 seconds
+# Nmap done at Sun Jul  7 01:57:07 2024 -- 1 IP address (1 host up) scanned in 128.64 seconds
