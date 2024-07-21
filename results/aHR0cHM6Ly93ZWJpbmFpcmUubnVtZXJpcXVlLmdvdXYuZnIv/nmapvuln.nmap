@@ -1,6 +1,6 @@
-# Nmap 7.92 scan initiated Sun Jul 14 01:56:12 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln webinaire.numerique.gouv.fr
+# Nmap 7.92 scan initiated Sun Jul 21 01:56:31 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln webinaire.numerique.gouv.fr
 Nmap scan report for webinaire.numerique.gouv.fr (51.15.207.28)
-Host is up (0.14s latency).
+Host is up (0.085s latency).
 Not shown: 995 closed tcp ports (reset)
 PORT     STATE    SERVICE       VERSION
 22/tcp   filtered ssh
@@ -23,42 +23,27 @@ PORT     STATE    SERVICE       VERSION
 |     </body>
 |     </html>
 |   GetRequest: 
-|     HTTP/1.0 302 FOUND
+|     HTTP/1.0 404 NOT FOUND
 |     Server: gunicorn
-|     Date: Sun, 14 Jul 2024 01:56:26 GMT
+|     Date: Sun, 21 Jul 2024 01:56:40 GMT
 |     Connection: close
 |     Content-Type: text/html; charset=utf-8
-|     Content-Length: 197
-|     Location: /home
+|     Content-Length: 9971
 |     Vary: Cookie
-|     Set-Cookie: session=eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9.ZpMwSg.a35_A1TcZHp9pG31qprQYe2UHDA; HttpOnly; Path=/
 |     <!doctype html>
-|     <html lang=en>
-|     <title>Redirecting...</title>
-|     <h1>Redirecting...</h1>
-|     <p>You should be redirected automatically to the target URL: <a href="/home">/home</a>. If not, click the link.
-|   HTTPOptions: 
-|     HTTP/1.0 200 OK
-|     Server: gunicorn
-|     Date: Sun, 14 Jul 2024 01:56:42 GMT
-|     Connection: close
-|     Content-Type: text/html; charset=utf-8
-|     Allow: OPTIONS, GET, HEAD
-|     Content-Length: 0
-|   Help: 
-|     HTTP/1.1 400 Bad Request
-|     Connection: close
-|     Content-Type: text/html
-|     Content-Length: 197
-|     <html>
+|     <html lang="fr">
 |     <head>
-|     <title>Bad Request</title>
-|     </head>
-|     <body>
-|     <h1><p>Bad Request</p></h1>
-|     Invalid Request Line &#x27;Invalid HTTP request line: &#x27;HELP&#x27;&#x27;
-|     </body>
-|     </html>
+|     <meta charset="utf-8">
+|     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+|     <meta name="description" content="">
+|     <meta name="author" content="">
+|     <link rel="icon" href="http://webinaire.numerique.gouv.fr/static/images/favicon.png">
+|     <title>Webinaire de l&#39;
+|     tat</title>
+|     <!-- DSFR core CSS -->
+|     <link rel="stylesheet" type="text/css" href="http://webinaire.numerique.gouv.fr/static/css/global.css">
+|     <link rel="stylesheet" type="text/css" href="http://webinaire.numerique.gouv.fr/static/dsfr-1.7/dsfr/dsfr.min.css">
+|     <link rel="stylesheet" type="text/css" href="http:
 |   RTSPRequest: 
 |     HTTP/1.1 400 Bad Request
 |     Connection: close
@@ -80,7 +65,7 @@ PORT     STATE    SERVICE       VERSION
 |     Connection: close
 |     Content-Length: 74
 |     Content-Type: text/html
-|     Date: Sun, 14 Jul 2024 01:56:33 GMT
+|     Date: Sun, 21 Jul 2024 01:56:47 GMT
 |     <html><head><title>Error</title></head><body>404 - Not Found</body></html>
 |   GetRequest: 
 |     HTTP/1.1 200 OK
@@ -89,7 +74,7 @@ PORT     STATE    SERVICE       VERSION
 |     Content-Length: 1087
 |     Content-Type: text/html
 |     Accept-Ranges: bytes
-|     Date: Sun, 14 Jul 2024 01:56:32 GMT
+|     Date: Sun, 21 Jul 2024 01:56:46 GMT
 |     <!--
 |     Copyright 2016 Red Hat, Inc. and/or its affiliates
 |     other contributors as indicated by the @author tags.
@@ -109,49 +94,49 @@ PORT     STATE    SERVICE       VERSION
 |     Connection: close
 |     Content-Length: 83
 |     Content-Type: text/html
-|     Date: Sun, 14 Jul 2024 01:56:32 GMT
+|     Date: Sun, 21 Jul 2024 01:56:46 GMT
 |_    <html><head><title>Error</title></head><body>405 - Method Not Allowed</body></html>
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port5000-TCP:V=7.92%I=7%D=7/14%Time=66933049%P=x86_64-alpine-linux-musl
+SF-Port5000-TCP:V=7.92%I=7%D=7/21%Time=669C6AD8%P=x86_64-alpine-linux-musl
 SF:%r(GenericLines,11E,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\
 SF:x20close\r\nContent-Type:\x20text/html\r\nContent-Length:\x20193\r\n\r\
 SF:n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<title>Bad\x20Request</title>\
 SF:n\x20\x20</head>\n\x20\x20<body>\n\x20\x20\x20\x20<h1><p>Bad\x20Request
 SF:</p></h1>\n\x20\x20\x20\x20Invalid\x20Request\x20Line\x20&#x27;Invalid\
 SF:x20HTTP\x20request\x20line:\x20&#x27;&#x27;&#x27;\n\x20\x20</body>\n</h
-SF:tml>\n")%r(GetRequest,1F4,"HTTP/1\.0\x20302\x20FOUND\r\nServer:\x20guni
-SF:corn\r\nDate:\x20Sun,\x2014\x20Jul\x202024\x2001:56:26\x20GMT\r\nConnec
-SF:tion:\x20close\r\nContent-Type:\x20text/html;\x20charset=utf-8\r\nConte
-SF:nt-Length:\x20197\r\nLocation:\x20/home\r\nVary:\x20Cookie\r\nSet-Cooki
-SF:e:\x20session=eyJjdXJyZW50X3Byb3ZpZGVyIjoiZGVmYXVsdCJ9\.ZpMwSg\.a35_A1T
-SF:cZHp9pG31qprQYe2UHDA;\x20HttpOnly;\x20Path=/\r\n\r\n<!doctype\x20html>\
-SF:n<html\x20lang=en>\n<title>Redirecting\.\.\.</title>\n<h1>Redirecting\.
-SF:\.\.</h1>\n<p>You\x20should\x20be\x20redirected\x20automatically\x20to\
-SF:x20the\x20target\x20URL:\x20<a\x20href=\"/home\">/home</a>\.\x20If\x20n
-SF:ot,\x20click\x20the\x20link\.\n")%r(RTSPRequest,121,"HTTP/1\.1\x20400\x
-SF:20Bad\x20Request\r\nConnection:\x20close\r\nContent-Type:\x20text/html\
-SF:r\nContent-Length:\x20196\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x20\x
-SF:20<title>Bad\x20Request</title>\n\x20\x20</head>\n\x20\x20<body>\n\x20\
-SF:x20\x20\x20<h1><p>Bad\x20Request</p></h1>\n\x20\x20\x20\x20Invalid\x20H
-SF:TTP\x20Version\x20&#x27;Invalid\x20HTTP\x20Version:\x20&#x27;RTSP/1\.0&
-SF:#x27;&#x27;\n\x20\x20</body>\n</html>\n")%r(HTTPOptions,B3,"HTTP/1\.0\x
-SF:20200\x20OK\r\nServer:\x20gunicorn\r\nDate:\x20Sun,\x2014\x20Jul\x20202
-SF:4\x2001:56:42\x20GMT\r\nConnection:\x20close\r\nContent-Type:\x20text/h
-SF:tml;\x20charset=utf-8\r\nAllow:\x20OPTIONS,\x20GET,\x20HEAD\r\nContent-
-SF:Length:\x200\r\n\r\n")%r(Help,122,"HTTP/1\.1\x20400\x20Bad\x20Request\r
-SF:\nConnection:\x20close\r\nContent-Type:\x20text/html\r\nContent-Length:
-SF:\x20197\r\n\r\n<html>\n\x20\x20<head>\n\x20\x20\x20\x20<title>Bad\x20Re
-SF:quest</title>\n\x20\x20</head>\n\x20\x20<body>\n\x20\x20\x20\x20<h1><p>
-SF:Bad\x20Request</p></h1>\n\x20\x20\x20\x20Invalid\x20Request\x20Line\x20
-SF:&#x27;Invalid\x20HTTP\x20request\x20line:\x20&#x27;HELP&#x27;&#x27;\n\x
-SF:20\x20</body>\n</html>\n");
+SF:tml>\n")%r(GetRequest,27A3,"HTTP/1\.0\x20404\x20NOT\x20FOUND\r\nServer:
+SF:\x20gunicorn\r\nDate:\x20Sun,\x2021\x20Jul\x202024\x2001:56:40\x20GMT\r
+SF:\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=utf-8\
+SF:r\nContent-Length:\x209971\r\nVary:\x20Cookie\r\n\r\n<!doctype\x20html>
+SF:\n<html\x20lang=\"fr\">\n\x20\x20\x20\x20<head>\n\x20\x20\x20\x20\x20\x
+SF:20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\x20\x20\x20\x20\x20\x20
+SF:<meta\x20name=\"viewport\"\x20content=\"width=device-width,\x20initial-
+SF:scale=1,\x20shrink-to-fit=no\">\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\
+SF:x20name=\"description\"\x20content=\"\">\n\x20\x20\x20\x20\x20\x20\x20\
+SF:x20<meta\x20name=\"author\"\x20content=\"\">\n\x20\x20\x20\x20\x20\x20\
+SF:x20\x20<link\x20rel=\"icon\"\x20href=\"http://webinaire\.numerique\.gou
+SF:v\.fr/static/images/favicon\.png\">\n\n\x20\x20\x20\x20\x20\x20\x20\x20
+SF:<title>Webinaire\x20de\x20l&#39;\xc3\x89tat</title>\n\n\x20\x20\x20\x20
+SF:\x20\x20\x20\x20<!--\x20DSFR\x20core\x20CSS\x20-->\n\x20\x20\x20\x20\x2
+SF:0\x20\x20\x20<link\x20rel=\"stylesheet\"\x20type=\"text/css\"\x20href=\
+SF:"http://webinaire\.numerique\.gouv\.fr/static/css/global\.css\">\n\x20\
+SF:x20\x20\x20\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20type=\"text/c
+SF:ss\"\x20href=\"http://webinaire\.numerique\.gouv\.fr/static/dsfr-1\.7/d
+SF:sfr/dsfr\.min\.css\">\n\x20\x20\x20\x20\x20\x20\x20\x20<link\x20rel=\"s
+SF:tylesheet\"\x20type=\"text/css\"\x20href=\"http:")%r(RTSPRequest,121,"H
+SF:TTP/1\.1\x20400\x20Bad\x20Request\r\nConnection:\x20close\r\nContent-Ty
+SF:pe:\x20text/html\r\nContent-Length:\x20196\r\n\r\n<html>\n\x20\x20<head
+SF:>\n\x20\x20\x20\x20<title>Bad\x20Request</title>\n\x20\x20</head>\n\x20
+SF:\x20<body>\n\x20\x20\x20\x20<h1><p>Bad\x20Request</p></h1>\n\x20\x20\x2
+SF:0\x20Invalid\x20HTTP\x20Version\x20&#x27;Invalid\x20HTTP\x20Version:\x2
+SF:0&#x27;RTSP/1\.0&#x27;&#x27;\n\x20\x20</body>\n</html>\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port8443-TCP:V=7.92%T=SSL%I=7%D=7/14%Time=66933050%P=x86_64-alpine-linu
+SF-Port8443-TCP:V=7.92%T=SSL%I=7%D=7/21%Time=669C6ADE%P=x86_64-alpine-linu
 SF:x-musl%r(GetRequest,4FD,"HTTP/1\.1\x20200\x20OK\r\nConnection:\x20close
 SF:\r\nLast-Modified:\x20Tue,\x2025\x20Jan\x202022\x2009:09:53\x20GMT\r\nC
 SF:ontent-Length:\x201087\r\nContent-Type:\x20text/html\r\nAccept-Ranges:\
-SF:x20bytes\r\nDate:\x20Sun,\x2014\x20Jul\x202024\x2001:56:32\x20GMT\r\n\r
+SF:x20bytes\r\nDate:\x20Sun,\x2021\x20Jul\x202024\x2001:56:46\x20GMT\r\n\r
 SF:\n<!--\n\x20\x20~\x20Copyright\x202016\x20Red\x20Hat,\x20Inc\.\x20and/o
 SF:r\x20its\x20affiliates\n\x20\x20~\x20and\x20other\x20contributors\x20as
 SF:\x20indicated\x20by\x20the\x20@author\x20tags\.\n\x20\x20~\n\x20\x20~\x
@@ -170,13 +155,13 @@ SF:ge\x20governing\x20permissions\x20and\n\x20\x20~\x20limitations\x20unde
 SF:r\x20the\x20License\.\n\x20\x20-->\n<!DOCTYPE\x20html\x20PU")%r(HTTPOpt
 SF:ions,F3,"HTTP/1\.1\x20405\x20Method\x20Not\x20Allowed\r\nAllow:\x20GET,
 SF:\x20HEAD,\x20POST\r\nConnection:\x20close\r\nContent-Length:\x2083\r\nC
-SF:ontent-Type:\x20text/html\r\nDate:\x20Sun,\x2014\x20Jul\x202024\x2001:5
-SF:6:32\x20GMT\r\n\r\n<html><head><title>Error</title></head><body>405\x20
+SF:ontent-Type:\x20text/html\r\nDate:\x20Sun,\x2021\x20Jul\x202024\x2001:5
+SF:6:46\x20GMT\r\n\r\n<html><head><title>Error</title></head><body>405\x20
 SF:-\x20Method\x20Not\x20Allowed</body></html>")%r(FourOhFourRequest,C9,"H
 SF:TTP/1\.1\x20404\x20Not\x20Found\r\nConnection:\x20close\r\nContent-Leng
-SF:th:\x2074\r\nContent-Type:\x20text/html\r\nDate:\x20Sun,\x2014\x20Jul\x
-SF:202024\x2001:56:33\x20GMT\r\n\r\n<html><head><title>Error</title></head
+SF:th:\x2074\r\nContent-Type:\x20text/html\r\nDate:\x20Sun,\x2021\x20Jul\x
+SF:202024\x2001:56:47\x20GMT\r\n\r\n<html><head><title>Error</title></head
 SF:><body>404\x20-\x20Not\x20Found</body></html>");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Jul 14 01:58:23 2024 -- 1 IP address (1 host up) scanned in 131.04 seconds
+# Nmap done at Sun Jul 21 01:58:35 2024 -- 1 IP address (1 host up) scanned in 124.13 seconds
