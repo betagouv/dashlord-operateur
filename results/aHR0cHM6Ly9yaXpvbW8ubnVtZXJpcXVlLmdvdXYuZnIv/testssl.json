@@ -346,7 +346,7 @@
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "37 >= 30 days"
+              "finding"      : "30 >= 30 days"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -492,8 +492,8 @@
               "id"           : "HTTP_status_code",
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "Unexpected 503 Service Temporarily Unavailable @ '/'"
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
           }
 ,         {
               "id"           : "HTTP_clock_skew",
@@ -507,7 +507,7 @@
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "1721525934"
+              "finding"      : "1722131030"
           }
 ,         {
               "id"           : "HSTS_time",
@@ -556,14 +556,42 @@
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "0 at '/' (30x detected, better try target URL of 30x)"
+              "finding"      : "0 at '/'"
           }
 ,         {
-              "id"           : "security_headers",
+              "id"           : "X-Frame-Options",
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
-              "severity"     : "MEDIUM",
-              "finding"      : "--"
+              "severity"     : "OK",
+              "finding"      : "SAMEORIGIN"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src *;script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stats.data.gouv.fr https://chat.rizomo.numerique.gouv.fr/backoffice/assets/scripts/embbed-chatbot.min.js https://chat.rizomo.numerique.gouv.fr/;connect-src *;img-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;media-src * data: blob: https://oos.cloudgouv-eu-west-1.outscale.com;style-src 'self' 'unsafe-inline';frame-ancestors *;base-uri 'self';font-src 'self' https: data:;form-action 'self';object-src 'none';script-src-attr 'none';upgrade-insecure-requests"
+          }
+,         {
+              "id"           : "X-XSS-Protection",
+              "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "0"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "no-referrer"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -639,10 +667,10 @@
               "id"           : "BREACH",
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
-              "severity"     : "OK",
+              "severity"     : "MEDIUM",
               "cve"          : "CVE-2013-3587",
               "cwe"          : "CWE-310",
-              "finding"      : "not vulnerable, no gzip/deflate/compress/br HTTP compression  - only supplied '/' tested"
+              "finding"      : "potentially VULNERABLE, gzip deflate HTTP compression detected  - only supplied '/' tested"
           }
 ,         {
               "id"           : "POODLE_SSL",
@@ -1070,6 +1098,6 @@
               "ip"           : "rizomo.numerique.gouv.fr/80.247.14.174",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "94"
+              "finding"      : "55"
           }
 ]
