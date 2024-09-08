@@ -1,6 +1,6 @@
-# Nmap 7.92 scan initiated Sun Sep  1 02:58:42 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.demarches-simplifiees.fr
+# Nmap 7.92 scan initiated Sun Sep  8 02:49:35 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.demarches-simplifiees.fr
 Nmap scan report for www.demarches-simplifiees.fr (176.31.79.200)
-Host is up (0.087s latency).
+Host is up (0.10s latency).
 rDNS record for 176.31.79.200: ip200.ip-176-31-79.eu
 Not shown: 997 filtered tcp ports (no-response)
 PORT    STATE  SERVICE   VERSION
@@ -18,6 +18,7 @@ PORT    STATE  SERVICE   VERSION
 |_    connection: close
 113/tcp closed ident
 443/tcp open   ssl/https nginx
+|_http-server-header: nginx
 | fingerprint-strings: 
 |   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, RPCCheck, RTSPRequest, tor-versions: 
 |     HTTP/1.1 400 Bad request
@@ -38,10 +39,9 @@ PORT    STATE  SERVICE   VERSION
 |     content-length: 0
 |     location: https://www.demarches-simplifiees.fr/
 |_    connection: close
-|_http-server-header: nginx
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=9/1%Time=66D3D86F%P=x86_64-alpine-linux-musl%r(
+SF-Port80-TCP:V=7.92%I=7%D=9/8%Time=66DD10CD%P=x86_64-alpine-linux-musl%r(
 SF:GetRequest,79,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\ncontent-leng
 SF:th:\x200\r\nlocation:\x20https://www\.demarches-simplifiees\.fr/\r\ncon
 SF:nection:\x20close\r\n\r\n")%r(HTTPOptions,79,"HTTP/1\.1\x20301\x20Moved
@@ -50,7 +50,7 @@ SF:marches-simplifiees\.fr/\r\nconnection:\x20close\r\n\r\n")%r(FourOhFour
 SF:Request,54,"HTTP/1\.1\x20403\x20Forbidden\r\nwaf-block:\x20request\r\nc
 SF:ontent-length:\x200\r\nconnection:\x20close\r\n\r\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port443-TCP:V=7.92%T=SSL%I=7%D=9/1%Time=66D3D876%P=x86_64-alpine-linux-
+SF-Port443-TCP:V=7.92%T=SSL%I=7%D=9/8%Time=66DD10D4%P=x86_64-alpine-linux-
 SF:musl%r(GetRequest,79,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nconte
 SF:nt-length:\x200\r\nlocation:\x20https://www\.demarches-simplifiees\.fr/
 SF:\r\nconnection:\x20close\r\n\r\n")%r(HTTPOptions,79,"HTTP/1\.1\x20301\x
@@ -85,4 +85,4 @@ SF:equest</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n</b
 SF:ody></html>\n");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Sep  1 02:59:19 2024 -- 1 IP address (1 host up) scanned in 36.90 seconds
+# Nmap done at Sun Sep  8 02:50:15 2024 -- 1 IP address (1 host up) scanned in 40.14 seconds
