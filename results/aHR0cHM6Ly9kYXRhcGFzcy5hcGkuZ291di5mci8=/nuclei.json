@@ -1,0 +1,663 @@
+[
+  [
+    {
+      "template": "dns/spf-record-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/spf-record-detect",
+      "template-id": "spf-record-detect",
+      "template-path": "/home/runner/nuclei-templates/dns/spf-record-detect.yaml",
+      "info": {
+        "name": "SPF Record - Detection",
+        "author": [
+          "rxerium"
+        ],
+        "tags": [
+          "dns",
+          "spf"
+        ],
+        "description": "An SPF TXT record was detected\n",
+        "reference": [
+          "https://www.mimecast.com/content/how-to-create-an-spf-txt-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "datapass.api.gouv.fr.",
+      "matched-at": "datapass.api.gouv.fr",
+      "extracted-results": [
+        "v=spf1 include:spf.mailjet.com ?all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 45628\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 45628\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\ndatapass.api.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com ?all\"\n",
+      "timestamp": "2024-10-13T03:10:13.67773481Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "datapass.api.gouv.fr.",
+      "matched-at": "datapass.api.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 include:spf.mailjet.com ?all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 45628\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 45628\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\ndatapass.api.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com ?all\"\n",
+      "timestamp": "2024-10-13T03:10:13.677846739Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "datapass.api.gouv.fr.",
+      "matched-at": "datapass.api.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 65385\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 65385\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;datapass.api.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\napi.gouv.fr.\t300\tIN\tSOA\tdns18.ovh.net. tech.ovh.net. 2024101101 86400 3600 3600000 300\n",
+      "timestamp": "2024-10-13T03:10:14.596386453Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "nginx",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:10:53 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:10:53 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:10:53.224982733Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669828853Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669875169Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669888314Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669904534Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669919061Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669933899Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669954488Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669970968Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:03 GMT\r\nLast-Modified: Sunday, 13-Oct-2024 03:11:03 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\nX-Frame-Options: DENY\r\nX-Robots-Tag: noindex,nofollow\r\n\r\n<!doctype html><html lang=\"fr\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,shrink-to-fit=no\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"robots\" content=\"noindex,nofollow\"/><meta name=\"googlebot\" content=\"noindex,nofollow\"/><meta name=\"referrer\" content=\"no-referrer-when-downgrade\"><link rel=\"manifest\" href=\"/manifest.json\"/><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.svg\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/favicons/favicon.ico\"><link rel=\"apple-touch-icon\" href=\"/favicons/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"192x192\" href=\"/favicons/android-chrome-192x192.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"512x512\" href=\"/favicons/android-chrome-512x512.png\"><title>DataPass - gestion des habilitations juridiques pour les données à accès restreint</title><script defer=\"defer\" src=\"/static/js/main.52487888.js\"></script><link href=\"/static/css/main.787d51bd.css\" rel=\"stylesheet\"></head><body><script type=\"text/javascript\">/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)&&(document.write('<script src=\"https://unpkg.com/@babel/polyfill@7.0.0/dist/polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/url-polyfill@1.0.14/url-polyfill.js\"><\\/script>'),document.write('<script src=\"https://unpkg.com/stickyfilljs@2.1.0/dist/stickyfill.min.js\"><\\/script>'))</script><noscript>You need to enable JavaScript to run this app.</noscript><script type=\"text/javascript\">window.onerror=function(e){document.write(\"<div>Une erreur est survenue. Merci de réessayer ultérieurement.</div><div>Vous pouvez également essayer d'utiliser un autre navigateur (ex: Firefox ou Chrome).</div><div>N'hésitez pas à nous signaler cette erreur à <a href=\\\"mailto:datapass@api.gouv.fr?subject=Erreur%20sur%20datapass.api.gouv.fr\\\">datapass@api.gouv.fr</a>.</div><div>Voici le détail de l'erreur :</div><pre>\"+JSON.stringify(e,null,2)+\"</pre>\")}</script><div id=\"root\"></div></body></html>",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:03.669987038Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "nginxgeneric",
+      "type": "http",
+      "host": "https://datapass.api.gouv.fr/",
+      "matched-at": "https://datapass.api.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: datapass.api.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 405 Not Allowed\r\nConnection: close\r\nContent-Length: 150\r\nContent-Type: text/html\r\nDate: Sun, 13 Oct 2024 03:11:28 GMT\r\nServer: nginx\r\nStrict-Transport-Security: max-age=15552000\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:11:28.250653524Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: datapass.api.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://datapass.api.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "datapass.api.gouv.fr",
+      "matched-at": "datapass.api.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:13:13.130114414Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "datapass.api.gouv.fr",
+      "matched-at": "datapass.api.gouv.fr:443",
+      "extracted-results": [
+        "DHIMYOTIS"
+      ],
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:13:13.180404463Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "datapass.api.gouv.fr",
+      "matched-at": "datapass.api.gouv.fr:443",
+      "extracted-results": [
+        "datapass-staging.api.gouv.fr",
+        "back.datapass-staging.api.gouv.fr",
+        "datapass.api.gouv.fr",
+        "back.datapass.api.gouv.fr"
+      ],
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:13:13.180534797Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "datapass.api.gouv.fr",
+      "matched-at": "datapass.api.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "54.36.95.60",
+      "timestamp": "2024-10-13T03:13:14.013179151Z",
+      "matcher-status": true
+    }
+  ]
+]
