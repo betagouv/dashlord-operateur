@@ -1,0 +1,1108 @@
+[
+  [
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "app.dvf.etalab.gouv.fr.",
+      "matched-at": "app.dvf.etalab.gouv.fr",
+      "extracted-results": [
+        "dvf-ipfo.infra.geo.data.gouv.fr."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 14214\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;app.dvf.etalab.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 14214\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;app.dvf.etalab.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\napp.dvf.etalab.gouv.fr.\t3600\tIN\tCNAME\tdvf-ipfo.infra.geo.data.gouv.fr.\n",
+      "timestamp": "2024-12-22T03:45:21.214826975Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "app.dvf.etalab.gouv.fr.",
+      "matched-at": "app.dvf.etalab.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 14182\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;app.dvf.etalab.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 14182\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n; EDE: 23 (Network Error): (213.251.128.133:53 rcode=REFUSED for geo.data.gouv.fr A)\n\n;; QUESTION SECTION:\n;app.dvf.etalab.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\napp.dvf.etalab.gouv.fr.\t3600\tIN\tCNAME\tdvf-ipfo.infra.geo.data.gouv.fr.\n\n;; AUTHORITY SECTION:\ndata.gouv.fr.\t300\tIN\tSOA\tdns200.anycast.me. tech.ovh.net. 2024121900 86400 3600 3600000 300\n",
+      "timestamp": "2024-12-22T03:45:22.849178742Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "jsdelivr",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:13 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:13.612605756Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "font-awesome",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:13 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:13.612741438Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "bootstrap",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:13 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:13.61280212Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/tech-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tech-detect",
+      "template-id": "tech-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/tech-detect.yaml",
+      "info": {
+        "name": "Wappalyzer Technology Detection",
+        "author": [
+          "hakluke",
+          "righettod"
+        ],
+        "tags": [
+          "tech"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "nginx",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:13 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:13.612835823Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535673124Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535717847Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535740539Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535764323Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535783178Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535917688Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "strict-transport-security",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535938626Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535957912Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.535987107Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.536007745Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:27 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:27.5360267Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/miscellaneous/robots-txt-endpoint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/robots-txt-endpoint",
+      "template-id": "robots-txt-endpoint",
+      "template-path": "/home/runner/nuclei-templates/http/miscellaneous/robots-txt-endpoint.yaml",
+      "info": {
+        "name": "robots.txt endpoint prober",
+        "author": [
+          "caspergn",
+          "pdteam"
+        ],
+        "tags": [
+          "miscellaneous",
+          "misc",
+          "generic"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 2
+        }
+      },
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/robots.txt",
+      "request": "GET /robots.txt HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/plain\r\nDate: Sun, 22 Dec 2024 03:46:41 GMT\r\nEtag: W/\"5cc2a985-1e\"\r\nLast-Modified: Fri, 26 Apr 2019 06:47:33 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\nUser-agent: *\nDisallow: /api/\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:41.854915151Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/robots.txt'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/missing-sri.yaml",
+      "template-url": "https://templates.nuclei.sh/public/missing-sri",
+      "template-id": "missing-sri",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/missing-sri.yaml",
+      "info": {
+        "name": "Missing Subresource Integrity",
+        "author": [
+          "lucky0x0d",
+          "pulsesecurity.co.nz",
+          "sullo"
+        ],
+        "tags": [
+          "compliance",
+          "js",
+          "sri",
+          "misconfig"
+        ],
+        "description": "Checks if script tags within the HTML response have Subresource Integrity implemented via the integrity attribute.\n",
+        "reference": [
+          "https://cheatsheetseries.owasp.org/cheatsheets/third_party_javascript_management_cheat_sheet.html#subresource-integrity",
+          "https://developer.mozilla.org/en-us/docs/web/security/subresource_integrity"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "extracted-results": [
+        "https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js",
+        "https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js",
+        "https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js",
+        "https://cdn.jsdelivr.net/momentjs/latest/moment.min.js",
+        "https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js",
+        "https://unpkg.com/lodash@4.17.11/lodash.min.js"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:46:50 GMT\r\nEtag: W/\"674d7cee-1c3a\"\r\nLast-Modified: Mon, 02 Dec 2024 09:25:02 GMT\r\nServer: nginx\r\nVary: Accept-Encoding\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n<head>\r\n\t<meta charset=\"utf-8\" />\r\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n\t<title>DVF</title>\r\n\t<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"\r\n\t\tintegrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\"\r\n\t\tintegrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\" />\r\n\t<link rel=\"stylesheet\" href=\"/css/app.css\" />\r\n\t<script src=\"https://code.jquery.com/jquery-3.3.1.min.js\"\r\n\t\tintegrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\" crossorigin=\"anonymous\"></script>\r\n\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js\"></script>\r\n\t<script src='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.js'></script>\r\n\t<link href='https://unpkg.com/mapbox-gl@0.54.0/dist/mapbox-gl.css' rel='stylesheet' />\r\n\t<script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>\r\n\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\" />\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js\"></script>\r\n\t<script type=\"text/javascript\" src=\"https://unpkg.com/lodash@4.17.11/lodash.min.js\"></script>\r\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css\" />\r\n\t<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/favicon.png\">\r\n\t<style type=\"text/css\">\r\n\t\thtml, body {\r\n\t\t\theight: 100vh;\r\n\t\t\toverflow-y: hidden;\r\n\t\t}\t\t\r\n\t\t#announcement {\r\n\t\t\tpadding: 15px;\r\n\t\t\ttext-align: center;\r\n\t\t\tbackground: #E8EDFF;\r\n\t\t\tcolor: #0063CB\r\n\t\t}\r\n\t\t#announcement a {\r\n\t\t\tcolor:#0063CB;\r\n\t\t\tfont-weight: bold;\r\n\t\t}\r\n\t</style>\r\n</head>\r\n\r\n<body>\r\n\t<div id=\"announcement\">\r\n\t\t<i class=\"fa fa-info-circle\" aria-hidden=\"true\"></i>\r\n\t\tCette application fait peau neuve !\r\n\t\t<a href=\"https://explore.data.gouv.fr/immobilier\" target=\"_blank\">Tester la nouvelle application DVF <i class=\"fa fa-external-link\" aria-hidden=\"true\" style=\"font-size: smaller;\"></i></a>\r\n\t\t<i class=\"fa fa-times\" aria-hidden=\"true\" onclick=\"document.getElementById('announcement').style.display='none'\" style=\"float: right;\"></i>\r\n\t</div>\r\n\t<div class=\"topnav\">\r\n\t\t<div class=\"topnav-left\">\r\n\t\t\t<div class=\"title\">\r\n\t\t\t\t<a class=\"full-title\" href=\"/\">Demande de Valeur Foncière</a>\r\n\t\t\t\t<a class=\"short-title\" href=\"/\">DVF</a>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"hamburger\" onclick=\"toggleLeftBar()\">\r\n\t\t\t\t<i class=\"fas fa-bars fa-1x\"></i>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div class=\"topnav-right\">\r\n\t\t\t<a href=\"faq.html\">Questions</a>\r\n\t\t\t<a href=\"https://github.com/etalab/DVF-app\">\r\n\t\t\t\tCode<span class=\"long-text\"> source</span>\r\n\t\t\t</a>\r\n\t\t\t<!--<a href=\"https://framaforms.org/demande-de-valeur-fonciere-dvf-votre-avis-nous-interesse-1556111586\">\r\n\t\t\t\tVotre avis<span class=\"long-text\"> nous intéresse</span>\r\n\t\t\t</a>-->\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div id=\"app\" class=\"wrapper\">\r\n\t\t<div id=\"sidebar_left\" class=\"sidebar\" v-show=\"!fold_left\" class=\"container\">\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"departements\" class=\"control-label\">Département</label>\r\n\t\t\t\t\t<select name=\"departements\" id=\"departements\" onchange=\"selectionnerDepartement()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"communes\" class=\"control-label\">Commune</label>\r\n\t\t\t\t\t<select name=\"communes\" id=\"communes\" onchange=\"selectionnerCommune()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"sections\" class=\"control-label\">Section cadastrale</label>\r\n\t\t\t\t\t<select name=\"sections\" id=\"sections\" onchange=\"selectionnerSection()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"parcelles\" class=\"control-label\">Parcelle cadastrale</label>\r\n\t\t\t\t\t<select name=\"parcelles\" id=\"parcelles\" onchange=\"selectionnerParcelle()\" class=\"form-control\">\r\n\t\t\t\t\t\t<option style=\"display:none\"></option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"daterange\" class=\"control-label\">Date de la mutation</label>\r\n\t\t\t\t\t<input type=\"text\" id=\"daterange\" name=\"daterange\" value=\"01-01-2010 - 15-01-2018\" class=\"form-control\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div v-if=\"section\">\r\n\t\t\t\t<a v-if=\"data_section.length > 0\" id=\"exportCSV\"\r\n\t\t\t\t\tonclick=\"exportCSV(this, data_section, codeCommune + '_' + idSectionToCode(idSection) + '.csv');\" class=\"btn btn-primary\"\r\n\t\t\t\t\tstyle=\"width: 100%\">Télécharger les mutations de la section</a>\r\n\t\t\t\t<div v-else class=\"text-muted\">\r\n\t\t\t\t\tLa base de données DVF ne contient pas de mutation dans la section sélectionnée sur la plage temporelle\r\n\t\t\t\t\tchoisie.\r\n\t\t\t\t\t<div v-if=\"['67', '68', '57', '976'].indexOf(codeDepartement) != -1\">\r\n\t\t\t\t\t\tEn particulier, la base DVF ne contient pas de mutation en Haut-Rhin, Bas-Rhin, Moselle et à Mayotte.\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<a href=\"/faq.html\">En savoir plus</a>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<div id=\"logo\">\r\n\t\t\t\t<a href=\"https://www.etalab.gouv.fr/qui-sommes-nous\">\r\n\t\t\t\t\t<img src=\"/images/etalab-blanc.png\" alt=\"Etalab\" style=\"max-width: 100px\" />\r\n\t\t\t\t</a>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"content\">\r\n\t\t\t<div id=\"mapid\">\r\n\t\t\t\t<div class=\"switch-map-style\" onclick=\"changeMapStyle()\">\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'vector'\" src=\"/images/preview-ortho.png\" alt=\"Fond orthophoto\" />\r\n\t\t\t\t\t<img v-if=\"mapStyle == 'ortho'\" src=\"/images/preview-vector.png\" alt=\"Fond vectoriel\" />\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div id=\"sidebar_right\" class=\"sidebar\" v-if=\"parcelle != null && parcelle.mutations.length > 0\">\r\n\t\t\t<div onclick=\"sortirDeParcelle()\" class=\"close-link\">Fermer X</div>\r\n\t\t\t<div class=\"scrollable\">\r\n\t\t\t\t<div class=\"cards\">\r\n\t\t\t\t\t<boite-accordeon v-for=\"(mutation, index) in parcelle.mutations\" :mutation=\"mutation\"\r\n\t\t\t\t\t\t:key=\"mutation.infos[0].id_parcelle + index\" :index=\"index\"></boite-accordeon>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<!-- Matomo -->\r\n\t<script type=\"text/javascript\">\r\n\t\tvar _paq = _paq || [];\r\n\t\t/* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\r\n\t\t_paq.push(['trackPageView']);\r\n\t\t_paq.push(['enableLinkTracking']);\r\n\t\t(function () {\r\n\t\t\tvar u = \"//stats.data.gouv.fr/\";\r\n\t\t\t_paq.push(['setTrackerUrl', u + 'piwik.php']);\r\n\t\t\t_paq.push(['setSiteId', '76']);\r\n\t\t\tvar d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];\r\n\t\t\tg.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);\r\n\t\t})();\r\n\t</script>\r\n\t<script src=\"js/data.js\"></script>\r\n\t<script src=\"js/component.boite.js\"></script>\r\n\t<script src=\"js/component.boite-accordeon.js\"></script>\r\n\t<script src=\"js/index.js?v=3\"></script>\r\n\r\n</body>\r\n\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:46:50.449127243Z",
+      "curl-command": "curl -X 'GET' -d '' -H 'Host: app.dvf.etalab.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/waf-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/waf-detect",
+      "template-id": "waf-detect",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/waf-detect.yaml",
+      "info": {
+        "name": "WAF Detection",
+        "author": [
+          "dwisiswant0",
+          "lu4nx"
+        ],
+        "tags": [
+          "waf",
+          "tech",
+          "misc"
+        ],
+        "description": "A web application firewall was detected.",
+        "reference": [
+          "https://github.com/ekultek/whatwaf"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "matcher-name": "nginxgeneric",
+      "type": "http",
+      "host": "https://app.dvf.etalab.gouv.fr/",
+      "matched-at": "https://app.dvf.etalab.gouv.fr/",
+      "request": "POST / HTTP/1.1\r\nHost: app.dvf.etalab.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+      "response": "HTTP/1.1 405 Not Allowed\r\nConnection: close\r\nContent-Length: 166\r\nContent-Type: text/html\r\nDate: Sun, 22 Dec 2024 03:47:00 GMT\r\nServer: nginx\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:47:00.843200783Z",
+      "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: app.dvf.etalab.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://app.dvf.etalab.gouv.fr/'",
+      "matcher-status": true
+    },
+    {
+      "template": "network/detection/openssh-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/openssh-detect",
+      "template-id": "openssh-detect",
+      "template-path": "/home/runner/nuclei-templates/network/detection/openssh-detect.yaml",
+      "info": {
+        "name": "OpenSSH Service - Detect",
+        "author": [
+          "r3dg33k",
+          "daffainfo",
+          "iamthefrogy"
+        ],
+        "tags": [
+          "seclists",
+          "network",
+          "ssh",
+          "openssh",
+          "detect",
+          "detection",
+          "tcp"
+        ],
+        "description": "OpenSSH service was detected.\n",
+        "reference": [
+          "http://www.openwall.com/lists/oss-security/2016/08/01/2",
+          "http://www.openwall.com/lists/oss-security/2018/08/15/5",
+          "http://seclists.org/fulldisclosure/2016/jul/51",
+          "https://nvd.nist.gov/vuln/detail/cve-2016-6210",
+          "https://nvd.nist.gov/vuln/detail/cve-2018-15473"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "tcp",
+      "host": "app.dvf.etalab.gouv.fr:22",
+      "matched-at": "app.dvf.etalab.gouv.fr:22",
+      "extracted-results": [
+        "SSH-2.0-OpenSSH_7.4p1 Debian-10+deb9u7\n"
+      ],
+      "response": "SSH-2.0-OpenSSH_7.4p1 Debian-10+deb9u7\n",
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:47:59.028848653Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "Let's Encrypt"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:40.251147611Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "app.dvf.etalab.gouv.fr"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:40.251266411Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/deprecated-tls.yaml",
+      "template-url": "https://templates.nuclei.sh/public/deprecated-tls",
+      "template-id": "deprecated-tls",
+      "template-path": "/home/runner/nuclei-templates/ssl/deprecated-tls.yaml",
+      "info": {
+        "name": "Deprecated TLS Detection",
+        "author": [
+          "righettod",
+          "forgedhallpass"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Both TLS 1.1 and SSLv3 are deprecated in favor of stronger encryption.\n",
+        "reference": [
+          "https://ssl-config.mozilla.org/#config=intermediate"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 3,
+          "shodan-query": "ssl.version:sslv2 ssl.version:sslv3 ssl.version:tlsv1 ssl.version:tlsv1.1"
+        },
+        "remediation": "Update the web server's TLS configuration to disable TLS 1.1 and SSLv3.\n"
+      },
+      "extractor-name": "tls_1.1",
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "tls11"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:40.538014335Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/deprecated-tls.yaml",
+      "template-url": "https://templates.nuclei.sh/public/deprecated-tls",
+      "template-id": "deprecated-tls",
+      "template-path": "/home/runner/nuclei-templates/ssl/deprecated-tls.yaml",
+      "info": {
+        "name": "Deprecated TLS Detection",
+        "author": [
+          "righettod",
+          "forgedhallpass"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Both TLS 1.1 and SSLv3 are deprecated in favor of stronger encryption.\n",
+        "reference": [
+          "https://ssl-config.mozilla.org/#config=intermediate"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 3,
+          "shodan-query": "ssl.version:sslv2 ssl.version:sslv3 ssl.version:tlsv1 ssl.version:tlsv1.1"
+        },
+        "remediation": "Update the web server's TLS configuration to disable TLS 1.1 and SSLv3.\n"
+      },
+      "extractor-name": "tls_1.0",
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "tls10"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:40.824977714Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "tls10"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:41.432609089Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/weak-cipher-suites.yaml",
+      "template-url": "https://templates.nuclei.sh/public/weak-cipher-suites",
+      "template-id": "weak-cipher-suites",
+      "template-path": "/home/runner/nuclei-templates/ssl/weak-cipher-suites.yaml",
+      "info": {
+        "name": "Weak Cipher Suites Detection",
+        "author": [
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "misconfig"
+        ],
+        "description": "A weak cipher is defined as an encryption/decryption algorithm that uses a key of insufficient length. Using an insufficient length for a key in an encryption/decryption algorithm opens up the possibility (or probability) that the encryption scheme could be broken.",
+        "reference": [
+          "https://www.acunetix.com/vulnerabilities/web/tls-ssl-weak-cipher-suites/",
+          "http://ciphersuite.info"
+        ],
+        "severity": "low",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "matcher-name": "tls-1.0",
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "[tls10 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:41.451249316Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "tls11"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:41.716644776Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/weak-cipher-suites.yaml",
+      "template-url": "https://templates.nuclei.sh/public/weak-cipher-suites",
+      "template-id": "weak-cipher-suites",
+      "template-path": "/home/runner/nuclei-templates/ssl/weak-cipher-suites.yaml",
+      "info": {
+        "name": "Weak Cipher Suites Detection",
+        "author": [
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls",
+          "misconfig"
+        ],
+        "description": "A weak cipher is defined as an encryption/decryption algorithm that uses a key of insufficient length. Using an insufficient length for a key in an encryption/decryption algorithm opens up the possibility (or probability) that the encryption scheme could be broken.",
+        "reference": [
+          "https://www.acunetix.com/vulnerabilities/web/tls-ssl-weak-cipher-suites/",
+          "http://ciphersuite.info"
+        ],
+        "severity": "low",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "matcher-name": "tls-1.1",
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "[tls11 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA]"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:41.734457309Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "app.dvf.etalab.gouv.fr",
+      "matched-at": "app.dvf.etalab.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "51.68.252.34",
+      "timestamp": "2024-12-22T03:48:42.001778365Z",
+      "matcher-status": true
+    }
+  ]
+]
