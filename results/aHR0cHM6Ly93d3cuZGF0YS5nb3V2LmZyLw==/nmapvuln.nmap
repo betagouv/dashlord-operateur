@@ -1,16 +1,14 @@
-# Nmap 7.92 scan initiated Sun Dec 15 04:06:04 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.data.gouv.fr
-Nmap scan report for www.data.gouv.fr (37.59.183.91)
-Host is up (0.091s latency).
-Other addresses for www.data.gouv.fr (not scanned): 37.59.183.73
+# Nmap 7.92 scan initiated Sun Dec 22 03:44:38 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.data.gouv.fr
+Nmap scan report for www.data.gouv.fr (37.59.183.73)
+Host is up (0.087s latency).
+Other addresses for www.data.gouv.fr (not scanned): 37.59.183.91
 Not shown: 997 filtered tcp ports (no-response)
 PORT    STATE SERVICE   VERSION
 22/tcp  open  ssh       OpenSSH 9.2p1 Debian 2+deb12u3 (protocol 2.0)
 | vulners: 
 |   cpe:/a:openbsd:openssh:9.2p1: 
-|     	CVE-2023-38408	9.8	https://vulners.com/cve/CVE-2023-38408
-|     	CVE-2023-28531	9.8	https://vulners.com/cve/CVE-2023-28531
-|     	95499236-C9FE-56A6-9D7D-E943A24B633A	9.8	https://vulners.com/githubexploit/95499236-C9FE-56A6-9D7D-E943A24B633A	*EXPLOIT*
-|     	2C119FFA-ECE0-5E14-A4A4-354A2C38071A	9.8	https://vulners.com/githubexploit/2C119FFA-ECE0-5E14-A4A4-354A2C38071A	*EXPLOIT*
+|     	95499236-C9FE-56A6-9D7D-E943A24B633A	10.0	https://vulners.com/githubexploit/95499236-C9FE-56A6-9D7D-E943A24B633A	*EXPLOIT*
+|     	2C119FFA-ECE0-5E14-A4A4-354A2C38071A	10.0	https://vulners.com/githubexploit/2C119FFA-ECE0-5E14-A4A4-354A2C38071A	*EXPLOIT*
 |     	PACKETSTORM:179290	8.1	https://vulners.com/packetstorm/PACKETSTORM:179290	*EXPLOIT*
 |     	FB2E9ED1-43D7-585C-A197-0D6628B20134	8.1	https://vulners.com/githubexploit/FB2E9ED1-43D7-585C-A197-0D6628B20134	*EXPLOIT*
 |     	FA3992CE-9C4C-5350-8134-177126E0BD3F	8.1	https://vulners.com/githubexploit/FA3992CE-9C4C-5350-8134-177126E0BD3F	*EXPLOIT*
@@ -89,9 +87,7 @@ PORT    STATE SERVICE   VERSION
 |     	PACKETSTORM:173661	7.5	https://vulners.com/packetstorm/PACKETSTORM:173661	*EXPLOIT*
 |     	F0979183-AE88-53B4-86CF-3AF0523F3807	7.5	https://vulners.com/githubexploit/F0979183-AE88-53B4-86CF-3AF0523F3807	*EXPLOIT*
 |     	1337DAY-ID-26576	7.5	https://vulners.com/zdt/1337DAY-ID-26576	*EXPLOIT*
-|     	CVE-2023-51385	6.5	https://vulners.com/cve/CVE-2023-51385
 |     	CVE-2023-48795	5.9	https://vulners.com/cve/CVE-2023-48795
-|     	CVE-2023-51384	5.5	https://vulners.com/cve/CVE-2023-51384
 |     	PACKETSTORM:140261	0.0	https://vulners.com/packetstorm/PACKETSTORM:140261	*EXPLOIT*
 |     	B8190CDB-3EB9-5631-9828-8064A1575B23	0.0	https://vulners.com/githubexploit/B8190CDB-3EB9-5631-9828-8064A1575B23	*EXPLOIT*
 |     	8FC9C5AB-3968-5F3C-825E-E8DB5379A623	0.0	https://vulners.com/githubexploit/8FC9C5AB-3968-5F3C-825E-E8DB5379A623	*EXPLOIT*
@@ -116,18 +112,19 @@ PORT    STATE SERVICE   VERSION
 |     location: https:///nice%20ports%2C/Tri%6Eity.txt%2ebak
 |     cache-control: no-cache
 |     connection: close
-|   HTTPOptions: 
+|   GetRequest, HTTPOptions: 
 |     HTTP/1.1 302 Found
 |     content-length: 0
 |     location: https:///
 |     cache-control: no-cache
 |_    connection: close
 443/tcp open  ssl/https nginx
+|_http-server-header: nginx
 | fingerprint-strings: 
 |   FourOhFourRequest: 
 |     HTTP/1.1 404 Not Found
 |     server: nginx
-|     date: Sun, 15 Dec 2024 04:06:31 GMT
+|     date: Sun, 22 Dec 2024 03:44:59 GMT
 |     content-type: text/html
 |     content-length: 146
 |     connection: close
@@ -141,7 +138,7 @@ PORT    STATE SERVICE   VERSION
 |   GetRequest: 
 |     HTTP/1.1 200 OK
 |     server: nginx
-|     date: Sun, 15 Dec 2024 04:06:30 GMT
+|     date: Sun, 22 Dec 2024 03:44:58 GMT
 |     content-type: text/html
 |     content-length: 612
 |     last-modified: Thu, 12 May 2022 12:47:31 GMT
@@ -174,7 +171,7 @@ PORT    STATE SERVICE   VERSION
 |   HTTPOptions: 
 |     HTTP/1.1 405 Not Allowed
 |     server: nginx
-|     date: Sun, 15 Dec 2024 04:06:30 GMT
+|     date: Sun, 22 Dec 2024 03:44:58 GMT
 |     content-type: text/html
 |     content-length: 150
 |     connection: close
@@ -185,44 +182,45 @@ PORT    STATE SERVICE   VERSION
 |     <hr><center>nginx</center>
 |     </body>
 |_    </html>
-|_http-server-header: nginx
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=12/15%Time=675E55C0%P=x86_64-alpine-linux-musl%
-SF:r(HTTPOptions,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-length:\x200\r\n
-SF:location:\x20https:///\r\ncache-control:\x20no-cache\r\nconnection:\x20
-SF:close\r\n\r\n")%r(RTSPRequest,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\
-SF:nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x20
-SF:close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x
-SF:20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n
-SF:</body></html>\n")%r(X11Probe,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\
-SF:nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x20
-SF:close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x
-SF:20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n
-SF:</body></html>\n")%r(FourOhFourRequest,8D,"HTTP/1\.1\x20302\x20Found\r\
-SF:ncontent-length:\x200\r\nlocation:\x20https:///nice%20ports%2C/Tri%6Eit
-SF:y\.txt%2ebak\r\ncache-control:\x20no-cache\r\nconnection:\x20close\r\n\
-SF:r\n")%r(RPCCheck,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nContent-leng
-SF:th:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nCont
-SF:ent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1
-SF:>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body></html
-SF:>\n")%r(DNSVersionBindReqTCP,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\n
-SF:Content-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x20c
-SF:lose\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x2
-SF:0request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n<
-SF:/body></html>\n")%r(DNSStatusRequestTCP,CF,"HTTP/1\.1\x20400\x20Bad\x20
-SF:request\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConne
-SF:ction:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>40
-SF:0\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20r
-SF:equest\.\n</body></html>\n")%r(Help,CF,"HTTP/1\.1\x20400\x20Bad\x20requ
-SF:est\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnectio
-SF:n:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x2
-SF:0Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20reque
-SF:st\.\n</body></html>\n");
+SF-Port80-TCP:V=7.92%I=7%D=12/22%Time=67678B34%P=x86_64-alpine-linux-musl%
+SF:r(GetRequest,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-length:\x200\r\nl
+SF:ocation:\x20https:///\r\ncache-control:\x20no-cache\r\nconnection:\x20c
+SF:lose\r\n\r\n")%r(HTTPOptions,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-l
+SF:ength:\x200\r\nlocation:\x20https:///\r\ncache-control:\x20no-cache\r\n
+SF:connection:\x20close\r\n\r\n")%r(RTSPRequest,CF,"HTTP/1\.1\x20400\x20Ba
+SF:d\x20request\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\n
+SF:Connection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid
+SF:\x20request\.\n</body></html>\n")%r(X11Probe,CF,"HTTP/1\.1\x20400\x20Ba
+SF:d\x20request\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\n
+SF:Connection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><
+SF:h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid
+SF:\x20request\.\n</body></html>\n")%r(FourOhFourRequest,8D,"HTTP/1\.1\x20
+SF:302\x20Found\r\ncontent-length:\x200\r\nlocation:\x20https:///nice%20po
+SF:rts%2C/Tri%6Eity\.txt%2ebak\r\ncache-control:\x20no-cache\r\nconnection
+SF::\x20close\r\n\r\n")%r(RPCCheck,CF,"HTTP/1\.1\x20400\x20Bad\x20request\
+SF:r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x
+SF:20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad
+SF:\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.
+SF:\n</body></html>\n")%r(DNSVersionBindReqTCP,CF,"HTTP/1\.1\x20400\x20Bad
+SF:\x20request\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nC
+SF:onnection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h
+SF:1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\
+SF:x20request\.\n</body></html>\n")%r(DNSStatusRequestTCP,CF,"HTTP/1\.1\x2
+SF:0400\x20Bad\x20request\r\nContent-length:\x2090\r\nCache-Control:\x20no
+SF:-cache\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<ht
+SF:ml><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\
+SF:x20invalid\x20request\.\n</body></html>\n")%r(Help,CF,"HTTP/1\.1\x20400
+SF:\x20Bad\x20request\r\nContent-length:\x2090\r\nCache-Control:\x20no-cac
+SF:he\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><
+SF:body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20i
+SF:nvalid\x20request\.\n</body></html>\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port443-TCP:V=7.92%T=SSL%I=7%D=12/15%Time=675E55C6%P=x86_64-alpine-linu
+SF-Port443-TCP:V=7.92%T=SSL%I=7%D=12/22%Time=67678B3A%P=x86_64-alpine-linu
 SF:x-musl%r(GetRequest,3A5,"HTTP/1\.1\x20200\x20OK\r\nserver:\x20nginx\r\n
-SF:date:\x20Sun,\x2015\x20Dec\x202024\x2004:06:30\x20GMT\r\ncontent-type:\
+SF:date:\x20Sun,\x2022\x20Dec\x202024\x2003:44:58\x20GMT\r\ncontent-type:\
 SF:x20text/html\r\ncontent-length:\x20612\r\nlast-modified:\x20Thu,\x2012\
 SF:x20May\x202022\x2012:47:31\x20GMT\r\netag:\x20\"627d01e3-264\"\r\nx-con
 SF:tent-type-options:\x20nosniff\r\nx-xss-protection:\x201;\x20mode=block\
@@ -240,13 +238,13 @@ SF:t\x20please\x20refer\x20to\n<a\x20href=\"http://nginx\.org/\">nginx\.or
 SF:g</a>\.<br/>\nCommercial\x20support\x20is\x20available\x20at\n<a\x20hre
 SF:f=\"http://nginx\.com/\">nginx\.com</a>\.</p>\n\n<p><em>Thank\x20you\x2
 SF:0for\x20using")%r(HTTPOptions,127,"HTTP/1\.1\x20405\x20Not\x20Allowed\r
-SF:\nserver:\x20nginx\r\ndate:\x20Sun,\x2015\x20Dec\x202024\x2004:06:30\x2
+SF:\nserver:\x20nginx\r\ndate:\x20Sun,\x2022\x20Dec\x202024\x2003:44:58\x2
 SF:0GMT\r\ncontent-type:\x20text/html\r\ncontent-length:\x20150\r\nconnect
 SF:ion:\x20close\r\n\r\n<html>\r\n<head><title>405\x20Not\x20Allowed</titl
 SF:e></head>\r\n<body>\r\n<center><h1>405\x20Not\x20Allowed</h1></center>\
 SF:r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n")%r(FourOhFourR
 SF:equest,121,"HTTP/1\.1\x20404\x20Not\x20Found\r\nserver:\x20nginx\r\ndat
-SF:e:\x20Sun,\x2015\x20Dec\x202024\x2004:06:31\x20GMT\r\ncontent-type:\x20
+SF:e:\x20Sun,\x2022\x20Dec\x202024\x2003:44:59\x20GMT\r\ncontent-type:\x20
 SF:text/html\r\ncontent-length:\x20146\r\nconnection:\x20close\r\n\r\n<htm
 SF:l>\r\n<head><title>404\x20Not\x20Found</title></head>\r\n<body>\r\n<cen
 SF:ter><h1>404\x20Not\x20Found</h1></center>\r\n<hr><center>nginx</center>
@@ -254,4 +252,4 @@ SF:\r\n</body>\r\n</html>\r\n");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Dec 15 04:06:47 2024 -- 1 IP address (1 host up) scanned in 43.25 seconds
+# Nmap done at Sun Dec 22 03:45:15 2024 -- 1 IP address (1 host up) scanned in 36.61 seconds
