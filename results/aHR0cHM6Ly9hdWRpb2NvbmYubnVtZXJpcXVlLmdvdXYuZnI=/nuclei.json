@@ -1,22 +1,23 @@
 [
   [
     {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
       "info": {
-        "name": "CAA Record",
+        "name": "MX Record Detection",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "caa"
+          "mx"
         ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
         "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
         ],
         "severity": "info",
         "metadata": {
@@ -32,9 +33,12 @@
       "type": "dns",
       "host": "audioconf.numerique.gouv.fr.",
       "matched-at": "audioconf.numerique.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 56101\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 56101\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nnumerique.gouv.fr.\t1800\tIN\tSOA\ta.ns.developpement-durable.gouv.fr. gestiondns.equipement.gouv.fr. 2025010900 14400 3600 3000000 3600\n",
-      "timestamp": "2025-01-12T02:12:51.004500692Z",
+      "extracted-results": [
+        "10 inbound.crisp.email."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 2525\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 2525\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tMX\t10 inbound.crisp.email.\n",
+      "timestamp": "2025-01-19T02:00:16.07426222Z",
       "matcher-status": true
     },
     {
@@ -66,9 +70,9 @@
       "extracted-results": [
         "v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 29414\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 29414\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"brevo-code:a81f60a1d1446c0fcefcca0c1371196f\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"google-site-verification=sN9DZBskBX8uJrv-EdTEv4isrRfVLmoHavHB9vaM95Q\"\n",
-      "timestamp": "2025-01-12T02:12:51.088363727Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 38714\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 38714\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"brevo-code:a81f60a1d1446c0fcefcca0c1371196f\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"google-site-verification=sN9DZBskBX8uJrv-EdTEv4isrRfVLmoHavHB9vaM95Q\"\n",
+      "timestamp": "2025-01-19T02:00:16.074748091Z",
       "matcher-status": true
     },
     {
@@ -104,13 +108,50 @@
       "host": "audioconf.numerique.gouv.fr.",
       "matched-at": "audioconf.numerique.gouv.fr",
       "extracted-results": [
-        "\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"",
         "\"brevo-code:a81f60a1d1446c0fcefcca0c1371196f\"",
+        "\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"",
         "\"google-site-verification=sN9DZBskBX8uJrv-EdTEv4isrRfVLmoHavHB9vaM95Q\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 29414\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 29414\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"brevo-code:a81f60a1d1446c0fcefcca0c1371196f\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"google-site-verification=sN9DZBskBX8uJrv-EdTEv4isrRfVLmoHavHB9vaM95Q\"\n",
-      "timestamp": "2025-01-12T02:12:51.088471017Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 38714\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 38714\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"brevo-code:a81f60a1d1446c0fcefcca0c1371196f\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"v=spf1 include:_spf.crisp.email include:spf.mailjet.com include:_spf.alwaysdata.com include:spf.sendinblue.com ~all\"\naudioconf.numerique.gouv.fr.\t3600\tIN\tTXT\t\"google-site-verification=sN9DZBskBX8uJrv-EdTEv4isrRfVLmoHavHB9vaM95Q\"\n",
+      "timestamp": "2025-01-19T02:00:16.07481769Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "audioconf.numerique.gouv.fr.",
+      "matched-at": "audioconf.numerique.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 32987\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 32987\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nnumerique.gouv.fr.\t3600\tIN\tSOA\ta.ns.developpement-durable.gouv.fr. gestiondns.equipement.gouv.fr. 2025011506 14400 3600 3000000 3600\n",
+      "timestamp": "2025-01-19T02:00:16.151067769Z",
       "matcher-status": true
     },
     {
@@ -150,50 +191,9 @@
       "extracted-results": [
         "\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-forensic@crisp.chat\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 39302\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.audioconf.numerique.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 39302\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.audioconf.numerique.gouv.fr.\t3600\tIN\tCNAME\t_dmarc.crisp.email.\n_dmarc.crisp.email.\t3600\tIN\tTXT\t\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-forensic@crisp.chat\"\n",
-      "timestamp": "2025-01-12T02:12:51.419375143Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/mx-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
-      "template-id": "mx-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
-      "info": {
-        "name": "MX Record Detection",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "mx"
-        ],
-        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
-        "reference": [
-          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
-          "https://mxtoolbox.com/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "audioconf.numerique.gouv.fr.",
-      "matched-at": "audioconf.numerique.gouv.fr",
-      "extracted-results": [
-        "10 inbound.crisp.email."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6355\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6355\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;audioconf.numerique.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\naudioconf.numerique.gouv.fr.\t3600\tIN\tMX\t10 inbound.crisp.email.\n",
-      "timestamp": "2025-01-12T02:12:51.996657739Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 52888\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.audioconf.numerique.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 52888\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.audioconf.numerique.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.audioconf.numerique.gouv.fr.\t3600\tIN\tCNAME\t_dmarc.crisp.email.\n_dmarc.crisp.email.\t3600\tIN\tTXT\t\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-forensic@crisp.chat\"\n",
+      "timestamp": "2025-01-19T02:00:16.242086076Z",
       "matcher-status": true
     },
     {
@@ -223,9 +223,9 @@
         "GET,HEAD"
       ],
       "request": "OPTIONS / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 8\r\nAccept-Ranges: bytes\r\nAge: 0\r\nAllow: GET,HEAD\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 12 Jan 2025 02:12:57 GMT\r\nEtag: W/\"8-ZRAf8oNBS3Bjb/SU2GYZCmbtmXg\"\r\nReferrer-Policy: origin-when-cross-origin\r\nSet-Cookie: connect.sid=s%3AneTUMaCyoK2aNk2ihIAc6IYgJW2fE6_o.7vs71pglhWnG7W5jUZ1pLf0WJN1zcHDq3%2FCo0lCUiU4; Path=/; Expires=Sun, 12 Jan 2025 02:17:57 GMT; HttpOnly; SameSite=Lax\r\nSet-Cookie: sc-sticky-session=+4bzKEEVku56tiYH+MbMsSAtFoA7FxQO9pmAwnN67XtdYz4xOJLw2fzMc0E45oIrrlAtSqSFR7MemzclU+Rcpw==; Expires=Mon, 13-Jan-25 02:12:57 GMT; Max-Age=86400; Path=/; Secure; HttpOnly; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Powered-By: Express\r\nX-Request-Id: c7326dfdb1e305e74d15497fc51a95d9\r\nX-Varnish: 4094818\r\nX-Xss-Protection: 1; mode=block\r\n\r\nGET,HEAD",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 8\r\nAccept-Ranges: bytes\r\nAge: 0\r\nAllow: GET,HEAD\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 19 Jan 2025 02:00:21 GMT\r\nEtag: W/\"8-ZRAf8oNBS3Bjb/SU2GYZCmbtmXg\"\r\nReferrer-Policy: origin-when-cross-origin\r\nSet-Cookie: connect.sid=s%3Asr4BV8yGM3L-pdtNSFtviGo0EweQ_hLE.vqloPgjYI%2FChMWKQhyC3%2F2iGhhh%2FUW7kyxHhX%2FGFxuU; Path=/; Expires=Sun, 19 Jan 2025 02:05:21 GMT; HttpOnly; SameSite=Lax\r\nSet-Cookie: sc-sticky-session=+4bzKEEVku56tiYH+MbMsXt57gBtkh1T955Ck+gJrg7d3mYSQBCdXosl5Tgs3gHyVQT41jnp6/spxAxok+ww1Q==; Expires=Mon, 20-Jan-25 02:00:21 GMT; Max-Age=86400; Path=/; Secure; HttpOnly; SameSite=None\r\nStrict-Transport-Security: max-age=31536000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Powered-By: Express\r\nX-Request-Id: 4f1920832dceaa974bcc6d78fb40e5c0\r\nX-Varnish: 11344044\r\nX-Xss-Protection: 1; mode=block\r\n\r\nGET,HEAD",
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:12:57.261289629Z",
+      "timestamp": "2025-01-19T02:00:21.354814864Z",
       "curl-command": "curl -X 'OPTIONS' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
       "matcher-status": true
     },
@@ -266,9 +266,9 @@
         "1; mode=block"
       ],
       "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:01 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfps3zlSj3ovHmFOcnVcIVlxBiXHFOxBVGkImkBNuRR4rnKozqff-wtm953O_kwdEdfLZvnFnvGwp_JF8xqChB-LESA_7O4yUpArgb1cavfMB9g\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:00:25 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"cookie\":{\"secure\":true,\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfps9IQcOtQHloUjZPcgnbjVaVcTXv1sMoNBP_oyABlYLzocspznvkOjofdelooBm-gLzYDuWT01J98pM2pdVx5pAbqJk8aUG8Fbtlv9XkgnGZo\",\"name\":\"bln_challengejs\",\"sameSite\":\"None\",\"maxAge\":900}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:01.545235846Z",
+      "timestamp": "2025-01-19T02:00:25.644766162Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
       "matcher-status": true
     },
@@ -296,249 +296,9 @@
       "host": "https://audioconf.numerique.gouv.fr",
       "matched-at": "https://audioconf.numerique.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:29 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"},\"domain\":\".numerique.gouv.fr\",\"cookie\":{\"path\":\"\\/\",\"value\":\"gHntngsFdAi6FsW71UtIZsqp7jY83Pr_HvOtPhh3yKQhI5XIO5Txzi4CISwH_cV_LVNDSpc3L6Z7bAFg9JxOZ8Dd9YLs2TKMaSHTgeyhi03lR9iWLL2hn1Ct4WeBT4-EKGt4QsKc5d0n06nZSEQDYS6_S1vCVVEJpgcgdncRVgT3v25DdwRjpIox7HqnN0odZ3LgtfUD9Ha8qdeMcSOZbFzVIVZokkN89cuukeZ868w\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:00:54 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"domain\":\".numerique.gouv.fr\",\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsx-1f6M0YRnf4E50muOgoX7Jvp2bmVEm9UKr08-Foqsm4nb5_kQ6rewFVkg1QUSkaCG8j2yXGcUCWNXuzO874tIHeaGtuTZhOJyj8tCj_z3M\",\"secure\":true,\"maxAge\":900,\"name\":\"bln_challengejs\",\"sameSite\":\"None\",\"path\":\"\\/\"},\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"rule_id\":\"\",\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"tracking_id\":\"\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:30.146610977Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "content-security-policy",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368200039Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "permissions-policy",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368241486Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-permitted-cross-domain-policies",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368260893Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "clear-site-data",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368276732Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368289476Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs",
-          "userdehghani"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-opener-policy",
-      "type": "http",
-      "host": "https://audioconf.numerique.gouv.fr",
-      "matched-at": "https://audioconf.numerique.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
-      "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368308572Z",
+      "timestamp": "2025-01-19T02:00:54.507355853Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
       "matcher-status": true
     },
@@ -576,9 +336,249 @@
       "host": "https://audioconf.numerique.gouv.fr",
       "matched-at": "https://audioconf.numerique.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 12 Jan 2025 02:13:40 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_HxhTeSJxNv7nBG1lQPTfpsgjQopLkrkqlQNxTgjo5050K0MTAEjqU-VOOawVizbtoXkfjMx_wS1PloVciLMP9ydeIuQj663Ip7Ig9fCg55jD8HwJh5WjZc3e-aWz0pwQE\",\"secure\":true,\"name\":\"bln_challengejs\",\"maxAge\":900,\"sameSite\":\"None\",\"path\":\"\\/\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false,\"checkChallengeParams\":{\"tracking_id\":\"\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"bot_category\":\"unknown\"}};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:13:40.368324381Z",
+      "timestamp": "2025-01-19T02:01:05.018984199Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019025106Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019035846Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019045534Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019060452Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019081221Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs",
+          "userdehghani"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://audioconf.numerique.gouv.fr",
+      "matched-at": "https://audioconf.numerique.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: audioconf.numerique.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nDate: Sun, 19 Jan 2025 02:01:04 GMT\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=63072000\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\nX-Xss-Protection: 1; mode=block\r\n\r\n<!doctypehtml><meta name=\"viewport\"content=\"width=device-width\"><meta charset=\"utf-8\"><script></script><script>var __blnChallengeStore={\"cookie\":{\"path\":\"\\/\",\"value\":\"8hQwky4xFP7mfKBKbm2mK9LXjMUQIQppQ7pXVXvdRfAvDgSvb_C4pkhQ2VMtdiMm2wiIUClbq-yzrWYHh3DTPydARc1ldZ93N8_7OElMT_F46RSroOVyDEIOqcunUX0fUkbVsm106bpRTcGVgq7Lf0-FlZJgu3G3j4VgXvC6lVjsrkpevZMCPINn9HaknOyF1MpzBd6oRP2-0RWjWRmn_Rqk24NDzGNBdn0K6EBsRr8\",\"maxAge\":900,\"sameSite\":\"None\",\"name\":\"bln_challengejs\",\"secure\":true},\"checkChallengeParams\":{\"bot_category\":\"unknown\",\"request_fate\":\"challengejs\",\"rule_id\":\"\",\"tracking_id\":\"\"},\"domain\":\".numerique.gouv.fr\",\"unregisterServiceWorker\":false};(()=>{\"use strict\";const e=function*({domain:e,maxAge:n,name:o,path:t,secure:a,sameSite:i,value:r}){yield`${o}=${r}`,void 0!==e&&\"\"!==e&&(yield`Domain=${e}`),void 0!==t&&\"\"!==t&&(yield`Path=${t}`),void 0!==n&&(yield`Max-Age=${n}`),void 0!==i&&(yield`SameSite=${i}`),a&&(yield\"Secure\")},n=e=>{const n=document.cookie.match(`${e}=([a-zA-Z0-9-_]*);?`);if(n)return{name:e,value:n[1]}},o=n=>{const o=[...e(n)].join(\"; \");document.cookie=o},t=(e,n)=>{if(!e||!e.name)return n;const o=new RegExp(`([?&])(${e.name})=([^&#]*)`,\"u\");if(!n.match(o)){const o=n.startsWith(\"?\")?\"&\":\"?\";return`${n}${o}${e.name}=${e.value}`}return n.replace(o,`$1$2=${e.value}`)},a=()=>{const{cookie:e,checkChallengeParams:n={}}=__blnChallengeStore,{name:o,value:t}=e,a=new XMLHttpRequest,i=`/.well-known/baleen/challengejs/check?${o}=${t}`,r=Object.entries(n).map((([e,n])=>`${e}=${n}`)).join(\"&\");a.open(\"POST\",i),a.send(r)},i=e=>setTimeout((()=>{e?window.location=e:window.location.reload()}),2),r=()=>{if(!(()=>{const{cookie:t,cookieReferer:r,domain:c}=__blnChallengeStore;return!!(()=>{const t={name:\"tst_bln_cookie_enabled\",sameSite:\"None\",secure:!0,value:\"1\"};o(t);const a=n(t.name);return!!a&&((({name:n})=>{const o=[...e({maxAge:-1,name:n,value:\"\"})].join(\"; \");document.cookie=o})(a),!0)})()&&(o({domain:c,...t}),!!n(t.name)&&(r&&o({domain:c,...r}),a(),i(),!0))})()){const e=(()=>{const{cookie:e,cookieReferer:n}=__blnChallengeStore||{},{origin:o,pathname:a,search:i,hash:r}=window.location;return`${o}${a}${t(n,t(e,i))}${r}`})();setTimeout((()=>{a(),i(e)}),1e3)}};(()=>{const{unregisterServiceWorker:e}=__blnChallengeStore||{};e&&navigator&&navigator.serviceWorker?navigator.serviceWorker.getRegistrations().then((e=>Promise.all(e.map((e=>e.unregister()))))).then((()=>r())).catch((()=>r())):r()})()})();</script><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\"><link href=\"/.well-known/baleen/challengejs/assets/style.css\"rel=\"stylesheet\"><body><noscript><div class=\"challengejs-container\"><div class=\"container\"><div class=\"challengejs-body\"><div class=\"challengejs-card\"><img src=\"/.well-known/baleen/challengejs/assets/logo.svg\"><div class=\"challengejs-message-1\">Le JavaScript n'est pas activé sur votre navigateur.</div><div class=\"separator\"></div><div class=\"challengejs-message-2\">Le JavaScript n'est pas activé sur votre navigateur. Pour vous permettre de naviguer correctement sur notre site, il est nécessaire qu'il soit activé.</div><div class=\"challengejs-message-3\"><div class=\"how\"><span>Comment activer le JavaScript ?</span></div><div class=\"drop\"><div class=\"how-to chrome\"><div>Chrome</div><a href=\"https://support.google.com/chrome\">https://support.google.com/chrome</a></div><div class=\"how-to firefox\"><div>Mozilla Firefox</div><a href=\"https://support.mozilla.org/fr/home\">https://support.mozilla.org/fr/home</a></div><div class=\"how-to safari\"><div>Safari</div><a href=\"https://www.apple.com/support/safari/\">https://www.apple.com/support/safari/</a></div><div class=\"how-to opera\"><div>Opera</div><a href=\"https://support.google.com/adsense/answer/12654?hl=fr\">https://support.google.com/adsense/answer/12654?hl=fr</a></div><div class=\"how-to explorer\"><div>Internet Explorer</div><a href=\"https://support.microsoft.com/product/internet-explorer\">https://support.microsoft.com/product/internet-explorer</a></div></div></div></div></div></div></div></noscript>",
+      "ip": "185.231.164.135",
+      "timestamp": "2025-01-19T02:01:05.019152453Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://audioconf.numerique.gouv.fr'",
       "matcher-status": true
     },
@@ -609,7 +609,7 @@
         "Let's Encrypt"
       ],
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:15:46.081969204Z",
+      "timestamp": "2025-01-19T02:03:10.446502236Z",
       "matcher-status": true
     },
     {
@@ -639,7 +639,7 @@
         "audioconf.numerique.gouv.fr"
       ],
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:15:46.082106571Z",
+      "timestamp": "2025-01-19T02:03:10.446629583Z",
       "matcher-status": true
     },
     {
@@ -670,7 +670,7 @@
         "tls12"
       ],
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:15:47.547640216Z",
+      "timestamp": "2025-01-19T02:03:11.829303762Z",
       "matcher-status": true
     },
     {
@@ -701,7 +701,7 @@
         "tls13"
       ],
       "ip": "185.231.164.135",
-      "timestamp": "2025-01-12T02:15:47.723135938Z",
+      "timestamp": "2025-01-19T02:03:12.019814298Z",
       "matcher-status": true
     }
   ]
