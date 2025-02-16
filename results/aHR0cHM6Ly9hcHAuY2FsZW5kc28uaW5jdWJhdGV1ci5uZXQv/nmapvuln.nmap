@@ -1,8 +1,8 @@
-# Nmap 7.92 scan initiated Sun Feb  9 02:47:23 2025 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln app.calendso.incubateur.net
-Nmap scan report for app.calendso.incubateur.net (91.208.207.216)
-Host is up (0.084s latency).
-Other addresses for app.calendso.incubateur.net (not scanned): 91.208.207.221 91.208.207.214 91.208.207.217 91.208.207.223 91.208.207.222 91.208.207.215 91.208.207.218 91.208.207.220
-Not shown: 986 closed tcp ports (reset)
+# Nmap 7.92 scan initiated Sun Feb 16 02:42:40 2025 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln app.calendso.incubateur.net
+Nmap scan report for app.calendso.incubateur.net (91.208.207.223)
+Host is up (0.085s latency).
+Other addresses for app.calendso.incubateur.net (not scanned): 91.208.207.220 91.208.207.218 91.208.207.215 91.208.207.214 91.208.207.216 91.208.207.222 91.208.207.221 91.208.207.217
+Not shown: 985 closed tcp ports (reset)
 PORT     STATE    SERVICE    VERSION
 80/tcp   open     http
 | fingerprint-strings: 
@@ -11,7 +11,7 @@ PORT     STATE    SERVICE    VERSION
 |     Cache-Control: no-cache
 |     Connection: close
 |     Content-Length: 6160
-|     Sozu-Id: 01JKM9NKNYFNNZTR4EQVW4YVPB
+|     Sozu-Id: 01JM6A5ZFNDCVGVSTSPHC7BMYQ
 |     <!doctype html>
 |     <html lang=en-US>
 |     <head>
@@ -24,7 +24,7 @@ PORT     STATE    SERVICE    VERSION
 |     Cache-Control: no-cache
 |     Connection: close
 |     Content-Length: 6164
-|     Sozu-Id: 01JKM9NSPYX225G6AGG7GW8RN3
+|     Sozu-Id: 01JM6A65GNAP7XXSPGC96AFKHR
 |     <!doctype html>
 |     <html lang=en-US>
 |     <head>
@@ -39,43 +39,24 @@ PORT     STATE    SERVICE    VERSION
 3000/tcp open     ppp?
 | fingerprint-strings: 
 |   Kerberos: 
-|     prSj
-|     {EG:V
-|     i=d:
-|     j,zz
-|     XEqX`-
-|     \x87sg
-|   SMBProgNeg: 
-|     i[DP
-|     \xe4
-|     b1.T
-|     K${:[
+|     G|tj j
+|     \xb5
+|     AH@1
+|     QCl@C
+|     $\x89`W
+|     +&OyUBq
+|     A>&+
+|     \x81
 |   TLSSessionReq: 
-|     p+vr
-|     Pstx
-|     \xd8
-|     (LOc
-|_    j;HF
+|     n>J_i
+|     F%3-
+|     \xb8P
+|_    P0Z~
 5002/tcp open     ssh        (protocol 2.0)
 | fingerprint-strings: 
 |   NULL: 
 |_    SSH-2.0-SFTPGo_2.4.4-dev
-5221/tcp open     smtp
-| fingerprint-strings: 
-|   GenericLines, GetRequest: 
-|     220 mailhog.example ESMTP MailHog
-|     Unrecognised command
-|     Unrecognised command
-|   Hello: 
-|     220 mailhog.example ESMTP MailHog
-|     250-Hello 
-|     250-PIPELINING
-|     AUTH PLAIN
-|   Help: 
-|     220 mailhog.example ESMTP MailHog
-|     Unrecognised command
-|   NULL: 
-|_    220 mailhog.example ESMTP MailHog
+5221/tcp open     smtp       Postfix smtpd
 5357/tcp open     ssh        (protocol 2.0)
 | fingerprint-strings: 
 |   NULL: 
@@ -101,103 +82,94 @@ PORT     STATE    SERVICE    VERSION
 |   version: 3.12.14
 |   mechanisms: AMQPLAIN PLAIN
 |_  locales: en_US
+5801/tcp open     tcpwrapped
 5902/tcp open     tcpwrapped
 5962/tcp open     unknown
 9999/tcp open     tcpwrapped
-5 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+4 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=2/9%Time=67A81745%P=x86_64-alpine-linux-musl%r(
-SF:GetRequest,1893,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\x
-SF:20no-cache\r\nConnection:\x20close\r\nContent-Length:\x206160\r\nSozu-I
-SF:d:\x2001JKM9NKNYFNNZTR4EQVW4YVPB\r\n\r\n<!doctype\x20html>\r\n<html\x20
-SF:lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x20<meta\x20charset=utf-8
-SF:>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=devi
-SF:ce-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x20Bad\x20Request</title
-SF:>\r\n\x20\x20\x20\x20<style>\.content,section{align-self:center}:root{-
-SF:-font-family:-apple-system,BlinkMacSystemFont,\"Segoe\x20UI\",Roboto,Ox
-SF:ygen-Sans,Ubuntu,Cantarell,\"Helvetica\x20Neue\",sans-serif;--justify-i
-SF:mportant:center;--bg-color:white;--width-content:1080px;--color-accent:
-SF:#F1F0FB;--border-radius:0;--color-text:rgb\(29,\x2029,\x2031\);--color-
-SF:code:#3a3871;--border-color:rgba\(34,\x2036,\x2038,\x200\.15\);--logo-c
-SF:olor:#aaa}\.content,body{flex-direction:column;display:flex}body,html{s
-SF:croll-behavior:smooth;height:100%;-webkit-font-smoothing:antialiased;fo
-SF:nt-family:var\(--font-family\);background-color:var\(--bg-color\)}butto
-SF:n#copy-btn,code{")%r(HTTPOptions,1897,"HTTP/1\.1\x20400\x20Bad\x20Reque
-SF:st\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Len
-SF:gth:\x206164\r\nSozu-Id:\x2001JKM9NSPYX225G6AGG7GW8RN3\r\n\r\n<!doctype
-SF:\x20html>\r\n<html\x20lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x20
-SF:<meta\x20charset=utf-8>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x
-SF:20content=\"width=device-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x2
-SF:0Bad\x20Request</title>\r\n\x20\x20\x20\x20<style>\.content,section{ali
-SF:gn-self:center}:root{--font-family:-apple-system,BlinkMacSystemFont,\"S
-SF:egoe\x20UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica\x20Neue\",
-SF:sans-serif;--justify-important:center;--bg-color:white;--width-content:
-SF:1080px;--color-accent:#F1F0FB;--border-radius:0;--color-text:rgb\(29,\x
-SF:2029,\x2031\);--color-code:#3a3871;--border-color:rgba\(34,\x2036,\x203
-SF:8,\x200\.15\);--logo-color:#aaa}\.content,body{flex-direction:column;di
-SF:splay:flex}body,html{scroll-behavior:smooth;height:100%;-webkit-font-sm
-SF:oothing:antialiased;font-family:var\(--font-family\);background-color:v
-SF:ar\(--bg-color\)}button#copy-btn,code{");
+SF-Port80-TCP:V=7.92%I=7%D=2/16%Time=67B150A9%P=x86_64-alpine-linux-musl%r
+SF:(GetRequest,1893,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\
+SF:x20no-cache\r\nConnection:\x20close\r\nContent-Length:\x206160\r\nSozu-
+SF:Id:\x2001JM6A5ZFNDCVGVSTSPHC7BMYQ\r\n\r\n<!doctype\x20html>\r\n<html\x2
+SF:0lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x20<meta\x20charset=utf-
+SF:8>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=dev
+SF:ice-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x20Bad\x20Request</titl
+SF:e>\r\n\x20\x20\x20\x20<style>\.content,section{align-self:center}:root{
+SF:--font-family:-apple-system,BlinkMacSystemFont,\"Segoe\x20UI\",Roboto,O
+SF:xygen-Sans,Ubuntu,Cantarell,\"Helvetica\x20Neue\",sans-serif;--justify-
+SF:important:center;--bg-color:white;--width-content:1080px;--color-accent
+SF::#F1F0FB;--border-radius:0;--color-text:rgb\(29,\x2029,\x2031\);--color
+SF:-code:#3a3871;--border-color:rgba\(34,\x2036,\x2038,\x200\.15\);--logo-
+SF:color:#aaa}\.content,body{flex-direction:column;display:flex}body,html{
+SF:scroll-behavior:smooth;height:100%;-webkit-font-smoothing:antialiased;f
+SF:ont-family:var\(--font-family\);background-color:var\(--bg-color\)}butt
+SF:on#copy-btn,code{")%r(HTTPOptions,1897,"HTTP/1\.1\x20400\x20Bad\x20Requ
+SF:est\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Le
+SF:ngth:\x206164\r\nSozu-Id:\x2001JM6A65GNAP7XXSPGC96AFKHR\r\n\r\n<!doctyp
+SF:e\x20html>\r\n<html\x20lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x2
+SF:0<meta\x20charset=utf-8>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\
+SF:x20content=\"width=device-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x
+SF:20Bad\x20Request</title>\r\n\x20\x20\x20\x20<style>\.content,section{al
+SF:ign-self:center}:root{--font-family:-apple-system,BlinkMacSystemFont,\"
+SF:Segoe\x20UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica\x20Neue\"
+SF:,sans-serif;--justify-important:center;--bg-color:white;--width-content
+SF::1080px;--color-accent:#F1F0FB;--border-radius:0;--color-text:rgb\(29,\
+SF:x2029,\x2031\);--color-code:#3a3871;--border-color:rgba\(34,\x2036,\x20
+SF:38,\x200\.15\);--logo-color:#aaa}\.content,body{flex-direction:column;d
+SF:isplay:flex}body,html{scroll-behavior:smooth;height:100%;-webkit-font-s
+SF:moothing:antialiased;font-family:var\(--font-family\);background-color:
+SF:var\(--bg-color\)}button#copy-btn,code{");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port3000-TCP:V=7.92%I=7%D=2/9%Time=67A81784%P=x86_64-alpine-linux-musl%
-SF:r(TLSSessionReq,AB,"\x04\xee\x05\xcap\+vr\xfa\xd4\xd1\xfa\.W\x99\xce\x9
-SF:1\x0f\xe4o\xd9\x86\[\x1b\x11i#\xf7c\xff\x84\xb8F2\x07~\xdb\xd8-f\xfawP\
-SF:x03\xf8\x01\x14\.\xf2\xf4\xa4P\0\xc8\xf9Vw\)\x1f\xf4G\xf7,\x06\xf8\xdec
-SF:W\x86h\x92\x8c\xbd\x8f\x04\x03\x98Pstx\xa5=\xca\xd3\x18\0\x7f\xb9\x91\x
-SF:e2a\xa4\x16I&\xb5\xc6\\\xd8\xae\xf3`\xe8S\xbc\xec1\$\xe6\n\x8b\xa3\xfb\
-SF:+\x02X!\xdbO\x20&;\x02\xe0\xee/\xe7\x1eKM\xd58\xaa\x8a\xa7\x05\xda\xc8\
-SF:(LOc\xa47\x96\xceF\xa48\xb8\xf9\x05\xc2\x83\xea\xc9\x1fj;HF\xaa\xcb\x0e
-SF:q\x98K\x0eE\xf9")%r(Kerberos,1FF,"\xad\xb5\xca\[f\x16\x8a\x97\xc2\x0e\x
-SF:96\xea\xf7T\xf2M\xf8\+\xa6L\xe2e\xbc\xe3\xa9\xb1\0>\x94\x9c\xc7\.{\x03\
-SF:xd1\xe7%\nE\xc5ld\x95\?\xb6\xd1\te\xc4\x13\xad\xdf\xd5\x9d\?\x1d\xd4\xa
-SF:f\xe2prSj\xa7\x93\xfeZ}\xf6\xce\x8di!\xfe\x99\xa3\x92\xed\xd4\x99\xbe\x
-SF:04Im\x0fO\xcf\xe4\xca\xf09F\x8bhn\xf6\xbdT\x8a\xcal\x1d\x19\xe2i\xfbr\x
-SF:90\xa9\xc1h\x9f\x07e\x84\x9f,r\x88\xc6\xa1R\x16{EG:V\xb5v\xd4\x0c\x1bxC
-SF:\xcc\xd7\xd9\xc4N\x9c\xd5W\xf9\x0e\xb5<=\xf4\xd7\x06\x1d\x1bf\x1c\xdc\t
-SF:\x96\^\x87\x0b\x94\xd4\x12\xe0\xeb\xab\xa7F\x9e%\xa2\xbca\",\xfb\x20j\x
-SF:04\x92X\*\xc0\xd0\x89\xe5@\x20rk\xc0\x1a_\x99k\xdd\xc9%/\xb0\xe2\x14\xc
-SF:cn~\xb8\xbb\x1b\xd6>\$\x93\xf3\xf5\x80\x8a\xac\xad'F\xda>1R\x17\(0\xd36
-SF:\x11\xae\xa8\xa8:\x01\)f\x06#\xfe\(\xf2\xd8_~\xa32\x9dB\x19\^\x8e!8O\xa
-SF:3%\xa7\xc1;\x0f\*\xeb1\xe9b\xaa@To\xd1\xcci=d:\x13\xac\xe4\xca\r\x1e\xb
-SF:8\xd6t\xe0\xb9\"GQ\x9eMy\xf7;4G\xa40\x813\xc9\x8f\x8a\|\x8b\xcaY\xb3\x1
-SF:8ME\xcc\x16\x85\x1d/\xe4B\$\x8e\x04\xf0\xbe\xf7\x90\xdf\xf7B\xaa\xf1\x8
-SF:2\xadST\xfeM\xe0\x1a\xfc\xben\xf3\xd0\x9b\\\t\xde\x96j,zz\xb8XEqX`-\x04
-SF:Oe\x8c\xb0\x86E\xe2\xf0\xd6\x08\x93U\xcf\xfa\*M\]\xa2Z\xe1\xba\r1,\xfa0
-SF:\x92\xdf0X\|\xccL\xd9\x10\x94\x8b\]\xfc\x10\"\xe4\xa1U\xcekh\x1ce\xfe\x
-SF:9a6o\xd5\x0b#n\x14\xde\.\xe6\xa9\xcf\xc2_y\x20\xe4e\0\x11EP\x0f\xb3Zt\x
-SF:a6n\xaf\xef;a\x1f\x06DwP\xcd\xc2\xa6\xdd\x85\xb7\xe7\x8d\x9f\xcc\xd4\x0
-SF:3\x1a\\\x87sg\xdb\x82\xae\xf7\xb4\xc8{\x9ac\)\xf0\.a\xc3\xaf%\x81\x90\x
-SF:9b\xb4j\xf3f\xca>\x0b\xc2\x8e\)\x1c\xca\xefe\xdcSf\x04\x19\xb0\x19\x97\
-SF:xcc\x17C")%r(SMBProgNeg,141,"\x06\x81Vc\x8a\\W\xa82\x0f\x1e\x1d\xf1\x94
-SF:\x8b\xea\x9a\xf6\.\x0e\xa0i\[DP\xe6\x96\xb7\xcd\xb0\t_\xe1B\nPGa\xe3\xb
-SF:8\x86J{\xcd\xe7\|\x92&\xd2\x06x\xe8d\xe1\\\xe4\x1eB\xe81\xc8\xa8\xfe\0\
-SF:xfc8\xf12\xce\xd7G\x13\xf7-\x03\xc4{\xf1\x94\xd8aTp\xf7\(\xb4\xbam\xf76
-SF:\x80\xd9Nq\xe0\xc8\x8e\x9b\x18\0\x92\x98\x023\x1a<M\x14\xe5\\\)\x90c\xf
-SF:1\x93b\xc3Q@\xc7h\xb8\xc9\x08;H\x1b\xba\xae\xa1\x12Sw\x96\x81\xf2\$\x91
-SF:\xda\xdf\x16V\xb0\xe7\xcbi\x90V\x04\xd3\x86\x90\xa0\x12\xf1\x0c:\xa2\xf
-SF:1O\xdb\xf6\xeb\xb4\xdb\x19\$\x12b\)\xf5\x15b1\.T\xf0\xde\x06\x1a\rR\x11
-SF:K\${:\[\x1e\xa9v\xebl\x94h\xe0\x08XN\xa3vr\xd3\xa8\xd0r\xfc8E\xbfp\xaaq
-SF:\xf5\x86\$hU\xb0\x81\)%\x9b\x13B/}\x8d\xb9\xf2\t{\xaf@\x06\(\xccu\xef\x
-SF:e1\xcf:\x08\xc9\x19\xf2L\xe5\x88'6\x92T\x1b/\x9c\x16dv\xecD6\x93u\xa9\x
-SF:1cN\x81\xb3\"T8\x95\x82P\xc5\xdf\xc0\x85Q&{\x14\x1a\xc1\x15H\xd1S\x06\x
-SF:9b\xf5\xb8\x0e\xb3\x17\x1d\x86e\*\^\x9a-\xb7\x18\x80B\xc8\x98\x8d\xd8\x
-SF:83\x20\xee=\xea\x95n\xff\xf2U");
+SF-Port3000-TCP:V=7.92%I=7%D=2/16%Time=67B150E8%P=x86_64-alpine-linux-musl
+SF:%r(TLSSessionReq,1BC,"\xcc\xa9K\x1fa\xbb3\xd3\xca\x0f85\x16C\xe7\|Q\xbb
+SF:\x18\xc2\x8d\xf0Iw7\x8c\|\xcb\)Q/\x87\x04\xcb\x90V\xf5\xe3b\x96!\x98O\x
+SF:faj\xb1\x9b\xe5\xd1g\x03n\xf7\xda\x97\xc5g\x004>\x87\x91x\xe1\xbc\xc2\x
+SF:db\xd7o6\x18D\xdbb\xd5n>J_i\x9e\xdc\x13\xeb\x81=\?O\x89r\x81\xee\x97C=F
+SF:\xed\x18\x08\xf2\xc8\x06\.\xb1\x07\$\xf1Q\]\xddm\xe82\x1f\x0c\x18\x04\x
+SF:16\xc2\xa5y~\xb8t\xae\x9c\x8cn\xa1\xc6>\r\x03Y\xc2\x10\xd5\xac/V2\x1eX\
+SF:xa3\xba\.\x06\xb3\xcd\xac\xd1\x9eO\xcd\xc3R8\xbb%\xc7\?O\xc0\xfd\xbe\xc
+SF:a\0X\x9bF%3-\x98f@d\r9\x84\xdc\xe14\xa6PU\)\xa1\xffbX\xf7\x98\xe5b\xb00
+SF:\xf9\x8d\xd9h\xb3W\]\x13U\xb7\xb9\x1e\x16\xf2\xff\x8f\x8b\x91\xd1\xbby\
+SF:xb3\xd7\x08\xc2\x87\x13\x1e\xdd6\x1b\*\xed3\xe8\xcao\xf3\xc5\re\xf1t\xb
+SF:2\xd1:\xc2\xa6\xf2\x0bpL\xab\xcb\x045o\x85'\x81z\x18\xb4\xdfGk\xee\x06B
+SF:\xfb\xe3r\xd5\xab\xfc\x20\xe0'\x1c\xaa\xf8\xa2`\x86\x95\xe27\xed\xf0\x9
+SF:f:\xca\x8aQ\xb9\x0cV\xdah\xc74\xd1\xc5\x02\xa5,w\x90\xa8\x91c;\x08\xf5\
+SF:xb8\xb5\x11\xaa\xda\[\xc4\xa1H\xcb\xac\xb6\xd0F\xb3\\\xb8P\xc5\xebn0\x1
+SF:2\xf9\x91\x9d\+\x85\xfeR\xc7X\xf3\x1e9\xb2v\(L\xaaP0Z~\xad\xa1\x1f\xf3\
+SF:x9f\xdcP\"_\x9d\xdb\?\xa0\x17\+\x9ck\.\x126R\xca\xaa\.\x99\xa0\x0czu\xb
+SF:4Y\x08lp\x9a\xfa\"\xe62O\xe8\xea\x8ft\xb6\x08\xa1\xf0\^\x8cJX\xe9u\x8e\
+SF:x87\xea\xee~Q\xac\xbf\xaeJ\xb6nk\x80~\?\xd2C\x03\xc8\x1c\xafL\xc0\xfa\x
+SF:d9\xd2\xec\x7f\x18\x8b\xf7\xb31\xfe")%r(Kerberos,218,"\x9b\xfeQ\x14u\x8
+SF:4G\|tj\tj\xa9\x8a\xc6\xc4W\xe4\xf7\xf9\^\xa0!X\xddV-\$\xed\x1f6\xef\xe6
+SF:\x10\x9b\xb3\.m\x01\xd2:\xf6\x13\xb6i\x18\xd6\x15\r\x1e\xda;\x83\":\xd7
+SF:\xf5\\\xb5\x1a@n\x81Y\xea\xfb\xdb\x98,\x0c\x87\x97t\xe1d\x93\x12\xb1\xb
+SF:9AH@1\x10e\xbe\n\x90\x18\xab\x14\x1a3\xbd\x05QCl@C\xbd\x10\xdb\xb5\xb48
+SF:\x9c\x16{\xbfb\x1a\xcc\xfa\x91X\xedNj\xf1\x85h\x0c\xb8h\xa6\$\\\x89`W\x
+SF:d3\xb8\xb2,\xf6\xf2S\xfc\x86\xce\xfeI\^w\xbf\x94\x9e\xf5\xbeb:\x7f\(\x0
+SF:4\x83\x1c\x0e\x8aW\xe5\xd3\xbb\x07\xf0\xdf\xe3\xa9\xbcZ\x0b;\xd0Y\t\xa7
+SF:\xc0\xbaQg\xab\xa00\xc1Ft\xb2\xce\+&OyUBq\xc5\x9a\xdeXX\xc6V\xefen_\x90
+SF:\xb2\x85P\x1ei\x07\xeb\xf2a\x05\xe5\x04\xff\x9f\x10\xf6\xd6\xbc\x9fACh\
+SF:x88\.\x1dB\x84\xc0\xb3\r\x9a\xf9\xac\0\xffU\xd2\+\xaf8\xe8\xfe\x03\xc7\
+SF:x7f\xfb\x03\xb9i\xb3;\xde\x98\x11F\xa9\xe5I\x0fo{\xbc\x02\xc8\x04\x1c,~
+SF:\x93\x18u8\xd6\({f\t\.\$\x18o\x86\x17f\0S\x9f\t\x90\xf6YT\x87\x89\?\x0c
+SF:u\xbe\x8d\xd6;\x1au\xc0\xdc\x12\xa5\"\x9f6\x12\xe2\]\x05\^\0\xe35\xe1\x
+SF:da\x82>\xf6\x08B/\xfeK\xa8\x14I\xa4\xa0\xa2\xcbA>&\+\x9e\xf2\x9e\nL\x06
+SF:k\x12\\\x81\x9f\x8bmQ\xe3\x9c\x80\x1d\xb8\x90\xb7\xb3\n\xee\xd5y\[\xdf0
+SF:@\t\xf6\xdb\x97lJ}\xe6\xef\x11\xf45W\xa0l\x05\0s\xd0\xf1>\xf8o\xdfl\xca
+SF:\xe9_\x94\xb9\x18\x8cs:\xe0\xec\xe4Z@\xb8,\x91\xaf\x81\xd4\xc9\xadi6\x9
+SF:b\x1a\x94>\xc4\xf7\xba9V\x1e6\x89\xac\xc7w\xfci\xb4\xde\x8c\xb4\xffv\x9
+SF:cR\xb6\xed\xeb\xc5\xc8\x1a\^iG\xaeo\x13H\xdd\xfb\xc0R\xaa\xb2S\xe6E\x86
+SF:\x97\x8emF\xfd/q\xf1\x13\xb1\xcf\xf0>\xdd\xefI{F\x03\xdc\xd7\xb5\x90\x7
+SF:f\xe1\xde\(\xea0\xdd\x14Z\xed\xe8%\x9e\x10n\$\xee@\x97\xa7\xeb\xa3\xc48
+SF:\x88\x1b\xf9\x14\0\x12=\xd6\xa4\xfe\xfc0\x115\xb5Y");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port5002-TCP:V=7.92%I=7%D=2/9%Time=67A81745%P=x86_64-alpine-linux-musl%
-SF:r(NULL,1A,"SSH-2\.0-SFTPGo_2\.4\.4-dev\r\n");
+SF-Port5002-TCP:V=7.92%I=7%D=2/16%Time=67B150A9%P=x86_64-alpine-linux-musl
+SF:%r(NULL,1A,"SSH-2\.0-SFTPGo_2\.4\.4-dev\r\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port5221-TCP:V=7.92%I=7%D=2/9%Time=67A81745%P=x86_64-alpine-linux-musl%
-SF:r(NULL,23,"220\x20mailhog\.example\x20ESMTP\x20MailHog\r\n")%r(GenericL
-SF:ines,57,"220\x20mailhog\.example\x20ESMTP\x20MailHog\r\n500\x20Unrecogn
-SF:ised\x20command\r\n500\x20Unrecognised\x20command\r\n")%r(GetRequest,57
-SF:,"220\x20mailhog\.example\x20ESMTP\x20MailHog\r\n500\x20Unrecognised\x2
-SF:0command\r\n500\x20Unrecognised\x20command\r\n")%r(Hello,4F,"220\x20mai
-SF:lhog\.example\x20ESMTP\x20MailHog\r\n250-Hello\x20\r\n250-PIPELINING\r\
-SF:n250\x20AUTH\x20PLAIN\r\n")%r(Help,3D,"220\x20mailhog\.example\x20ESMTP
-SF:\x20MailHog\r\n500\x20Unrecognised\x20command\r\n");
-==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port5357-TCP:V=7.92%I=7%D=2/9%Time=67A81745%P=x86_64-alpine-linux-musl%
-SF:r(NULL,1A,"SSH-2\.0-SFTPGo_2\.4\.4-dev\r\n");
+SF-Port5357-TCP:V=7.92%I=7%D=2/16%Time=67B150A9%P=x86_64-alpine-linux-musl
+SF:%r(NULL,1A,"SSH-2\.0-SFTPGo_2\.4\.4-dev\r\n");
+Service Info: Host: mailhog.example
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Feb  9 02:50:08 2025 -- 1 IP address (1 host up) scanned in 164.44 seconds
+# Nmap done at Sun Feb 16 02:45:24 2025 -- 1 IP address (1 host up) scanned in 164.18 seconds
